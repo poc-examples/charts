@@ -1,0 +1,36 @@
+{{- if .Values.provider }}
+{{- if .Values.provider.aws }}
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: eso-admin-secret-store
+  namespace: "{{ .Values.namespace }}"
+spec:
+  namespaces:
+    - "{{ .Values.namespace }}"
+    - "{{ .Values.gitops.namespace }}"
+  provider:
+    aws:
+      auth:
+        secretRef:
+          accessKeyIDSecretRef:
+            key: access-key
+            namespace: "{{ .Values.namespace }}"
+            name: eso-admin-secret
+          secretAccessKeySecretRef:
+            key: secret-access-key
+            namespace: "{{ .Values.namespace }}"
+            name: eso-admin-secret
+      region: "{{ .Values.provider.aws.default_region }}"
+      service: SecretsManager
+---
+apiVersion: v1
+data:
+  access-key-id: "{{ .Values.provider.aws.access_key_id | b64enc  }}"
+  secret-access-key: "{{ .Values.provider.aws.secret_access_key | b64enc  }}"
+kind: Secret
+metadata:
+  name: eso-admin-secret
+  namespace: "{{ .Values.namespace }}"
+{{- end }}
+{{- end }}
