@@ -255,6 +255,3 @@ data:
                   name: Documentation
                   icon: docs
 
-        janus-idp.backstage-plugin-analytics-provider-segment:
-          apiFactories:
-            - importName: SegmentAnalyticsApi
