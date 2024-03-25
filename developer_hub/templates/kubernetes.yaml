@@ -6,13 +6,13 @@ data:
   kubernetes-plugin.yaml: |
     kubernetes:
       clusterLocatorMethods:
-        - clusters:
-          - authProvider: serviceAccount
-            name: dev-cluster-infra
-            skipTLSVerify: true
-            url: https://api.{{ .Values.host }}:6443
-          type: config
-        customResources:
+        - type: config
+          clusters:
+            - authProvider: serviceAccount
+              name: dev-cluster-infra
+              skipTLSVerify: true
+              url: https://api.{{ .Values.host }}:6443
+      customResources:
         - apiVersion: v1beta1
           group: tekton.dev
           plural: pipelineruns
@@ -22,5 +22,5 @@ data:
         - apiVersion: v1
           group: route.openshift.io
           plural: routes
-        serviceLocatorMethod:
-          type: multiTenant
+      serviceLocatorMethod:
+        type: multiTenant
