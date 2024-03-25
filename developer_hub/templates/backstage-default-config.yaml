@@ -4,7 +4,7 @@ metadata:
   name: backstage-default-config
   namespace: backstage
 data:
-  deployment.yaml: |-
+  deployment.yaml: |
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -19,7 +19,7 @@ data:
           labels:
             rhdh.redhat.com/app:  # placeholder for 'backstage-<cr-name>'
         spec:
-          automountServiceAccountToken: false
+          automountServiceAccountToken: true
           volumes:
             - ephemeral:
                 volumeClaimTemplate:
@@ -35,7 +35,6 @@ data:
                 defaultMode: 420
                 optional: true
                 secretName: dynamic-plugins-npmrc
-
           initContainers:
             - command:
                 - ./install-dynamic-plugins.sh
