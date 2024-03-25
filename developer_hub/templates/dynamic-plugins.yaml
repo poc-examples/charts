@@ -57,3 +57,5 @@ data:
         package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+      ## Maybe
+      ## @roadiehq/scaffolder-backend-module-utils
