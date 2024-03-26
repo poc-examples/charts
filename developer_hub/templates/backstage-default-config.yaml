@@ -42,9 +42,6 @@ data:
             - name: remove-lost-found
               image: busybox
               command: ['sh', '-c', 'rm -rf /dynamic-plugins-root/lost+found']
-              securityContext:
-                fsGroup: 2000
-                fsGroupChangePolicy: "Always"
               volumeMounts:
                 - mountPath: /dynamic-plugins-root
                   name: dynamic-plugins-root
