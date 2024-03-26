@@ -4,4 +4,3 @@ metadata:
   name: "backstage"
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
-spec:
