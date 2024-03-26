@@ -9,7 +9,7 @@ data:
         - type: config
           clusters:
             - authProvider: serviceAccount
-              name: dev-cluster-infra
+              name: demo-cluster
               skipTLSVerify: true
               url: https://api.{{ .Values.host }}:6443
       customResources:
