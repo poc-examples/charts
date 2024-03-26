@@ -21,7 +21,6 @@ data:
           labels:
             rhdh.redhat.com/app:  # placeholder for 'backstage-<cr-name>'
         spec:
-          serviceAccountName: backstage
           automountServiceAccountToken: false
           volumes:
             - ephemeral:
