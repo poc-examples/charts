@@ -23,10 +23,59 @@ data:
         package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-dynamic
+
+      ##########################
+      ## TECH DOCS CONFIGURATION
+      ##########################
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-techdocs
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage.plugin-techdocs:
+                routeBindings:
+                  targets:
+                    - importName: techdocsPlugin
+                  bindings:
+                    - bindTarget: catalogPlugin.externalRoutes
+                      bindMap:
+                        viewTechDoc: techdocsPlugin.routes.docRoot
+                    - bindTarget: scaffolderPlugin.externalRoutes
+                      bindMap:
+                        viewTechDoc: techdocsPlugin.routes.docRoot
+                dynamicRoutes:
+                  - path: /docs
+                    importName: TechDocsIndexPage
+                    menuItem:
+                      icon: docs
+                      text: Docs
+                  - path: /docs/:namespace/:kind/:name/*
+                    importName: TechDocsReaderPage
+                mountPoints:
+                  - mountPoint: entity.page.docs/cards
+                    importName: EntityTechdocsContent
+                    config:
+                      layout:
+                        gridColumn: "1 / -1"
+                      if:
+                        allOf:
+                          - isTechDocsAvailable
+                  - mountPoint: search.page.results
+                    importName: TechDocsSearchResultListItem
+                  - mountPoint: search.page.filters
+                    importName: TechdocsSearchFilter
+                  - mountPoint: search.page.types
+                    importName: techdocsSearchType
+                    config:
+                      props:
+                        name: Documentation
+                        icon: docs
+
+      ##############################
+      ## TEKTON PLUGIN CONFIGURATION
+      ##############################
       - disabled: false
         package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
         pluginConfig:
@@ -43,6 +92,8 @@ data:
                       gridRowStart: 1
                   importName: TektonCI
                   mountPoint: entity.page.ci/cards
+      
+
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
       - disabled: false
