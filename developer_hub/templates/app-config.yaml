@@ -58,13 +58,10 @@ data:
           changeOrigin: true
           secure: true
 
-        # /argocd/api:
-        #   target: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}/api/v1/
-        #   changeOrigin: true
-        #   secure: false
-        #   headers:
-        #     Cookie:
-        #       $env: "argocd.token=${ARGOCD_TOKEN}"
+        /gitlab.com:
+          target: https://gitlab.apps.{{ .Values.host }}
+          changeOrigin: true
+          secure: false
 
     scaffolder:
       gitlab:
