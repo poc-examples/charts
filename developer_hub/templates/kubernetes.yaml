@@ -11,6 +11,7 @@ data:
             - authProvider: serviceAccount
               name: demo-cluster
               skipTLSVerify: true
+              serviceAccountToken: ${token}
               url: https://api.{{ .Values.host }}:6443
       customResources:
         - apiVersion: v1beta1

@@ -25,6 +25,8 @@ spec:
           key: DEVHUB_BACKEND_SECRET
         - name: argocd-token
           key: ARGOCD_TOKEN
+        - name: service-account-token
+          key: token
     dynamicPluginsConfigMapName: dynamic-plugins
     replicas: 1
     route:
