@@ -101,6 +101,18 @@ data:
         type: config
       baseUrl: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}
 
+    gitlab:
+      defaultCodeOwnersPath: .gitlab/CODEOWNERS
+      defaultReadmePath: .gitlab/README.md
+      allowedKinds:
+        - Component
+        - System
+        - API
+        - Resource
+        - Location
+        - Template
+      proxySecure: false
+
     integrations:
       gitlab:
         - host: gitlab.com
