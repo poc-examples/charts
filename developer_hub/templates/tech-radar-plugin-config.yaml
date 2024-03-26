@@ -9,7 +9,7 @@ data:
         /developer-hub:
           pathRewrite:
             ^/api/proxy/developer-hub/tech-radar: /charts/main/developer_hub/config/tech-radar.json
-            ^/api/proxy/developer-hub: /charts/main/developer_hub/config/tech-radar.json
+            # ^/api/proxy/developer-hub: /charts/main/developer_hub/config/developer-hub.json
           target: https://raw.githubusercontent.com/poc-examples
           changeOrigin: true
           secure: true
