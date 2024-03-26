@@ -37,7 +37,6 @@ data:
                 defaultMode: 420
                 optional: true
                 secretName: dynamic-plugins-npmrc
-
           initContainers:
             # - name: remove-lost-found
             #   image: busybox
