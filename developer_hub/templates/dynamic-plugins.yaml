@@ -92,7 +92,6 @@ data:
                       gridRowStart: 1
                   importName: TektonCI
                   mountPoint: entity.page.ci/cards
-      
 
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
