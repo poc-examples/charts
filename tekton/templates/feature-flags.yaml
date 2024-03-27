@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/part-of: tekton-pipelines
+    operator.tekton.dev/operand-name: tektoncd-pipelines
+  name: feature-flags
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+data:
+  await-sidecar-readiness: "true"
+  custom-task-version: v1beta1
+  disable-affinity-assistant: "true"
+  disable-creds-init: "true"
+  disable-home-env-overwrite: "false"
+  disable-working-directory-overwrite: "false"
+  embedded-status: both
+  enable-api-fields: stable
+  enable-custom-tasks: "true"
+  enable-provenance-in-status: "false"
+  enable-tekton-oci-bundles: "false"
+  performance: <v1alpha1.PipelinePerformanceProperties Value>
+  require-git-ssh-secret-known-hosts: "false"
+  resource-verification-mode: skip
+  running-in-environment-with-injected-sidecars: "true"
+  send-cloudevents-for-runs: "false"
+  verification-mode: skip

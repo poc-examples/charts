@@ -13,65 +13,18 @@ data:
     includes:
       - dynamic-plugins.default.yaml
     plugins:
-      - disabled: false
-        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+
+      ##############################
+      ## GITLAB PLUGIN CONFIGURATION
+      ##############################
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gitlab-dynamic
-      - disabled: false
-        package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
       - disabled: false
         package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-dynamic
-
-      ##########################
-      ## TECH DOCS CONFIGURATION
-      ##########################
       - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
-      - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-techdocs
-        pluginConfig:
-          dynamicPlugins:
-            frontend:
-              backstage.plugin-techdocs:
-                routeBindings:
-                  targets:
-                    - importName: techdocsPlugin
-                  bindings:
-                    - bindTarget: catalogPlugin.externalRoutes
-                      bindMap:
-                        viewTechDoc: techdocsPlugin.routes.docRoot
-                    - bindTarget: scaffolderPlugin.externalRoutes
-                      bindMap:
-                        viewTechDoc: techdocsPlugin.routes.docRoot
-                dynamicRoutes:
-                  - path: /docs
-                    importName: TechDocsIndexPage
-                    menuItem:
-                      icon: docs
-                      text: Docs
-                  - path: /docs/:namespace/:kind/:name/*
-                    importName: TechDocsReaderPage
-                mountPoints:
-                  - mountPoint: entity.page.docs/cards
-                    importName: EntityTechdocsContent
-                    config:
-                      layout:
-                        gridColumn: "1 / -1"
-                      if:
-                        allOf:
-                          - isTechDocsAvailable
-                  - mountPoint: search.page.results
-                    importName: TechDocsSearchResultListItem
-                  - mountPoint: search.page.filters
-                    importName: TechdocsSearchFilter
-                  - mountPoint: search.page.types
-                    importName: techdocsSearchType
-                    config:
-                      props:
-                        name: Documentation
-                        icon: docs
+        package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
 
       ##############################
       ## TEKTON PLUGIN CONFIGURATION
@@ -83,29 +36,56 @@ data:
             frontend:
               janus-idp.backstage-plugin-tekton:
                 mountPoints:
-                - config:
-                    if:
-                      allOf:
-                      - isTektonCIAvailable
-                    layout:
-                      gridColumn: 1 / -1
-                      gridRowStart: 1
-                  importName: TektonCI
-                  mountPoint: entity.page.ci/cards
+                  - mountPoint: entity.page.ci/cards
+                    importName: TektonCI
+                    config:
+                      layout:
+                        gridColumn: "1 / -1"
+                      if:
+                        allOf:
+                          - isTektonCIAvailable
 
+      ##################################
+      ## TECH RADAR PLUGIN CONFIGURATION
+      ##################################
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
       - disabled: false
         package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+
+      ###############################
+      ## ARGOCD PLUGIN CONFIGURATION
+      ###############################
       - disabled: false
         package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd
-      - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
+
+      ##################################
+      ## KUBERNETES PLUGIN CONFIGURATION
+      ##################################
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
       - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
+
+      ##################################
+      ## TOPOLOGY PLUGIN CONFIGURATION
+      ##################################
+      - disabled: false
         package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
-      ## Maybe
-      ## @roadiehq/scaffolder-backend-module-utils
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              janus-idp.backstage-plugin-topology:
+                mountPoints:
+                  - mountPoint: entity.page.topology/cards
+                    importName: TopologyPage
+                    config:
+                      layout:
+                        gridColumn: "1 / -1"
+                        height: 75vh
+                      if:
+                        anyOf:
+                          - hasAnnotation: backstage.io/kubernetes-id
+                          - hasAnnotation: backstage.io/kubernetes-namespace

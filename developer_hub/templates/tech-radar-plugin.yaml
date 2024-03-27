@@ -13,6 +13,7 @@ data:
           target: https://raw.githubusercontent.com/poc-examples
           changeOrigin: true
           secure: true
+
     dynamicPlugins:
       frontend:
         backstage.plugin-tech-radar:

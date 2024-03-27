@@ -4,9 +4,6 @@ metadata:
   name: backstage-app-config
 data:
   dynamic-app-config.yaml: |
-    enabled:
-      techdocs: true
-      kubernetes: true
     app:
       title: Red Hat Developer Hub
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
@@ -29,6 +26,9 @@ data:
       name: ${ORGANIZATION_NAME}
 
     backend:
+      auth:
+        keys:
+          - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
       listen:
         port: 7007
@@ -49,20 +49,6 @@ data:
         client: better-sqlite3
         connection: ':memory:'
 
-    proxy:
-      endpoints:
-        /quay/api:
-          target: https://quay.io/
-          headers:
-            X-Requested-With: 'XMLHttpRequest'
-          changeOrigin: true
-          secure: true
-
-        /gitlab.com:
-          target: https://gitlab.apps.{{ .Values.host }}
-          changeOrigin: true
-          secure: false
-
     scaffolder:
       gitlab:
         token: ${GITLAB_TOKEN}
@@ -80,147 +66,19 @@ data:
       - Location
       - Template
 
-    ## TECHDOCS CONFIGURATION DOCUMENTATION
-    ## https://backstage.io/docs/features/techdocs/configuration
-    techdocs:
-      builder: local
-      generator:
-        runIn: local
-      publisher:
-        type: "local"
-        local:
-          publishDirectory: "/tmp/default/component/"
-
-    argocd:
-      appLocatorMethods:
-      - instances:
-        - name: main
-          password: ${ARGOCD_TOKEN}
-          url: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}
-          username: admin
-        type: config
-      baseUrl: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}
-
-    gitlab:
-      defaultCodeOwnersPath: .gitlab/CODEOWNERS
-      defaultReadmePath: .gitlab/README.md
-      allowedKinds:
-        - Component
-        - System
-        - API
-        - Resource
-        - Location
-        - Template
-      proxySecure: false
-
-    integrations:
-      gitlab:
-        - host: gitlab.com
-          token: ${GITLAB_TOKEN}
-          apiBaseUrl: "https://gitlab.apps.{{ .Values.host }}/api/v4"
-          baseUrl: "https://gitlab.apps.{{ .Values.host }}"
-        - host: gitlab.apps.{{ .Values.host }}
-          token: ${GITLAB_TOKEN}
-          apiBaseUrl: "https://gitlab.apps.{{ .Values.host }}/api/v4"
-          baseUrl: "https://gitlab.apps.{{ .Values.host }}"
-
     permission:
       enabled: ${PERMISSION_ENABLED}
 
-    dynamicPlugins:
-      frontend:
+    proxy:
+      endpoints:
+        /quay/api:
+          target: https://quay.io/
+          headers:
+            X-Requested-With: 'XMLHttpRequest'
+          changeOrigin: true
+          secure: true
 
-        backstage.plugin-kubernetes:
-          mountPoints:
-            - mountPoint: entity.page.kubernetes/cards
-              importName: EntityKubernetesContent
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  anyOf:
-                    - hasAnnotation: backstage.io/kubernetes-id
-                    - hasAnnotation: backstage.io/kubernetes-namespace
-
-        immobiliarelabs.backstage-plugin-gitlab:
-          mountPoints:
-            - mountPoint: entity.page.overview/cards
-              importName: EntityGitlabMergeRequestStatsCard
-              config:
-                layout:
-                  gridColumnEnd:
-                    lg: "span 4"
-                    md: "span 6"
-                    xs: "span 12"
-                if:
-                  allOf:
-                    - isGitlabAvailable
-            - mountPoint: entity.page.ci/cards
-              importName: EntityGitlabPipelinesTable
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  allOf:
-                    - isGitlabAvailable
-            - mountPoint: entity.page.issues/cards
-              importName: EntityGitlabIssuesTable
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  allOf:
-                    - isGitlabAvailable
-            - mountPoint: entity.page.pull-requests/cards
-              importName: EntityGitlabMergeRequestsTable
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  allOf:
-                    - isGitlabAvailable
-
-        janus-idp.backstage-plugin-tekton:
-          mountPoints:
-            - mountPoint: entity.page.ci/cards
-              importName: TektonCI
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  allOf:
-                    - isTektonCIAvailable
-
-        janus-idp.backstage-plugin-topology:
-          mountPoints:
-            - mountPoint: entity.page.topology/cards
-              importName: TopologyPage
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                  height: 75vh
-                if:
-                  anyOf:
-                    - hasAnnotation: backstage.io/kubernetes-id
-                    - hasAnnotation: backstage.io/kubernetes-namespace
-
-        roadiehq.backstage-plugin-argo-cd:
-          mountPoints:
-            - mountPoint: entity.page.overview/cards
-              importName: EntityArgoCDOverviewCard
-              config:
-                layout:
-                  gridColumnEnd:
-                    lg: "span 8"
-                    xs: "span 12"
-                if:
-                  allOf:
-                    - isArgocdAvailable
-            - mountPoint: entity.page.cd/cards
-              importName: EntityArgoCDHistoryCard
-              config:
-                layout:
-                  gridColumn: "1 / -1"
-                if:
-                  allOf:
-                    - isArgocdAvailable
+        /gitlab.com:
+          target: https://gitlab.apps.{{ .Values.host }}
+          changeOrigin: true
+          secure: false

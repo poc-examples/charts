@@ -10,10 +10,12 @@ spec:
       mountPath: /opt/app-root/src
       configMaps:
         - name: backstage-app-config
-        - name: backstage-backend-config
-        - name: tech-radar-plugin
-        - name: catalog-config
+        - name: argocd-plugin
+        - name: gitlab-plugin
         - name: kubernetes-plugin
+        - name: tech-radar-plugin
+        - name: techdocs-plugin
+        - name: catalog-config
     extraEnvs:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
