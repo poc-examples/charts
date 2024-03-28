@@ -16,6 +16,7 @@ data:
 
       ##############################
       ## Generic PLUGIN CONFIGURATION
+      Integrity: npm  view @package dist.integrity
       ##############################
       - disabled: false
         package: roadiehq/scaffolder-backend-module-http-request
