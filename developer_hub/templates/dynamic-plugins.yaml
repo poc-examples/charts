@@ -15,6 +15,12 @@ data:
     plugins:
 
       ##############################
+      ## Generic PLUGIN CONFIGURATION
+      ##############################
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request
+
+      ##############################
       ## GITLAB PLUGIN CONFIGURATION
       ##############################
       - disabled: false
