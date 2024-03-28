@@ -18,7 +18,7 @@ data:
       ## Generic PLUGIN CONFIGURATION
       ##############################
       - disabled: false
-        package: @roadiehq/scaffolder-backend-module-http-request
+        package: roadiehq/scaffolder-backend-module-http-request
 
       ##############################
       ## GITLAB PLUGIN CONFIGURATION
