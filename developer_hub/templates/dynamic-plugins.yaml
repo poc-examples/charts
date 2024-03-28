@@ -19,6 +19,7 @@ data:
       ##############################
       - disabled: false
         package: roadiehq/scaffolder-backend-module-http-request
+        integrity: sha512-ttsh2F9JCgF757vrMTAuKIWw+bE9mApNq/+JKTLXprWETTE0XuJAAhkh9wdreqt5cmugaj9eDKSqxFa1NYAf4g==
 
       ##############################
       ## GITLAB PLUGIN CONFIGURATION
