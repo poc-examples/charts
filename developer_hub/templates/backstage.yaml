@@ -20,6 +20,8 @@ spec:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: '0'
+        - name: SKIP_INTEGRITY_CHECK
+          value: "true"
       secrets:
         - name: gitlab-token
           key: GITLAB_TOKEN
