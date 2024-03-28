@@ -17,8 +17,8 @@ data:
       ##############################
       ## Generic PLUGIN CONFIGURATION
       ##############################
-      - disabled: false
-        package: ./dynamicplugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+      # - disabled: false
+      #   package: ./dynamicplugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
 
       ##############################
       ## GITLAB PLUGIN CONFIGURATION
