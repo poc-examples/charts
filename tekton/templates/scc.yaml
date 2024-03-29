@@ -13,7 +13,7 @@ allowedCapabilities: null
 apiVersion: security.openshift.io/v1
 defaultAddCapabilities: null
 fsGroup:
-  type: MustRunAs
+  type: RunAsAny
 groups:
 - system:cluster-admins
 priority: 10
