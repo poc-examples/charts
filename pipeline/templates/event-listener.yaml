@@ -70,7 +70,7 @@ kind: EventListener
 metadata:
   name: pipeline-listener
 spec:
-  serviceAccountName: openshift-pipelines
+  serviceAccountName: pipeline
   triggers:
     - name: filter-events
       interceptors:
