@@ -172,7 +172,7 @@ spec:
         #!/usr/bin/env sh
         set -eu
 
-        ls -la ${WORKSPACE_BASIC_AUTH_DIRECTORY_PATH}/git
+        ls -la ${PARAM_USER_HOME}
 
         if [ "${PARAM_VERBOSE}" = "true" ] ; then
           set -x
