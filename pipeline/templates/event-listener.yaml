@@ -21,7 +21,7 @@ spec:
       metadata: 
         name: $(tt.params.image)-container-build-$(tt.params.gitrevision)
       spec:
-        serviceAccountName: pipeline
+        serviceAccountName: openshift-pipelines
         pipelineRef: 
           name: container-build-pipeline
         params: 

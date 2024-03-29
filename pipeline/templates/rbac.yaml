@@ -15,7 +15,7 @@ metadata:
   name: tekton-events-binding
 subjects:
 - kind: ServiceAccount
-  name: pipeline
+  name: openshift-pipelines
   namespace: {{ .Values.targetNamespace }}
 roleRef:
   kind: ClusterRole
@@ -32,7 +32,7 @@ metadata:
   name: tekton-project-admin
 subjects:
 - kind: ServiceAccount
-  name: pipeline
+  name: openshift-pipelines
   namespace: {{ .Values.targetNamespace }}
 roleRef:
   kind: Role
