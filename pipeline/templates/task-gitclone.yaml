@@ -172,8 +172,6 @@ spec:
         #!/usr/bin/env sh
         set -eu
 
-        cat /tekton/home/.git-credentials
-
         if [ "${PARAM_VERBOSE}" = "true" ] ; then
           set -x
         fi
