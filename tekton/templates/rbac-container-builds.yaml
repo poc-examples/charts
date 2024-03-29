@@ -9,7 +9,7 @@ rules:
   resources:
   - securitycontextconstraints
   resourceNames:
-  - privileged
+  - pipelines-scc-userid-1001
   verbs:
   - use
 - apiGroups:
