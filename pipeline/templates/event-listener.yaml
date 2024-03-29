@@ -48,9 +48,6 @@ spec:
             items:
               - key: .dockerconfigjson
                 path: config.json
-        - name: basic-auth
-          secret:
-            secretName: repository-secret
         - name: source
           volumeClaimTemplate:
             spec:
