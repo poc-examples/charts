@@ -97,7 +97,7 @@ spec:
         - name: git_repo
           value: 'https://gitlab.apps.yvgdsf2b.eastus.aroapp.io/self-provisioned/test.git'
         - name: registry_namespace
-          value: 'pipelines'
+          value: 'rh_ee_cengleby'
       template:
         ref: image-pipeline-trigger-template
 ---
