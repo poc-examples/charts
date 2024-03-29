@@ -23,7 +23,7 @@ requiredDropCapabilities:
 - KILL
 runAsUser: 
   type: MustRunAs
-  uid: 1001
+  uid: 0
 seLinuxContext:
   type: MustRunAs
 supplementalGroups:
