@@ -42,7 +42,7 @@ spec:
             runAsUser: 1001
             fsGroup: 65532
         workspaces:
-        - name: repository-credentials
+        - name: basic-auth
           secret:
             secretName: repository-secret
         - name: source

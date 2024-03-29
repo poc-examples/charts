@@ -13,7 +13,7 @@ spec:
   workspaces:
     - name: source
     - name: containers
-    - name: repository-credentials
+    - name: basic-auth
   tasks:
     - name: git-clone
       params:
@@ -31,8 +31,8 @@ spec:
       workspaces:
       - name: output
         workspace: source
-      - name: repository-credentials
-        workspace: repository-credentials
+      - name: basic-auth
+        workspace: basic-auth
     - name: container-build
       params:
         - name: IMAGE_NAME
