@@ -23,7 +23,7 @@ spec:
         requests:
           memory: "1Gi"
       image: quay.io/rh_ee_cengleby/podman:0.12
-      securityContext:
+      securityContext: 
         privileged: true
         runAsUser: 1001
       script: |
