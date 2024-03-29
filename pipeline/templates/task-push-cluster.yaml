@@ -1,0 +1,37 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: podman-push
+spec:
+  workspaces:
+    - name: containers
+      mountPath: /var/lib/containers
+    - name: credentials
+      mountPath: /workspace/.docker/
+  params: 
+    - name: IMAGE_NAME
+      description: The name of the image
+    - name: CHANGE_PATH
+      description: The path that changed
+    - name: REGISTRY_HOSTNAME
+      description: The hostname of the registry server (quay.io)
+    - name: REGISTRY_NAMESPACE
+      description: The repository namespace
+    - name: IMAGE_TAG
+      description: The image tag
+      default: "latest"
+  steps:
+    - name: build-image
+      resources: {}
+      image: quay.io/rh_ee_cengleby/podman:0.12
+      securityContext:
+        privileged: true
+        runAsUser: 0
+      script: |
+        cat /var/run/secrets/kubernetes.io/serviceaccount/token \
+        && podman login -u serviceaccount -p $(cat /var/run/secrets/kubernetes.io/serviceaccount/token) $(params.REGISTRY_HOSTNAME) \
+        && podman tag $(params.IMAGE_NAME):$(params.IMAGE_TAG) $(params.REGISTRY_HOSTNAME)/$(params.REGISTRY_NAMESPACE)/$(params.IMAGE_NAME):$(params.IMAGE_TAG) \
+        && podman push $(params.REGISTRY_HOSTNAME)/$(params.REGISTRY_NAMESPACE)/$(params.IMAGE_NAME):$(params.IMAGE_TAG)
+      env:
+        # - name: "DOCKER_CONFIG"
+        #   value: "/tmp/"

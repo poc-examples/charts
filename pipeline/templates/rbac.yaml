@@ -1,0 +1,38 @@
+---
+########################################
+## Provides EventListener the Ability to 
+## access Tekton Triggers APIs and Set 
+## Priviledged SCC for Container Builds
+########################################
+## Building containers that contain setuid/setgid 
+## binaries need to perform operations that require 
+## setuid/setgid permissions this requires running the 
+## container builder in privileged mode
+########################################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tekton-events-binding
+subjects:
+- kind: ServiceAccount
+  name: openshift-pipelines
+roleRef:
+  kind: ClusterRole
+  name: tekton-events
+  apiGroup: rbac.authorization.k8s.io
+---
+#########################################
+## Provides Project Admin Rights
+## Edit might be more appropriate
+#########################################
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tekton-project-admin
+subjects:
+- kind: ServiceAccount
+  name: openshift-pipelines
+roleRef:
+  kind: Role
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
