@@ -32,8 +32,6 @@ spec:
       workspaces:
       - name: output
         workspace: source
-      - name: basic-auth
-        workspace: basic-auth
     - name: buildah
       params:
         - name: IMAGE
