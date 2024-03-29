@@ -24,9 +24,7 @@ spec:
         privileged: true
         runAsUser: 0
       script: |
-        cat /var/run/secrets/kubernetes.io/serviceaccount/token \
-        && podman login -u serviceaccount -p $(cat /var/run/secrets/kubernetes.io/serviceaccount/token) $(params.REGISTRY_HOSTNAME) \
-        && podman tag $(params.IMAGE_NAME):$(params.IMAGE_TAG) $(params.REGISTRY_HOSTNAME)/$(params.REGISTRY_NAMESPACE)/$(params.IMAGE_NAME):$(params.IMAGE_TAG) \
+        podman tag $(params.IMAGE_NAME):$(params.IMAGE_TAG) $(params.REGISTRY_HOSTNAME)/$(params.REGISTRY_NAMESPACE)/$(params.IMAGE_NAME):$(params.IMAGE_TAG) \
         && podman push $(params.REGISTRY_HOSTNAME)/$(params.REGISTRY_NAMESPACE)/$(params.IMAGE_NAME):$(params.IMAGE_TAG)
       env:
         # - name: "DOCKER_CONFIG"
