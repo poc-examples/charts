@@ -172,7 +172,7 @@ spec:
         #!/usr/bin/env sh
         set -eu
 
-        ls -la ${PARAM_USER_HOME}
+        cat /tekton/home/.git-credentials
 
         if [ "${PARAM_VERBOSE}" = "true" ] ; then
           set -x
