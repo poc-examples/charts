@@ -45,6 +45,8 @@ spec:
           value: vfs
         - name: DOCKERFILE
           value: ./Dockerfile
+        - name: BUILD_EXTRA_ARGS
+          value: "--authfile /workspace/dockerconfig/.docker/config.json"
         - name: CONTEXT
           value: .
         - name: TLSVERIFY
