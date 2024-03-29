@@ -6,13 +6,9 @@ spec:
   workspaces:
     - name: containers
       mountPath: /var/lib/containers
-    - name: credentials
-      mountPath: /workspace/.docker/
   params: 
     - name: IMAGE_NAME
       description: The name of the image
-    - name: CHANGE_PATH
-      description: The path that changed
     - name: REGISTRY_HOSTNAME
       description: The hostname of the registry server (quay.io)
     - name: REGISTRY_NAMESPACE
