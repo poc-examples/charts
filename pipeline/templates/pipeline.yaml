@@ -33,35 +33,67 @@ spec:
         workspace: source
       - name: basic-auth
         workspace: basic-auth
-    - name: container-build
+    - name: buildah
       params:
-        - name: IMAGE_NAME
-          value: $(params.IMAGE_NAME)
-        - name: IMAGE_TAG
-          value: $(params.IMAGE_TAG)
+        - name: IMAGE
+          value: '$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+        - name: BUILDER_IMAGE
+          value: >-
+            registry.redhat.io/rhel8/buildah@sha256:0a86ecbdfbe86e9d225b7fe4b090a0dd6d323f8afdfdf2bd933ff223ddb53320
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+        - name: SKIP_PUSH
+          value: 'false'
+      runAfter:
+        - git-clone
       taskRef:
-        name: podman-build
-      runAfter: 
-      - git-clone
+        kind: ClusterTask
+        name: buildah
       workspaces:
-      - workspace: containers
-        name: containers
-      - workspace: source
-        name: source
-    - name: container-push
-      params:
-        - name: IMAGE_NAME
-          value: $(params.IMAGE_NAME)
-        - name: IMAGE_TAG
-          value: $(params.IMAGE_TAG)
-        - name: REGISTRY_HOSTNAME
-          value: $(params.REGISTRY_HOSTNAME)
-        - name: REGISTRY_NAMESPACE
-          value: $(params.REGISTRY_NAMESPACE)
-      taskRef:
-        name: podman-push
-      runAfter: 
-      - container-build
-      workspaces:
-      - workspace: containers
-        name: containers
+        - name: source
+          workspace: source
+
+
+
+
+
+    # - name: container-build
+    #   params:
+    #     - name: IMAGE_NAME
+    #       value: $(params.IMAGE_NAME)
+    #     - name: IMAGE_TAG
+    #       value: $(params.IMAGE_TAG)
+    #   taskRef:
+    #     name: podman-build
+    #   runAfter: 
+    #   - git-clone
+    #   workspaces:
+    #   - workspace: containers
+    #     name: containers
+    #   - workspace: source
+    #     name: source
+    # - name: container-push
+    #   params:
+    #     - name: IMAGE_NAME
+    #       value: $(params.IMAGE_NAME)
+    #     - name: IMAGE_TAG
+    #       value: $(params.IMAGE_TAG)
+    #     - name: REGISTRY_HOSTNAME
+    #       value: $(params.REGISTRY_HOSTNAME)
+    #     - name: REGISTRY_NAMESPACE
+    #       value: $(params.REGISTRY_NAMESPACE)
+    #   taskRef:
+    #     name: podman-push
+    #   runAfter: 
+    #   - container-build
+    #   workspaces:
+    #   - workspace: containers
+    #     name: containers
