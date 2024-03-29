@@ -42,6 +42,12 @@ spec:
             runAsUser: 1001
             fsGroup: 65532
         workspaces:
+        - name: registry-credentials
+          secret:
+            secretName: registry-secret
+            items:
+              - key: .dockerconfigjson
+                path: config.json
         - name: basic-auth
           secret:
             secretName: repository-secret
