@@ -82,9 +82,6 @@ spec:
             value:
             - key: truncated_sha
               expression: "body.after.truncate(7)"
-      template:
-        ref: container-build-pipeline
-    - name: push-event
       bindings:
         - name: gitrevision
           value: $(extensions.truncated_sha)
