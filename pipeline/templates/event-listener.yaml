@@ -95,7 +95,7 @@ spec:
         - name: registry_namespace
           value: 'pipelines'
       template:
-        ref: image-pipeline-trigger-template
+        ref: container-build-pipeline
 ---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
