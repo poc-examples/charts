@@ -1,5 +1,5 @@
 ---
-apiVersion: triggers.tekton.dev/v1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: image-pipeline-trigger-template
@@ -65,7 +65,7 @@ spec:
                 requests:
                   storage: 10Gi
 ---
-apiVersion: triggers.tekton.dev/v1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: pipeline-listener
@@ -101,7 +101,7 @@ spec:
       template:
         ref: image-pipeline-trigger-template
 ---
-apiVersion: triggers.tekton.dev/v1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: gitlab-binding
