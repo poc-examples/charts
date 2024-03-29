@@ -86,11 +86,11 @@ spec:
         - name: gitrevision
           value: $(extensions.truncated_sha)
         - name: image
-          value: "chat-window"
+          value: "test"
         - name: registry_hostname
-          value: "default-route-openshift-image-registry.apps.xr42gryb.eastus.aroapp.io" 
+          value: "quay.io" 
         - name: git_repo
-          value: 'https://gitlab.apps.xr42gryb.eastus.aroapp.io/root/container-library.git'
+          value: 'https://gitlab.apps.yvgdsf2b.eastus.aroapp.io/self-provisioned/test.git'
         - name: registry_namespace
           value: 'pipelines'
       template:
