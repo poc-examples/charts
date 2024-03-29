@@ -11,6 +11,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: el-github-event-listener
+    name: el-pipeline-listener
     weight: 100
   wildcardPolicy: None
