@@ -13,7 +13,6 @@ spec:
   workspaces:
     - name: source
     - name: containers
-    - name: basic-auth
     - name: registry-credentials
   tasks:
     - name: git-clone
