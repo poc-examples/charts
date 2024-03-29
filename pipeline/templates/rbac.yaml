@@ -16,6 +16,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: openshift-pipelines
+  namespace: {{ .Values.targetNamespace }}
 roleRef:
   kind: ClusterRole
   name: tekton-events
