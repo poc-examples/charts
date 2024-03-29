@@ -70,7 +70,6 @@ kind: EventListener
 metadata:
   name: pipeline-listener
 spec:
-  serviceAccountName: pipeline
   triggers:
     - name: filter-events
       interceptors:
