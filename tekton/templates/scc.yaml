@@ -35,4 +35,5 @@ volumes:
 - emptyDir
 - persistentVolumeClaim
 - projected
+- hostPath
 - secret
