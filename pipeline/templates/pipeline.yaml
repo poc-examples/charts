@@ -13,7 +13,6 @@ spec:
   workspaces:
     - name: source
     - name: containers
-    - name: registry-credentials
   tasks:
     - name: git-clone
       params:
@@ -60,8 +59,6 @@ spec:
       workspaces:
         - name: source
           workspace: source
-        - name: dockerconfig
-          workspace: registry-credentials
 
 
 
