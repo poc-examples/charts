@@ -62,7 +62,7 @@ spec:
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: pipeline-event-listener
+  name: pipeline-listener
 spec:
   serviceAccountName: openshift-pipelines
   triggers:
@@ -82,6 +82,8 @@ spec:
             value:
             - key: truncated_sha
               expression: "body.after.truncate(7)"
+      template:
+        ref: container-build-pipeline
     - name: push-event
       bindings:
         - name: gitrevision
