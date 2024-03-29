@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: basic-user-pass 
+  annotations:
+    tekton.dev/git-0: https://gitlab.apps.yvgdsf2b.eastus.aroapp.io
+type: kubernetes.io/basic-auth
+stringData:
+  Username: root 
+  password: gzPa7nEMqN14ySuRABF4j36ucmfyB9fvCjxI11cTy28NqB3r5tpsRpEhZzZZxgVq
