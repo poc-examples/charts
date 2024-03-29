@@ -47,7 +47,7 @@ spec:
             secretName: registry-secret
             items:
               - key: .dockerconfigjson
-                path: config.json
+                path: .docker/config.json
         - name: basic-auth
           secret:
             secretName: repository-secret
