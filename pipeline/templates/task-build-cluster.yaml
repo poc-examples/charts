@@ -10,8 +10,6 @@ spec:
   params:
     - name: IMAGE_NAME
       description: The name of the image
-    - name: CHANGE_PATH
-      description: The path that changed
     - name: IMAGE_TAG
       description: The image tag
     - name: DOCKERFILE
@@ -29,4 +27,4 @@ spec:
         privileged: true
         runAsUser: 0
       script: |
-        podman build -t $(params.IMAGE_NAME):$(params.IMAGE_TAG) $(params.DOCKERFILE)/$(params.CHANGE_PATH)
+        podman build -t $(params.IMAGE_NAME):$(params.IMAGE_TAG) $(params.DOCKERFILE)
