@@ -39,7 +39,7 @@ spec:
             value: 'main'
         podTemplate:
           securityContext:
-            runAsUser: 1001
+            runAsUser: 0
             fsGroup: 65532
         workspaces:
         - name: source
