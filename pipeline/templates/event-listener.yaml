@@ -39,15 +39,9 @@ spec:
             value: 'main'
         podTemplate:
           securityContext:
-            runAsUser: 1001
+            runAsUser: 0
             fsGroup: 65532
         workspaces:
-        - name: registry-credentials
-          secret:
-            secretName: registry-secret
-            items:
-              - key: .dockerconfigjson
-                path: config.json
         - name: source
           volumeClaimTemplate:
             spec:
