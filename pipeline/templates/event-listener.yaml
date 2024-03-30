@@ -85,7 +85,7 @@ spec:
         - name: gitrevision
           value: $(extensions.truncated_sha)
         - name: image
-          value: "test"
+          value: "rh_ee_cengleby/test"
         - name: registry_hostname
           value: "quay.io" 
         - name: git_repo
