@@ -29,6 +29,8 @@ spec:
             value: $(tt.params.registry_namespace)/$(tt.params.image)
           - name: REGISTRY_HOSTNAME
             value: $(tt.params.registry_hostname)
+          - name: REGISTRY_NAMESPACE
+            value: $(tt.params.registry_namespace)
           - name: IMAGE_TAG
             value: $(tt.params.gitrevision)
           - name: GITHUB_REPO
