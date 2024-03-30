@@ -26,11 +26,9 @@ spec:
           name: container-build-pipeline
         params: 
           - name: IMAGE_NAME
-            value: $(tt.params.image)
+            value: $(tt.params.registry_namespace)/$(tt.params.image)
           - name: REGISTRY_HOSTNAME
             value: $(tt.params.registry_hostname)
-          - name: REGISTRY_NAMESPACE
-            value: $(tt.params.registry_namespace)
           - name: IMAGE_TAG
             value: $(tt.params.gitrevision)
           - name: GITHUB_REPO
@@ -85,7 +83,7 @@ spec:
         - name: gitrevision
           value: $(extensions.truncated_sha)
         - name: image
-          value: "rh_ee_cengleby/test"
+          value: "test"
         - name: registry_hostname
           value: "quay.io" 
         - name: git_repo
