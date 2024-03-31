@@ -1,0 +1,24 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: catalog-config
+data:
+  catalog-config.yaml: |
+    catalog:
+      import:
+        entityFilename: catalog-info.yaml
+        pullRequestBranchName: backstage-integration
+      rules:
+        - allow: [Component, System, Group, Resource, Location, Template, API]
+      locations:
+        - type: url
+          target: https://github.com/poc-examples/software-templates/blob/main/templates.yaml
+      providers:
+        gitlab:
+          selfHosted:
+            host: "gitlab.apps.{{ .Values.host }}"
+            schedule:
+              frequency:
+                seconds: 10
+              timeout:
+                seconds: 60
