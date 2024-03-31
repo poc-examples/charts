@@ -8,7 +8,7 @@ image:
   repository: quay.io/rh_ee_cengleby/test
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "861eb71"
 
 imagePullSecrets: []
 nameOverride: ""
