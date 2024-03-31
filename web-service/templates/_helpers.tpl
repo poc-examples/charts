@@ -34,7 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "web-service.labels" -}}
-app: {{ include "web-service.name" . }}
+app: {{ include "web-service.fullname" . }}
 helm.sh/chart: {{ include "web-service.chart" . }}
 {{ include "web-service.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
