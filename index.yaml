@@ -47,6 +47,16 @@ entries:
   vault:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-01T15:44:13.960434861Z"
+    description: A Helm chart for Kubernetes
+    digest: e8478ffa7e0845a6933e6086803e94261e3be16c8da2bc6e614aaf0a97ebcbac
+    name: vault
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/vault-0.1.8/vault-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-31T07:58:17.900289016Z"
     description: A Helm chart for Kubernetes
     digest: 0326613797d07f35d0f577b3db7c0c8825bcf8c252e8e1f0aeb4fce9cead4710
@@ -66,4 +76,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-03-31T07:58:17.960108927Z"
+generated: "2024-04-01T15:44:13.960449217Z"
