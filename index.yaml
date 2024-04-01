@@ -22,6 +22,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.7/external_secrets-0.1.7.tgz
     version: 0.1.7
+  gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-01T15:49:11.188164649Z"
+    description: A Helm chart for Kubernetes
+    digest: 853bade7a342856d84a5b5edef4c04d32a84b5631ce171b520c7fd9a568d7bab
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.9/gitlab-0.1.9.tgz
+    version: 0.1.9
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -76,4 +87,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-01T15:44:13.960449217Z"
+generated: "2024-04-01T15:49:11.188184646Z"
