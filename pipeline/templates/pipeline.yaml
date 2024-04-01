@@ -34,8 +34,6 @@ spec:
       params:
         - name: IMAGE
           value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
-        - name: HOME
-          value: "/workspace/custom-home"
         - name: STORAGE_DRIVER
           value: vfs
         - name: DOCKERFILE

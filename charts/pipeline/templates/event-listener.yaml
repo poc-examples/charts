@@ -85,11 +85,11 @@ spec:
         - name: gitrevision
           value: $(extensions.truncated_sha)
         - name: image
-          value: "test"
+          value: "{{ .Values.repoName }}"
         - name: registry_hostname
           value: "quay.io" 
         - name: git_repo
-          value: 'https://gitlab.apps.yvgdsf2b.eastus.aroapp.io/self-provisioned/test.git'
+          value: 'https://{{ .Values.gitAddress }}/self-provisioned/{{ .Values.repoName }}.git'
         - name: registry_namespace
           value: 'rh_ee_cengleby'
       template:
