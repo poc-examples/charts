@@ -13,8 +13,7 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.chartVersion }}"
     helm:
-      values: 
-        "{{ .Values.helmValues | toYaml }}"
+      valuesObject: {{ .Values.helmValues | toJson }}
   project: default
   syncPolicy:
     automated:
