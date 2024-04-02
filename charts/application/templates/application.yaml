@@ -13,7 +13,7 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.chartVersion }}"
     helm:
-      values: "{{ .Values.helmValues | toString }}"
+      values: "{{ .Values.helmValues }}"
   project: default
   syncPolicy:
     automated:
