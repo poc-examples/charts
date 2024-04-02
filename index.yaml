@@ -3,6 +3,16 @@ entries:
   application:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-02T05:23:21.0945216Z"
+    description: A Helm chart for Kubernetes
+    digest: f930bed62299d56e28a34aad6397ecb6355ab3ffd1409d4c32f457d5f82d9d0b
+    name: application
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/application-0.1.4/application-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-02T05:19:10.751660203Z"
     description: A Helm chart for Kubernetes
     digest: 83c01cef77566caa801ebec2b4d402ebf57a3b8fd005909019bc249f1dde95ca
@@ -148,4 +158,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-02T05:19:10.751692163Z"
+generated: "2024-04-02T05:23:21.094536578Z"
