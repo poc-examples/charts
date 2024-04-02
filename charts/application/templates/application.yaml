@@ -12,6 +12,7 @@ metadata:
     argocd-image-updater.argoproj.io/write-back-method: git:secret:openshift-gitops/repo-3782506591
     argocd-image-updater.argoproj.io/write-back-target: helmvalues:/autoimport/test/values.yaml
     argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/git-repository: "https://gitlab.apps.h3r1sxy3.eastus.aroapp.io/self-provisioned/manifests"
 spec:
   destination:
     namespace: "{{ .Values.targetNamespace }}"
