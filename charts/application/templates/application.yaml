@@ -14,7 +14,7 @@ spec:
     targetRevision: "{{ .Values.chartVersion }}"
     helm:
       valuesObject: 
-  "{{ .Values.helmValues }}"
+    "{{- .Values.helmValues }}"
   project: default
   syncPolicy:
     automated:
