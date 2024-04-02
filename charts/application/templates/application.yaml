@@ -4,6 +4,7 @@ metadata:
   name: "{{ .Values.name }}"
   annotations:
     argocd.argoproj.io/sync-wave: "1"
+    {{- if .Values.updater.enabled }}
     argocd-image-updater.argoproj.io/image-list: service=quay.io/rh_ee_cengleby/test
     argocd-image-updater.argoproj.io/service.update-strategy: latest
     argocd-image-updater.argoproj.io/service.force-update: "true"
@@ -13,6 +14,7 @@ metadata:
     argocd-image-updater.argoproj.io/write-back-target: helmvalues:/autoimport/test/values.yaml
     argocd-image-updater.argoproj.io/git-branch: main
     argocd-image-updater.argoproj.io/git-repository: "https://gitlab.apps.h3r1sxy3.eastus.aroapp.io/self-provisioned/manifests"
+    {{- end }}
 spec:
   destination:
     namespace: "{{ .Values.targetNamespace }}"
