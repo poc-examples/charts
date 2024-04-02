@@ -13,8 +13,8 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.chartVersion }}"
     helm:
-      valuesObject: 
-        "{{ .Values.helmValues | toYaml | indent 4 }}"
+      values: 
+        "{{ .Values.helmValues | indent 4 }}"
   project: default
   syncPolicy:
     automated:
