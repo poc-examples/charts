@@ -23,7 +23,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     chart: "{{ .Values.chart }}"
-    repoURL: "{{ .Values.repoUrl }}"
+    repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.chartVersion }}"
     helm:
       valuesObject: {{ .Values.helmValues | toJson }}
