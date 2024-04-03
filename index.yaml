@@ -3,6 +3,16 @@ entries:
   application:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-03T10:56:08.482418428Z"
+    description: A Helm chart for Kubernetes
+    digest: 51e3d3c68300e1ebc2d5b79952bd5918bd7bdd091db16a3ba4105c2853364c25
+    name: application
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/application-0.1.22/application-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-02T17:38:29.7721512Z"
     description: A Helm chart for Kubernetes
     digest: 833f2590ab2d6c43962f5259f7d77fa0aa7f61a8f035a526c18247e8d606e8d7
@@ -267,6 +277,16 @@ entries:
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-03T10:56:08.607386467Z"
+    description: A chart for easily creating tekton pipelines
+    digest: 7c532a7a023e222aacedaac7702e61e921b7ef7fe5930dfa301887432d27dff8
+    name: pipeline
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/pipeline-0.1.10/pipeline-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-01T18:18:52.723684337Z"
     description: A chart for easily creating tekton pipelines
     digest: fb04718413977c22424ff7536ed88623867875fc18f74633fa205d6a2d208638
@@ -328,4 +348,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-02T17:38:29.772321056Z"
+generated: "2024-04-03T10:56:08.607748552Z"
