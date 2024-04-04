@@ -8,6 +8,8 @@ metadata:
 spec:
   chart:
     values:
+      nginx-ingress:
+        enabled: false
       certmanager:
         install: true
       certmanager-issuer:
