@@ -15,6 +15,11 @@ spec:
     - name: pipelineTemplates
       value: "true"
   chain:
+    artifacts:
+      pipelinerun:
+        format: slsa/v1
+        storage: oci
+        signer: x509
     disabled: false
     options:
       disabled: false
