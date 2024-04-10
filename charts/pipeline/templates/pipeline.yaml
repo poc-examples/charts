@@ -30,6 +30,7 @@ spec:
       workspaces:
       - name: output
         workspace: source
+
     - name: buildah
       params:
         - name: IMAGE
