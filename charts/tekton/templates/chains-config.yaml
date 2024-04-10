@@ -14,16 +14,16 @@ spec:
       value: "true"
     - name: pipelineTemplates
       value: "true"
-  chains:
+  chain:
+    disabled: false
+    options:
+      disabled: false
+  config:
     artifacts:
       pipelinerun:
         format: slsa/v1
         storage: oci
         signer: x509
-    disabled: false
-    options:
-      disabled: false
-  config: {}
   dashboard:
     options:
       disabled: false
