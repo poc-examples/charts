@@ -14,7 +14,7 @@ spec:
       value: "true"
     - name: pipelineTemplates
       value: "true"
-  chain:
+  chains:
     artifacts:
       pipelinerun:
         format: slsa/v1
