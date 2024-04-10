@@ -15,15 +15,13 @@ spec:
     - name: pipelineTemplates
       value: "true"
   chain:
+    artifacts.pipelinerun.format: slsa/v1
+    artifacts.pipelinerun.storage: oci
+    artifacts.pipelinerun.signer: x509
     disabled: false
     options:
       disabled: false
-  config:
-    artifacts:
-      pipelinerun:
-        format: slsa/v1
-        storage: oci
-        signer: x509
+  config: {}
   dashboard:
     options:
       disabled: false
