@@ -3,9 +3,6 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: image-pipeline-trigger-template
-  annotations:
-    chains.tekton.dev/payload-taskrun-format: "slsaV1"
-    chains.tekton.dev/sign: "true"
 spec:
   params:
     - name: gitrevision
@@ -23,6 +20,9 @@ spec:
       kind: PipelineRun 
       metadata: 
         name: $(tt.params.image)-container-build-$(tt.params.gitrevision)
+        annotations:
+          chains.tekton.dev/payload-taskrun-format: "slsaV1"
+          chains.tekton.dev/sign: "true"
       spec:
         serviceAccountName: openshift-pipelines
         pipelineRef: 
