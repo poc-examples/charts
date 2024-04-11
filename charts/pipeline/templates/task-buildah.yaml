@@ -104,9 +104,7 @@ spec:
       # shellcheck disable=SC2046,SC2086
       buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
         "--tls-verify=$(params.TLSVERIFY)" --digestfile /tmp/image-digest "$(params.IMAGE)" \
-        "docker://$(params.IMAGE)" && \
-      tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest && \
-      printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
+        "docker://$(params.IMAGE)"
 
     # volumeMounts:
     # - name: varlibcontainers
