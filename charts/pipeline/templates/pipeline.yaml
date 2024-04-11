@@ -31,7 +31,32 @@ spec:
       - name: output
         workspace: source
 
-    - name: buildah
+    - name: buildah-build
+      params:
+        - name: IMAGE
+          value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+        - name: SKIP_PUSH
+          value: 'true'
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: Task
+        name: buildah
+      workspaces:
+        - name: source
+          workspace: source
+
+    - name: buildah-push
       params:
         - name: IMAGE
           value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
