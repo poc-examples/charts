@@ -46,13 +46,14 @@ spec:
             fsGroup: 65532
           volumes:
             - name: varlibcontainers
-              volumeClaimTemplate:
-                spec:
-                  accessModes:
-                    - ReadWriteOnce
-                  resources:
-                    requests:
-                      storage: 10Gi
+              ephemeral:
+                volumeClaimTemplate:
+                  spec:
+                    accessModes:
+                      - ReadWriteOnce
+                    resources:
+                      requests:
+                        storage: 10Gi
         workspaces:
         - name: source
           volumeClaimTemplate:
