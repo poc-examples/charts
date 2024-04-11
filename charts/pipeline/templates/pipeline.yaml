@@ -47,8 +47,6 @@ spec:
           value: 'true'
         - name: FORMAT
           value: oci
-        - name: SKIP_PUSH
-          value: 'true'
       runAfter:
         - git-clone
       taskRef:
