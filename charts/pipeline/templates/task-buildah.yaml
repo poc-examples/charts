@@ -97,6 +97,6 @@ spec:
       mountPath: /var/lib/containers
     securityContext:
       privileged: true
-  volumes:
-  - name: varlibcontainers
-    emptyDir: {}
+  # volumes:
+  # - name: varlibcontainers
+  #   emptyDir: {}
