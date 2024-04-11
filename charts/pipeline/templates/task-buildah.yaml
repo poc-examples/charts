@@ -75,42 +75,33 @@ spec:
   - name: IMAGE_URL
     description: Image repository where the built image would be pushed to
   steps:
-  - name: build-and-push
-    image: $(params.BUILDER_IMAGE)
-    workingDir: $(workspaces.source.path)
-    env:
-      - name: "XDG_DATA_HOME"
-        value: "/var/lib/containers"
-    script: |
+    - name: build
+      image: $(params.BUILDER_IMAGE)
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: "XDG_DATA_HOME"
+          value: "/var/lib/containers"
+      script: |
 
-      cat  /etc/subuid
-      cat  /etc/subgid
+        [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
+        [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
+        buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
+          "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
+          -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
-      ls -la /var/lib/containers
+    - name: push
+      image: $(params.BUILDER_IMAGE)
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: "XDG_DATA_HOME"
+          value: "/var/lib/containers"
+      script: |
 
-      [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
-      [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
-      # build the image (CERT_DIR_FLAG should be omitted if empty and BUILD_EXTRA_ARGS can contain multiple args)
-      # shellcheck disable=SC2046,SC2086
-      [ "$(params.SKIP_BUILD)" = "false" ] && \
-      buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
-        "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
-        -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
+        buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
+          "--tls-verify=$(params.TLSVERIFY)" --digestfile /tmp/image-digest "$(params.IMAGE)" \
+          "docker://$(params.IMAGE)"
+        tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
+        printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
 
-      ls -la /var/lib/containers
-
-      [ "$(params.SKIP_PUSH)" = "false" ] && \
-      # push the image (CERT_DIR_FLAG should be omitted if empty and PUSH_EXTRA_ARGS can contain multiple args)
-      # shellcheck disable=SC2046,SC2086
-      buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
-        "--tls-verify=$(params.TLSVERIFY)" --digestfile /tmp/image-digest "$(params.IMAGE)" \
-        "docker://$(params.IMAGE)" || true
-
-    # volumeMounts:
-    # - name: varlibcontainers
-    #   mountPath: /var/lib/containers
-    securityContext:
-      privileged: true
-  # volumes:
-  # - name: varlibcontainers
-  #   emptyDir: {}
+      securityContext:
+        privileged: true
