@@ -41,6 +41,8 @@ spec:
           value: ./Dockerfile
         - name: CONTEXT
           value: .
+        - name: BUILD_EXTRA_ARGS
+          value: "--layers=true"
         - name: TLSVERIFY
           value: 'true'
         - name: FORMAT
@@ -68,6 +70,8 @@ spec:
           value: ./Dockerfile
         - name: CONTEXT
           value: .
+        - name: PUSH_EXTRA_ARGS
+          value: "--layers=true"
         - name: TLSVERIFY
           value: 'true'
         - name: FORMAT
