@@ -73,7 +73,7 @@ spec:
         - name: SKIP_PUSH
           value: 'false'
       runAfter:
-        - git-clone
+        - buildah-build
       taskRef:
         kind: Task
         name: buildah
