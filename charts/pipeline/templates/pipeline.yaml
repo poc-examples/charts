@@ -71,13 +71,13 @@ spec:
         - name: CONTEXT
           value: .
         - name: PUSH_EXTRA_ARGS
-          value: "--layers=true"
+          value: ""
         - name: TLSVERIFY
           value: 'true'
         - name: FORMAT
           value: oci
-        - name: SKIP_PUSH
-          value: 'false'
+        - name: SKIP_BUILD
+          value: 'true'
       runAfter:
         - buildah-build
       taskRef:

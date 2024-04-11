@@ -53,8 +53,8 @@ spec:
   - name: SKIP_PUSH
     description: Skip pushing the built image
     default: "false"
-  - name: XDG_DATA_HOME
-    description: XDG_DATA_HOME Settings
+  - name: SKIP_BUILD
+    description: Skip building the built image
     default: "false"
   workspaces:
   - name: source
@@ -92,13 +92,14 @@ spec:
       [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
       # build the image (CERT_DIR_FLAG should be omitted if empty and BUILD_EXTRA_ARGS can contain multiple args)
       # shellcheck disable=SC2046,SC2086
+      [ "$(params.SKIP_BUILD)" = "false" ] && \
       buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
         "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
         -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
       ls -la /var/lib/containers
 
-      [ "$(params.SKIP_PUSH)" = "true" ] && echo "Push skipped" && exit 0
+      [ "$(params.SKIP_PUSH)" = "false" ] && \
       # push the image (CERT_DIR_FLAG should be omitted if empty and PUSH_EXTRA_ARGS can contain multiple args)
       # shellcheck disable=SC2046,SC2086
       buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
