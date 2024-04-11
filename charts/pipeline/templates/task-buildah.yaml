@@ -50,12 +50,6 @@ spec:
     description: Extra parameters passed for the push command when pushing images.
     type: string
     default: ""
-  - name: SKIP_PUSH
-    description: Skip pushing the built image
-    default: "false"
-  - name: SKIP_BUILD
-    description: Skip building the built image
-    default: "false"
   workspaces:
   - name: source
   - name: varlibcontainers
