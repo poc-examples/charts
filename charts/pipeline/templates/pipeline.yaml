@@ -12,7 +12,6 @@ spec:
     - name: GITHUB_BRANCH
   workspaces:
     - name: source
-    - name: containers
   tasks:
     - name: git-clone
       params:

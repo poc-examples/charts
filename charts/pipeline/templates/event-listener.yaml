@@ -44,6 +44,15 @@ spec:
           securityContext:
             runAsUser: 1000
             fsGroup: 65532
+          volumes:
+            - name: varlibcontainers
+              volumeClaimTemplate:
+                spec:
+                  accessModes:
+                    - ReadWriteOnce
+                  resources:
+                    requests:
+                      storage: 10Gi
         workspaces:
         - name: source
           volumeClaimTemplate:
@@ -53,14 +62,6 @@ spec:
               resources:
                 requests:
                   storage: 1Gi
-        - name: containers
-          volumeClaimTemplate:
-            spec:
-              accessModes:
-                - ReadWriteOnce
-              resources:
-                requests:
-                  storage: 10Gi
 ---
 apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
