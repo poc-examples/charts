@@ -12,6 +12,7 @@ spec:
     - name: GITHUB_BRANCH
   workspaces:
     - name: source
+    - name: varlibcontainers
   tasks:
     - name: git-clone
       params:
@@ -54,6 +55,8 @@ spec:
       workspaces:
         - name: source
           workspace: source
+        - name: varlibcontainers
+          workspace: varlibcontainers
 
     - name: buildah-push
       params:
@@ -79,3 +82,5 @@ spec:
       workspaces:
         - name: source
           workspace: source
+        - name: varlibcontainers
+          workspace: varlibcontainers

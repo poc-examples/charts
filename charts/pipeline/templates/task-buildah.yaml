@@ -55,6 +55,9 @@ spec:
     default: "false"
   workspaces:
   - name: source
+  - name: varlibcontainers
+    optional: true
+    mountPath: /var/lib/containers
   - name: sslcertdir
     optional: true
   - name: dockerconfig
@@ -92,9 +95,9 @@ spec:
         "docker://$(params.IMAGE)"
       tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
       printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
-    volumeMounts:
-    - name: varlibcontainers
-      mountPath: /var/lib/containers
+    # volumeMounts:
+    # - name: varlibcontainers
+    #   mountPath: /var/lib/containers
     securityContext:
       privileged: true
   # volumes:
