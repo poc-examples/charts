@@ -77,6 +77,8 @@ spec:
         - name: storage-conf
           mountPath: /etc/containers/storage.conf
           subPath: storage.conf
+      securityContext:
+        privileged: true
       script: |
         pwd
 
