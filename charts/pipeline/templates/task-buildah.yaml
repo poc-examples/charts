@@ -30,7 +30,7 @@ spec:
     default: quay.io/buildah/stable:v1
   - name: STORAGE_DRIVER
     description: Set buildah storage driver
-    default: overlay
+    default: vfs
   - name: DOCKERFILE
     description: Path to the Dockerfile to build.
     default: ./Dockerfile
@@ -89,14 +89,14 @@ spec:
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
-        buildah images --storage-driver=vfs --all
+        buildah images --all
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
       script: |
         syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/sbom-source.json
         cat $(workspaces.source.path)/sbom-source.json
-        syft oci-dir:$(params.IMAGE) --output cyclonedx-json=$(workspaces.source.path)/sbom-image.json
+        syft "$(params.IMAGE)" --output cyclonedx-json=$(workspaces.source.path)/sbom-image.json
         cat $(workspaces.source.path)/sbom-image.json
 
     - name: push
