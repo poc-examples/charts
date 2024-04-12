@@ -89,13 +89,14 @@ spec:
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
-        buildah images --format='{{`{{.ID}}`}}' --storage-driver=vfs --all
+        buildah images --format='{{`{{.ID}}`}}' --storage-driver=vfs --all | head -n 1 > $(workspaces.source.path)/container_id
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
       script: |
         syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/sbom-source.json
-        syft "$(params.IMAGE)" -o cyclonedx-json=$(workspaces.source.path)/sbom-image.json
+        cat $(workspaces.source.path)/container_id
+        syft "$(cat $(workspaces.source.path)/container_id)" -o cyclonedx-json=$(workspaces.source.path)/sbom-image.json
 
     - name: push
       image: $(params.BUILDER_IMAGE)
