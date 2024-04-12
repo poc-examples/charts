@@ -22,6 +22,11 @@ spec:
   workspaces:
   - name: source
 
+  stepTemplate:
+    env:
+      - name: "HOME"
+        value: "/tekton/home"
+
   steps:
 
     - name: generate-repo-src-sbom
