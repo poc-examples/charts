@@ -90,6 +90,8 @@ spec:
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
+        buildah images
+
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
       script: |
