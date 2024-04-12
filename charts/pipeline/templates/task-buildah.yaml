@@ -83,11 +83,19 @@ spec:
         privileged: true
       script: |
 
-        [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
-        [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
+        [ "$(workspaces.sslcertdir.bound)" = "true" ] \
+          && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
+
+        [ "$(workspaces.dockerconfig.bound)" = "true" ] \
+          && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
+
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
-          "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
-          -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
+          "--format=$(params.FORMAT)" \
+          "--tls-verify=$(params.TLSVERIFY)" \
+          -f "$(params.DOCKERFILE)" \
+          -t "$(params.IMAGE)" "$(params.CONTEXT)"
+
+        buildah tag "$(params.IMAGE)" "localhost/$(params.IMAGE)"
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
@@ -95,7 +103,7 @@ spec:
         echo "Generating SBOM for local image ID: $(params.IMAGE)"
         syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/sbom-source.json
         cat $(workspaces.source.path)/sbom-source.json
-        syft "$(params.IMAGE)" --scope all-layers -o cyclonedx-json=$(workspaces.source.path)/sbom-image.json
+        syft "localhost/$(params.IMAGE)" --scope all-layers -o cyclonedx-json=$(workspaces.source.path)/sbom-image.json
         cat $(workspaces.source.path)/sbom-image.json
 
     - name: push
