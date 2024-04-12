@@ -89,7 +89,7 @@ spec:
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
-        buildah images --format '{{.ID}}' --storage-driver=vfs --all
+        buildah images --format='{{.ID}}' --storage-driver=vfs --all
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
