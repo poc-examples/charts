@@ -73,8 +73,11 @@ spec:
     - name: build
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
+      volumeMounts:
+        - name: storage-conf
+          mountPath: /etc/containers
       script: |
-      
+
         cat /etc/containers/storage.conf
 
         [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
@@ -94,6 +97,9 @@ spec:
     - name: push
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
+      volumeMounts:
+        - name: storage-conf
+          mountPath: /etc/containers
       script: |
 
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
@@ -101,3 +107,7 @@ spec:
           "docker://$(params.IMAGE)"
         tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
         printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
+  volumes:
+    - name: storage-conf
+      configMap:
+        name: container-storage-config
