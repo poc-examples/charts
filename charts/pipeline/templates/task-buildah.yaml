@@ -80,9 +80,6 @@ spec:
       securityContext:
         privileged: true
       script: |
-        pwd
-
-        cat /etc/containers/storage.conf
 
         [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
         [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
