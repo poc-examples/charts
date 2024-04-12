@@ -31,7 +31,7 @@ spec:
       - name: output
         workspace: source
 
-    - name: buildah-build
+    - name: build
       params:
         - name: IMAGE
           value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
@@ -51,9 +51,22 @@ spec:
         - git-clone
       taskRef:
         kind: Task
-        name: buildah
+        name: build
       workspaces:
         - name: source
           workspace: source
         - name: varlibcontainers
           workspace: varlibcontainers
+
+    - name: generate-sbom
+      params:
+        - name: IMAGE
+          value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+      runAfter:
+        - build
+      taskRef:
+        kind: Task
+        name: generate-signed-sbom
+      workspaces:
+        - name: source
+          workspace: source
