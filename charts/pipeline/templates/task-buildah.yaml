@@ -89,14 +89,15 @@ spec:
         [ "$(workspaces.dockerconfig.bound)" = "true" ] \
           && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
 
-        buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
+        buildah ${CERT_DIR_FLAG} bud $(params.BUILD_EXTRA_ARGS) \
+          --storage-driver=$(params.STORAGE_DRIVER) \
           "--format=$(params.FORMAT)" \
           "--tls-verify=$(params.TLSVERIFY)" \
-          -f "$(params.DOCKERFILE)" \
-          -t "$(params.IMAGE)" "$(params.CONTEXT)"
+            -f "$(params.DOCKERFILE)" \
+            -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
         buildah push \
-          --storage-driver=$(params.STORAGE_DRIVER)" \
+          --storage-driver=$(params.STORAGE_DRIVER) \
           --format=v2s2 "$(params.IMAGE)" oci-archive:$(workspaces.source.path)/image.tar
 
     - name: generate-sbom
@@ -120,8 +121,10 @@ spec:
       script: |
 
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
-          "--tls-verify=$(params.TLSVERIFY)" --digestfile /tmp/image-digest "$(params.IMAGE)" \
+          "--tls-verify=$(params.TLSVERIFY)" \
+          --digestfile /tmp/image-digest "$(params.IMAGE)" \
           "docker://$(params.IMAGE)"
+
         tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
         printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
   volumes:
