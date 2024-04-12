@@ -77,9 +77,13 @@ spec:
         - name: storage-conf
           mountPath: /etc/containers/storage.conf
           subPath: storage.conf
+        - name: lock
+          mountPath: /usr/lib/containers/storage
       securityContext:
         privileged: true
       script: |
+
+        ls -la /usr/lib/containers/storage
 
         [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
         [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
@@ -104,6 +108,8 @@ spec:
         - name: storage-conf
           mountPath: /etc/containers/storage.conf
           subPath: storage.conf
+        - name: lock
+          mountPath: /usr/lib/containers/storage
       script: |
 
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
@@ -115,3 +121,5 @@ spec:
     - name: storage-conf
       configMap:
         name: container-storage-config
+    - name: lock
+      emptyDir: {}
