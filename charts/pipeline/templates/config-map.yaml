@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: container-storage-config
-  namespace: default
 data:
   storage.conf: |
     # This file is the configuration file for all tools
@@ -55,6 +54,7 @@ data:
     # AdditionalImageStores is used to pass paths to additional Read/Only image stores
     # Must be comma separated list.
     additionalimagestores = [
+    "/var/lib/containers/storage",
     ]
 
     # Allows specification of how storage is populated when pulling images. This
@@ -134,10 +134,10 @@ data:
 
     # Path to an helper program to use for mounting the file system instead of mounting it
     # directly.
-    #mount_program = "/usr/bin/fuse-overlayfs"
+    mount_program = "/usr/bin/fuse-overlayfs"
 
     # mountopt specifies comma separated list of extra mount options
-    mountopt = "nodev"
+    mountopt = "nodev,fsync=0"
 
     # Set to skip a PRIVATE bind mount on the storage home directory.
     # skip_mount_home = "false"

@@ -45,6 +45,13 @@ spec:
             runAsUser: 1000
             fsGroup: 65532
             fsGroupChangePolicy: "OnRootMismatch"
+          volumes:
+            - name: storage-conf
+              configMap:
+                name: container-storage-config
+          volumeMounts:
+            - name: storage-conf
+              mountPath: /etc/containers
         workspaces:
         - name: source
           volumeClaimTemplate:
