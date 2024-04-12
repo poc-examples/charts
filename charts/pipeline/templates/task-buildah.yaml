@@ -73,32 +73,27 @@ spec:
     - name: build
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
-      env:
-        - name: "XDG_DATA_HOME"
-          value: "/var/lib/containers"
       script: |
+      
+        cat /etc/containers/storage.conf
 
         [ "$(workspaces.sslcertdir.bound)" = "true" ] && CERT_DIR_FLAG="--cert-dir=$(workspaces.sslcertdir.path)"
         [ "$(workspaces.dockerconfig.bound)" = "true" ] && DOCKER_CONFIG="$(workspaces.dockerconfig.path)" && export DOCKER_CONFIG
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
-        ls -la /usr/lib/containers/storage/overlay-images/images.lock
-        buildah images
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
       script: |
         syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/sbom-source.json
-        syft $(params.IMAGE) --output cyclonedx-json=$(workspaces.source.path)/sbom-image.json
-        ls -la $(workspaces.source.path)
+        cat $(workspaces.source.path)/sbom-source.json
+        syft oci-dir:$(params.IMAGE) --output cyclonedx-json=$(workspaces.source.path)/sbom-image.json
+        cat $(workspaces.source.path)/sbom-image.json
 
     - name: push
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
-      env:
-        - name: "XDG_DATA_HOME"
-          value: "/var/lib/containers"
       script: |
 
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
@@ -106,6 +101,3 @@ spec:
           "docker://$(params.IMAGE)"
         tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
         printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
-
-      securityContext:
-        privileged: true
