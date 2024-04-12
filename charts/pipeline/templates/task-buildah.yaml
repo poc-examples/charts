@@ -69,6 +69,7 @@ spec:
   - name: IMAGE_URL
     description: Image repository where the built image would be pushed to
   steps:
+
     - name: build
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
@@ -82,6 +83,13 @@ spec:
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
+
+    - name: generate-sbom
+      image: quay.io/redhat-appstudio/syft:v0.94.0
+      script: |
+        syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/sbom-source.json
+        syft $(params.IMAGE) --output cyclonedx-json=$(workspaces.source.path)/sbom-image.json
+        ls -la $(workspaces.source.path)
 
     - name: push
       image: $(params.BUILDER_IMAGE)
