@@ -95,7 +95,7 @@ spec:
           -f "$(params.DOCKERFILE)" \
           -t "$(params.IMAGE)" "$(params.CONTEXT)"
 
-        buildah tag "$(params.IMAGE)" "localhost/$(params.IMAGE)"
+        buildah tag "--storage-driver=$(params.STORAGE_DRIVER)" "$(params.IMAGE)" "localhost/$(params.IMAGE)"
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
