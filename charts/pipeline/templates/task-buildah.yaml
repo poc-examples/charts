@@ -75,8 +75,10 @@ spec:
       workingDir: $(workspaces.source.path)
       volumeMounts:
         - name: storage-conf
-          mountPath: /etc/containers
+          mountPath: /etc/containers/storage.conf
+          subPath: storage.conf
       script: |
+        pwd
 
         cat /etc/containers/storage.conf
 
@@ -99,7 +101,8 @@ spec:
       workingDir: $(workspaces.source.path)
       volumeMounts:
         - name: storage-conf
-          mountPath: /etc/containers
+          mountPath: /etc/containers/storage.conf
+          subPath: storage.conf
       script: |
 
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
