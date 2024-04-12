@@ -83,6 +83,7 @@ spec:
         buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" bud $(params.BUILD_EXTRA_ARGS) \
           "--format=$(params.FORMAT)" "--tls-verify=$(params.TLSVERIFY)" \
           -f "$(params.DOCKERFILE)" -t "$(params.IMAGE)" "$(params.CONTEXT)"
+        buildah images
 
     - name: generate-sbom
       image: quay.io/redhat-appstudio/syft:v0.94.0
