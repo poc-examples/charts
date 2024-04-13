@@ -55,9 +55,8 @@ spec:
     ## Extracts Package URLs (purls) from each component listed in the CycloneDX 
     ## SBOM and then organize these purls into a new JSON structure.
     - name: generate-purls-sbom
-      image: ghcr.io/jqlang/jq:latest
+      image: quay.io/redhat-gpte/jq
       script: |
-        jq '[.components[] | select(.purl) | {purl: .purl}]' \
-          $(workspaces.source.path)/cyclonedx-sbom.json > $(workspaces.source.path)/purl-sbom.json
+        jq '[.components[] | select(.purl) | {purl: .purl}]' $(workspaces.source.path)/cyclonedx-sbom.json > $(workspaces.source.path)/purl-sbom.json
 
         cat $(workspaces.source.path)/purl-sbom.json | jq
