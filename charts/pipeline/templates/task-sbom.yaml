@@ -57,6 +57,6 @@ spec:
     - name: generate-purls-sbom
       image: quay.io/redhat-gpte/jq
       script: |
-        cat $(workspaces.source.path)/cyclonedx-sbom.json | jq '[.components[] | select(.purl) | {purl: .purl}]' > $(workspaces.source.path)/purl-sbom.json
+        cat $(workspaces.source.path)/cyclonedx-sbom.json | jq 
 
         cat $(workspaces.source.path)/purl-sbom.json | jq
