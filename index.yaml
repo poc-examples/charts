@@ -418,6 +418,16 @@ entries:
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-13T05:33:06.634353877Z"
+    description: A chart for easily creating tekton pipelines
+    digest: 64904a574e4d90a874b7cafcf3407b0e377a68dec65405190b912a959b72f3ef
+    name: pipeline
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/pipeline-0.1.72/pipeline-0.1.72.tgz
+    version: 0.1.72
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-13T05:21:24.234016484Z"
     description: A chart for easily creating tekton pipelines
     digest: 427fdce88b76fa820f972c58ae684555f5a7aa00fd980f777ecf3b37552ee4d5
@@ -1149,4 +1159,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-13T05:21:24.234267212Z"
+generated: "2024-04-13T05:33:06.634629411Z"
