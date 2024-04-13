@@ -57,7 +57,6 @@ spec:
     - name: generate-purls-sbom
       image: ghcr.io/jqlang/jq:latest
       script: |
-        
         jq '[.components[] | select(.purl) | {purl: .purl}]' \
           $(workspaces.source.path)/cyclonedx-sbom.json > $(workspaces.source.path)/purl-sbom.json
 
