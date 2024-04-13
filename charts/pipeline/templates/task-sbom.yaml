@@ -55,8 +55,17 @@ spec:
     ## Extracts Package URLs (purls) from each component listed in the CycloneDX 
     ## SBOM and then organize these purls into a new JSON structure.
     - name: generate-purls-sbom
-      image: quay.io/redhat-gpte/jq
+      image: registry.access.redhat.com/ubi9/python-311:latest
       script: |
-        cat $(workspaces.source.path)/cyclonedx-sbom.json | jq 
+        #!/bin/python3
+        import json
 
-        cat $(workspaces.source.path)/purl-sbom.json | jq
+        with open("$(workspaces.source.path)/cyclonedx-sbom.json") as f:
+          cyclonedx_sbom = json.load(f)
+
+        purls = [{"purl": component["purl"]} for component in cyclonedx_sbom.get("components", []) if "purl" in component]
+        purl_content = {"image_contents": {"dependencies": purls}}
+
+        with open("$(workspaces.source.path)/purl-sbom.json", "w") as output_file:
+          json.dump(purl_content, output_file, indent=4)
+
