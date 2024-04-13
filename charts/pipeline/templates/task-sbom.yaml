@@ -68,4 +68,10 @@ spec:
 
         with open("$(workspaces.source.path)/purl-sbom.json", "w") as output_file:
           json.dump(purl_content, output_file, indent=4)
+        
+        print("Generated: $(workspaces.source.path)/purl-sbom.json")
 
+    - name: generate-cachi2-sbom
+      image: quay.io/redhat-appstudio/cachi2:0.3.0@sha256:46097f22b57e4d48a3fce96d931e08ccfe3a3e6421362d5f9353961279078eef
+      script: |
+        cat $(workspaces.source.path)/purl-sbom.json
