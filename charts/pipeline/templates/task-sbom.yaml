@@ -54,12 +54,9 @@ spec:
     ## Processes data from a CycloneDX-format Software Bill of Materials (SBOM). 
     ## Extracts Package URLs (purls) from each component listed in the CycloneDX 
     ## SBOM and then organize these purls into a new JSON structure.
-    - name: add-sbom-purls
-      image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+    - name: generate-purls-sbom
+      image: ghcr.io/jqlang/jq:latest
       script: |
-        microdnf update -y && \
-          microdnf install -y jq && \
-          microdnf clean all
         
         jq '[.components[] | select(.purl) | {purl: .purl}]' \
           $(workspaces.source.path)/cyclonedx-sbom.json > $(workspaces.source.path)/purl-sbom.json
