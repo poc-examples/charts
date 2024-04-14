@@ -27,7 +27,7 @@ spec:
   steps:
 
     - name: scan-sbom
-      image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+      image: registry.access.redhat.com/ubi9/ubi:latest
       workingDir: $(workspaces.source.path)
       script: |
         curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
