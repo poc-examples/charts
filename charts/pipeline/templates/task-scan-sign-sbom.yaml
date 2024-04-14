@@ -27,11 +27,11 @@ spec:
   steps:
 
     - name: scan-sbom
-      image: docker.io/anchore/grype:v0.75.0
+      image: registry.access.redhat.com/ubi9/ubi-minimal:latest
       workingDir: $(workspaces.source.path)
       script: |
-        #!/usr/bin/env bash
-        echo "working!"
+        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+        grype version
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
