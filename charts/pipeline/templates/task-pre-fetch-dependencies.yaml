@@ -30,6 +30,7 @@ spec:
 
   steps:
 
+    ## Outputs Cachi2 SBOM & Pulls Dependencies into the source repo in the deps folder
     - name: fetch-deps
       image: quay.io/redhat-appstudio/cachi2:latest
       workingDir: $(workspaces.source.path)
@@ -38,7 +39,7 @@ spec:
 
         pwd
         git config --global --add safe.directory $(workspaces.source.path)
-        ls -la 
+        ls -la
         cachi2 --version
 
         # Define an associative array with file indicators and their corresponding package managers
@@ -66,3 +67,5 @@ spec:
         # Fetch dependencies using the determined package manager
         cachi2 fetch-deps $PKG_TYPE --source . --output .
         ls -la
+        ls -la deps
+        cat bom.json
