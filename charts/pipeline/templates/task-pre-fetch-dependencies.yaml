@@ -23,7 +23,7 @@ spec:
       description: "App directory path in the repo"
       default: ""
     - name: HERMETIC
-      default: false
+      default: 'false'
       description: Reference of the image buildah will produce.
   workspaces:
   - name: source
