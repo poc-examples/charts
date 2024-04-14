@@ -33,6 +33,7 @@ spec:
         curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp
         /tmp/grype version
         /tmp/grype db update
+        /tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
