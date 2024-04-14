@@ -26,14 +26,47 @@ spec:
   #     type: array
   steps:
 
+    ## Alpine Linux SecDB: https://secdb.alpinelinux.org/
+    # Amazon Linux ALAS: https://alas.aws.amazon.com/AL2/alas.rss
+    # RedHat RHSAs: https://www.redhat.com/security/data/oval/
+    # Debian Linux CVE Tracker: https://security-tracker.debian.org/tracker/data/json
+    # Github GHSAs: https://github.com/advisories
+    # National Vulnerability Database (NVD): https://nvd.nist.gov/vuln/data-feeds
+    # Oracle Linux OVAL: https://linux.oracle.com/security/oval/
+    # RedHat Linux Security Data: https://access.redhat.com/hydra/rest/securitydata/
+    # Suse Linux OVAL: https://ftp.suse.com/pub/projects/security/oval/
+    # Ubuntu Linux Security: https://people.canonical.com/~ubuntu-security/
     - name: scan-sbom
       image: registry.access.redhat.com/ubi9/ubi:latest
       workingDir: $(workspaces.source.path)
       script: |
-        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp
-        /tmp/grype version
-        /tmp/grype db update
-        /tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json
+        #!/bin/python3
+        import json
+        import subprocess
+        import sys
+
+        def execute(command):
+          subprocess.run(
+            ["sh", "-c", command], 
+            check=True, 
+            stdout=subprocess.PIPE
+          )
+
+        def scan_sbom():
+          result = subprocess.run(
+              ["/usr/local/bin/grype", "sbom:./cyclonedx-sbom.json", "-o", "json"],
+              capture_output=True, 
+              text=True, 
+              check=True
+          )
+          return result.stdout
+
+        if __name__ == "__main__":
+          execute("curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp")
+          execute("/tmp/grype version")
+          execute("/tmp/grype db update")
+          result = scan_sbom("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json")
+          print(result)
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
