@@ -65,3 +65,4 @@ spec:
 
         # Fetch dependencies using the determined package manager
         cachi2 fetch-deps $PKG_TYPE --source . --output .
+        ls -la
