@@ -33,6 +33,7 @@ spec:
         #!/bin/bash
 
         pwd
+        git config --global --add safe.directory $(workspaces.source.path)
         cachi2 --version
 
         # Define an associative array with file indicators and their corresponding package managers
