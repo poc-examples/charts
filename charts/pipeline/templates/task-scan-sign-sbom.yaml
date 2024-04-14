@@ -16,6 +16,10 @@ spec:
 
   workspaces:
     - name: source
+  stepTemplate:
+    env:
+      - name: "HOME"
+        value: "/tekton/home"
   # params:
   #   - name: ARGS
   #     description: The Arguments to be passed to Grype command.
@@ -25,8 +29,6 @@ spec:
     - name: scan-sbom
       image: docker.io/anchore/grype:v0.75.0
       workingDir: $(workspaces.source.path)
-      command:
-        - grype
       args:
         - "sbom:./cyclonedx-sbom.json"
 
