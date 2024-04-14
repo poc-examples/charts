@@ -47,6 +47,7 @@ spec:
         #!/bin/bash
 
         cachi2 --version
+        git config --global --add safe.directory /workspace/source
 
         # Define an associative array with file indicators and their corresponding package managers
         declare -A pkg_managers=(
