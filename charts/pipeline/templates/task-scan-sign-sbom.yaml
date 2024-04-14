@@ -30,8 +30,8 @@ spec:
       image: registry.access.redhat.com/ubi9/ubi:latest
       workingDir: $(workspaces.source.path)
       script: |
-        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
-        grype version
+        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp
+        /tmp/grype version
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
