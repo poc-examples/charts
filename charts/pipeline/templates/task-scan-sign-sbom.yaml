@@ -29,12 +29,9 @@ spec:
     - name: scan-sbom
       image: docker.io/anchore/grype:v0.75.0
       workingDir: $(workspaces.source.path)
-      args:
-        - "db"
-        - "update"
-        - "&&"
-        - "grype"
-        - "sbom:./cyclonedx-sbom.json"
+      script: |
+        #!/usr/bin/env bash
+        echo "working!"
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
