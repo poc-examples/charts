@@ -46,26 +46,19 @@ spec:
         import sys
 
         def execute(command):
-          subprocess.run(
-            ["sh", "-c", command], 
-            check=True, 
-            stdout=subprocess.PIPE
-          )
-
-        def scan_sbom():
           result = subprocess.run(
-              ["/usr/local/bin/grype", "sbom:./cyclonedx-sbom.json", "-o", "json"],
-              capture_output=True, 
-              text=True, 
-              check=True
+            ["sh", "-c", command], 
+            capture_output=True,
+            check=True,
+            text=True
           )
           return result.stdout
 
         if __name__ == "__main__":
-          execute("curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp")
-          execute("/tmp/grype version")
-          execute("/tmp/grype db update")
-          result = scan_sbom("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json")
+          print(execute("curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp"))
+          print(execute("/tmp/grype version"))
+          print(execute("/tmp/grype db update"))
+          result = execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json -o json")
           print(result)
 
   #   - name: sign-sbom
