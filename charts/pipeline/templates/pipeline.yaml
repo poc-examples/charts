@@ -85,3 +85,13 @@ spec:
       workspaces:
         - name: source
           workspace: source
+
+    - name: scan-and-sign-sbom
+      runAfter:
+        - generate-sbom
+      taskRef:
+        kind: Task
+        name: scan-and-sign-sbom
+      workspaces:
+        - name: source
+          workspace: source

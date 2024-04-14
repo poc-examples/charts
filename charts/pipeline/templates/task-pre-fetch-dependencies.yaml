@@ -29,7 +29,16 @@ spec:
         value: "/tekton/home"
 
   steps:
-
+    ## Cachi2 is a CLI tool designed specifically to pre-fetch your project's dependencies, 
+    ## which is particularly useful for making your build process hermetic.
+    ## encourages or mandates best practices in dependency management, such as building from 
+    ## source and avoiding pre-built artifacts like Python wheels.
+    ## Cachi2 generates a manifest of all dependencies fetched, aiding in audits and compliance checks.
+    ## To be hermetic we need to add network security policies that denies by default egress and ingress.
+    ## Base images should be pulled into the internal registry
+    ## Stage and Update: Set up a secure, isolated staging environment where base images are downloaded and updated (e.g., running yum update -y). This environment should have restricted internet access, used only for fetching updates.
+    ## Security Scanning: After updating, thoroughly scan the images for vulnerabilities using security tools. Only images that pass all security checks should be moved to your internal registry.
+    ## Promotion to Internal Registry: Once validated, promote the updated images to your internal registry from where they can be safely used in production builds without additional external access.
     ## Outputs Cachi2 SBOM & Pulls Dependencies into the source repo in the deps folder
     - name: fetch-deps
       image: quay.io/redhat-appstudio/cachi2:latest
@@ -37,9 +46,6 @@ spec:
       script: |
         #!/bin/bash
 
-        pwd
-        git config --global --add safe.directory $(workspaces.source.path)
-        ls -la
         cachi2 --version
 
         # Define an associative array with file indicators and their corresponding package managers
@@ -66,6 +72,3 @@ spec:
 
         # Fetch dependencies using the determined package manager
         cachi2 fetch-deps $PKG_TYPE --source . --output .
-        ls -la
-        ls -la deps
-        cat bom.json

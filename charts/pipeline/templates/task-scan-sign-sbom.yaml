@@ -1,0 +1,61 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: scan-and-sign-sbom
+  labels:
+    app.kubernetes.io/version: "0.1"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/categories: Security
+    tekton.dev/tags: CLI, scan-and-sign-sbom
+    tekton.dev/displayName: "scan-and-sign-sbom"
+    tekton.dev/platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/390x"
+spec:
+  description: >-
+    Needs new description
+
+  workspaces:
+    - name: source
+  # params:
+  #   - name: ARGS
+  #     description: The Arguments to be passed to Grype command.
+  #     type: array
+  steps:
+
+    - name: scan-sbom
+      image: docker.io/anchore/grype:v0.75.0
+      workingDir: $(workspaces.source.path)
+      command:
+        - grype
+      args:
+        - "sbom:./cyclonedx-sbom.json"
+
+  #   - name: sign-sbom
+  #     image: gcr.io/projectsigstore/cosign:v1.4.1
+  #     workingDir: $(workspaces.source.path)
+  #     volumeMounts:
+  #       - name: signing-keys
+  #         mountPath: /etc/signing-keys
+  #     script: |
+  #       #!/bin/bash
+  #       echo "Signing SBOM..."
+  #       cosign sign-blob --key $(params.COSIGN_KEY) --output-signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME)
+  #       echo "SBOM signed successfully."
+
+  #   - name: verify-sbom-signature
+  #     image: gcr.io/projectsigstore/cosign:v1.4.1
+  #     workingDir: $(workspaces.source.path)
+  #     script: |
+  #       #!/bin/bash
+  #       echo "Verifying SBOM signature..."
+  #       if cosign verify-blob --key $(params.COSIGN_KEY) --signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME); then
+  #         echo "SBOM signature verified successfully."
+  #       else
+  #         echo "Failed to verify SBOM signature."
+  #         exit 1
+  #       fi
+
+  # volumes:
+  #   - name: signing-keys
+  #     secret:
+  #       secretName: signing-secrets
