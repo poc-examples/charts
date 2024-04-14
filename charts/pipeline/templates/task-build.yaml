@@ -11,6 +11,10 @@ metadata:
     tekton.dev/tags: image-build
     tekton.dev/platforms: "linux/amd64,linux/s390x,linux/ppc64le,linux/arm64"
     tekton.dev/displayName: build
+  podTemplate:
+    metadata:
+      labels:
+        hermetic: $(params.HERMETIC)
 spec:
   description: >-
     Buildah task builds source into a container image and
@@ -24,6 +28,9 @@ spec:
 
   params:
   - name: IMAGE
+    description: Reference of the image buildah will produce.
+  - name: HERMETIC
+    default: false
     description: Reference of the image buildah will produce.
   - name: BUILDER_IMAGE
     description: The location of the buildah builder image.

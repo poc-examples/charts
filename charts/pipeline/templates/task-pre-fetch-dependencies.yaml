@@ -1,0 +1,37 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pre-fetch-dependencies
+  labels:
+    app.kubernetes.io/version: "0.7"
+  annotations:
+    tekton.dev/categories: Dependencies
+    tekton.dev/pipelines.minVersion: "0.17.0"
+    tekton.dev/tags: pre-fetch-dependencies
+    tekton.dev/platforms: "linux/amd64,linux/s390x,linux/ppc64le,linux/arm64"
+    tekton.dev/displayName: pre-fetch-dependencies
+  podTemplate:
+    metadata:
+      labels:
+        hermetic: $(params.HERMETIC)
+spec:
+  description: >-
+    Needs Description
+
+  params:
+    - name: DIRECTORY
+      description: "App directory path in the repo"
+      default: ""
+    - name: HERMETIC
+      default: false
+      description: Reference of the image buildah will produce.
+  workspaces:
+  - name: source
+
+  steps:
+
+    - name: fetch-deps
+      image: quay.io/redhat-appstudio/cachi2:latest
+      script: |
+        cachi2 --version
+        cachi2 fetch-deps --source . --output .

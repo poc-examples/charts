@@ -71,7 +71,24 @@ spec:
         
         print("Generated: $(workspaces.source.path)/purl-sbom.json")
 
+    ## Cachi2 is a CLI tool designed specifically to pre-fetch your project's dependencies, 
+    ## which is particularly useful for making your build process hermetic.
+    ## encourages or mandates best practices in dependency management, such as building from 
+    ## source and avoiding pre-built artifacts like Python wheels.
+    ## Cachi2 generates a manifest of all dependencies fetched, aiding in audits and compliance checks.
+    ## To be hermetic we need to add network security policies that denies by default egress and ingress.
+    ## Base images should be pulled into the internal registry
+    ## Stage and Update: Set up a secure, isolated staging environment where base images are downloaded and updated (e.g., running yum update -y). This environment should have restricted internet access, used only for fetching updates.
+    ## Security Scanning: After updating, thoroughly scan the images for vulnerabilities using security tools. Only images that pass all security checks should be moved to your internal registry.
+    ## Promotion to Internal Registry: Once validated, promote the updated images to your internal registry from where they can be safely used in production builds without additional external access.
     - name: generate-cachi2-sbom
       image: quay.io/redhat-appstudio/cachi2:0.3.0@sha256:46097f22b57e4d48a3fce96d931e08ccfe3a3e6421362d5f9353961279078eef
       script: |
-        cat $(workspaces.source.path)/purl-sbom.json
+        echo "generate"
+        # if [ -n "${PREFETCH_INPUT}" ]; then
+        #   echo "Merging contents of sbom-cachi2.json into sbom-cyclonedx.json"
+        #   /src/utils/merge_syft_sbom.py sbom-cachi2.json sbom-cyclonedx.json > sbom-temp.json
+        #   mv sbom-temp.json sbom-cyclonedx.json
+        # else
+        #   echo "Skipping step since no Cachi2 SBOM was produced"
+        # fi

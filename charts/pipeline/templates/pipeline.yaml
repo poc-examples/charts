@@ -31,6 +31,21 @@ spec:
       - name: output
         workspace: source
 
+    - name: pre-fetch-dependencies
+      params:
+        - name: DIRECTORY
+          value: '.'
+        - name: HERMETIC
+          value: false
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: Task
+        name: pre-fetch-dependencies
+      workspaces:
+        - name: source
+          workspace: source
+
     - name: build
       params:
         - name: IMAGE
@@ -48,7 +63,7 @@ spec:
         - name: FORMAT
           value: oci
       runAfter:
-        - git-clone
+        - pre-fetch-dependencies
       taskRef:
         kind: Task
         name: build
