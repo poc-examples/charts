@@ -32,6 +32,7 @@ spec:
       script: |
         curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp
         /tmp/grype version
+        /tmp/grype db update
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
