@@ -29,5 +29,32 @@ spec:
     - name: fetch-deps
       image: quay.io/redhat-appstudio/cachi2:latest
       script: |
+        #!/bin/bash
+
+        pwd
         cachi2 --version
-        cachi2 fetch-deps --source . --output .
+
+        # Define an associative array with file indicators and their corresponding package managers
+        declare -A pkg_managers=(
+          ["go.mod"]="gomod"
+          ["package.json"]="npm"
+          ["requirements.txt"]="pip"
+          ["yarn.lock"]="yarn"
+        )
+
+        # Loop through the array and check for the presence of each file
+        for file in "${!pkg_managers[@]}"; do
+          if [[ -f "$file" ]]; then
+            PKG_TYPE="${pkg_managers[$file]}"
+            break
+          fi
+        done
+
+        # Check if a package manager was determined
+        if [[ -z "$PKG_TYPE" ]]; then
+          echo "No supported package manager file found."
+          exit 1
+        fi
+
+        # Fetch dependencies using the determined package manager
+        cachi2 fetch-deps $PKG_TYPE --source . --output .
