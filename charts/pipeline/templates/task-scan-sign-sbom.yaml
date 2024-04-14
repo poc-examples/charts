@@ -58,8 +58,8 @@ spec:
           print(execute("curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp"))
           print(execute("/tmp/grype version"))
           print(execute("/tmp/grype db update"))
-          result = execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json -o json")
-          print(result)
+          execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json -o json > security-report.json")
+          print(execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json --fail-on-severity Critical --ignore-wontfix"))
 
   #   - name: sign-sbom
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
