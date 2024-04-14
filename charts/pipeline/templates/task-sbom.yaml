@@ -48,6 +48,7 @@ spec:
           --input-files \
             $(workspaces.source.path)/source-sbom.json \
             $(workspaces.source.path)/image-sbom.json \
+            $(workspaces.source.path)/bom.json \
           --output-file $(workspaces.source.path)/cyclonedx-sbom.json \
         && echo "Generated: $(workspaces.source.path)/cyclonedx-sbom.json"
 
