@@ -18,7 +18,7 @@ spec:
     artifacts.pipelinerun.format: slsa/v1
     artifacts.pipelinerun.storage: tekton,oci
     artifacts.pipelinerun.signer: x509
-    transparency.enabled: true
+    transparency.enabled: 'true'
     transparency.url: https://rekor.sigstore.dev
     disabled: false
     options:
