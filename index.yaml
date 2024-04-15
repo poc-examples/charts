@@ -1379,6 +1379,16 @@ entries:
   rhtas:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-15T16:11:46.438290241Z"
+    description: A Helm chart for deploying base RH Trusted Application Signer
+    digest: bb96afaa96b6c4a25b3ea3b2d81194438213820053a8e0a580d328df6ad22090
+    name: rhtas
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.1/rhtas-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-15T16:09:25.726208815Z"
     description: A Helm chart for deploying base RH Trusted Application Signer
     digest: d6539535dffed4aec2cb934a9f598705a474ed0a7511beff117fd982449ed08c
@@ -1490,4 +1500,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-15T16:09:25.726415681Z"
+generated: "2024-04-15T16:11:46.438551076Z"
