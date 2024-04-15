@@ -1376,6 +1376,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/pipeline-0.1.7/pipeline-0.1.7.tgz
     version: 0.1.7
+  rhtas:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-15T16:09:25.726208815Z"
+    description: A Helm chart for deploying base RH Trusted Application Signer
+    digest: d6539535dffed4aec2cb934a9f598705a474ed0a7511beff117fd982449ed08c
+    name: rhtas
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
+    version: 0.1.0
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -1479,4 +1490,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-15T15:23:11.869427098Z"
+generated: "2024-04-15T16:09:25.726415681Z"
