@@ -3,6 +3,9 @@ kind: Subscription
 metadata:
   labels:
     operators.coreos.com/rhacs-operator.rhacs-operator: ""
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: rhacs-operator
 spec:
   channel: stable
