@@ -7,7 +7,6 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: rhtas-operator
-  namespace: openshift-operators
 spec:
   channel: stable
   installPlanApproval: Automatic
