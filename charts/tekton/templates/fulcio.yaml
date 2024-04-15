@@ -1,0 +1,30 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: Fulcio
+metadata:
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: fulcio
+spec:
+  certificate:
+    commonName: fulcio.apps.j3w50o9m.eastus.aroapp.io
+    organizationEmail: admin@redhat.com
+    organizationName: Red Hat
+    privateKeyPasswordRef:
+      key: cosign.password
+      name: signing-secret
+    privateKeyRef:
+      key: cosign.key
+      name: signing-secret
+  config:
+    OIDCIssuers:
+      - ClientID: trusted-artifact-signer
+        Issuer: 'https://your-oidc-issuer-url'
+        IssuerURL: 'https://your-oidc-issuer-url'
+        Type: email
+  externalAccess:
+    enabled: true
+  monitoring:
+    enabled: false
+

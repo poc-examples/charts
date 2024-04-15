@@ -1,0 +1,20 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: CTlog
+metadata:
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: ctlog-sample
+  namespace: openshift-operators
+spec:
+  privateKeyPasswordRef:
+    key: cosign.password
+    name: signing-secret
+  privateKeyRef:
+    key: cosign.key
+    name: signing-secret
+  publicKeyRef:
+    key: cosign.key
+    name: signing-secret
+
