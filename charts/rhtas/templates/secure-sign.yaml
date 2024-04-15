@@ -1,0 +1,38 @@
+# kind: Securesign
+# apiVersion: rhtas.redhat.com/v1alpha1
+# metadata:
+#   labels:
+#     app.kubernetes.io/instance: securesign-sample
+#     app.kubernetes.io/name: securesign-sample
+#     app.kubernetes.io/part-of: trusted-artifact-signer
+#   name: securesign-sample
+#   namespace: openshift-operators
+# spec:
+#   analytics: false
+#   ctlog: null
+#   fulcio:
+#     certificate:
+#       commonName: fulcio.apps.j3w50o9m.eastus.aroapp.io
+#       organizationEmail: cengleby@redhat.com
+#       organizationName: Red Hat
+#     config:
+#       OIDCIssuers:
+#         - ClientID: trusted-artifact-signer
+#           Issuer: 'https://your-oidc-issuer-url'
+#           IssuerURL: 'https://your-oidc-issuer-url'
+#           Type: email
+#     externalAccess:
+#       enabled: true
+#     monitoring:
+#       enabled: false
+#   rekor:
+#     externalAccess:
+#       enabled: true
+#     monitoring:
+#       enabled: false
+#   trillian:
+#     database:
+#       create: true
+#   tuf:
+#     externalAccess:
+#       enabled: true

@@ -1,7 +1,7 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-  name: "rhacs-operatorgroup"
+  name: "rhtas-operatorgroup"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 spec:
