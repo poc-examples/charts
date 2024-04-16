@@ -23,10 +23,10 @@ spec:
     enabled: true
   signer:
     keyRef:
-      name: signing-secret
-      key: cosign.key
+      name: rekor-signing-secret
+      key: signing.key
     kms: secret
     passwordRef:
-      name: signing-secret
-      key: cosign.password
+      name: rekor-signing-secret
+      key: signing.password
 
