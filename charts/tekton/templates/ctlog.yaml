@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/instance: secure-sign
     app.kubernetes.io/name: secure-sign
     app.kubernetes.io/part-of: trusted-artifact-signer
-  name: ctlog-sample
+  name: ctlog
   namespace: openshift-operators
 spec:
   privateKeyPasswordRef:

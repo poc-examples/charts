@@ -1,0 +1,24 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  labels:
+    app: sso
+  name: keycloak
+spec:
+  hostname:
+    hostname: keycloak.apps.j3w50o9m.eastus.aroapp.io
+  http:
+    httpEnabled: true
+  ingress:
+    enabled: true
+    className: openshift-default
+  instances: 1
+  db:
+    vendor: postgres
+    host: postgres-db
+    usernameSecret:
+      name: postgres-credentials
+      key: username
+    passwordSecret:
+      name: postgres-credentials
+      key: password
