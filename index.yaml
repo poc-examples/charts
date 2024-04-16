@@ -1581,6 +1581,16 @@ entries:
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-16T07:14:56.628762889Z"
+    description: A chart for deploying tekton
+    digest: 9ca1eaa9c2da242b9474708e38b317bd7b347c6b078bc0f92728b8ef58141f3a
+    name: tekton
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/tekton-0.1.25/tekton-0.1.25.tgz
+    version: 0.1.25
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-16T03:35:15.742430459Z"
     description: A chart for deploying tekton
     digest: 8ff11564cd053567e81704f3d1a9789b7be84f7edba8d67a988c35916d5f65c3
@@ -1771,4 +1781,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-16T06:45:42.656956731Z"
+generated: "2024-04-16T07:14:56.629184494Z"
