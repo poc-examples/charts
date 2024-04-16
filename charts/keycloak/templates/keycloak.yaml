@@ -11,7 +11,6 @@ spec:
     httpEnabled: true
   ingress:
     enabled: true
-    className: openshift-default
   instances: 1
   db:
     vendor: postgres
