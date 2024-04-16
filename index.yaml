@@ -448,6 +448,16 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-16T04:36:49.745224987Z"
+    description: A Helm chart for Kubernetes
+    digest: 534aa2d5436447ff86da0d8b9007478993a947280ea64a16fd3341957ce963c2
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.5/keycloak-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-16T04:05:06.372375835Z"
     description: A Helm chart for Kubernetes
     digest: 5dd20d9063c9098a7e302879941d884bb12e1748a8697d328107e4dc1c632e03
@@ -1641,4 +1651,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-16T04:05:06.37274337Z"
+generated: "2024-04-16T04:36:49.745551582Z"
