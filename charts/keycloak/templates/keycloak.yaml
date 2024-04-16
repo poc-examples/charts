@@ -8,7 +8,7 @@ spec:
   hostname:
     hostname: keycloak.apps.j3w50o9m.eastus.aroapp.io
     # admin: keycloak.apps.j3w50o9m.eastus.aroapp.io
-    adminUrl: https://keycloak.apps.j3w50o9m.eastus.aroapp.io/admin
+    adminUrl: https://keycloak.apps.j3w50o9m.eastus.aroapp.io
   http:
     httpEnabled: true
   ingress:
