@@ -20,8 +20,8 @@ spec:
   config:
     OIDCIssuers:
       - ClientID: trusted-artifact-signer
-        Issuer: 'https://your-oidc-issuer-url'
-        IssuerURL: 'https://your-oidc-issuer-url'
+        Issuer: 'https://keycloak.apps.j3w50o9m.eastus.aroapp.io/realms/myrealm'
+        IssuerURL: 'https://keycloak.apps.j3w50o9m.eastus.aroapp.io/realms/myrealm'
         Type: email
   externalAccess:
     enabled: true
