@@ -1,11 +1,11 @@
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: KeycloakRealmImport
 metadata:
-  name: master
+  name: tssc
 spec:
   keycloakCRName: keycloak
   realm:
-    id: master
-    realm: master
-    displayName: Master
+    id: tssc
+    realm: tssc
+    displayName: Tssc
     enabled: true
