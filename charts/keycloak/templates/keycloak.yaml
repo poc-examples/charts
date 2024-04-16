@@ -6,7 +6,8 @@ metadata:
   name: keycloak
 spec:
   hostname:
-    hostname: keycloak.apps.j3w50o9m.eastus.aroapp.io
+    hostname: keycloak
+    admin: keycloak-admin
   http:
     httpEnabled: true
   ingress:
