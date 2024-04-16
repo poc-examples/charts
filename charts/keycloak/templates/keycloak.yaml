@@ -10,7 +10,7 @@ spec:
   http:
     httpEnabled: true
   ingress:
-    enabled: true
+    enabled: false
   instances: 1
   db:
     vendor: postgres
