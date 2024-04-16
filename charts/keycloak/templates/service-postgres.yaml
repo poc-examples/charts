@@ -7,6 +7,6 @@ spec:
     - port: 5432
       targetPort: 5432
       protocol: TCP
-      name: http
+      name: postgresql
   selector:
-    app: postgres-db
+    app: postgresql-db
