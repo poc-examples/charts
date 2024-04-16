@@ -1,0 +1,32 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: Rekor
+metadata:
+  name: rekor
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  namespace: openshift-operators
+spec:
+  backFillRedis:
+    enabled: true
+    schedule: 0 0 * * *
+  externalAccess:
+    enabled: true
+    host: rekor.apps.j3w50o9m.eastus.aroapp.io
+  monitoring:
+    enabled: false
+  pvc:
+    retain: true
+    size: 5Gi
+  rekorSearchUI:
+    enabled: true
+  signer:
+    keyRef:
+      name: signing-secret
+      key: cosign.key
+    kms: secret
+    passwordRef:
+      name: signing-secret
+      key: cosign.password
+
