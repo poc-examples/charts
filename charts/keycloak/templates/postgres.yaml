@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: postgresql-db
 spec:
-  serviceName: postgresql-db-service
+  serviceName: postgresql-db
   selector:
     matchLabels:
       app: postgresql-db
@@ -16,6 +16,8 @@ spec:
       containers:
         - name: postgresql-db
           image: postgres:latest
+          ports:
+            - containerPort: 5432
           volumeMounts:
             - mountPath: /data
               name: cache-volume
