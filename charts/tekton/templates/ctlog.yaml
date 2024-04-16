@@ -7,12 +7,12 @@ metadata:
     app.kubernetes.io/part-of: trusted-artifact-signer
   name: ctlog
 spec:
-  # privateKeyPasswordRef:
-  #   key: cosign.password
-  #   name: signing-secret
-  # privateKeyRef:
-  #   key: cosign.key
-  #   name: signing-secret
-  # publicKeyRef:
-  #   key: cosign.key
-  #   name: signing-secret
+  privateKeyPasswordRef:
+    key: cosign.password
+    name: signing-secret
+  privateKeyRef:
+    key: cosign.key
+    name: signing-secret
+  publicKeyRef:
+    key: cosign.pub
+    name: signing-secret
