@@ -14,16 +14,16 @@ spec:
   keys:
     - name: rekor.pub
       secretRef:
-        key: signing.pub
-        name: rekor-signing-secret
+        key: public
+        name: rekor-pub-key
     - name: fulcio_v1.crt.pem
       secretRef:
         key: cert
-        name: fulcio-cert-fulciolpf85
+        name: fulcio-pub-key
     - name: ctfe.pub
       secretRef:
         key: public
-        name: ctlog-ctlog-keys-2chwx
+        name: ctlog-pub-key
   port: 80
   external:
     enabled: true
