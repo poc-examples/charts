@@ -25,6 +25,3 @@ spec:
         key: public
         name: ctlog-pub-key
   port: 80
-  external:
-    enabled: true
-    host: tuf.example.com
