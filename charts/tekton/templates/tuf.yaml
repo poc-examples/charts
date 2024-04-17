@@ -15,13 +15,13 @@ spec:
     - name: rekor.pub
       secretRef:
         key: public
-        name: rekor-pub-key
+        name: rekor-public-rekor-j6vtb
     - name: fulcio_v1.crt.pem
       secretRef:
         key: cert
-        name: fulcio-pub-key
+        name: fulcio-cert-fulciolpf85
     - name: ctfe.pub
       secretRef:
         key: public
-        name: ctlog-pub-key
+        name: ctlog-ctlog-keys-2chwx
   port: 80
