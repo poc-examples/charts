@@ -22,4 +22,4 @@ spec:
           configureCertmanager: false
           tls:
             secretName: null
-    version: 7.10.1
+    version: 7.10.3
