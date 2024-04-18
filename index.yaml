@@ -327,6 +327,16 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-18T04:39:00.909185886Z"
+    description: A Helm chart for Kubernetes
+    digest: a23b42e442f57b1dc4823073e82028f631ec9facc765c0110383d5276573fc12
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.22/gitlab-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-17T14:09:13.189218391Z"
     description: A Helm chart for Kubernetes
     digest: 5927b6309084dbde8f3ef87c7f1cf7af979a6f868aaa48450c7f23909ec9ef68
@@ -456,6 +466,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.9/gitlab-0.1.9.tgz
     version: 0.1.9
   keycloak:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-18T04:39:00.998898663Z"
+    description: A Helm chart for Kubernetes
+    digest: ccd51e736c23c536ac766cea3c398cd972c597eecc092c7868f5bd27159302e7
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.19/keycloak-0.1.19.tgz
+    version: 0.1.19
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-16T07:36:55.875805822Z"
@@ -1931,4 +1951,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-17T14:09:13.189711518Z"
+generated: "2024-04-18T04:39:00.999402579Z"
