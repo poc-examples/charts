@@ -1,0 +1,92 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: scan-and-sign-sbom
+  labels:
+    app.kubernetes.io/version: "0.1"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/categories: Security
+    tekton.dev/tags: CLI, scan-and-sign-sbom
+    tekton.dev/displayName: "scan-and-sign-sbom"
+    tekton.dev/platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/390x"
+spec:
+  description: >-
+    Needs new description
+
+  workspaces:
+    - name: source
+  stepTemplate:
+    env:
+      - name: "HOME"
+        value: "/tekton/home"
+  # params:
+  #   - name: ARGS
+  #     description: The Arguments to be passed to Grype command.
+  #     type: array
+  steps:
+
+    ## Alpine Linux SecDB: https://secdb.alpinelinux.org/
+    # Amazon Linux ALAS: https://alas.aws.amazon.com/AL2/alas.rss
+    # RedHat RHSAs: https://www.redhat.com/security/data/oval/
+    # Debian Linux CVE Tracker: https://security-tracker.debian.org/tracker/data/json
+    # Github GHSAs: https://github.com/advisories
+    # National Vulnerability Database (NVD): https://nvd.nist.gov/vuln/data-feeds
+    # Oracle Linux OVAL: https://linux.oracle.com/security/oval/
+    # RedHat Linux Security Data: https://access.redhat.com/hydra/rest/securitydata/
+    # Suse Linux OVAL: https://ftp.suse.com/pub/projects/security/oval/
+    # Ubuntu Linux Security: https://people.canonical.com/~ubuntu-security/
+    - name: scan-sbom
+      image: registry.access.redhat.com/ubi9/ubi:latest
+      workingDir: $(workspaces.source.path)
+      script: |
+        #!/bin/python3
+        import json
+        import subprocess
+        import sys
+
+        def execute(command):
+          result = subprocess.run(
+            ["sh", "-c", command], 
+            capture_output=True,
+            check=True,
+            text=True
+          )
+          return result.stdout
+
+        if __name__ == "__main__":
+          print(execute("curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /tmp"))
+          print(execute("/tmp/grype version"))
+          print(execute("/tmp/grype db update"))
+          execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json -o json > security-report.json")
+          print(execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json --fail-on Critical --only-fixed"))
+
+    - name: sign-sbom
+      image: gcr.io/projectsigstore/cosign:v1.4.1
+      workingDir: $(workspaces.source.path)
+      volumeMounts:
+        - name: signing-keys
+          mountPath: /etc/signing-keys
+      script: |
+        #!/bin/bash
+        echo "Signing SBOM..."
+        cosign sign-blob --key $(params.COSIGN_KEY) --output-signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME)
+        echo "SBOM signed successfully."
+
+  #   - name: verify-sbom-signature
+  #     image: gcr.io/projectsigstore/cosign:v1.4.1
+  #     workingDir: $(workspaces.source.path)
+  #     script: |
+  #       #!/bin/bash
+  #       echo "Verifying SBOM signature..."
+  #       if cosign verify-blob --key $(params.COSIGN_KEY) --signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME); then
+  #         echo "SBOM signature verified successfully."
+  #       else
+  #         echo "Failed to verify SBOM signature."
+  #         exit 1
+  #       fi
+
+  volumes:
+    - name: signing-keys
+      secret:
+        secretName: signing-secrets

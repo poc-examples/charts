@@ -1,0 +1,75 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pre-fetch-dependencies
+  labels:
+    app.kubernetes.io/version: "0.7"
+  annotations:
+    tekton.dev/categories: Dependencies
+    tekton.dev/pipelines.minVersion: "0.17.0"
+    tekton.dev/tags: pre-fetch-dependencies
+    tekton.dev/platforms: "linux/amd64,linux/s390x,linux/ppc64le,linux/arm64"
+    tekton.dev/displayName: pre-fetch-dependencies
+spec:
+  description: >-
+    Needs Description
+
+  params:
+    - name: DIRECTORY
+      description: "App directory path in the repo"
+      default: ""
+    - name: HERMETIC
+      default: 'false'
+      description: Reference of the image buildah will produce.
+  workspaces:
+  - name: source
+  stepTemplate:
+    env:
+      - name: "HOME"
+        value: "/tekton/home"
+
+  steps:
+    ## Cachi2 is a CLI tool designed specifically to pre-fetch your project's dependencies, 
+    ## which is particularly useful for making your build process hermetic.
+    ## encourages or mandates best practices in dependency management, such as building from 
+    ## source and avoiding pre-built artifacts like Python wheels.
+    ## Cachi2 generates a manifest of all dependencies fetched, aiding in audits and compliance checks.
+    ## To be hermetic we need to add network security policies that denies by default egress and ingress.
+    ## Base images should be pulled into the internal registry
+    ## Stage and Update: Set up a secure, isolated staging environment where base images are downloaded and updated (e.g., running yum update -y). This environment should have restricted internet access, used only for fetching updates.
+    ## Security Scanning: After updating, thoroughly scan the images for vulnerabilities using security tools. Only images that pass all security checks should be moved to your internal registry.
+    ## Promotion to Internal Registry: Once validated, promote the updated images to your internal registry from where they can be safely used in production builds without additional external access.
+    ## Outputs Cachi2 SBOM & Pulls Dependencies into the source repo in the deps folder
+    - name: fetch-deps
+      image: quay.io/redhat-appstudio/cachi2:latest
+      workingDir: $(workspaces.source.path)
+      script: |
+        #!/bin/bash
+
+        cachi2 --version
+        git config --global --add safe.directory /workspace/source
+
+        # Define an associative array with file indicators and their corresponding package managers
+        declare -A pkg_managers=(
+          ["go.mod"]="gomod"
+          ["package.json"]="npm"
+          ["requirements.txt"]="pip"
+          ["yarn.lock"]="yarn"
+        )
+
+        # Loop through the array and check for the presence of each file
+        for file in "${!pkg_managers[@]}"; do
+          if [[ -f "$file" ]]; then
+            PKG_TYPE="${pkg_managers[$file]}"
+            break
+          fi
+        done
+
+        # Check if a package manager was determined
+        if [[ -z "$PKG_TYPE" ]]; then
+          echo "No supported package manager file found."
+          exit 1
+        fi
+
+        # Fetch dependencies using the determined package manager
+        cachi2 fetch-deps $PKG_TYPE --source . --output .

@@ -1,0 +1,21 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: CTlog
+metadata:
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: ctlog
+spec:
+  ## PASSING in self-created sigining secrets seems to be ignored and 
+  ## returning go code errors are not verbose enough currentl defaulting to letting logs 
+  ## create their own for the time being.
+  # privateKeyPasswordRef:
+  #   key: cosign.password
+  #   name: signing-secret
+  # privateKeyRef:
+  #   key: cosign.key
+  #   name: signing-secret
+  # publicKeyRef:
+  #   key: cosign.pub
+  #   name: signing-secret

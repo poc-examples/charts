@@ -1,0 +1,37 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tech-radar-plugin
+data:
+  tech-radar-plugin.yaml: |
+    proxy:
+      endpoints:
+        /developer-hub:
+          pathRewrite:
+            ^/api/proxy/developer-hub/tech-radar: /charts/main/developer_hub/config/tech-radar.json
+            # ^/api/proxy/developer-hub: /charts/main/developer_hub/config/developer-hub.json
+          target: https://raw.githubusercontent.com/poc-examples
+          changeOrigin: true
+          secure: true
+
+    dynamicPlugins:
+      frontend:
+        backstage.plugin-tech-radar:
+          apiFactories:
+            - importName: TechRadarApi
+          appIcons:
+            - name: techRadar
+              importName: TechRadarIcon
+          dynamicRoutes:
+            - path: /tech-radar
+              importName: TechRadarPage
+              menuItem:
+                icon: techRadar
+                text: Tech Radar
+              config:
+                props:
+                  pageTitle: "CSA-NA"
+                  subtitle: "TechRadar for RedHat ORG"
+                  title: "RedHat - TechRadar"
+                  width: 1500
+                  height: 800

@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "{{ .Values.name }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    {{- if .Values.updater }}
+    {{- if .Values.updater.enabled }}
+    argocd-image-updater.argoproj.io/image-list: service=quay.io/rh_ee_cengleby/test
+    argocd-image-updater.argoproj.io/service.update-strategy: latest
+    argocd-image-updater.argoproj.io/service.force-update: "true"
+    argocd-image-updater.argoproj.io/service.helm.image-name: helmValues.image.repository
+    argocd-image-updater.argoproj.io/service.helm.image-tag: helmValues.image.tag
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:openshift-gitops/repo-3782506591
+    argocd-image-updater.argoproj.io/write-back-target: helmvalues:/autoimport/test/values.yaml
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/git-repository: "https://gitlab.apps.h3r1sxy3.eastus.aroapp.io/self-provisioned/manifests.git"
+    {{- end }}
+    {{- end }}
+spec:
+  destination:
+    namespace: "{{ .Values.targetNamespace }}"
+    server: 'https://kubernetes.default.svc'
+  source:
+    chart: "{{ .Values.chart }}"
+    repoURL: "https://poc-examples.github.io/charts"
+    targetRevision: "{{ .Values.chartVersion }}"
+    helm:
+      valuesObject: {{ .Values.helmValues | toJson }}
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: "openshift-gitops"
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=false
+      - SkipDryRunOnMissingResource=true
+ 

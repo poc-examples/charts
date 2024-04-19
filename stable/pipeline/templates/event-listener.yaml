@@ -1,0 +1,109 @@
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: image-pipeline-trigger-template
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision sha
+    - name: image 
+      description: The image to build and push
+    - name: registry_hostname
+      description: The hostname for the image registry
+    - name: registry_namespace 
+      description: The registry namespace for the container image
+    - name: git_repo
+      description: The git repository to clone
+  resourcetemplates: 
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun 
+      metadata: 
+        name: $(tt.params.image)-container-build-$(tt.params.gitrevision)
+        annotations:
+          chains.tekton.dev/payload-taskrun-format: "slsaV1"
+          chains.tekton.dev/sign: "true"
+      spec:
+        serviceAccountName: openshift-pipelines
+        pipelineRef: 
+          name: container-build-pipeline
+        params: 
+          - name: IMAGE_NAME
+            value: $(tt.params.registry_namespace)/$(tt.params.image)
+          - name: REGISTRY_HOSTNAME
+            value: $(tt.params.registry_hostname)
+          - name: REGISTRY_NAMESPACE
+            value: $(tt.params.registry_namespace)
+          - name: IMAGE_TAG
+            value: $(tt.params.gitrevision)
+          - name: GITHUB_REPO
+            value: $(tt.params.git_repo)
+          - name: GITHUB_BRANCH
+            value: 'main'
+        podTemplate:
+          securityContext:
+            runAsUser: 1000
+            fsGroup: 65532
+            fsGroupChangePolicy: "OnRootMismatch"
+        workspaces:
+        - name: source
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
+        - name: varlibcontainers
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 100Gi
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: pipeline-listener
+spec:
+  triggers:
+    - name: filter-events
+      interceptors:
+        - ref:
+            name: "gitlab"
+            kind: ClusterInterceptor
+            apiVersion: triggers.tekton.dev
+          params:
+            - name: "eventTypes"
+              value: ["Push Hook"]
+        - ref:
+            name: cel
+          params:
+          - name: "overlays"
+            value:
+            - key: truncated_sha
+              expression: "body.after.truncate(7)"
+      bindings:
+        - name: gitrevision
+          value: $(extensions.truncated_sha)
+        - name: image
+          value: "{{ .Values.repoName }}"
+        - name: registry_hostname
+          value: "quay.io" 
+        - name: git_repo
+          value: 'https://{{ .Values.gitAddress }}/self-provisioned/{{ .Values.repoName }}.git'
+        - name: registry_namespace
+          value: 'rh_ee_cengleby'
+      template:
+        ref: image-pipeline-trigger-template
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: gitlab-binding
+spec:
+  params:
+    - name: gitrevision
+      value: "$(body.after)"

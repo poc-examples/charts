@@ -1,0 +1,73 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: generate-signed-sbom
+  labels:
+    app.kubernetes.io/version: "0.7"
+  annotations:
+    tekton.dev/categories: SBOM
+    tekton.dev/pipelines.minVersion: "0.17.0"
+    tekton.dev/tags: generate-signed-sbom
+    tekton.dev/platforms: "linux/amd64,linux/s390x,linux/ppc64le,linux/arm64"
+    tekton.dev/displayName: generate-signed-sbom
+spec:
+  description: >-
+    Need New Description
+
+  params:
+  - name: IMAGE
+    description: Reference of the image to build sboms.
+
+  workspaces:
+  - name: source
+
+  stepTemplate:
+    env:
+      - name: "HOME"
+        value: "/tekton/home"
+
+  steps:
+
+    - name: generate-repo-src-sbom
+      image: quay.io/redhat-appstudio/syft:v0.94.0
+      script: |
+        syft dir:$(workspaces.source.path) --output cyclonedx-json=$(workspaces.source.path)/source-sbom.json
+        echo "Generated: $(workspaces.source.path)/source-sbom.json"
+
+    - name: generate-image-sbom
+      image: quay.io/redhat-appstudio/syft:v0.94.0
+      script: |
+        syft oci-archive:$(workspaces.source.path)/image.tar --scope all-layers -o cyclonedx-json=$(workspaces.source.path)/image-sbom.json
+        echo "Generated: $(workspaces.source.path)/image-sbom.json"
+
+    - name: merge-repo-image-sboms
+      image: cyclonedx/cyclonedx-cli:0.25.0
+      script: |
+        cyclonedx merge \
+          --input-files \
+            $(workspaces.source.path)/source-sbom.json \
+            $(workspaces.source.path)/image-sbom.json \
+            $(workspaces.source.path)/bom.json \
+          --output-file $(workspaces.source.path)/cyclonedx-sbom.json \
+        && echo "Generated: $(workspaces.source.path)/cyclonedx-sbom.json"
+
+    ## Processes data from a CycloneDX-format Software Bill of Materials (SBOM). 
+    ## Extracts Package URLs (purls) from each component listed in the CycloneDX 
+    ## SBOM and then organize these purls into a new JSON structure.
+    - name: generate-purls-sbom
+      image: registry.access.redhat.com/ubi9/python-311:latest
+      script: |
+        #!/bin/python3
+        import json
+
+        with open("$(workspaces.source.path)/cyclonedx-sbom.json") as f:
+          cyclonedx_sbom = json.load(f)
+
+        purls = [{"purl": component["purl"]} for component in cyclonedx_sbom.get("components", []) if "purl" in component]
+        purl_content = {"image_contents": {"dependencies": purls}}
+
+        with open("$(workspaces.source.path)/purl-sbom.json", "w") as output_file:
+          json.dump(purl_content, output_file, indent=4)
+        
+        print("Generated: $(workspaces.source.path)/purl-sbom.json")
