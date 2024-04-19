@@ -1,4 +1,4 @@
-name: Release Charts
+name: Stable Release Charts
 
 on:
   push:
@@ -29,15 +29,7 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         with:
-          charts_dir: "stable"
-          charts_repo_url: https://poc-examples.github.io/stable
+          charts_dir: "charts"
         env:
           CR_TOKEN: "${{ secrets.GH_TOKEN }}"
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.6.0
-        with:
-          charts_dir: "beta"
-          charts_repo_url: https://poc-examples.github.io/beta
-        env:
-          CR_TOKEN: "${{ secrets.GH_TOKEN }}"

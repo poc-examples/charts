@@ -1,4 +1,0 @@
-#openssl ecparam -name prime256v1 -genkey -noout -out rekor_key.pem
-#openssl pkcs8 -topk8 -nocrypt -in rekor_key.pem -out rekor_key_pkcs8.pem
-#openssl ec -in rekor_key_pkcs8.pem -pubout -out rekor_key_pub.pem
-
