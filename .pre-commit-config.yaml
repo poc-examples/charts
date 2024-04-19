@@ -1,12 +1,12 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0  # Use the latest version
+    rev: v4.6.0
     hooks:
       - id: check-yaml
         files: \.yaml$|\.(yml)$
 
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.23  # Use the latest version
+    rev: v0.1.23
     hooks:
       - id: helmlint
         files: charts/.*/Chart.yaml
