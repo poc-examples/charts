@@ -1,6 +1,8 @@
 apiVersion: rhtas.redhat.com/v1alpha1
 kind: CTlog
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     app.kubernetes.io/instance: secure-sign
     app.kubernetes.io/name: secure-sign

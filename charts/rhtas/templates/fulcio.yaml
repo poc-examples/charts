@@ -1,6 +1,8 @@
 apiVersion: rhtas.redhat.com/v1alpha1
 kind: Fulcio
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     app.kubernetes.io/instance: secure-sign
     app.kubernetes.io/name: secure-sign
@@ -8,7 +10,7 @@ metadata:
   name: fulcio
 spec:
   certificate:
-    commonName: fulcio.apps.j3w50o9m.eastus.aroapp.io
+    commonName: fulcio.apps.{{ .Values.domain}}
     organizationEmail: admin@redhat.com
     organizationName: Red Hat
     caRef:
@@ -23,8 +25,8 @@ spec:
   config:
     OIDCIssuers:
       - ClientID: trusted-artifact-signer
-        Issuer: 'https://keycloak.apps.j3w50o9m.eastus.aroapp.io/realms/tssc'
-        IssuerURL: 'https://keycloak.apps.j3w50o9m.eastus.aroapp.io/realms/tssc'
+        Issuer: 'https://keycloak.apps.{{ .Values.domain}}/realms/tssc'
+        IssuerURL: 'https://keycloak.apps.{{ .Values.domain}}/realms/tssc'
         Type: email
   externalAccess:
     enabled: true

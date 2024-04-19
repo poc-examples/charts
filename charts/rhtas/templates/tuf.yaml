@@ -1,6 +1,8 @@
 apiVersion: rhtas.redhat.com/v1alpha1
 kind: Tuf
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: tuf
   labels:
     app.kubernetes.io/instance: secure-sign
@@ -10,7 +12,7 @@ metadata:
 spec:
   externalAccess:
     enabled: true
-    host: tuff.apps.j3w50o9m.eastus.aroapp.io
+    host: tuff.apps.{{ .Values.domain}}
   keys:
     - name: rekor.pub
       secretRef:
