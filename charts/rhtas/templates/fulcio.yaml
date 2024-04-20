@@ -13,15 +13,15 @@ spec:
     commonName: fulcio.apps.{{ .Values.domain}}
     organizationEmail: admin@redhat.com
     organizationName: Red Hat
-    caRef:
-      name: ca-key-pair
-      key: ca.crt
-    privateKeyRef:
-      name: ca-key-pair
-      key: ca.key
-    privateKeyPasswordRef:
-      key: passphrase
-      name: ca-key-pair
+    # caRef:
+    #   name: ca-key-pair
+    #   key: ca.crt
+    # privateKeyRef:
+    #   name: ca-key-pair
+    #   key: ca.key
+    # privateKeyPasswordRef:
+    #   key: passphrase
+    #   name: ca-key-pair
   config:
     OIDCIssuers:
       - ClientID: trusted-artifact-signer
