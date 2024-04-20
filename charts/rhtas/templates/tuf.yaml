@@ -8,7 +8,6 @@ metadata:
     app.kubernetes.io/instance: secure-sign
     app.kubernetes.io/name: secure-sign
     app.kubernetes.io/part-of: trusted-artifact-signer
-  namespace: openshift-operators
 spec:
   externalAccess:
     enabled: true
