@@ -8,9 +8,8 @@ metadata:
   name: keycloak
 spec:
   hostname:
-    hostname: keycloak.apps.j3w50o9m.eastus.aroapp.io
-    # admin: keycloak.apps.j3w50o9m.eastus.aroapp.io
-    adminUrl: https://keycloak.apps.j3w50o9m.eastus.aroapp.io
+    hostname: keycloak.apps.{{ .Values.domain }}
+    adminUrl: https://keycloak.apps.{{ .Values.domain }}
   http:
     httpEnabled: true
   ingress:
