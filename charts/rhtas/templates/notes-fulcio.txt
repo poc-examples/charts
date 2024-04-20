@@ -1,10 +1,10 @@
-#openssl ecparam -genkey \
+# openssl ecparam -genkey \
 #    -name prime256v1 \
 #    -out ca_key.pem
-#openssl ec \
+# openssl ec \
 #    -in ca_key.pem -aes256 \
 #    -out encrypted_ca_key.pem
-#openssl req -x509 -new \
+# openssl req -x509 -new \
 #    -key encrypted_ca_key.pem -sha256 -days 1024 \
 #    -out ca_cert.pem -subj "/CN=*.apps.j3w50o9m.eastus.aroapp.io/O=Red Hat/emailAddress=admin@redhat.com"
 #oc create secret generic ca-key-pair \
