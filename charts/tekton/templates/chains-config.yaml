@@ -41,7 +41,7 @@ spec:
     #################################
     ### KEYLESS SIGNING W/ FULCIO ###
     #################################
-    signers.x509.fulcio.enabled: 'true'
+    signers.x509.fulcio.enabled: true
     signers.x509.fulcio.address: 'https://fulcio-server.rhtas.svc.cluster.local'
     # signers.x509.fulcio.issuer: 'https://keycloak.apps.{{ .Values.domain}}/realms/tssc'
     # signers.x509.fulcio.provider: 'oidc'
