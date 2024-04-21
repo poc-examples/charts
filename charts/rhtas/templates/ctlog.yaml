@@ -15,9 +15,9 @@ spec:
   # privateKeyPasswordRef:
   #   key: cosign.password
   #   name: signing-secret
-  # privateKeyRef:
-  #   key: cosign.key
-  #   name: signing-secret
-  # publicKeyRef:
-  #   key: cosign.pub
-  #   name: signing-secret
+  privateKeyRef:
+    key: private
+    name: ctlog-ctlog-keys
+  publicKeyRef:
+    key: public
+    name: ctlog-ctlog-keys
