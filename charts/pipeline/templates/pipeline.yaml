@@ -113,7 +113,7 @@ spec:
         - name: FORMAT
           value: oci
       runAfter:
-        - pre-fetch-dependencies
+        - scan-and-sign-sbom
       taskRef:
         kind: Task
         name: push
