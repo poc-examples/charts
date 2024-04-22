@@ -95,3 +95,30 @@ spec:
       workspaces:
         - name: source
           workspace: source
+
+    - name: push
+      params:
+        - name: IMAGE
+          value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: BUILD_EXTRA_ARGS
+          value: "--layers=true"
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+      runAfter:
+        - pre-fetch-dependencies
+      taskRef:
+        kind: Task
+        name: push
+      workspaces:
+        - name: source
+          workspace: source
+        - name: varlibcontainers
+          workspace: varlibcontainers
