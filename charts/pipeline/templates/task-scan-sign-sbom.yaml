@@ -61,17 +61,17 @@ spec:
           execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json -o json > security-report.json")
           print(execute("/tmp/grype sbom:$(workspaces.source.path)/cyclonedx-sbom.json --fail-on Critical --only-fixed"))
 
-    - name: sign-sbom
-      image: gcr.io/projectsigstore/cosign:v1.4.1
-      workingDir: $(workspaces.source.path)
-      volumeMounts:
-        - name: signing-keys
-          mountPath: /etc/signing-keys
-      script: |
-        #!/bin/bash
-        echo "Signing SBOM..."
-        cosign sign-blob --key $(params.COSIGN_KEY) --output-signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME)
-        echo "SBOM signed successfully."
+    # - name: sign-sbom
+    #   image: gcr.io/projectsigstore/cosign:v1.4.1
+    #   workingDir: $(workspaces.source.path)
+    #   volumeMounts:
+    #     - name: signing-keys
+    #       mountPath: /etc/signing-keys
+    #   script: |
+    #     #!/bin/bash
+    #     echo "Signing SBOM..."
+    #     cosign sign-blob --key $(params.COSIGN_KEY) --output-signature $(workspaces.source.path)/$(params.SBOM_FILENAME).sig $(workspaces.source.path)/$(params.SBOM_FILENAME)
+    #     echo "SBOM signed successfully."
 
   #   - name: verify-sbom-signature
   #     image: gcr.io/projectsigstore/cosign:v1.4.1
