@@ -7,11 +7,4 @@ metadata:
     app: sso
   name: keycloak
 spec:
-  hostname:
-    hostname: keycloak.apps.{{ .Values.domain }}
-    adminUrl: https://keycloak.apps.{{ .Values.domain }}
-  http:
-    httpEnabled: true
-  ingress:
-    enabled: true
   instances: 1
