@@ -99,6 +99,25 @@ spec:
           --storage-driver=$(params.STORAGE_DRIVER) \
           --format=v2s2 "$(params.IMAGE)" oci-archive:$(workspaces.source.path)/image.tar
 
+    - name: push
+      image: $(params.BUILDER_IMAGE)
+      workingDir: $(workspaces.source.path)
+      volumeMounts:
+        - name: storage-conf
+          mountPath: /etc/containers/storage.conf
+          subPath: storage.conf
+        - name: lock
+          mountPath: /usr/lib/containers/storage
+      script: |
+
+        buildah ${CERT_DIR_FLAG} "--storage-driver=$(params.STORAGE_DRIVER)" push $(params.PUSH_EXTRA_ARGS) \
+          "--tls-verify=$(params.TLSVERIFY)" \
+          --digestfile /tmp/image-digest "$(params.IMAGE)" \
+          "docker://$(params.IMAGE)"
+
+        tee "$(results.IMAGE_DIGEST.path)" < /tmp/image-digest
+        printf '%s' "$(params.IMAGE)" | tee "$(results.IMAGE_URL.path)"
+
   volumes:
     - name: storage-conf
       configMap:
