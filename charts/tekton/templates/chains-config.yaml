@@ -22,14 +22,14 @@ spec:
     ######### TASKRUN CONFIG ########
     #################################
     artifacts.taskrun.format: slsa/v1
-    artifacts.taskrun.storage: oci
+    artifacts.taskrun.storage: tekton,oci
     artifacts.taskrun.signer: x509
 
     #################################
     #### PIPELINE RUN CONFIG ########
     #################################
     artifacts.pipelinerun.format: slsa/v1
-    artifacts.pipelinerun.storage: oci
+    artifacts.pipelinerun.storage: tekton,oci
     artifacts.pipelinerun.signer: x509
 
     #################################
@@ -45,7 +45,7 @@ spec:
     # signers.x509.fulcio.address: 'https://fulcio-server-rhtas.apps.{{ .Values.domain}}'
     # signers.x509.fulcio.issuer: 'https://keycloak.apps.{{ .Values.domain}}/realms/tssc'
     # signers.x509.fulcio.provider: 'oidc'
-    signers.x509.tuf.mirror.url: 'https://tuff.apps.{{ .Values.domain}}'
+    # signers.x509.tuf.mirror.url: 'https://tuff.apps.{{ .Values.domain}}'
 
     disabled: false
     options:

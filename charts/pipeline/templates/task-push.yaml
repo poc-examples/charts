@@ -74,6 +74,8 @@ spec:
     - name: push
       image: $(params.BUILDER_IMAGE)
       workingDir: $(workspaces.source.path)
+      securityContext:
+        privileged: true
       volumeMounts:
         - name: storage-conf
           mountPath: /etc/containers/storage.conf
