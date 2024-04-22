@@ -36,7 +36,7 @@ spec:
     # SEND TRANSPARENCY LOGS TO REKOR
     #################################
     transparency.enabled: 'true'
-    transparency.url: https://rekor-search-ui-rhtas.apps.{{ .Values.domain}}
+    transparency.url: https://rekor.apps.{{ .Values.domain}}
 
     #################################
     ### KEYLESS SIGNING W/ FULCIO ###
