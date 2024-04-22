@@ -12,12 +12,12 @@ spec:
   ## PASSING in self-created sigining secrets seems to be ignored and 
   ## returning go code errors are not verbose enough currentl defaulting to letting logs 
   ## create their own for the time being.
-  privateKeyPasswordRef:
-    key: passphrase
-    name: ctlog-ctlog-keys
-  privateKeyRef:
-    key: private
-    name: ctlog-ctlog-keys
-  publicKeyRef:
-    key: public
-    name: ctlog-ctlog-keys
+  # privateKeyPasswordRef:
+  #   key: passphrase
+  #   name: ctlog-ctlog-keys
+  # privateKeyRef:
+  #   key: private
+  #   name: ctlog-ctlog-keys
+  # publicKeyRef:
+  #   key: public
+  #   name: ctlog-ctlog-keys
