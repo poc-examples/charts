@@ -41,11 +41,11 @@ spec:
     #################################
     ### KEYLESS SIGNING W/ FULCIO ###
     #################################
-    # signers.x509.fulcio.enabled: true
-    # signers.x509.fulcio.address: 'https://fulcio-server-rhtas.apps.{{ .Values.domain}}'
-    # signers.x509.fulcio.issuer: 'https://keycloak.apps.{{ .Values.domain}}/realms/tssc'
+    signers.x509.fulcio.enabled: true
+    signers.x509.fulcio.address: 'https://fulcio-server-rhtas.apps.{{ .Values.domain}}'
+    signers.x509.fulcio.issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
     # signers.x509.fulcio.provider: 'oidc'
-    # signers.x509.tuf.mirror.url: 'https://tuff.apps.{{ .Values.domain}}'
+    signers.x509.tuf.mirror.url: 'https://tuff.apps.{{ .Values.domain}}'
 
     disabled: false
     options:
@@ -130,7 +130,7 @@ spec:
     keep: 10
     resources:
     - pipelinerun
-    schedule: 0 8 * * *
+    schedule: 0/15 * * * *
   targetNamespace: openshift-pipelines
   trigger:
     default-service-account: pipeline
