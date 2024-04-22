@@ -9,7 +9,7 @@ metadata:
 spec:
   external:
     enabled: true
-    url: keycloak-keycloak.apps.{{ .Values.domain }}
+    url: https://keycloak-keycloak.apps.{{ .Values.domain }}
   externalAccess:
     enabled: true
   instances: 1
