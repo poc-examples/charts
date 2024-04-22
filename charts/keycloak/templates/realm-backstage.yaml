@@ -1,0 +1,30 @@
+# apiVersion: keycloak.org/v1alpha1
+# kind: KeycloakRealm
+# metadata:
+#   name: backstage
+#   namespace: keycloak-system
+#   labels:
+#     app: backstage
+# spec:
+#   instanceSelector:
+#     matchLabels:
+#       app: sso
+#   realm:
+#     displayName: Backstage Authentication Realm
+#     enabled: true
+#     id: backstage
+#     identityProviders:
+#       - alias: GitLab
+#         config:
+#           authorizationUrl: 'https://gitlab-gitlab.apps.cluster-mbxpn.sandbox255.opentlc.com/oauth/authorize'
+#           clientAuthMethod: client_secret_basic
+#           clientId: 96f4d7234877e83d1e1f6c9f9d4ac9e4f3f2e11e20f890c836ee6b51ada0f732
+#           clientSecret: 493dab302824885323ea751cfd2905e59f83756bb9b7157b83fa58f80075f7e5
+#           syncMode: IMPORT
+#           tokenUrl: 'https://gitlab-gitlab.apps.cluster-mbxpn.sandbox255.opentlc.com/oauth/token'
+#           useJwksUrl: 'true'
+#         enabled: true
+#         firstBrokerLoginFlowAlias: first broker login
+#         providerId: oidc
+#         trustEmail: true
+#     realm: backstage

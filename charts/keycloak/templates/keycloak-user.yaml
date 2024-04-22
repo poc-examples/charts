@@ -1,0 +1,21 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  name: cengleby
+  namespace: keycloak-system
+  labels:
+    app: sso
+spec:
+  realmSelector:
+    matchLabels:
+      app: sso
+  user:
+    credentials:
+      - type: password
+        value: secure
+    email: cengleby@redhat.com
+    emailVerified: true
+    enabled: true
+    firstName: Jane
+    lastName: Engleby
+    username: cengleby
