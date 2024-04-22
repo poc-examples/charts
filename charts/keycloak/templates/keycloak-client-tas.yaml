@@ -2,7 +2,7 @@ apiVersion: keycloak.org/v1alpha1
 kind: KeycloakClient
 metadata:
   name: trusted-artifact-signer
-  namespace: keycloak-system
+  namespace: keycloak
   labels:
     app: sso
 spec:
