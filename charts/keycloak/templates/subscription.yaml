@@ -5,11 +5,11 @@ metadata:
     operators.coreos.com/rhbk-operator.keycloak: ""
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-  name: rhbk-operator
+  name: rhsso-operator
   namespace: keycloak
 spec:
-  channel: stable-v22
+  channel: stable
   installPlanApproval: Automatic
-  name: rhbk-operator
+  name: rhsso-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
