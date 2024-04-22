@@ -49,6 +49,9 @@ spec:
   - name: BUILD_EXTRA_ARGS
     description: Extra parameters passed for the build command when building images.
     default: ""
+  - name: PUSH_EXTRA_ARGS
+    description: Extra parameters passed for the build command when building images.
+    default: ""
   workspaces:
   - name: source
   - name: varlibcontainers
