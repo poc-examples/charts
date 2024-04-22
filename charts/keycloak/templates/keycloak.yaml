@@ -7,8 +7,8 @@ metadata:
     app: sso
   name: keycloak
 spec:
-  external:
-    enabled: true
+  # external:
+  #   enabled: true
     # url: https://keycloak-keycloak.apps.{{ .Values.domain }}
   externalAccess:
     enabled: true
