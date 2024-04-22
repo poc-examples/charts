@@ -22,14 +22,14 @@ spec:
     ######### TASKRUN CONFIG ########
     #################################
     artifacts.taskrun.format: slsa/v1
-    artifacts.taskrun.storage: tekton,oci
+    artifacts.taskrun.storage: oci
     artifacts.taskrun.signer: x509
 
     #################################
     #### PIPELINE RUN CONFIG ########
     #################################
     artifacts.pipelinerun.format: slsa/v1
-    artifacts.pipelinerun.storage: tekton,oci
+    artifacts.pipelinerun.storage: oci
     artifacts.pipelinerun.signer: x509
 
     #################################

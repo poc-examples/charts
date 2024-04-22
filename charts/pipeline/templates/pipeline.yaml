@@ -73,52 +73,52 @@ spec:
         - name: varlibcontainers
           workspace: varlibcontainers
 
-    # - name: generate-sbom
-    #   params:
-    #     - name: IMAGE
-    #       value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
-    #   runAfter:
-    #     - build
-    #   taskRef:
-    #     kind: Task
-    #     name: generate-signed-sbom
-    #   workspaces:
-    #     - name: source
-    #       workspace: source
+    - name: generate-sbom
+      params:
+        - name: IMAGE
+          value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+      runAfter:
+        - build
+      taskRef:
+        kind: Task
+        name: generate-signed-sbom
+      workspaces:
+        - name: source
+          workspace: source
 
-    # - name: scan-and-sign-sbom
-    #   runAfter:
-    #     - generate-sbom
-    #   taskRef:
-    #     kind: Task
-    #     name: scan-and-sign-sbom
-    #   workspaces:
-    #     - name: source
-    #       workspace: source
+    - name: scan-and-sign-sbom
+      runAfter:
+        - generate-sbom
+      taskRef:
+        kind: Task
+        name: scan-and-sign-sbom
+      workspaces:
+        - name: source
+          workspace: source
 
-    # - name: push
-    #   params:
-    #     - name: IMAGE
-    #       value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
-    #     - name: STORAGE_DRIVER
-    #       value: vfs
-    #     - name: DOCKERFILE
-    #       value: ./Dockerfile
-    #     - name: CONTEXT
-    #       value: .
-    #     - name: BUILD_EXTRA_ARGS
-    #       value: "--layers=true"
-    #     - name: TLSVERIFY
-    #       value: 'true'
-    #     - name: FORMAT
-    #       value: oci
-    #   runAfter:
-    #     - scan-and-sign-sbom
-    #   taskRef:
-    #     kind: Task
-    #     name: push
-    #   workspaces:
-    #     - name: source
-    #       workspace: source
-    #     - name: varlibcontainers
-    #       workspace: varlibcontainers
+    - name: push
+      params:
+        - name: IMAGE
+          value: 'quay.io/$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+        - name: STORAGE_DRIVER
+          value: vfs
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+        - name: BUILD_EXTRA_ARGS
+          value: "--layers=true"
+        - name: TLSVERIFY
+          value: 'true'
+        - name: FORMAT
+          value: oci
+      runAfter:
+        - scan-and-sign-sbom
+      taskRef:
+        kind: Task
+        name: push
+      workspaces:
+        - name: source
+          workspace: source
+        - name: varlibcontainers
+          workspace: varlibcontainers
