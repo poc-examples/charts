@@ -15,12 +15,3 @@ spec:
   ingress:
     enabled: true
   instances: 1
-  db:
-    vendor: postgres
-    host: postgres-db
-    usernameSecret:
-      name: postgres-credentials
-      key: username
-    passwordSecret:
-      name: postgres-credentials
-      key: password
