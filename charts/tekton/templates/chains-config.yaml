@@ -21,14 +21,14 @@ spec:
     #################################
     ######### TASKRUN CONFIG ########
     #################################
-    artifacts.taskrun.format: slsa/v1
+    artifacts.taskrun.format: in-toto
     artifacts.taskrun.storage: tekton,oci
     artifacts.taskrun.signer: x509
 
     #################################
     #### PIPELINE RUN CONFIG ########
     #################################
-    artifacts.pipelinerun.format: slsa/v1
+    artifacts.pipelinerun.format: in-toto
     artifacts.pipelinerun.storage: tekton,oci
     artifacts.pipelinerun.signer: x509
 
@@ -77,7 +77,7 @@ spec:
     enable-param-enum: false
     enable-provenance-in-status: true
     enable-step-actions: false
-    enable-tekton-oci-bundles: false
+    enable-tekton-oci-bundles: true
     enforce-nonfalsifiability: none
     keep-pod-on-cancel: false
     max-result-size: 4096
@@ -118,7 +118,7 @@ spec:
           error-detection-simple-regexp: ^(?P<filename>[^:]*):(?P<line>[0-9]+):(?P<column>[0-9]+):([
             ]*)?(?P<error>.*)
           error-log-snippet: "true"
-          remember-ok-to-test: "true"
+          remember-ok-to-test: "false"
           remote-tasks: "true"
           secret-auto-create: "true"
           secret-github-app-token-scoped: "true"
