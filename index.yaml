@@ -1850,6 +1850,16 @@ entries:
   rhtas:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-23T01:35:32.553358445Z"
+    description: A Helm chart for Kubernetes
+    digest: 2f85e1475d575cef0e62712ed63899c4269cbafc30fce988fd5c6e95c30cd21f
+    name: rhtas
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.27/rhtas-0.1.27.tgz
+    version: 0.1.27
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-23T01:27:41.126273216Z"
     description: A Helm chart for Kubernetes
     digest: 108f7fa7295f013c6253872c0f852c539f68f43b8b508b431673aeaef80b87a9
@@ -2581,4 +2591,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-23T01:27:41.126973584Z"
+generated: "2024-04-23T01:35:32.553794341Z"
