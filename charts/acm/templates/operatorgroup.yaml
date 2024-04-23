@@ -2,7 +2,7 @@ apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   annotations:
-    olm.providedAPIs: MultiClusterHub.v1.operator.open-cluster-management.io
+    olm.providedAPIs: ''
   name: open-cluster-management
   namespace: open-cluster-management
 spec:
