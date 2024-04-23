@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  acm:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-23T16:25:46.180480301Z"
+    description: A Helm chart for Kubernetes
+    digest: 7ad3b5f3ede21b2a82905525a1904b9f3f3e0502dd8115404043855c71250db6
+    name: acm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acm-0.1.0/acm-0.1.0.tgz
+    version: 0.1.0
   acs:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -2609,6 +2620,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/tekton-0.1.7/tekton-0.1.7.tgz
     version: 0.1.7
+  trustification:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-23T16:25:46.263455607Z"
+    description: A Helm chart for Kubernetes
+    digest: d27d058f56cea1b1287275d00b0ee2bf797e58003b26c422ae18ae93cf4d1acf
+    name: trustification
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/trustification-0.1.0/trustification-0.1.0.tgz
+    version: 0.1.0
   vault:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -2641,4 +2663,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-23T14:10:11.563850613Z"
+generated: "2024-04-23T16:25:46.264231576Z"
