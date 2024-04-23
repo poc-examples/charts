@@ -11,7 +11,7 @@ metadata:
 spec:
   certificate:
     commonName: fulcio.apps.{{ .Values.domain}}
-    organizationEmail: admin@redhat.com
+    organizationEmail: cengleby@redhat.com
     organizationName: Red Hat
     # caRef:
     #   name: ca-key-pair
@@ -24,8 +24,8 @@ spec:
     #   name: ca-key-pair
   config:
     OIDCIssuers:
-      - ClientID: trusted-artifact-signer
-        Issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
+      - ClientID: sigstore
+        # Issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
         IssuerURL: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
         Type: email
   externalAccess:
