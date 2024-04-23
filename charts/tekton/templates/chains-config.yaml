@@ -43,7 +43,7 @@ spec:
     #################################
     signers.x509.fulcio.enabled: true
     signers.x509.fulcio.address: 'https://fulcio-server-rhtas.apps.{{ .Values.domain}}'
-    signers.x509.fulcio.issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
+    # signers.x509.fulcio.issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
     # signers.x509.fulcio.provider: 'oidc'
     # signers.x509.tuf.mirror.url: 'https://tuff.apps.{{ .Values.domain}}'
 

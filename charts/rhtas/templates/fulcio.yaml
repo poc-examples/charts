@@ -27,7 +27,7 @@ spec:
       - ClientID: sigstore
         Issuer: 'https://keycloak-keycloak.apps.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
         IssuerURL: 'https://kubernetes.default.svc'
-        Type: email
+        Type: kubernetes
   externalAccess:
     enabled: true
   monitoring:
