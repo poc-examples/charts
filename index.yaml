@@ -3,6 +3,16 @@ entries:
   acm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-23T16:39:38.887429882Z"
+    description: A Helm chart for Kubernetes
+    digest: 89c3fe2d02d3b9ccf91f80bf8ccf4d015568c11d8aa1c2f0067257d8af17b34f
+    name: acm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acm-0.1.2/acm-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-23T16:31:58.893648739Z"
     description: A Helm chart for Kubernetes
     digest: 4be6d812e4000630f4e5804a99c210021d37c0a8f994080aae251c3bd10d6108
@@ -2673,4 +2683,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-23T16:31:58.894028836Z"
+generated: "2024-04-23T16:39:38.888019605Z"
