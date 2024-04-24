@@ -4,6 +4,8 @@ metadata:
   labels:
     operators.coreos.com/advanced-cluster-management.open-cluster-management: ""
   name: advanced-cluster-management
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   channel: release-2.10
   installPlanApproval: Automatic
