@@ -1,0 +1,12 @@
+# # Main Cluster (Helm Chart)
+# - External Secrets Operator (Admin)
+# - Gatekeeper
+# - acm configs
+# - service cluster app of apps (Infrastructure)
+#   - ACS
+
+# # Other Clusters (Happens Via ACM configs)
+# ArgoCD (Admin-GitOps)
+#   - External Secret 
+#   - Gatekeeper
+#   - App of Apps (Services-GitOps)
