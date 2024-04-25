@@ -1,18 +1,11 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  creationTimestamp: "2024-04-25T02:08:02Z"
-  generation: 1
-  labels:
-    operators.coreos.com/gatekeeper-operator-product.openshift-operators: ""
   name: gatekeeper-operator-product
   namespace: openshift-operators
-  resourceVersion: "583728"
-  uid: 3b10593e-29d1-4231-b88c-32edf9ce31c7
 spec:
   channel: stable
   installPlanApproval: Automatic
   name: gatekeeper-operator-product
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: gatekeeper-operator-product.v3.14.0
