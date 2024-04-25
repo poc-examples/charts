@@ -3,6 +3,8 @@ kind: Subscription
 metadata:
   name: gatekeeper-operator-product
   namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   channel: stable
   installPlanApproval: Automatic
