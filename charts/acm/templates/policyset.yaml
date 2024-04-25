@@ -1,5 +1,5 @@
 # # Main Cluster (Helm Chart)
-# - External Secrets Operator (Admin)
+# - External Secrets Operator (Admin) - done
 # - Gatekeeper
 # - acm configs
 # - service cluster app of apps (Infrastructure)
@@ -10,42 +10,3 @@
 #   - External Secret 
 #   - Gatekeeper
 #   - App of Apps (Services-GitOps)
-
-# apiVersion: policy.open-cluster-management.io/v1beta1
-# kind: PolicySet
-# metadata:
-#   name: admin-gitops
-#   namespace: acm-policies
-# spec:
-#   description: Bootstraps GitOps
-#   policies:
-#     - argo-enable-helm
-#     - external-secrets-operator
-# ---
-# apiVersion: cluster.open-cluster-management.io/v1beta1
-# kind: Placement
-# metadata:
-#   name: admin-gitops-placement
-#   namespace: acm-policies
-# spec:
-#   clusterSets:
-#     - local
-#   tolerations:
-#     - key: cluster.open-cluster-management.io/unreachable
-#       operator: Exists
-#     - key: cluster.open-cluster-management.io/unavailable
-#       operator: Exists
-# ---
-# apiVersion: policy.open-cluster-management.io/v1
-# kind: PlacementBinding
-# metadata:
-#   name: admin-gitops-placement
-#   namespace: acm-policies
-# placementRef:
-#   name: admin-gitops-placement
-#   apiGroup: cluster.open-cluster-management.io
-#   kind: Placement
-# subjects:
-#   - name: admin-gitops
-#     apiGroup: policy.open-cluster-management.io
-#     kind: PolicySet
