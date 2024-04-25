@@ -10,9 +10,6 @@ spec:
     spec:
       names:
         kind: K8sRequiredLabels
-        listKind: K8sRequiredLabelsList
-        plural: k8srequiredlabels
-        singular: k8srequiredlabels
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
