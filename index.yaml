@@ -438,6 +438,16 @@ entries:
   gatekeeper:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-25T02:33:15.30841683Z"
+    description: A Helm chart for Kubernetes
+    digest: d23aaef978fbc06f6ab18a31f58af92328181809679fb105fe52223aba52319c
+    name: gatekeeper
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.2/gatekeeper-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-25T02:25:29.414680613Z"
     description: A Helm chart for Kubernetes
     digest: cf45e5deb7b049b6a35d86ee43f16c425c6390937c6121cd1d0ea7299747ba58
@@ -2784,4 +2794,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-25T02:25:29.4154837Z"
+generated: "2024-04-25T02:33:15.309333145Z"
