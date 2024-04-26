@@ -15,7 +15,7 @@ keycloak:
 
 gatekeeper:
   chartVersion: 0.1.16
-  enabled: false
+  enabled: true
 
 gitops:
   namespace: openshift-gitops
