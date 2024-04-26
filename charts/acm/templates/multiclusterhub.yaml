@@ -6,4 +6,3 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   availabilityConfig: Basic
-  disableHubSelfManagement: false
