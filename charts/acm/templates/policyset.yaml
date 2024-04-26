@@ -1,7 +1,7 @@
 # # Main Cluster (Helm Chart)
 # - External Secrets Operator (Admin) - done
-# - Gatekeeper
-# - acm configs
+# - Gatekeeper - done
+# - acm configs - done
 # - service cluster app of apps (Infrastructure)
 #   - ACS
 
