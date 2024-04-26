@@ -1,0 +1,5 @@
+gitops:
+  namespace: openshift-gitops
+external_secrets:
+  enabled: true
+  namespace: external-secrets
