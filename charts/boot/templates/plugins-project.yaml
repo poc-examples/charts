@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: plugins
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  description: "Project that holds all plugin resources."
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceBlacklist:
+    - group: ''
+      kind: 'Secret'
