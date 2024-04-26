@@ -10,7 +10,6 @@ spec:
   source:
     chart: policies
     repoURL: "https://poc-examples.github.io/charts"
-    version: v3
     targetRevision: 0.1.0
     # helm:
     #   valuesObject:
