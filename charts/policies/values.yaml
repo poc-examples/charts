@@ -1,0 +1,64 @@
+registry:
+  enabled: false
+
+acs:
+  chartVersion: 0.1.6
+  enabled: false
+
+acm:
+  chartVersion: 0.1.5
+  enabled: false
+
+keycloak:
+  chartVersion: 0.1.34
+  enabled: false
+
+gatekeeper:
+  chartVersion: 0.1.34
+  enabled: false
+
+gitops:
+  namespace: openshift-gitops
+  channel: gitops-1.11
+  enabled: true
+  updater:
+    enabled: true
+
+tekton:
+  chartVersion: 0.1.64
+  enabled: false
+
+sonarqube:
+  chartVersion: ~8
+  enabled: false
+
+devhub:
+  chartVersion: 0.1.8
+  enabled: false
+
+rhtas:
+  chartVersion: 0.1.30
+  namespace: rhtas
+  enabled: false
+
+gitlab:
+  namespace: gitlab-system
+  chartVersion: 0.1.23
+  enabled: false
+  # imports:
+  #   - name: "container library"
+  #     url: "https://github.com/poc-examples/container-library.git"
+  #   - name: "application catalog"
+  #     url: "https://github.com/poc-examples/application-catalog.git"
+  helmValues:
+    namespace: gitlab-system
+    domain: apps.ynk5jt2i.eastus.aroapp.io
+
+external_secrets:
+  enabled: true
+  chartVersion: 0.1.7
+  namespace: external-secrets
+
+vault:
+  chartVersion: 0.27.0
+  enabled: false

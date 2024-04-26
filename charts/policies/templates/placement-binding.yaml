@@ -1,0 +1,12 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: boot-policies-placement-binding
+placementRef:
+  name: "boot-policies-placement"
+  apiGroup: cluster.open-cluster-management.io
+  kind: Placement
+subjects:
+  - name: boot-policies
+    apiGroup: policy.open-cluster-management.io
+    kind: PolicySet
