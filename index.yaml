@@ -3,6 +3,16 @@ entries:
   acm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-26T06:11:02.798126879Z"
+    description: A Helm chart for Kubernetes
+    digest: 763267c8ed9b88f519c172e26d8dc3a693437f421600853421ae0121e9e0bccb
+    name: acm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acm-0.1.11/acm-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-25T02:12:24.060262356Z"
     description: A Helm chart for Kubernetes
     digest: a8465bbe3a9cd51ac880cd6516b0183d210c7af10deb378595ed31c874acca90
@@ -436,6 +446,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.7/external_secrets-0.1.7.tgz
     version: 0.1.7
   gatekeeper:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-26T06:11:02.876992285Z"
+    description: A Helm chart for Kubernetes
+    digest: 940dc0ea571075231be8b260e8ab2cc5b6a1785777c7abd9c7991528f029bf8c
+    name: gatekeeper
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.15/gatekeeper-0.1.15.tgz
+    version: 0.1.15
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-25T05:51:18.092476747Z"
@@ -2904,4 +2924,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-25T05:51:18.093458655Z"
+generated: "2024-04-26T06:11:02.877551125Z"
