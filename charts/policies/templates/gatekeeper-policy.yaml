@@ -1,10 +1,10 @@
-{{ if .Values.external_secrets.enabled }}
+{{ if .Values.gatekeeper.enabled }}
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: external-secrets
+  name: gatekeeper
   annotations:
-    policy.open-cluster-management.io/description: Creates the External Secrets Operator
+    policy.open-cluster-management.io/description: Creates the Gatekeeper Operator
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
@@ -16,7 +16,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: external-secrets
+          name: gatekeeper
         spec:
           remediationAction: enforce
           severity: low
@@ -26,23 +26,16 @@ spec:
                 apiVersion: argoproj.io/v1alpha1
                 kind: Application
                 metadata:
-                  name: external-secrets-plugin
+                  name: gatekeeper-plugin
                   namespace: "{{ .Values.gitops.namespace }}"
                 spec:
                   destination:
-                    namespace: external-secrets
+                    namespace: gatekeeper
                     server: https://kubernetes.default.svc
                   source:
-                    chart: external_secrets
+                    chart: gatekeeper
                     repoURL: https://poc-examples.github.io/charts
-                    targetRevision: "{{ .Values.external_secrets.chartVersion }}"
-                    helm:
-                      valuesObject:
-                        namespace: "{{ .Values.external_secrets.namespace }}"
-                        gitops:
-                            namespace: "{{ .Values.gitops.namespace }}"
-                        subscription:
-                            channel: stable
+                    targetRevision: "{{ .Values.gatekeeper.chartVersion }}"
                   project: plugins
                   syncPolicy:
                     automated:

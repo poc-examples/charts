@@ -6,8 +6,8 @@ spec:
   description: Policy for bootstrapping cluster with intial services
   policies:
     {{- if eq .Values.external_secrets.enabled true }}
-    - "external-secrets-operator"
+    - "external-secrets"
     {{- end }}
     {{- if eq .Values.gatekeeper.enabled true }}
-    - "gatekeeper-operator"
+    - "gatekeeper"
     {{- end }}
