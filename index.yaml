@@ -2170,6 +2170,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/pipeline-0.1.7/pipeline-0.1.7.tgz
     version: 0.1.7
+  policies:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-26T17:07:11.433894723Z"
+    description: A Helm chart for Kubernetes
+    digest: 893a767fea3cbde126bb198dd5977b70e45311334a11a5496dcd7ccb8e840c61
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.0/policies-0.1.0.tgz
+    version: 0.1.0
   rhtas:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -2975,4 +2986,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-26T16:47:49.054172674Z"
+generated: "2024-04-26T17:07:11.434803351Z"
