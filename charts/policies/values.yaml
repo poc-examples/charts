@@ -12,7 +12,7 @@ registry:
   enabled: false
 
 acs:
-  chartVersion: 0.1.19
+  chartVersion: 0.1.20
   enabled: true
 
 acm:
