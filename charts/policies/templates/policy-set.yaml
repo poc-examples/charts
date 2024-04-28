@@ -11,3 +11,6 @@ spec:
     {{- if eq .Values.gatekeeper.enabled true }}
     - "gatekeeper"
     {{- end }}
+    {{- if eq .Values.machinesets.enabled true }}
+    - "machine-sets"
+    {{- end }}
