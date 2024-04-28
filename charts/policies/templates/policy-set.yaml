@@ -17,3 +17,6 @@ spec:
     {{- if eq .Values.acs.enabled true }}
     - "advanced-cluster-security"
     {{- end }}
+    {{- if eq .Values.vault.enabled true }}
+    - "vault"
+    {{- end }}
