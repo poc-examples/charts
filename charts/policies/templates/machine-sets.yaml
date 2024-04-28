@@ -37,7 +37,7 @@ spec:
                     repoURL: https://poc-examples.github.io/charts
                     targetRevision: "{{ .Values.machinesets.chartVersion }}"
                     helm:
-                      valuesObject: {{ .Values.machinesets.helmValues }}
+                      valuesObject: {{ toJson .Values.machinesets.helmValues }}
                   project: plugins
                   syncPolicy:
                     automated:
