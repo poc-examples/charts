@@ -12,8 +12,8 @@ registry:
   enabled: false
 
 acs:
-  chartVersion: 0.1.6
-  enabled: false
+  chartVersion: 0.1.19
+  enabled: true
 
 acm:
   chartVersion: 0.1.5

@@ -14,3 +14,6 @@ spec:
     {{- if eq .Values.machinesets.enabled true }}
     - "machine-sets"
     {{- end }}
+    {{- if eq .Values.acs.enabled true }}
+    - "advanced-cluster-security"
+    {{- end }}

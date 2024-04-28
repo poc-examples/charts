@@ -1,10 +1,10 @@
-{{ if .Values.gatekeeper.enabled }}
+{{ if .Values.acs.enabled }}
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: gatekeeper
+  name: advanced-cluster-security
   annotations:
-    policy.open-cluster-management.io/description: Creates the Gatekeeper Operator
+    policy.open-cluster-management.io/description: Creates the ACS Operator
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
@@ -16,7 +16,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: gatekeeper
+          name: advanced-cluster-security
         spec:
           remediationAction: enforce
           severity: low
@@ -26,16 +26,16 @@ spec:
                 apiVersion: argoproj.io/v1alpha1
                 kind: Application
                 metadata:
-                  name: gatekeeper-plugin
+                  name: advanced-cluster-security-plugin
                   namespace: "{{ .Values.gitops.namespace }}"
                 spec:
                   destination:
-                    namespace: gatekeeper
+                    namespace: rhacs-operator
                     server: https://kubernetes.default.svc
                   source:
-                    chart: gatekeeper
+                    chart: acs
                     repoURL: https://poc-examples.github.io/charts
-                    targetRevision: "{{ .Values.gatekeeper.chartVersion }}"
+                    targetRevision: "{{ .Values.acs.chartVersion }}"
                   project: plugins
                   syncPolicy:
                     automated:
