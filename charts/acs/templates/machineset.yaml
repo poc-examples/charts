@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-machineset
+spec:
+  template:
+    spec:
+      serviceAccountName: ansible-runner
+      containers:
+      - name: ansible
+        image: registry.access.redhat.com/ubi9/python-311:latest
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            yum install -y ansible;
+            ansible-playbook /etc/ansible/playbook.yaml;
+        volumeMounts:
+        - name: playbook-volume
+          mountPath: /etc/ansible
+      volumes:
+      - name: playbook-volume
+        configMap:
+          name: ansible-playbook
+      restartPolicy: Never
