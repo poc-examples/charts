@@ -10,7 +10,7 @@ spec:
   source:
     chart: policies
     repoURL: "https://poc-examples.github.io/charts"
-    targetRevision: 0.1.14
+    targetRevision: 0.1.15
     # helm:
     #   valuesObject:
     #     namespace: "{{ .Values.external_secrets.namespace }}"
