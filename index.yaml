@@ -135,6 +135,16 @@ entries:
   acs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-28T16:24:26.060016049Z"
+    description: A Helm chart for Kubernetes
+    digest: 539cef7469169ad9b573fea4c81fb0fb642d1960fddc6a84a5fd6841366b8d2b
+    name: acs
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acs-0.1.19/acs-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-28T16:23:31.195443847Z"
     description: A Helm chart for Kubernetes
     digest: 891e03eeb8fbcad5cb0b5cd5cc8f0c7efeff1c2afcb7b8d2ad09894ad2a8652d
@@ -1351,6 +1361,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
     version: 0.1.0
   machinesets:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-28T16:24:26.130604828Z"
+    description: A Helm chart for Kubernetes
+    digest: f70e066f1cc7a6022728ebf1196ce2eb6f0e64e7b526c356396cdf62905152a3
+    name: machinesets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/machinesets-0.1.1/machinesets-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-28T16:23:31.281376094Z"
@@ -3248,4 +3268,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-28T16:23:31.281993537Z"
+generated: "2024-04-28T16:24:26.131079755Z"
