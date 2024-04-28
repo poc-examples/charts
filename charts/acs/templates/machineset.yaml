@@ -12,7 +12,8 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            pip install ansible
+            pip install ansible;
+            ansible-galaxy collection install community.kubernetes community.okd;
             ansible-playbook /etc/ansible/playbook.yaml;
         volumeMounts:
         - name: playbook-volume
