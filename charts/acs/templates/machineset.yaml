@@ -12,8 +12,7 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            pip install --user ansible
-            export PATH=$PATH:/home/default/.local/bin
+            pip install ansible
             ansible-playbook /etc/ansible/playbook.yaml;
         volumeMounts:
         - name: playbook-volume
