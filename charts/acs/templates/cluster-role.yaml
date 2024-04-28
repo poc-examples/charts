@@ -24,3 +24,11 @@ rules:
     - "get"
     - "list"
     - "watch"
+- apiGroups:
+    - "machine.openshift.io"
+  resources:
+    - "machinesets"
+  verbs: 
+    - "get"
+    - "list"
+    - "watch"
