@@ -135,6 +135,16 @@ entries:
   acs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-28T14:17:37.914900257Z"
+    description: A Helm chart for Kubernetes
+    digest: 8c0ea3e5410cbdef2aa142eafd5a1659cb5e87642a77953f4c56ffb48ccd1bac
+    name: acs
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acs-0.1.9/acs-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-28T14:10:08.033424196Z"
     description: A Helm chart for Kubernetes
     digest: 89c5eccf5f23395b6e7bda0b5524e0e091245345691bdd6642693957af0fafa9
@@ -2274,6 +2284,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-28T14:17:38.083143015Z"
+    description: A Helm chart for Kubernetes
+    digest: 0ed0589418cf712b9769c944b92abf30ddcbc59a9e7701ef0c31da536d905668
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.5/policies-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-26T19:28:45.919759243Z"
     description: A Helm chart for Kubernetes
     digest: e303f1ffcb484d1043a6a3f14f1436010547ad6292615114eb5f195b9e7e2cb9
@@ -3127,4 +3147,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-28T14:10:08.0338993Z"
+generated: "2024-04-28T14:17:38.083648177Z"
