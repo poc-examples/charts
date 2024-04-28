@@ -13,7 +13,8 @@ spec:
         args:
           - |
             pip install ansible;
-            ansible-galaxy collection install community.kubernetes community.okd;
+            pip install openshift;
+            ansible-galaxy collection install community.kubernetes;
             ansible-playbook /etc/ansible/playbook.yaml;
         volumeMounts:
         - name: playbook-volume
