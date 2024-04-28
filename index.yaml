@@ -135,6 +135,16 @@ entries:
   acs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-28T14:44:53.956678548Z"
+    description: A Helm chart for Kubernetes
+    digest: 3cfe782e0769f57f33a6ffb7877d2f5a04e4b572c547138b0db3a73cf6122c5a
+    name: acs
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acs-0.1.13/acs-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-28T14:41:47.31005982Z"
     description: A Helm chart for Kubernetes
     digest: b4bcd79be4bef1729a5e15217bcec8bb3f6372dfa082d50d316cd431c04896eb
@@ -3177,4 +3187,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-28T14:41:47.311562305Z"
+generated: "2024-04-28T14:44:53.957152598Z"
