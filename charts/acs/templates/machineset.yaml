@@ -8,7 +8,7 @@ spec:
       serviceAccountName: ansible-runner
       containers:
       - name: ansible
-        image: registry.access.redhat.com/ubi9/python-311:latest
+        image: registry.redhat.io/ansible-automation-platform-23/ee-minimal-rhel8:latest
         command: ["/bin/bash", "-c"]
         args:
           - |
