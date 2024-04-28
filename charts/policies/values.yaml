@@ -7,7 +7,7 @@ machinesets:
     machinesets:
       - name: acs
         machine_type: Standard_D8s_v3
-
+ 
 registry:
   enabled: false
 
