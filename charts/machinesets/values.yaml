@@ -1,0 +1,5 @@
+machineset:
+  enabled: true
+machinesets:
+  - name: acs
+    machine_type: Standard_D8s_v3

@@ -1,0 +1,35 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ansible-runner-role
+rules:
+- apiGroups:
+    - ""
+  resources:
+    - "pods"
+    - "services"
+  verbs:
+    - "get"
+    - "list"
+    - "watch"
+    - "create"
+    - "update"
+    - "patch"
+    - "delete"
+- apiGroups:
+    - "config.openshift.io"
+  resources:
+    - "infrastructures"
+  verbs:
+    - "get"
+    - "list"
+    - "watch"
+- apiGroups:
+    - "machine.openshift.io"
+  resources:
+    - "machinesets"
+  verbs: 
+    - "get"
+    - "list"
+    - "watch"
+    - "create"
