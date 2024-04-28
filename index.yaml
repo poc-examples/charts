@@ -124,6 +124,16 @@ entries:
   acs:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-28T01:31:32.787439838Z"
+    description: A Helm chart for Kubernetes
+    digest: eaab1dab1070034d5c2079778ae33da9bd5fb50435126a5d6c9608aaaacbc56e
+    name: acs
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acs-0.1.7/acs-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-15T15:23:11.869022954Z"
     description: A Helm chart for Kubernetes
     digest: f8c7055e0b92610b48bf51fdd99e1c91b237f98c2b2746abe51daccd458101e0
@@ -414,6 +424,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/application-0.1.0/application-0.1.0.tgz
     version: 0.1.0
   boot:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-28T01:31:32.966716757Z"
+    description: A Helm chart for Kubernetes
+    digest: dba658cdb7c13bc57d1a7dca5d74d05ffc9849004eb974e2e3f4485678472acf
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.8/boot-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-26T19:28:45.847787852Z"
@@ -3066,4 +3086,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-26T19:28:45.920318118Z"
+generated: "2024-04-28T01:31:32.967115623Z"
