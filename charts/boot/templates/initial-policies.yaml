@@ -23,12 +23,12 @@ spec:
     automated:
       prune: false
       selfHeal: true
-      retry:
-        limit: 10
-        backoff:
-          duraction: 5s
-          factor: 2
-          maxDuration: 1m
+    retry:
+      limit: 10
+      backoff:
+        duraction: 5s
+        factor: 2
+        maxDuration: 1m
     managedNamespaceMetadata:
       labels:
         argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
