@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  aap:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-28T13:28:36.188172369Z"
+    description: A Helm chart for Kubernetes
+    digest: 9f123424d519e2741e2d74bbba014fc3faa26f3f4740453ca12ee30064daef01
+    name: aap
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/aap-0.1.0/aap-0.1.0.tgz
+    version: 0.1.0
   acm:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -3106,4 +3117,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-28T01:44:47.406368941Z"
+generated: "2024-04-28T13:28:36.188685654Z"
