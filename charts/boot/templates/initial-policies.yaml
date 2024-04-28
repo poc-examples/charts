@@ -26,7 +26,7 @@ spec:
     retry:
       limit: 10
       backoff:
-        duraction: 5s
+        duration: 5s
         factor: 2
         maxDuration: 1m
     managedNamespaceMetadata:
