@@ -1,5 +1,5 @@
 machinesets:
-  chartVersion: 0.1.1
+  chartVersion: 0.1.2
   enabled: true
   helmValues:
     machineset: 

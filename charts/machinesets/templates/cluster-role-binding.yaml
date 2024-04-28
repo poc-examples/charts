@@ -4,7 +4,7 @@ metadata:
   name: ansible-runner-rolebinding
 subjects:
 - kind: ServiceAccount
-  name: ansible-runner
+  name: managed-machine-sets
   namespace: acs-test
 roleRef:
   kind: ClusterRole
