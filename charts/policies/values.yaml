@@ -23,7 +23,7 @@ acm:
 
 keycloak:
   chartVersion: 0.1.34
-  enabled: false
+  enabled: true
 
 gatekeeper:
   chartVersion: 0.1.16
