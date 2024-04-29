@@ -1,6 +1,8 @@
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakClient
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: trusted-artifact-signer
   namespace: keycloak
   labels:
