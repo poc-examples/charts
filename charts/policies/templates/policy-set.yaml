@@ -23,3 +23,6 @@ spec:
     {{- if eq .Values.sonarqube.enabled true }}
     - "sonarqube"
     {{- end }}
+    {{- if eq .Values.keycloak.enabled true }}
+    - "keycloak"
+    {{- end }}

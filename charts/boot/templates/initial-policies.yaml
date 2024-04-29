@@ -10,14 +10,11 @@ spec:
   source:
     chart: policies
     repoURL: "https://poc-examples.github.io/charts"
-    targetRevision: 0.1.22
-    # helm:
-    #   valuesObject:
-    #     namespace: "{{ .Values.external_secrets.namespace }}"
-    #     gitops:
-    #       namespace: "{{ .Values.gitops.namespace }}"
-    #     subscription:
-    #       channel: stable
+    targetRevision: 0.1.23
+    helm:
+      parameters:
+        - name: domain
+          value: "{{ .Values.domain }}"
   project: plugins
   syncPolicy:
     automated:

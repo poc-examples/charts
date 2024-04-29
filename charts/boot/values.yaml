@@ -1,3 +1,4 @@
+domain: openshift.io
 acm:
   namespace: open-cluster-management
   enabled: true 
