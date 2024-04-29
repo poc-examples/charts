@@ -55,13 +55,8 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.1.23
-  enabled: false
-  # imports:
-  #   - name: "container library"
-  #     url: "https://github.com/poc-examples/container-library.git"
-  #   - name: "application catalog"
-  #     url: "https://github.com/poc-examples/application-catalog.git"
+  chartVersion: 0.1.24
+  enabled: true
   helmValues:
     namespace: gitlab-system
     domain: apps.ynk5jt2i.eastus.aroapp.io

@@ -1,0 +1,19 @@
+apiVersion: external-secrets.io/v1alpha1
+kind: PushSecret
+metadata:
+  name: "gitlab-system-secret-priming"
+spec:
+  deletionPolicy: Delete
+  refreshInterval: 10s
+  secretStoreRefs:
+    - name: eso-admin-secret-store
+      kind: ClusterSecretStore
+  selector:
+    secret:
+      name: "gitlab-gitlab-initial-root-password"
+  data:
+    - match:
+        secretKey: "password"
+        remoteRef:
+          remoteKey: "gitlab"
+          property: "token"
