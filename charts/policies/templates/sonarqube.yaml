@@ -30,27 +30,23 @@ spec:
                   namespace: "{{ .Values.gitops.namespace }}"
                 spec:
                   destination:
-                    namespace: vault-server
-                    server: https://kubernetes.default.svc
+                    namespace: "sonarqube"
+                    server: 'https://kubernetes.default.svc'
                   source:
-                    destination:
-                      namespace: "sonarqube"
-                      server: 'https://kubernetes.default.svc'
-                    source:
-                      chart: sonarqube
-                      repoURL: "https://SonarSource.github.io/helm-chart-sonarqube"
-                      version: v3
-                      targetRevision: "{{ .Values.sonarqube.chartVersion }}"
-                      helm:
-                        parameters:
-                          - name: OpenShift.enabled
-                            value: "true"
-                          - name: serviceAccount.create
-                            value: "true"
-                          - name: postgresql.serviceAccount.enabled
-                            value: "true"
-                          - name: route.enabled
-                            value: "true"
+                    chart: sonarqube
+                    repoURL: "https://SonarSource.github.io/helm-chart-sonarqube"
+                    version: v3
+                    targetRevision: "{{ .Values.sonarqube.chartVersion }}"
+                    helm:
+                      parameters:
+                        - name: OpenShift.enabled
+                          value: "true"
+                        - name: serviceAccount.create
+                          value: "true"
+                        - name: postgresql.serviceAccount.enabled
+                          value: "true"
+                        - name: route.enabled
+                          value: "true"
                   project: plugins
                   syncPolicy:
                     automated:
