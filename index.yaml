@@ -2515,6 +2515,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-29T01:54:22.04867132Z"
+    description: A Helm chart for Kubernetes
+    digest: 7716b48e064d6374512db372176301a75c32d49a063e95418e70a6082dc51759
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.22/policies-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-29T01:49:50.720202391Z"
     description: A Helm chart for Kubernetes
     digest: 034e384937e1b48f2c095e536560de005b102ffcd6c031fa98c3cead3c29930e
@@ -3538,4 +3548,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-29T01:49:50.720730403Z"
+generated: "2024-04-29T01:54:22.049166998Z"
