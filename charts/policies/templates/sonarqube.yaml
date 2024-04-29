@@ -35,7 +35,6 @@ spec:
                   source:
                     chart: sonarqube
                     repoURL: "https://SonarSource.github.io/helm-chart-sonarqube"
-                    version: v3
                     targetRevision: "{{ .Values.sonarqube.chartVersion }}"
                     helm:
                       parameters:
