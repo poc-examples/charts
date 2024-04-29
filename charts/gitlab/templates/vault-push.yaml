@@ -2,6 +2,8 @@ apiVersion: external-secrets.io/v1alpha1
 kind: PushSecret
 metadata:
   name: "gitlab-system-secret-priming"
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   deletionPolicy: Delete
   refreshInterval: 10s

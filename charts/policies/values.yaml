@@ -55,11 +55,8 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.1.24
+  chartVersion: 0.1.25
   enabled: true
-  helmValues:
-    namespace: gitlab-system
-    domain: apps.ynk5jt2i.eastus.aroapp.io
 
 external_secrets:
   enabled: true
