@@ -577,6 +577,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-29T02:00:43.14284994Z"
+    description: A Helm chart for Kubernetes
+    digest: 050014d1981e437347791e1f435c88d11fb9bd4dbc5d0117b01a8bd1c43678af
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.17/boot-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-29T00:09:35.527028887Z"
     description: A Helm chart for Kubernetes
     digest: dff7f0caed6e0acc5ff41767f7a7a0ad744328bea509d3a19042867127d4bc70
@@ -3548,4 +3558,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-29T01:54:22.049166998Z"
+generated: "2024-04-29T02:00:43.143372427Z"
