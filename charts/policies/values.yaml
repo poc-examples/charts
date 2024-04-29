@@ -40,7 +40,7 @@ tekton:
 
 sonarqube:
   chartVersion: ~8
-  enabled: false
+  enabled: true
 
 devhub:
   chartVersion: 0.1.8

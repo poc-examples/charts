@@ -20,3 +20,6 @@ spec:
     {{- if eq .Values.vault.enabled true }}
     - "vault"
     {{- end }}
+    {{- if eq .Values.sonarqube.enabled true }}
+    - "vault"
+    {{- end }}
