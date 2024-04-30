@@ -72,7 +72,7 @@ spec:
                   source:
                     chart: developer_hub
                     targetRevision: "{{ .Values.devhub.chartVersion }}"
-                    repoURL: 'https://helm.releases.hashicorp.com'
+                    repoURL: https://poc-examples.github.io/charts
                     helm:
                       parameters:
                         - name: host
