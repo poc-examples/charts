@@ -70,7 +70,7 @@ spec:
                     namespace: backstage
                     server: https://kubernetes.default.svc
                   source:
-                    chart: developer_hub
+                    chart: developerhub
                     targetRevision: "{{ .Values.devhub.chartVersion }}"
                     repoURL: https://poc-examples.github.io/charts
                     helm:
