@@ -4,6 +4,3 @@ metadata:
   name: "rhtas"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
-spec:
-  targetNamespaces:
-    - "rhtas"
