@@ -37,7 +37,7 @@ gitops:
     enabled: true
 
 tekton:
-  chartVersion: 0.1.64
+  chartVersion: 0.1.65
   enabled: true
 
 sonarqube:
