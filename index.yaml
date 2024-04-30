@@ -1189,6 +1189,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.9/gitlab-0.1.9.tgz
     version: 0.1.9
+  image-updater:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-30T17:13:56.918241211Z"
+    description: A Helm chart for Kubernetes
+    digest: 1795371a0126924188407449f797ff4a1be06d9cf99957cd9c4d9beda7f14fb7
+    name: image-updater
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/image-updater-0.1.0/image-updater-0.1.0.tgz
+    version: 0.1.0
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -3898,4 +3909,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T06:26:57.228864771Z"
+generated: "2024-04-30T17:13:56.918757842Z"
