@@ -2625,6 +2625,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T06:10:54.914995117Z"
+    description: A Helm chart for Kubernetes
+    digest: c5bb97c2d131eb499e11407a480feed30f8e6f6b9c8d457a6978df6dce2343a6
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.38/policies-0.1.38.tgz
+    version: 0.1.38
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T06:06:05.550374524Z"
     description: A Helm chart for Kubernetes
     digest: 2842364ed11bcc2d764676510f65e48c1a9f41944b124a1988f56a3fe45c3bd5
@@ -3004,6 +3014,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/policies-0.1.0/policies-0.1.0.tgz
     version: 0.1.0
   rhtas:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-30T06:10:55.062245594Z"
+    description: A Helm chart for Kubernetes
+    digest: b7513f31669865b6c259af649dba5e86b3d4a4e7563b248c921d91ea195fb9e7
+    name: rhtas
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.32/rhtas-0.1.32.tgz
+    version: 0.1.32
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-30T06:06:05.630198937Z"
@@ -3838,4 +3858,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T06:06:05.631099117Z"
+generated: "2024-04-30T06:10:55.063108397Z"
