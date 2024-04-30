@@ -981,6 +981,16 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T03:52:15.565438515Z"
+    description: A Helm chart for Kubernetes
+    digest: a7274666c561193abbada68d9f990a531188cada20a3f73e2b39cb8606dd892f
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.28/gitlab-0.1.28.tgz
+    version: 0.1.28
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-29T05:52:49.740863513Z"
     description: A Helm chart for Kubernetes
     digest: 3cd3dcf60ad9259ee95a5f9c6174cc30ee35db66ab05b6352af36bcba5871ec0
@@ -2605,6 +2615,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T03:52:15.646644173Z"
+    description: A Helm chart for Kubernetes
+    digest: cde216ccf819f417ceee74157e38c7ac014941fe8fe7abaf08a73c5cb88a2f1b
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.36/policies-0.1.36.tgz
+    version: 0.1.36
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T03:25:47.203446354Z"
     description: A Helm chart for Kubernetes
     digest: 59d3413723c05b3c70767ccc2293f55ec3232fd9e2d4b1286e642be27f057d38
@@ -3788,4 +3808,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T03:25:47.204096208Z"
+generated: "2024-04-30T03:52:15.647337956Z"
