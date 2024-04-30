@@ -32,3 +32,6 @@ spec:
     {{- if eq .Values.tekton.enabled true }}
     - "tekton"
     {{- end }}
+    {{- if eq .Values.devhub.enabled true }}
+    - "developer-hub"
+    {{- end }}
