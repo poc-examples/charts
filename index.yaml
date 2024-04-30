@@ -577,6 +577,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T06:06:05.473967047Z"
+    description: A Helm chart for Kubernetes
+    digest: 4a2b57f39348aac3218a847c2c976c3dfd8a211e33bd2e9aa1ccfbaf4538cfbf
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.22/boot-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-29T06:25:38.360543785Z"
     description: A Helm chart for Kubernetes
     digest: 6da9b0509e355b0322c4b9c64a59b11cadda86f2d9d6494b0831214dbef55bca
@@ -2615,6 +2625,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T06:06:05.550374524Z"
+    description: A Helm chart for Kubernetes
+    digest: 2842364ed11bcc2d764676510f65e48c1a9f41944b124a1988f56a3fe45c3bd5
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.37/policies-0.1.37.tgz
+    version: 0.1.37
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T03:52:15.646644173Z"
     description: A Helm chart for Kubernetes
     digest: cde216ccf819f417ceee74157e38c7ac014941fe8fe7abaf08a73c5cb88a2f1b
@@ -2984,6 +3004,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/policies-0.1.0/policies-0.1.0.tgz
     version: 0.1.0
   rhtas:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-30T06:06:05.630198937Z"
+    description: A Helm chart for Kubernetes
+    digest: 9a7fab78b02b97add4cc3b545c2b9c3f2ee5089e526efa0e446d0db4891fd329
+    name: rhtas
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.31/rhtas-0.1.31.tgz
+    version: 0.1.31
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-23T01:55:40.077378966Z"
@@ -3808,4 +3838,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T03:52:15.647337956Z"
+generated: "2024-04-30T06:06:05.631099117Z"
