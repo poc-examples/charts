@@ -29,3 +29,6 @@ spec:
     {{- if eq .Values.gitlab.enabled true }}
     - "gitlab"
     {{- end }}
+    {{- if eq .Values.tekton.enabled true }}
+    - "tekton"
+    {{- end }}
