@@ -49,9 +49,9 @@ devhub:
   enabled: true
 
 rhtas:
-  chartVersion: 0.1.30
+  chartVersion: 0.1.31
   namespace: rhtas
-  enabled: false
+  enabled: true
 
 gitlab:
   namespace: gitlab-system
