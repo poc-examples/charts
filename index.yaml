@@ -2605,6 +2605,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-30T02:09:46.437031498Z"
+    description: A Helm chart for Kubernetes
+    digest: 66302cbaaad215b5e02f083f93dab38f14d0d3295baa4467ffc390d54acfcea3
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.32/policies-0.1.32.tgz
+    version: 0.1.32
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T01:31:30.03715743Z"
     description: A Helm chart for Kubernetes
     digest: 98dcedf87bec0d66cd53f21d01e84f112b3acce66cbf40b2e92e3f45e3afaae8
@@ -3145,6 +3155,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   tekton:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-30T02:09:46.529503655Z"
+    description: A chart for deploying tekton
+    digest: a963e8cbd5507fa66f8a2f48942edc1afa9454a812a4d47928bbb50544020843
+    name: tekton
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/tekton-0.1.65/tekton-0.1.65.tgz
+    version: 0.1.65
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-23T14:10:11.562872435Z"
@@ -3728,4 +3748,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T01:31:30.037733374Z"
+generated: "2024-04-30T02:09:46.530284643Z"
