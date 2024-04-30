@@ -38,3 +38,6 @@ spec:
     {{- if eq .Values.rhtas.enabled true }}
     - "rhtas"
     {{- end }}
+    {{- if eq .Values.gitops.updater.enabled true }}
+    - "image-updater"
+    {{- end }}

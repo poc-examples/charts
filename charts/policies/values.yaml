@@ -34,6 +34,7 @@ gitops:
   channel: gitops-1.11
   enabled: true
   updater:
+    chartVersion: 0.1.0
     enabled: true
 
 tekton:
