@@ -22,7 +22,7 @@ acm:
   enabled: false
 
 keycloak:
-  chartVersion: 0.1.35
+  chartVersion: 0.1.36
   enabled: true
 
 gatekeeper:
@@ -61,7 +61,7 @@ gitlab:
 
 external_secrets:
   enabled: true
-  chartVersion: 0.1.7
+  chartVersion: 0.1.8
   namespace: external-secrets
 
 vault:

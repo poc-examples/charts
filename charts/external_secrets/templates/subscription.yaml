@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  channel: "{{ .Values.subscription.channel }}"
+  channel: "stable"
   installPlanApproval: Automatic
   name: "{{ .Values.namespace }}-operator"
   source: community-operators
