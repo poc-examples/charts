@@ -819,6 +819,16 @@ entries:
   external_secrets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-01T15:32:39.254922437Z"
+    description: A Helm chart for Kubernetes
+    digest: 97bf328a3bc0520412f4f0603401bfabe5d7244b5ecd7600e300f1b1f4346b95
+    name: external_secrets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.9/external_secrets-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-03-31T07:58:17.633131632Z"
     description: A Helm chart for Kubernetes
     digest: 033dc64a2a8717c7936d3b0913c18aea3ebac3e6272fe1601211cd0e916ef04e
@@ -1201,6 +1211,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/image-updater-0.1.0/image-updater-0.1.0.tgz
     version: 0.1.0
   keycloak:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-01T15:32:39.384505141Z"
+    description: A Helm chart for Kubernetes
+    digest: 1b2be8acff732ac1438f6f4eeeba7ed4b695b8917f631ce3d135dca2f2d539f4
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.37/keycloak-0.1.37.tgz
+    version: 0.1.37
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-29T05:08:22.449142795Z"
@@ -2636,6 +2656,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-01T15:32:39.521878498Z"
+    description: A Helm chart for Kubernetes
+    digest: 97b124cf7e0fcd2ade9273d37cd398fb4427ff7d321d4e36aa2cabaf0642d466
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.42/policies-0.1.42.tgz
+    version: 0.1.42
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T17:52:12.735203117Z"
     description: A Helm chart for Kubernetes
     digest: 18ea93e9c5663b08aacb055cc2637ecebc63274886269d27baa7906344b3a093
@@ -3919,4 +3949,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-04-30T17:52:12.735927389Z"
+generated: "2024-05-01T15:32:39.522814394Z"
