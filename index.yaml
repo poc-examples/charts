@@ -1584,6 +1584,16 @@ entries:
   machinesets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-06T19:50:32.604487091Z"
+    description: A Helm chart for Kubernetes
+    digest: 02368eda4d007b8294bdc5db25e400bd349d187054c3177ffedeaa6a67af29c1
+    name: machinesets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/machinesets-0.1.11/machinesets-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-06T19:46:04.723481867Z"
     description: A Helm chart for Kubernetes
     digest: c97bc82268750767c6afa9e58ca307041d333d85a0110039eeaf739f3a86fa41
@@ -4019,4 +4029,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-06T19:46:04.724121231Z"
+generated: "2024-05-06T19:50:32.605177959Z"
