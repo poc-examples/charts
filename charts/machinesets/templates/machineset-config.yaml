@@ -42,6 +42,7 @@ data:
             namespace: openshift-machine-api
             label_selectors:
               - "machine.openshift.io/cluster-api-machine-role=worker"
+              - "hive.openshift.io/machine-pool=worker"
           register: existing_machinesets
 
         - name: debug
