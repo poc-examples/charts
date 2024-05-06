@@ -33,6 +33,10 @@ data:
           register: infra_details
           ignore_errors: yes
 
+        - name: debug
+          debug:
+            msg: "{{ `{{ infra_details }}` }}"
+
         - name: ACS Machines - Fetch Existing Worker MachineSet Information
           community.kubernetes.k8s_info:
             host: "{{ `{{ openshift.api_url }}` }}"
