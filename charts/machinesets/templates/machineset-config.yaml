@@ -122,3 +122,30 @@ data:
                         zone: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.zone }}` }}"
           when:
             - "'Azure' in infra_details.json.spec.platformSpec.type"
+
+        - name: ACS - If Azure Enable MachineSet
+          community.okd.k8s:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            state: "{{ `{{ state }}` }}"
+            definition:
+              apiVersion: machine.openshift.io/v1beta1
+              kind: MachineSet
+              metadata:
+                name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                namespace: openshift-machine-api
+              spec:
+                replicas: 2
+                selector:
+                  matchLabels:
+                    machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                template:
+                  metadata:
+                    labels:
+                      machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                  spec:
+                    providerSpec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec }}` }}"
+
+          when:
+            - "'AWS' in infra_details.json.spec.platformSpec.type"
