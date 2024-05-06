@@ -47,9 +47,9 @@ data:
           debug:
             msg: "{{ `{{ all_machinesets }}` }}"
 
-        - name: Filter MachineSets where any label ends with 'worker'
+        - name: Filter MachineSets where any name has 'worker'
           set_fact:
-            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('worker', 'in', 'metadata.name') }}` }}"
+            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.name', 'search', 'worker') }}` }}"
 
         - name: debug
           debug:
