@@ -121,4 +121,4 @@ data:
                         vnet: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.vnet }}` }}"
                         zone: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.zone }}` }}"
           when:
-            - False
+            - "'Azure' in infra_details.json.spec.platformSpec.type"
