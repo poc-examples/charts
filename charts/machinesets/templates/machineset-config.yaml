@@ -49,7 +49,7 @@ data:
 
         - name: Filter MachineSets where any name has 'worker'
           set_fact:
-            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.name', 'search', 'worker') }}` }}"
+            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.name', 'search', 'worker') | list }}` }}"
 
         - name: debug
           debug:
@@ -116,3 +116,5 @@ data:
                         subnet: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.subnet }}` }}"
                         vnet: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.vnet }}` }}"
                         zone: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.zone }}` }}"
+          when:
+            - False
