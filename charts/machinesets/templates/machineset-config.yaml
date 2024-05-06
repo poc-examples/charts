@@ -20,6 +20,7 @@ data:
           validate_certs: false
 
       tasks:
+
         - name: Get cluster infrastructure details
           uri:
             url: "{{ `{{openshift.api_url}}` }}/apis/config.openshift.io/v1/infrastructures/cluster"
@@ -40,10 +41,11 @@ data:
             api_version: machine.openshift.io/v1beta1
             kind: MachineSet
             namespace: openshift-machine-api
-            label_selectors:
-              - "machine.openshift.io/cluster-api-machine-role=worker"
-              - "hive.openshift.io/machine-pool=worker"
-          register: existing_machinesets
+          register: all_machinesets
+
+        - name: Filter MachineSets where any label ends with 'worker'
+          set_fact:
+            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.labels', 'defined') | select('match', '.*=worker$') }}` }}"
 
         - name: debug
           debug:
