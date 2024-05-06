@@ -43,6 +43,10 @@ data:
             namespace: openshift-machine-api
           register: all_machinesets
 
+        - name: debug
+          debug:
+            msg: "{{ `{{ all_machinesets }}` }}"
+
         - name: Filter MachineSets where any label ends with 'worker'
           set_fact:
             existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.labels', 'defined') | select('match', '.*=worker$') }}` }}"
