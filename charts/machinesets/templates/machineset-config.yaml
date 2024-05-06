@@ -123,7 +123,7 @@ data:
           when:
             - "'Azure' in infra_details.json.spec.platformSpec.type"
 
-        - name: ACS - If Azure Enable MachineSet
+        - name: ACS - If AWS Enable MachineSet
           community.okd.k8s:
             host: "{{ `{{ openshift.api_url }}` }}"
             api_key: "{{ `{{ openshift.token }}` }}"
