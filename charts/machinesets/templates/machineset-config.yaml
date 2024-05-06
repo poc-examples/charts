@@ -44,6 +44,10 @@ data:
               - "machine.openshift.io/cluster-api-machine-role=worker"
           register: existing_machinesets
 
+        - name: debug
+          debug:
+            msg: "{{ `{{ existing_machinesets }}` }}"
+
         - name: SET FACTS
           set_fact:
             provider_spec: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value }}` }}"
