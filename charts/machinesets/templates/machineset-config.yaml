@@ -57,13 +57,13 @@ data:
 
         - name: SET FACTS
           set_fact:
-            provider_spec: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value }}` }}"
+            provider_spec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value }}` }}"
 
         # - debug:
         #     msg: "{{ `{{ infra_details.json.status.platformStatus.type | lower }}` }}"
 
         # - debug:
-        #     msg: "{{ `{{ existing_machinesets.resources[0] }}` }}"
+        #     msg: "{{ `{{ existing_machinesets[0] }}` }}"
 
         - name: ACS - If Azure Enable MachineSet
           community.okd.k8s:
@@ -75,18 +75,18 @@ data:
               apiVersion: machine.openshift.io/v1beta1
               kind: MachineSet
               metadata:
-                name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
                 namespace: openshift-machine-api
               spec:
                 replicas: 1
                 selector:
                   matchLabels:
-                    machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                    machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
                     supports: acs
                 template:
                   metadata:
                     labels:
-                      machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                      machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
                       supports: acs
                   spec:
                     providerSpec:
@@ -96,7 +96,7 @@ data:
 
                         # Other Machine Set Configurations
                         kind: "AzureMachineProviderSpec"
-                        location: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.location }}` }}"
+                        location: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}"
                         osDisk:
                           diskSettings: {}
                           diskSizeGB: 128
@@ -106,15 +106,15 @@ data:
                           osType: Linux
                         
                         # GPU Enabled Machine Type
-                        networkResourceGroup: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.networkResourceGroup }}` }}"
+                        networkResourceGroup: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.networkResourceGroup }}` }}"
                         vmSize: "{{ `{{ lookup('env', 'MANAGED_MACHINE_TYPE') }}` }}"
                         image:
                           offer: "{{ `{{ provider_spec.image.offer }}` }}"
                           publisher: "{{ `{{ provider_spec.image.publisher }}` }}"
                           sku: "{{ `{{ provider_spec.image.sku }}` }}"
                           version: "{{ `{{ provider_spec.image.version }}` }}"
-                        subnet: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.subnet }}` }}"
-                        vnet: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.vnet }}` }}"
-                        zone: "{{ `{{ existing_machinesets.resources[0].spec.template.spec.providerSpec.value.zone }}` }}"
+                        subnet: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.subnet }}` }}"
+                        vnet: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.vnet }}` }}"
+                        zone: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.zone }}` }}"
           when:
             - False
