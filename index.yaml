@@ -577,6 +577,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-07T03:40:54.538488275Z"
+    description: A Helm chart for Kubernetes
+    digest: 6becbef5f905873c56e1f5455c8e2caef11531a942b990a424a78099c3e8f17c
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.27/boot-0.1.27.tgz
+    version: 0.1.27
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-07T03:34:47.99601371Z"
     description: A Helm chart for Kubernetes
     digest: 6e771f4904dfff909e83ffbadefc71a79aecd9f2ceb804f107e86b9323c760b5
@@ -1261,6 +1271,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/image-updater-0.1.0/image-updater-0.1.0.tgz
     version: 0.1.0
   keycloak:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-07T03:40:54.607019557Z"
+    description: A Helm chart for Kubernetes
+    digest: dd630f709771b05381919653f5761ca4cfce0407dfc97ae8132c6486a86965e0
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.38/keycloak-0.1.38.tgz
+    version: 0.1.38
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-01T15:32:39.384505141Z"
@@ -2826,6 +2846,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-07T03:40:54.687017453Z"
+    description: A Helm chart for Kubernetes
+    digest: 73c3a641a639d469fb6693d65a145de6beeb46e7dad179c2ff977a8e0e8c921f
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.48/policies-0.1.48.tgz
+    version: 0.1.48
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-07T03:25:34.272537663Z"
     description: A Helm chart for Kubernetes
     digest: 9d8049a7223a9271d30a33686d9c17f81bb3a8d5ea51ca875cd512ededf1e976
@@ -4159,4 +4189,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-07T03:34:47.996588857Z"
+generated: "2024-05-07T03:40:54.688202803Z"
