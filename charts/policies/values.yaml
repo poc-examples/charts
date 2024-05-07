@@ -61,7 +61,7 @@ gitlab:
 
 external_secrets:
   enabled: true
-  chartVersion: 0.1.8
+  chartVersion: 0.1.10
   namespace: external-secrets
 
 vault:
