@@ -4,7 +4,7 @@ metadata:
   name: "{{ .Values.namespace }}"
   namespace: "{{ .Values.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   channel: "stable"
   installPlanApproval: Automatic
