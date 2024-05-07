@@ -1,23 +1,23 @@
-apiVersion: agent.open-cluster-management.io/v1
-kind: KlusterletAddonConfig
-metadata:
-  name: local-cluster
-  namespace: local-cluster
-spec:
-  clusterName: local-cluster
-  clusterNamespace: local-cluster
-  clusterLabels:
-    name: local-cluster
-    cloud: Azure
-    vendor: OpenShift
-    cluster.open-cluster-management.io/clusterset: local
-  applicationManager:
-    enabled: true
-  policyController:
-    enabled: true
-  searchCollector:
-    enabled: true
-  certPolicyController:
-    enabled: true
-  iamPolicyController:
-    enabled: true
+# apiVersion: agent.open-cluster-management.io/v1
+# kind: KlusterletAddonConfig
+# metadata:
+#   name: local-cluster
+#   namespace: local-cluster
+# spec:
+#   clusterName: local-cluster
+#   clusterNamespace: local-cluster
+#   clusterLabels:
+#     name: local-cluster
+#     cloud: Azure
+#     vendor: OpenShift
+#     cluster.open-cluster-management.io/clusterset: local
+#   applicationManager:
+#     enabled: true
+#   policyController:
+#     enabled: true
+#   searchCollector:
+#     enabled: true
+#   certPolicyController:
+#     enabled: true
+#   iamPolicyController:
+#     enabled: true
