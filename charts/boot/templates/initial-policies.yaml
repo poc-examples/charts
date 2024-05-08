@@ -10,7 +10,7 @@ spec:
   source:
     chart: policies
     repoURL: "https://poc-examples.github.io/charts"
-    targetRevision: 0.1.52
+    targetRevision: 0.1.53
     helm:
       parameters:
         - name: domain
