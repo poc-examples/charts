@@ -39,7 +39,7 @@ gitops:
 
 tekton:
   chartVersion: 0.1.66
-  enabled: true
+  enabled: false
 
 sonarqube:
   chartVersion: ~8
@@ -52,7 +52,7 @@ devhub:
 rhtas:
   chartVersion: 0.1.34
   namespace: rhtas
-  enabled: true
+  enabled: false
 
 gitlab:
   namespace: gitlab-system
