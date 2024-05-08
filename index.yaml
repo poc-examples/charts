@@ -577,6 +577,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-08T18:27:55.364359974Z"
+    description: A Helm chart for Kubernetes
+    digest: 55b7922c0277f3237dc22c307e69921903f28605ba7d6c9b5bc005d095a3192b
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.31/boot-0.1.31.tgz
+    version: 0.1.31
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-08T17:33:39.457614788Z"
     description: A Helm chart for Kubernetes
     digest: eda68f32627ddd31c02284583834911199eec1205ad1072d46c5b9fb19416826
@@ -876,6 +886,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/boot-0.1.0/boot-0.1.0.tgz
     version: 0.1.0
   developerhub:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-08T18:27:55.565116464Z"
+    description: A chart for deploying backstage
+    digest: 581e03c3b24e2840c0a43d6ed29e56c275d1839b76b5a67e78ac1e72b85b11ec
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.1.9/developerhub-0.1.9.tgz
+    version: 0.1.9
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-04T00:09:57.321325265Z"
@@ -2896,6 +2916,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-08T18:27:55.830224376Z"
+    description: A Helm chart for Kubernetes
+    digest: 2b035d427fbff5ab1273534fa3c96d6f8fd02255b6401fcb9913a2c4ec8b24b6
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.52/policies-0.1.52.tgz
+    version: 0.1.52
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-08T17:33:39.553298879Z"
     description: A Helm chart for Kubernetes
     digest: c2e2ff416f0832a2ec7c2246bc32400b4cd7a42fe54dd09d7fc4f4e9377acc21
@@ -4269,4 +4299,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-08T17:33:39.554192811Z"
+generated: "2024-05-08T18:27:55.831070806Z"
