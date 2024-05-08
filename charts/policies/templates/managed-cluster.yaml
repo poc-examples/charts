@@ -4,8 +4,6 @@ metadata:
   name: local-cluster
   labels:
     name: local-cluster
-    cloud: Azure
-    vendor: OpenShift
     cluster.open-cluster-management.io/clusterset: local
   annotations: {}
 spec:
