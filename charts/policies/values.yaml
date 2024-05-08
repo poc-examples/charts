@@ -46,7 +46,7 @@ sonarqube:
   enabled: true
 
 devhub:
-  chartVersion: 0.1.8
+  chartVersion: 0.1.9
   enabled: true
 
 rhtas:
