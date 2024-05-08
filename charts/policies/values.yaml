@@ -1,7 +1,7 @@
 domain: openshift.io
 
 machinesets:
-  chartVersion: 0.1.16
+  chartVersion: 0.1.17
   enabled: true
   helmValues:
     machineset: 
