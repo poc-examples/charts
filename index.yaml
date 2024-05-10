@@ -14,6 +14,16 @@ entries:
   acm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-10T04:08:00.016118641Z"
+    description: A Helm chart for Kubernetes
+    digest: d8526d3d9f8ac11efa3b3528a73bc39ae74f54e1a9409436f5d69bc4a85f22ac
+    name: acm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acm-0.1.12/acm-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-26T06:11:02.798126879Z"
     description: A Helm chart for Kubernetes
     digest: 763267c8ed9b88f519c172e26d8dc3a693437f421600853421ae0121e9e0bccb
@@ -575,6 +585,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/application-0.1.0/application-0.1.0.tgz
     version: 0.1.0
   boot:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-10T04:08:00.159633898Z"
+    description: A Helm chart for Kubernetes
+    digest: a13ee7dfbeab8d565a37c6cab5b3d63a00f8fe78a46c74e4e824f8423c844883
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.35/boot-0.1.35.tgz
+    version: 0.1.35
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-08T20:18:33.956948654Z"
@@ -2946,6 +2966,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-10T04:08:00.29441038Z"
+    description: A Helm chart for Kubernetes
+    digest: 0ddcffa399b18959078a4ed871d12e87af5ae5a2733b309ae27b1041dd018dca
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.56/policies-0.1.56.tgz
+    version: 0.1.56
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-08T20:18:34.058691087Z"
     description: A Helm chart for Kubernetes
     digest: 83aa243e40af79fd95c8f668634ce987a1100e2aaee2161562ad30ad3ca945d1
@@ -4359,4 +4389,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-08T20:18:34.059594827Z"
+generated: "2024-05-10T04:08:00.295290542Z"
