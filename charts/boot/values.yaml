@@ -1,7 +1,7 @@
 domain: openshift.api
 
 services:
-  chartVersion: 0.1.56
+  chartVersion: 0.1.57
 
 machinesets:
   chartVersion: 0.1.17
@@ -22,7 +22,7 @@ acs:
 
 acm:
   namespace: open-cluster-management
-  chartVersion: 0.1.15
+  chartVersion: 0.1.16
   enabled: false
 
 keycloak:

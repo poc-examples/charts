@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: gatekeeper-plugin
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
     namespace: gatekeeper

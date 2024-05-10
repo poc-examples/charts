@@ -4,6 +4,7 @@ metadata:
   name: boot-policies-placement-binding
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-1"
 placementRef:
   name: "boot-policies-placement"
   apiGroup: cluster.open-cluster-management.io

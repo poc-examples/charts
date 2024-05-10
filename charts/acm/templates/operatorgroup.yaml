@@ -3,7 +3,7 @@ kind: OperatorGroup
 metadata:
   name: "acmgroup"
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   targetNamespaces:
     - "open-cluster-management"

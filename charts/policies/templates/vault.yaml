@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: vault-plugin
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
     namespace: vault-server

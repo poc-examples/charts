@@ -4,6 +4,7 @@ metadata:
   annotations:
     cluster.open-cluster-management.io/submariner-broker-ns: local-broker
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-3"
   name: local
 spec:
   clusterSelector:
