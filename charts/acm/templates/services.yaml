@@ -37,9 +37,7 @@ spec:
                     repoURL: https://poc-examples.github.io/charts
                     targetRevision: "{{ .Values.services.chartVersion }}"
                     helm:
-                      parameters:
-                        - name: domain
-                          value: "{{ .Values.domain }}"
+                      valuesObject: {{ toJson .Values }}
                   project: plugins
                   syncPolicy:
                     automated:

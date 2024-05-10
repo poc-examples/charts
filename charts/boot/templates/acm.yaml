@@ -14,11 +14,7 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.acm.chartVersion }}"
     helm:
-      parameters:
-        - name: services.chartVersion
-          value: {{ .Values.services.chartVersion }}
-        - name: domain
-          value: {{ .Values.domain }}
+      valuesObject: {{ toJson .Values }}
   project: plugins
   syncPolicy:
     automated:
