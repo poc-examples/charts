@@ -1,56 +1,32 @@
 {{ if .Values.acs.enabled }}
-apiVersion: policy.open-cluster-management.io/v1
-kind: Policy
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: gitlab
-  annotations:
-    policy.open-cluster-management.io/description: Creates the GitLab Service
-    policy.open-cluster-management.io/categories: CM Configuration Management
-    policy.open-cluster-management.io/standards: NIST SP 800-53
-    policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+  name: gitlab-plugin
+  namespace: "{{ .Values.gitops.namespace }}"
 spec:
-  disabled: false
-  remediationAction: enforce
-  policy-templates:
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: gitlab
-        spec:
-          remediationAction: enforce
-          severity: low
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: argoproj.io/v1alpha1
-                kind: Application
-                metadata:
-                  name: gitlab-plugin
-                  namespace: "{{ .Values.gitops.namespace }}"
-                spec:
-                  destination:
-                    namespace: "{{ .Values.gitlab.namespace }}"
-                    server: https://kubernetes.default.svc
-                  source:
-                    chart: gitlab
-                    targetRevision: "{{ .Values.gitlab.chartVersion }}"
-                    repoURL: "https://poc-examples.github.io/charts"
-                    helm:
-                      parameters:
-                        - name: namespace
-                          value: "{{ .Values.gitlab.namespace }}"
-                        - name: domain
-                          value: apps.{{ .Values.domain }}
-                  project: plugins
-                  syncPolicy:
-                    automated:
-                      prune: true
-                      selfHeal: true
-                    managedNamespaceMetadata:
-                      labels:
-                        argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
-                    syncOptions:
-                      - CreateNamespace=true
-                      - Validate=false
+  destination:
+    namespace: "{{ .Values.gitlab.namespace }}"
+    server: https://kubernetes.default.svc
+  source:
+    chart: gitlab
+    targetRevision: "{{ .Values.gitlab.chartVersion }}"
+    repoURL: "https://poc-examples.github.io/charts"
+    helm:
+      parameters:
+        - name: namespace
+          value: "{{ .Values.gitlab.namespace }}"
+        - name: domain
+          value: apps.{{ .Values.domain }}
+  project: plugins
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=false
 {{ end }}

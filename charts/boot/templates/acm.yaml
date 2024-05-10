@@ -13,6 +13,10 @@ spec:
     chart: acm
     repoURL: "https://poc-examples.github.io/charts"
     targetRevision: "{{ .Values.acm.chartVersion }}"
+    helm:
+      parameters:
+        - name: services.chartVersion
+          value: {{ .Values.services.chartVersion }}
   project: plugins
   syncPolicy:
     automated:

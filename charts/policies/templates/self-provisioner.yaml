@@ -1,19 +1,19 @@
-{{ if .Values.machinesets.enabled }}
+{{ if .Values.acs.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: machine-sets-plugin
+  name: "self-provisioner-plugin"
   namespace: "{{ .Values.gitops.namespace }}"
 spec:
   destination:
-    namespace: managed-machine-sets
+    namespace: "{{ .Values.gitops.namespace }}"
     server: https://kubernetes.default.svc
   source:
-    chart: machinesets
-    repoURL: https://poc-examples.github.io/charts
-    targetRevision: "{{ .Values.machinesets.chartVersion }}"
-    helm:
-      valuesObject: {{ toJson .Values.machinesets.helmValues }}
+    repoURL: "https://gitlab.apps.{{ .Values.domain }}/self-provisioned/manifests"
+    path: "applications"
+    targetRevision: HEAD
+    directory:
+      recurse: true
   project: plugins
   syncPolicy:
     automated:

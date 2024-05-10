@@ -1,10 +1,11 @@
-domain: openshift.io
+
 acm:
   namespace: open-cluster-management
   enabled: true 
-  chartVersion: 0.1.11
+  chartVersion: 0.1.12
+
+services:
+  chartVersion: 0.1.56
+
 gitops:
   namespace: openshift-gitops
-external_secrets:
-  enabled: true
-  namespace: external-secrets

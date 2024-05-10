@@ -1,0 +1,8 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: boot-policies
+spec:
+  description: Policy for bootstrapping cluster with intial services
+  policies:
+    - "services"
