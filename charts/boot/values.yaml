@@ -1,7 +1,7 @@
 domain: openshift.api
 
 services:
-  chartVersion: 0.1.60
+  chartVersion: 0.1.61
 
 machinesets:
   chartVersion: 0.1.17
