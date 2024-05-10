@@ -1,8 +1,9 @@
+domain: openshift.api
 
 acm:
   namespace: open-cluster-management
   enabled: true 
-  chartVersion: 0.1.13
+  chartVersion: 0.1.14
 
 services:
   chartVersion: 0.1.56

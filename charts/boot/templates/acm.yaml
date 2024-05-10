@@ -17,6 +17,8 @@ spec:
       parameters:
         - name: services.chartVersion
           value: {{ .Values.services.chartVersion }}
+        - name: domain
+          value: {{ .Values.domain }}
   project: plugins
   syncPolicy:
     automated:
