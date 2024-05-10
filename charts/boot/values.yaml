@@ -22,7 +22,7 @@ acs:
 
 acm:
   namespace: open-cluster-management
-  chartVersion: 0.1.16
+  chartVersion: 0.1.17
   enabled: false
 
 keycloak:
