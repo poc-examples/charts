@@ -166,16 +166,11 @@ data:
             name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
             namespace: openshift-machine-api
           register: machineset_status
-
-        - name: Debug MachineSet
-          debug:
-            msg: "{{ `{{ machineset_status }}` }}"
-
-          # until: >
-          #   machineset_status.resources | length > 0 and
-          #   'status' in machineset_status.resources[0] and
-          #   'readyReplicas' in machineset_status.resources[0].status and
-          #   'replicas' in machineset_status.resources[0].status and
-          #   machineset_status.resources[0].status.readyReplicas == machineset_status.resources[0].status.replicas
-          # retries: 60
-          # delay: 10
+          until: >
+            machineset_status.resources | length > 0 and
+            'status' in machineset_status.resources[0] and
+            'readyReplicas' in machineset_status.resources[0].status and
+            'replicas' in machineset_status.resources[0].status and
+            machineset_status.resources[0].status.readyReplicas == machineset_status.resources[0].status.replicas
+          retries: 60
+          delay: 10
