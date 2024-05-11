@@ -158,6 +158,7 @@ data:
 
         - name: Wait for MachineSet to be schedulable
           community.kubernetes.k8s_info:
+            apiVersion: machine.openshift.io/v1beta1
             host: "{{ `{{ openshift.api_url }}` }}"
             api_key: "{{ `{{ openshift.token }}` }}"
             validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
