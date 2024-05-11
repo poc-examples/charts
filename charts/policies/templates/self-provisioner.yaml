@@ -17,6 +17,7 @@ spec:
     directory:
       recurse: true
   project: plugins
+  timeout: 120
   syncPolicy:
     retry:
       limit: 10
