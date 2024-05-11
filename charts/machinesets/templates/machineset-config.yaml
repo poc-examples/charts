@@ -151,3 +151,16 @@ data:
 
           when:
             - "'AWS' in infra_details.json.spec.platformSpec.type"
+
+        - name: Wait for MachineSet to be schedulable
+          community.kubernetes.k8s_info:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            kind: MachineSet
+            name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+            namespace: openshift-machine-api
+          register: machineset_status
+          until: machineset_status.resources[0].status.readyReplicas == machineset_status.resources[0].status.replicas
+          retries: 60
+          delay: 10

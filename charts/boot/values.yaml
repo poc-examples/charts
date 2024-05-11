@@ -1,10 +1,10 @@
 domain: openshift.api
 
 services:
-  chartVersion: 0.1.61
+  chartVersion: 0.1.62
 
 machinesets:
-  chartVersion: 0.1.18
+  chartVersion: 0.1.19
   enabled: true
   helmValues:
     machineset: 
