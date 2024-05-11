@@ -152,6 +152,10 @@ data:
           when:
             - "'AWS' in infra_details.json.spec.platformSpec.type"
 
+        - name: debug
+          debug:
+            msg: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+
         - name: Wait for MachineSet to be schedulable
           community.kubernetes.k8s_info:
             host: "{{ `{{ openshift.api_url }}` }}"
