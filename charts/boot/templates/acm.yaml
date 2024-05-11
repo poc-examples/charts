@@ -16,7 +16,14 @@ spec:
     helm:
       valuesObject: {{ toJson .Values }}
   project: plugins
+  timeout: 120
   syncPolicy:
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
     automated:
       prune: false
       selfHeal: false
