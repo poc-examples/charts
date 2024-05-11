@@ -147,7 +147,7 @@ data:
                     labels:
                       machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
                   spec:
-                    providerSpec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec }}` }}"
+                    providerSpec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec | combine({'value': {'instanceType': lookup('env', 'MANAGED_MACHINE_TYPE') | default('m5.xlarge')}}, recursive=True) }}` }}"
 
           when:
             - "'AWS' in infra_details.json.spec.platformSpec.type"
