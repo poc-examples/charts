@@ -18,6 +18,12 @@ spec:
       recurse: true
   project: plugins
   syncPolicy:
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
     automated:
       prune: true
       selfHeal: true
