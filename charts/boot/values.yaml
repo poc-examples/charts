@@ -4,7 +4,7 @@ services:
   chartVersion: 0.1.61
 
 machinesets:
-  chartVersion: 0.1.17
+  chartVersion: 0.1.18
   enabled: true
   helmValues:
     machineset: 
