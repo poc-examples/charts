@@ -164,7 +164,7 @@ data:
 
         - name: Debug MachineSet
           debug:
-            msg: {{ `{{ machineset_status }}` }}
+            msg: "{{ `{{ machineset_status }}` }}"
 
           # until: >
           #   machineset_status.resources | length > 0 and
