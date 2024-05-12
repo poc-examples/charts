@@ -38,6 +38,20 @@ data:
                 name: "gitlab-webservice-default"
                 namespace: "gitlab-system"
               register: gitlab_webserver_status
+
+            - name: Debug
+              debug:
+                msg: "{{ `{{ gitlab_webserver_status }}` }}"
+
+            - name: Check GitLab Webserver Deployment Status
+              community.kubernetes.k8s_info:
+                host: "{{ `{{ openshift.api_url }}` }}"
+                api_key: "{{ `{{ openshift.token }}` }}"
+                validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+                kind: Deployment
+                name: "gitlab-webservice-default"
+                namespace: "gitlab-system"
+              register: gitlab_webserver_status
               until:
                 - gitlab_webserver_status.resources | length > 0
                 - gitlab_webserver_status.resources[0].status.readyReplicas | default(0) == gitlab_webserver_status.resources[0].status.replicas
