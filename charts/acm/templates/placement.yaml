@@ -6,4 +6,4 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   clusterSets:
-    - local
+    - local-cluster
