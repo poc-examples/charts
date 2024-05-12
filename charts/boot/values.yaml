@@ -22,7 +22,7 @@ acs:
 
 acm:
   namespace: open-cluster-management
-  chartVersion: 0.1.23
+  chartVersion: 0.1.24
   enabled: false
 
 keycloak:
@@ -60,7 +60,7 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.1.33
+  chartVersion: 0.1.36
   enabled: true
 
 external_secrets:
