@@ -5,7 +5,7 @@ metadata:
   name: machine-sets-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-wave: "-6"
 spec:
   destination:
     namespace: managed-machine-sets
