@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ansible-playbook
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+data:
+  playbook.yaml: |
+    ---
+    - name: Setup Base Operators
+      hosts: localhost
+      connection: local
+      gather_facts: yes
+      collections:
+        - community.okd
+        - community.kubernetes
+      vars:
+        state: present
+        openshift:
+          api_url: "https://kubernetes.default.svc"
+          token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
+          validate_certs: false
+
+      tasks:
+
+        - name: Verify GitLab Web Server is Running
+          block:
+            - name: Waiting for Verification
+              debug:
+                msg: "Starting verification of the GitLab Webserver deployment in the gitlab-system namespace."
+
+            - name: Check GitLab Webserver Deployment Status
+              community.kubernetes.k8s_info:
+                host: "{{ `{{ openshift.api_url }}` }}"
+                api_key: "{{ `{{ openshift.token }}` }}"
+                validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+                kind: Deployment
+                name: "gitlab-webservice-default"
+                namespace: "gitlab-system"
+              register: gitlab_webserver_status
+              until:
+                - gitlab_webserver_status.resources | length > 0
+                - gitlab_webserver_status.resources[0].status.readyReplicas | default(0) == gitlab_webserver_status.resources[0].status.replicas
+              retries: 40
+              delay: 30
