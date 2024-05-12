@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: gitlab-plugin
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
   destination:
     namespace: "{{ .Values.gitlab.namespace }}"

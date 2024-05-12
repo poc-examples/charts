@@ -5,7 +5,7 @@ metadata:
   name: image-updater-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: "-13"
 spec:
   destination:
     namespace: "{{ .Values.gitops.namespace }}"

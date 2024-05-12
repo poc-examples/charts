@@ -5,7 +5,7 @@ metadata:
   name: gatekeeper-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "-13"
 spec:
   destination:
     namespace: gatekeeper

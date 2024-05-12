@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: gitlab-post-hook
   annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   template:
     spec:
