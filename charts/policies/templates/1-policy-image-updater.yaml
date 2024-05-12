@@ -1,31 +1,19 @@
-{{ if .Values.acs.enabled }}
+{{ if .Values.gitops.updater.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault-plugin
+  name: image-updater-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-11"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   destination:
-    namespace: vault-server
+    namespace: "{{ .Values.gitops.namespace }}"
     server: https://kubernetes.default.svc
   source:
-    chart: vault
-    targetRevision: "{{ .Values.vault.chartVersion }}"
-    repoURL: 'https://helm.releases.hashicorp.com'
-    helm:
-      valuesObject:
-        csi:
-          enabled: false
-        global:
-          openshift: true
-        injector:
-          enabled: false
-        server:
-          dev:
-            enabled: true
-          enabled: true
+    chart: image-updater
+    repoURL: https://poc-examples.github.io/charts
+    targetRevision: "{{ .Values.gitops.updater.chartVersion }}"
   project: plugins
   syncPolicy:
     automated:

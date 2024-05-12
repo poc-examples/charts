@@ -2,28 +2,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: developer-hub-plugin
+  name: vault-plugin
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-4"
 spec:
   destination:
-    namespace: backstage
+    namespace: vault-server
     server: https://kubernetes.default.svc
   source:
-    chart: developerhub
-    targetRevision: "{{ .Values.devhub.chartVersion }}"
-    repoURL: https://poc-examples.github.io/charts
+    chart: vault
+    targetRevision: "{{ .Values.vault.chartVersion }}"
+    repoURL: 'https://helm.releases.hashicorp.com'
     helm:
-      parameters:
-        - name: host
-          value: "{{ .Values.domain }}"
+      valuesObject:
+        csi:
+          enabled: false
+        global:
+          openshift: true
+        injector:
+          enabled: false
+        server:
+          dev:
+            enabled: true
+          enabled: true
   project: plugins
   syncPolicy:
-    retry:
-      limit: 10
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 30s
     automated:
       prune: true
       selfHeal: true

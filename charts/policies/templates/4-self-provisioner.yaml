@@ -2,18 +2,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: advanced-cluster-security-plugin
+  name: "self-provisioner-plugin"
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
-    namespace: rhacs-operator
+    namespace: "{{ .Values.gitops.namespace }}"
     server: https://kubernetes.default.svc
   source:
-    chart: acs
-    repoURL: https://poc-examples.github.io/charts
-    targetRevision: "{{ .Values.acs.chartVersion }}"
+    repoURL: "https://gitlab.apps.{{ .Values.domain }}/self-provisioned/manifests"
+    path: "applications"
+    targetRevision: HEAD
+    directory:
+      recurse: true
   project: plugins
   syncPolicy:
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
     automated:
       prune: true
       selfHeal: true

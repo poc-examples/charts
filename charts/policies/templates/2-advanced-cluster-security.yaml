@@ -1,19 +1,19 @@
-{{ if .Values.gatekeeper.enabled }}
+{{ if .Values.acs.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gatekeeper-plugin
+  name: advanced-cluster-security-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-13"
+    argocd.argoproj.io/sync-wave: "-4"
 spec:
   destination:
-    namespace: gatekeeper
+    namespace: rhacs-operator
     server: https://kubernetes.default.svc
   source:
-    chart: gatekeeper
+    chart: acs
     repoURL: https://poc-examples.github.io/charts
-    targetRevision: "{{ .Values.gatekeeper.chartVersion }}"
+    targetRevision: "{{ .Values.acs.chartVersion }}"
   project: plugins
   syncPolicy:
     automated:

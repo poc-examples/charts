@@ -1,21 +1,19 @@
-{{ if .Values.machinesets.enabled }}
+{{ if .Values.gatekeeper.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: machine-sets-plugin
+  name: gatekeeper-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-13"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   destination:
-    namespace: managed-machine-sets
+    namespace: gatekeeper
     server: https://kubernetes.default.svc
   source:
-    chart: machinesets
+    chart: gatekeeper
     repoURL: https://poc-examples.github.io/charts
-    targetRevision: "{{ .Values.machinesets.chartVersion }}"
-    helm:
-      valuesObject: {{ toJson .Values.machinesets.helmValues }}
+    targetRevision: "{{ .Values.gatekeeper.chartVersion }}"
   project: plugins
   syncPolicy:
     automated:

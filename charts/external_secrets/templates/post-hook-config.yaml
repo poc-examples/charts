@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ansible-playbook
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+data:
+  playbook.yaml: |
+    ---
+    - name: Setup Base Operators
+      hosts: localhost
+      connection: local
+      gather_facts: yes
+      collections:
+        - community.okd
+        - community.kubernetes
+      vars:
+        state: present
+        openshift:
+          api_url: "https://kubernetes.default.svc"
+          token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
+          validate_certs: false
+
+      tasks:
+
+        - name: Verify External Secrets is Running
+          block:
+            - name: Waiting for Verification
+              debug:
+                msg: "Starting verification of the External Secrets deployment in the external-secrets namespace."
+
+            - name: External Secrets - Wait Webhook is Running
+              community.kubernetes.k8s_info:
+                host: "{{ `{{ openshift.api_url }}` }}"
+                api_key: "{{ `{{ openshift.token }}` }}"
+                validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+                kind: Deployment
+                name: "external-secrets-webhook"
+                namespace: "external-secrets"
+              register: operator_status
+              until:
+                - operator_status.resources | length > 0
+                - operator_status.resources[0].status.readyReplicas | default(0) > 0
+              retries: 40
+              delay: 30

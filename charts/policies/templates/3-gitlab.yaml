@@ -2,18 +2,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "self-provisioner-plugin"
+  name: gitlab-plugin
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   destination:
-    namespace: "{{ .Values.gitops.namespace }}"
+    namespace: "{{ .Values.gitlab.namespace }}"
     server: https://kubernetes.default.svc
   source:
-    repoURL: "https://gitlab.apps.{{ .Values.domain }}/self-provisioned/manifests"
-    path: "applications"
-    targetRevision: HEAD
-    directory:
-      recurse: true
+    chart: gitlab
+    targetRevision: "{{ .Values.gitlab.chartVersion }}"
+    repoURL: "https://poc-examples.github.io/charts"
+    helm:
+      parameters:
+        - name: namespace
+          value: "{{ .Values.gitlab.namespace }}"
+        - name: domain
+          value: apps.{{ .Values.domain }}
   project: plugins
   syncPolicy:
     retry:

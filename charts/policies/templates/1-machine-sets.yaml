@@ -1,19 +1,21 @@
-{{ if .Values.gitops.updater.enabled }}
+{{ if .Values.machinesets.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: image-updater-plugin
+  name: machine-sets-plugin
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-13"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   destination:
-    namespace: "{{ .Values.gitops.namespace }}"
+    namespace: managed-machine-sets
     server: https://kubernetes.default.svc
   source:
-    chart: image-updater
+    chart: machinesets
     repoURL: https://poc-examples.github.io/charts
-    targetRevision: "{{ .Values.gitops.updater.chartVersion }}"
+    targetRevision: "{{ .Values.machinesets.chartVersion }}"
+    helm:
+      valuesObject: {{ toJson .Values.machinesets.helmValues }}
   project: plugins
   syncPolicy:
     automated:
