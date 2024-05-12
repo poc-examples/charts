@@ -1,7 +1,7 @@
 domain: openshift.api
 
 services:
-  chartVersion: 0.1.69
+  chartVersion: 0.1.70
 
 machinesets:
   chartVersion: 0.1.26
@@ -60,12 +60,12 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.1.39
+  chartVersion: 0.1.41
   enabled: true
 
 external_secrets:
   enabled: true
-  chartVersion: 0.1.12
+  chartVersion: 0.1.13
   namespace: external-secrets
 
 vault:
