@@ -1319,6 +1319,16 @@ entries:
   external_secrets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-12T19:20:11.2976884Z"
+    description: A Helm chart for Kubernetes
+    digest: 790e1f2c3421cea36e6603b34841dd6824d62d464c927c07dbac9cf2633b5aab
+    name: external_secrets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.14/external_secrets-0.1.14.tgz
+    version: 0.1.14
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-12T15:41:14.000281229Z"
     description: A Helm chart for Kubernetes
     digest: 9b0dc5c721675ea465b9c260353badd751f8e6e29598fa77d35d7389d64858ba
@@ -5059,4 +5069,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-12T18:30:48.614563027Z"
+generated: "2024-05-12T19:20:11.298453416Z"
