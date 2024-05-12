@@ -697,6 +697,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-12T15:41:13.908100813Z"
+    description: A Helm chart for Kubernetes
+    digest: 35145c0e5430f4163433bf56db50441563c576a9d2fb3b29c5f94f310cebe153
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.60/boot-0.1.60.tgz
+    version: 0.1.60
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-12T07:09:40.680774897Z"
     description: A Helm chart for Kubernetes
     digest: f23bd0777f13a35271a7c28f35f84a9fd042328a70a330f74d3d16a2fc4c952f
@@ -1299,6 +1309,16 @@ entries:
   external_secrets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-12T15:41:14.000281229Z"
+    description: A Helm chart for Kubernetes
+    digest: 9b0dc5c721675ea465b9c260353badd751f8e6e29598fa77d35d7389d64858ba
+    name: external_secrets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.13/external_secrets-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-07T03:24:18.474981852Z"
     description: A Helm chart for Kubernetes
     digest: 51807f610af32ec4842737c015fd0ec928fd7b8fff1e24b256c87587e998a86f
@@ -1489,6 +1509,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-12T15:41:14.121358536Z"
+    description: A Helm chart for Kubernetes
+    digest: 97d08cc8c66b5d4d7cf5ea2d8e40458ba6379ee1725265d133a76e00971eae58
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.41/gitlab-0.1.41.tgz
+    version: 0.1.41
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-12T07:09:40.774026579Z"
@@ -3476,6 +3506,16 @@ entries:
   policies:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-12T15:41:14.216625908Z"
+    description: A Helm chart for Kubernetes
+    digest: 982ee1e2843951006cf7cf313e89455a2dc3ebb6cbc35fa72644e4d25c2adf15
+    name: policies
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/policies-0.1.70/policies-0.1.70.tgz
+    version: 0.1.70
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-12T07:09:40.859878369Z"
     description: A Helm chart for Kubernetes
     digest: 0f1da0bc693c152a6d5a4e9db649e1407b1069e1547c383ee672f661d5fe02d7
@@ -4999,4 +5039,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-12T07:09:40.860802339Z"
+generated: "2024-05-12T15:41:14.218107307Z"
