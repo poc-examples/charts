@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: gitlab-post-hook
+  name: application-post-hook
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
@@ -9,7 +9,7 @@ spec:
     spec:
       serviceAccountName: ansible-runner
       containers:
-      - name: gitlab-post-hook
+      - name: application-post-hook
         image: registry.access.redhat.com/ubi9/python-311:latest
         command: ["/bin/bash", "-c"]
         args:

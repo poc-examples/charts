@@ -2,8 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: gitlab-system
-  name: deployment-manager
+  name: application-post-hook
 rules:
 - apiGroups: [
     "apps"
@@ -20,13 +19,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: deployment-manager-binding
-  namespace: gitlab-system
+  name: application-post-hook-binding
 subjects:
 - kind: ServiceAccount
   name: ansible-runner
-  namespace: gitlab-system
+  namespace: external-secrets
 roleRef:
   kind: Role
-  name: deployment-manager
+  name: application-post-hook
   apiGroup: rbac.authorization.k8s.io
