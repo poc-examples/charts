@@ -14,6 +14,16 @@ entries:
   acm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-12T05:27:06.710186307Z"
+    description: A Helm chart for Kubernetes
+    digest: 99bc6e1f0514e037a9ef730b7ba8245acaf287a72a0181eeda49b897dc27c02e
+    name: acm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/acm-0.1.25/acm-0.1.25.tgz
+    version: 0.1.25
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-12T03:40:10.844935244Z"
     description: A Helm chart for Kubernetes
     digest: 7a767a096e7335b3f32dd187dcca88f3cd4d332af616ebef6d1d53e0cb758c02
@@ -685,6 +695,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/application-0.1.0/application-0.1.0.tgz
     version: 0.1.0
   boot:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-12T05:27:06.872381555Z"
+    description: A Helm chart for Kubernetes
+    digest: 21f5f29e0aefa72f28192589741d84cb3e728d297495e1031817b1a4208c8354
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.57/boot-0.1.57.tgz
+    version: 0.1.57
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-12T03:40:10.922929822Z"
@@ -1459,6 +1479,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-12T05:27:07.018258257Z"
+    description: A Helm chart for Kubernetes
+    digest: 7f6e5e8adeb4b4c53ef6f04596bfe7aee19b9bfa21aa78cae1c2e20249b7c4f8
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.37/gitlab-0.1.37.tgz
+    version: 0.1.37
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-12T05:03:32.688986973Z"
@@ -4939,4 +4969,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-12T05:03:32.690188807Z"
+generated: "2024-05-12T05:27:07.019294526Z"
