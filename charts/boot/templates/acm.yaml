@@ -16,7 +16,6 @@ spec:
     helm:
       valuesObject: {{ toJson .Values }}
   project: plugins
-  timeout: 120
   syncPolicy:
     retry:
       limit: 10

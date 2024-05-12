@@ -19,7 +19,6 @@ spec:
         - name: domain
           value: apps.{{ .Values.domain }}
   project: plugins
-  timeout: 120
   syncPolicy:
     retry:
       limit: 10
