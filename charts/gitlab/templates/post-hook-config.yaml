@@ -117,6 +117,10 @@ data:
                 "import_sources": ["git"],
                 "auto_devops_enabled": false
                 }
+          register: result
+          until: result.status != 403
+          retries: 5
+          delay: 10
 
         - name: GitLab - Fetch Groups from GitLab
           uri:
