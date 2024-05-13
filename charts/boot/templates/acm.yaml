@@ -17,12 +17,6 @@ spec:
       valuesObject: {{ toJson .Values }}
   project: plugins
   syncPolicy:
-    limit: 800
-    retry:
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 15s
     automated:
       prune: false
       selfHeal: true
