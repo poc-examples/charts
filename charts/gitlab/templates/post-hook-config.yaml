@@ -75,7 +75,7 @@ data:
 
         - name: Clone - Obtain Access Token
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/oauth/token"
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/oauth/token"
             method: POST
             validate_certs: no
             status_code: 200
