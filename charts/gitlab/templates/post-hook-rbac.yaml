@@ -6,12 +6,20 @@ metadata:
   name: deployment-manager
 rules:
 - apiGroups: [
-    "apps",
     ""
   ]
   resources: [
-    "deployments",
     "secrets"
+  ]
+  verbs: [
+    "get", 
+    "list"
+  ]
+- apiGroups: [
+    "apps"
+  ]
+  resources: [
+    "deployments"
   ]
   verbs: [
     "get", 
