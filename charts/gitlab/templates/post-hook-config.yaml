@@ -75,7 +75,7 @@ data:
 
         - name: Clone - Obtain Access Token
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/oauth/token"
+            url: "https://gitlab.apps.{{ .Values.domain }}/oauth/token"
             method: POST
             validate_certs: no
             status_code: 200
@@ -100,7 +100,7 @@ data:
 
         - name: GitLab - Enabled Import Via URL
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/oauth/token" 
+            url: "https://gitlab.apps.{{ .Values.domain }}/oauth/token" 
             method: PUT
             validate_certs: no
             status_code:
@@ -120,7 +120,7 @@ data:
 
         - name: GitLab - Fetch Groups from GitLab
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/oauth/token"
+            url: "https://gitlab.apps.{{ .Values.domain }}/oauth/token"
             method: GET
             validate_certs: no
             status_code:
@@ -150,7 +150,7 @@ data:
 
         - name: GitLab - Create PAT Keyed Access Group
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/oauth/token"
+            url: "https://gitlab.apps.{{ .Values.domain }}/oauth/token"
             method: POST
             validate_certs: no
             body_format: json
@@ -183,7 +183,7 @@ data:
 
         - name: GitLab - Fetch Access Token from GitLab for Group
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
+            url: "https://gitlab.apps.{{ .Values.domain }}/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
             method: GET
             validate_certs: no
             status_code:
@@ -209,7 +209,7 @@ data:
 
         - name: GitLab - Create Group Access Token
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
+            url: "https://gitlab.apps.{{ .Values.domain }}/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
             method: POST
             validate_certs: no
             body_format: json
@@ -274,7 +274,7 @@ data:
 
         - name: GitLab - Import Project from GitHub
           uri:
-            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/api/v4/projects"
+            url: "https://gitlab.apps.{{ .Values.domain }}/api/v4/projects"
             method: POST
             validate_certs: no
             body_format: json
