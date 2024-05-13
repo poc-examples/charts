@@ -57,3 +57,269 @@ data:
                 - gitlab_webserver_status.resources[0].status.readyReplicas | default(0) == gitlab_webserver_status.resources[0].status.replicas
               retries: 40
               delay: 30
+
+        - name: Clone - Decode Admin Password
+          community.kubernetes.k8s_info:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            api_version: v1
+            kind: Secret
+            name: gitlab-gitlab-initial-root-password
+            namespace: "gitlab-system"
+          register: gitlab_admin_secret
+
+        - name: Decode the secret and register to a variable
+          set_fact:
+            decoded_secret: "{{ `{{ gitlab_admin_secret.resources[0].data.password | b64decode }}` }}"
+
+        - name: Clone - Obtain Access Token
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/oauth/token"
+            method: POST
+            validate_certs: no
+            status_code: 200
+            body_format: json
+            headers:
+                Content-Type: application/json
+            body: >
+                {
+                "grant_type": "password",
+                "username": "root",
+                "password": "{{ `{{ decoded_secret }}` }}"
+                }
+          register: gitlab_access_token
+
+        - name: Decode the secret and register to a variable
+          set_fact:
+            gitlab_token: "{{ `{{ gitlab_access_token.json.access_token }}` }}"
+
+        - name: GIT LAB ACCESS TOKEN
+          debug:
+            msg: "{{ `{{ gitlab_token }}` }}"
+
+        - name: GitLab - Enabled Import Via URL
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/oauth/token"
+            method: PUT
+            validate_certs: no
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            body_format: json
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+            body: >
+                {
+                "import_sources": ["git"],
+                "auto_devops_enabled": false
+                }
+
+        - name: GitLab - Fetch Groups from GitLab
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/oauth/token"
+            method: GET
+            validate_certs: no
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+          register: result
+          until: result.status != 403
+          retries: 5
+          delay: 10
+
+        - name: GIT LAB Groups
+          debug:
+            msg: "{{ `{{ result }}` }}"
+
+        - name: GitLab - Set Group ID
+          set_fact:
+            groupID: "{{ `{{ result.json[0].id }}` }}"
+          when: 
+            - result.json is defined
+            - result.json | length > 0
+            - result.json[0].id is defined
+
+        - name: GitLab - Create PAT Keyed Access Group
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/oauth/token"
+            method: POST
+            validate_certs: no
+            body_format: json
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+            body: >
+                {
+                "name": "self-provisioned",
+                "path": "self-provisioned"
+                }
+          register: result
+          until: result.status != 403
+          retries: 10
+          delay: 20
+          when: 
+            - groupID is not defined
+
+        - name: GitLab - Set Group ID Variable
+          set_fact:
+            groupID: "{{ `{{ result.json.id }}` }}"
+          when: 
+            - result.json is defined
+            - result.json.id is defined
+
+        - name: GitLab - Fetch Access Token from GitLab for Group
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}"/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
+            method: GET
+            validate_certs: no
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+          register: tokens
+          until: tokens.status != 403
+          retries: 5
+          delay: 10
+
+        - name: GitLab - Set Access Token Variable
+          set_fact:
+            tokenID: "{{ `{{ tokens.json[0].id }}` }}"
+          when: 
+            - tokens.json is defined
+            - tokens.json | length > 0
+            - tokens.json[0].id is defined
+
+        - name: GitLab - Create Group Access Token
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/api/v4/groups/{{ `{{ groupID }}` }}/access_tokens"
+            method: POST
+            validate_certs: no
+            body_format: json
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+            body: >
+                {
+                  "scopes": [
+                    "api",
+                    "read_api",
+                    "create_runner",
+                    "k8s_proxy",
+                    "read_repository",
+                    "write_repository",
+                    "read_registry",
+                    "write_registry",
+                    "ai_features"
+                  ],
+                  "name": "self-provisioned",
+                  "access_level": 50,
+                  "expires_at": "{{ `{{ '+%Y-%m-%d' | strftime(ansible_facts.date_time.epoch | int + 60*60*24*90) }}` }}"
+                }
+          register: result
+          until: result.status != 403
+          retries: 10
+          delay: 20
+          when: tokenID is not defined
+
+        - name: GitLab - Set Group Access Token Variable
+          set_fact:
+            gitlabToken: "{{ `{{ result.json.token }}` }}"
+          when: 
+            - tokenID is not defined
+
+        - name: GitLab - Group Access Token
+          debug:
+            msg: "{{ `{{ gitlabToken }}` }}"
+          when: 
+            - tokenID is not defined
+
+        - name: Import GitLab - Create Backstage Group Token Access Credentials
+          community.okd.k8s:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            definition:
+              apiVersion: v1
+              kind: Secret
+              metadata:
+                name: gitlab-group-access-pat
+                namespace: "gitlab-system"
+              data:
+                GITLAB_TOKEN: "{{ `{{ gitlabToken | b64encode }}` }}"
+          when: 
+            - tokenID is not defined
+
+        - name: GitLab - Import Project from GitHub
+          uri:
+            url: "https://gitlab.apps.{{ `{{ .Values.domain }}` }}/api/v4/projects"
+            method: POST
+            validate_certs: no
+            body_format: json
+            status_code:
+                - 200
+                - 201
+                - 409
+                - 400
+            headers:
+                Content-Type: application/json
+                Authorization: Bearer {{ `{{ gitlab_token }}` }}
+            body: >
+                {
+                "name": "manifests",
+                "namespace_id": "{{ `{{ groupID }}` }}",
+                "import_url": "https://github.com/poc-examples/automanifests.git"
+                }
+          register: result
+          until: result.status != 403
+          retries: 5
+          delay: 10
+
+        - name: Import GitLab - Push GitLab Token
+          community.okd.k8s:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            definition:
+              apiVersion: external-secrets.io/v1alpha1
+              kind: PushSecret
+              metadata:
+                name: "gitlab-group-token-secret-priming"
+                namespace: gitlab-system
+              spec:
+                deletionPolicy: Delete
+                refreshInterval: 10s
+                secretStoreRefs:
+                  - name: eso-admin-secret-store
+                    kind: ClusterSecretStore
+                selector:
+                  secret:
+                    name: "gitlab-group-access-pat"
+                data:
+                  - match:
+                      secretKey: "GITLAB_TOKEN"
+                      remoteRef:
+                        remoteKey: "gitlab"
+                        property: "group_access_token"
