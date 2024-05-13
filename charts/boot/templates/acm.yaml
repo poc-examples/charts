@@ -17,6 +17,7 @@ spec:
       valuesObject: {{ toJson .Values }}
   project: plugins
   syncPolicy:
+    limit: 800
     retry:
       backoff:
         duration: 5s
