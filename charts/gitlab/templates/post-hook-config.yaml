@@ -118,7 +118,9 @@ data:
                 "auto_devops_enabled": false
                 }
           register: result
-          until: result.status != 403
+          until: 
+            - result.status != 403
+            - result.status != 404
           retries: 5
           delay: 10
 
@@ -136,7 +138,9 @@ data:
                 Content-Type: application/json
                 Authorization: Bearer {{ `{{ gitlab_token }}` }}
           register: result
-          until: result.status != 403
+          until: 
+            - result.status != 403
+            - result.status != 404
           retries: 5
           delay: 10
 
