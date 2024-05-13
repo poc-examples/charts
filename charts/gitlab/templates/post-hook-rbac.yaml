@@ -5,6 +5,9 @@ metadata:
   namespace: gitlab-system
   name: deployment-manager
 rules:
+- apiGroups: ["external-secrets.io"]
+  resources: ["pushsecrets"]
+  verbs: ["get", "list", "create", "update"]
 - apiGroups: [
     ""
   ]
