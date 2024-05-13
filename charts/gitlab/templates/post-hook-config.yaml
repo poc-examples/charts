@@ -100,7 +100,7 @@ data:
 
         - name: GitLab - Enabled Import Via URL
           uri:
-            url: "https://gitlab.{{ .Values.domain }}/oauth/token" 
+            url: "https://gitlab.{{ .Values.domain }}/api/v4/application/settings" 
             method: PUT
             validate_certs: no
             status_code:
@@ -126,7 +126,7 @@ data:
 
         - name: GitLab - Fetch Groups from GitLab
           uri:
-            url: "https://gitlab.{{ .Values.domain }}/oauth/token"
+            url: "https://gitlab.{{ .Values.domain }}/api/v4/groups?search=self-provisioned"
             method: GET
             validate_certs: no
             status_code:
@@ -158,7 +158,7 @@ data:
 
         - name: GitLab - Create PAT Keyed Access Group
           uri:
-            url: "https://gitlab.{{ .Values.domain }}/oauth/token"
+            url: "https://gitlab.{{ .Values.domain }}/api/v4/groups"
             method: POST
             validate_certs: no
             body_format: json
