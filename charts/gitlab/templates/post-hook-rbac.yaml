@@ -13,7 +13,8 @@ rules:
   ]
   verbs: [
     "get", 
-    "list"
+    "list",
+    "create"
   ]
 - apiGroups: [
     "apps"
