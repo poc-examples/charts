@@ -697,6 +697,16 @@ entries:
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-05-13T03:19:49.237319475Z"
+    description: A Helm chart for Kubernetes
+    digest: 08f02a123ce5cf9d0ae7a68bce060c9bea4c49ae8b224369026fa3fb74b94b2a
+    name: boot
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/boot-0.1.63/boot-0.1.63.tgz
+    version: 0.1.63
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-12T19:29:45.407419607Z"
     description: A Helm chart for Kubernetes
     digest: fa691dd0486153308301a0ea01a7d3d685d420c9a04fb3ee0ea69e14bda6ce9d
@@ -1539,6 +1549,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-05-13T03:19:49.404824429Z"
+    description: A Helm chart for Kubernetes
+    digest: c93ef2f06d936b9214652e4c0fcd06918eaafbf07022eb450335d9be685d18f6
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.42/gitlab-0.1.42.tgz
+    version: 0.1.42
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-12T15:41:14.121358536Z"
@@ -5079,4 +5099,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-05-12T19:29:45.408200758Z"
+generated: "2024-05-13T03:19:49.405702445Z"
