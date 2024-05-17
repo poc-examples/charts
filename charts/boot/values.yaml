@@ -18,7 +18,7 @@ registry:
 
 acs:
   chartVersion: 0.1.21
-  enabled: true
+  enabled: false
 
 acm:
   namespace: open-cluster-management
