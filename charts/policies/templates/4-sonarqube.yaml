@@ -1,4 +1,4 @@
-{{ if .Values.acs.enabled }}
+{{ if .Values.sonarqube.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
