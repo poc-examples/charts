@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: plugins
+  name: developer-apps
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 spec:
-  description: "Project that holds all plugin resources."
+  description: "Project that holds all developer application resources."
   sourceRepos:
     - '*'
   destinations:
@@ -14,6 +14,6 @@ spec:
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
-  # namespaceResourceBlacklist:
-  #   - group: ''
-  #     kind: 'Secret'
+  namespaceResourceBlacklist:
+    - group: ''
+      kind: 'Secret'

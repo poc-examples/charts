@@ -1,22 +1,27 @@
+{{- define "servicesDefinition"}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "acm-plugin"
+  name: services-plugin
   namespace: "{{ .Values.gitops.namespace }}"
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
-    namespace: "{{ .Values.acm.namespace }}"
+    namespace: "{{ .Values.gitops.namespace }}"
     server: 'https://kubernetes.default.svc'
   source:
-    chart: acm
-    repoURL: "https://poc-examples.github.io/charts"
-    targetRevision: "{{ .Values.acm.chartVersion }}"
+    chart: policies
+    repoURL: https://poc-examples.github.io/charts
+    targetRevision: "{{ .Values.services.chartVersion }}"
     helm:
       valuesObject: {{ toJson .Values }}
   project: plugins
   syncPolicy:
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
     automated:
       prune: false
       selfHeal: true
@@ -26,3 +31,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - Validate=false
+{{- end }}
