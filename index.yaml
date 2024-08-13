@@ -2792,6 +2792,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/machinesets-0.1.0/machinesets-0.1.0.tgz
     version: 0.1.0
+  nfd:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-13T18:28:05.590485095Z"
+    description: A Helm chart that installs Node Feature Discovery in OpenShift
+    digest: 73fae76433e3d8ea52d9b8a0af84bccdcdff0af05b9242bb7ef406ca287ea48a
+    name: nfd
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/nfd-0.1.0/nfd-0.1.0.tgz
+    version: 0.1.0
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5369,4 +5380,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-06-24T18:38:49.380979202Z"
+generated: "2024-08-13T18:28:05.591228606Z"
