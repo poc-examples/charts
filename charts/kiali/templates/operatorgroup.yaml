@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: kiali-ossm
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  upgradeStrategy: Default
