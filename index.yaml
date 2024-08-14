@@ -4905,6 +4905,16 @@ entries:
   servicemesh:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-14T15:24:20.721732102Z"
+    description: A Helm chart for Kubernetes
+    digest: b863507869b50e0988595e7b0b0d940e38cfebb314cc49d24420a7dff5110d1f
+    name: servicemesh
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/servicemesh-0.1.1/servicemesh-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-14T14:54:09.785028224Z"
     description: A Helm chart for Kubernetes
     digest: 0a56e28d7578491da6d1c002f2f40e7852faea70d05099817abb4c6bc304b305
@@ -5517,4 +5527,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T15:08:49.618794873Z"
+generated: "2024-08-14T15:24:20.722804098Z"
