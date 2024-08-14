@@ -2532,6 +2532,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
     version: 0.1.0
+  kiali:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-14T14:06:56.935377386Z"
+    description: A Helm chart for Kubernetes
+    digest: 5c81dfe7881703cab66e0bdb125eed1a6ac2bb935939c82611cca61ed5a4e950
+    name: kiali
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/kiali-0.1.0/kiali-0.1.0.tgz
+    version: 0.1.0
   machinesets:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5442,4 +5453,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T13:58:44.098389517Z"
+generated: "2024-08-14T14:06:56.936348638Z"
