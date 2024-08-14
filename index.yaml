@@ -1497,6 +1497,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/developerhub-0.1.7/developerhub-0.1.7.tgz
     version: 0.1.7
+  distributed-tracing:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-14T14:15:02.887340961Z"
+    description: A Helm chart for Kubernetes
+    digest: 797820e928805183af77941f30d5379baa497469ad7b829e09616adb36e10387
+    name: distributed-tracing
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/distributed-tracing-0.1.0/distributed-tracing-0.1.0.tgz
+    version: 0.1.0
   external_secrets:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5453,4 +5464,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T14:06:56.936348638Z"
+generated: "2024-08-14T14:15:02.888075416Z"
