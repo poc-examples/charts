@@ -4860,6 +4860,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
+  serverless:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-14T14:22:23.153682728Z"
+    description: A Helm chart for Kubernetes
+    digest: 10072edcbdec9a41d53b0d92e401a966401c2445b5385ac611fd7b72de62d645
+    name: serverless
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/serverless-0.1.0/serverless-0.1.0.tgz
+    version: 0.1.0
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5464,4 +5475,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T14:15:02.888075416Z"
+generated: "2024-08-14T14:22:23.154740414Z"
