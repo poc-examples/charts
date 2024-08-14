@@ -4863,6 +4863,16 @@ entries:
   serverless:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-14T14:34:52.151784049Z"
+    description: A Helm chart for Kubernetes
+    digest: 8675ab3abef755068d34392bce3d0f11b4c71c2907904bc83ca576bc3f0c8d6b
+    name: serverless
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/serverless-0.1.1/serverless-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-14T14:22:23.153682728Z"
     description: A Helm chart for Kubernetes
     digest: 10072edcbdec9a41d53b0d92e401a966401c2445b5385ac611fd7b72de62d645
@@ -5475,4 +5485,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T14:22:23.154740414Z"
+generated: "2024-08-14T14:34:52.152742396Z"
