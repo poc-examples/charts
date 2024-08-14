@@ -27,21 +27,36 @@ spec:
   data:
     - secretKey: "AWS_ACCESS_KEY_ID"
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        metadataPolicy: None
         key: inference-models
         property: AWS_ACCESS_KEY_ID
     - secretKey: "AWS_DEFAULT_REGION"
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        metadataPolicy: None
         key: inference-models
         property: AWS_DEFAULT_REGION
     - secretKey: "AWS_S3_BUCKET"
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        metadataPolicy: None
         key: inference-models
         property: AWS_S3_BUCKET
     - secretKey: "AWS_S3_ENDPOINT"
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        metadataPolicy: None
         key: inference-models
         property: AWS_S3_ENDPOINT
     - secretKey: "AWS_SECRET_ACCESS_KEY"
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        metadataPolicy: None
         key: inference-models
         property: AWS_SECRET_ACCESS_KEY
