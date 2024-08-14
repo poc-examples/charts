@@ -1,0 +1,47 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: inference-models-data-connector
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: eso-admin-secret-store
+    kind: ClusterSecretStore
+  target:
+    name: aws-connection-inference-models
+    template:
+      metadata:
+        labels:
+          opendatahub.io/dashboard: "true"
+          opendatahub.io/managed: "true"
+        annotations:
+          opendatahub.io/connection-type: s3
+          openshift.io/display-name: inference-models
+      type: generic
+      data:
+        AWS_ACCESS_KEY_ID: "{{`{{ .AWS_ACCESS_KEY_ID }}`}}"
+        AWS_DEFAULT_REGION: "{{`{{ .AWS_DEFAULT_REGION }}`}}"
+        AWS_S3_BUCKET: "{{`{{ .AWS_S3_BUCKET }}`}}"
+        AWS_S3_ENDPOINT: "{{`{{ .AWS_S3_ENDPOINT }}`}}"
+        AWS_SECRET_ACCESS_KEY: "{{`{{ .AWS_SECRET_ACCESS_KEY }}`}}"
+  data:
+    - secretKey: "AWS_ACCESS_KEY_ID"
+      remoteRef:
+        key: inference-models
+        property: AWS_ACCESS_KEY_ID
+    - secretKey: "AWS_DEFAULT_REGION"
+      remoteRef:
+        key: inference-models
+        property: AWS_DEFAULT_REGION
+    - secretKey: "AWS_S3_BUCKET"
+      remoteRef:
+        key: inference-models
+        property: AWS_S3_BUCKET
+    - secretKey: "AWS_S3_ENDPOINT"
+      remoteRef:
+        key: inference-models
+        property: AWS_S3_ENDPOINT
+    - secretKey: "AWS_SECRET_ACCESS_KEY"
+      remoteRef:
+        key: inference-models
+        property: AWS_SECRET_ACCESS_KEY
