@@ -2795,6 +2795,16 @@ entries:
   nfd:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-14T13:31:14.151055416Z"
+    description: A Helm chart that installs Node Feature Discovery in OpenShift
+    digest: bb6b06590a8d49917cee91a712cf1debfea6b70efd989174e4de57ce4fb79ddf
+    name: nfd
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/nfd-0.1.2/nfd-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-14T13:27:40.754222734Z"
     description: A Helm chart that installs Node Feature Discovery in OpenShift
     digest: eb5de06d179306868e89e1e947fbf37a5f82b9b22f3367e8fa243dfb44f54190
@@ -5390,4 +5400,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T13:27:40.755348175Z"
+generated: "2024-08-14T13:31:14.151869764Z"
