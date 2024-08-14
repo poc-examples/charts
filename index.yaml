@@ -714,6 +714,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/application-0.1.0/application-0.1.0.tgz
     version: 0.1.0
+  authorino:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-14T13:58:44.097555808Z"
+    description: A Helm chart for Kubernetes
+    digest: 050de70c960161380f199224be427dc5dab0760b47a3f1628d21370cea0567e4
+    name: authorino
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/authorino-0.1.0/authorino-0.1.0.tgz
+    version: 0.1.0
   boot:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5431,4 +5442,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-14T13:49:35.398781362Z"
+generated: "2024-08-14T13:58:44.098389517Z"
