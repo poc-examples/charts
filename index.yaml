@@ -1469,6 +1469,16 @@ entries:
   data-science-project:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-15T01:42:59.772905925Z"
+    description: A Helm chart for Kubernetes
+    digest: 9d8f48c931f42c9e967166c9ef9fad4632d3788fac78d9c7458bfe94cca579d8
+    name: data-science-project
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/data-science-project-0.1.3/data-science-project-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-15T01:27:22.91078532Z"
     description: A Helm chart for Kubernetes
     digest: 901c6e46af8025cf7f868f40e81be758c527bcbb1e48898d1fa12c7ad0037072
@@ -5568,4 +5578,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-15T01:27:22.911641681Z"
+generated: "2024-08-15T01:42:59.773845458Z"
