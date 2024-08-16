@@ -7,6 +7,12 @@ spec:
     kind: Service
     name: langflow
     weight: 100
+{{ if .Values.securedRoute }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+    destinationCACertificate: ''
+{{ end }}
   port:
     targetPort: 8080
   wildcardPolicy: None
