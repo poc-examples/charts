@@ -4671,6 +4671,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/rhoai-0.1.0/rhoai-0.1.0.tgz
     version: 0.1.0
+  rhoai-notebook:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-16T05:56:33.598396692Z"
+    description: A Helm chart for Kubernetes
+    digest: b58030f897a18810fc4d81e12db5b756833851054ffc77c08c5a1ec7cfa7891e
+    name: rhoai-notebook
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-notebook-0.1.0/rhoai-notebook-0.1.0.tgz
+    version: 0.1.0
   rhtas:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5578,4 +5589,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-15T01:42:59.773845458Z"
+generated: "2024-08-16T05:56:33.59934155Z"
