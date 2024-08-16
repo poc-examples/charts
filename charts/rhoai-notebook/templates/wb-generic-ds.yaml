@@ -5,17 +5,17 @@ metadata:
     notebooks.opendatahub.io/inject-oauth: "true"
     notebooks.opendatahub.io/last-image-selection: s2i-generic-data-science-notebook:2024.1
     notebooks.opendatahub.io/last-size-selection: Small
-    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.{{ .domain }}/projects/{{ .namespace }}?notebookLogout={{ .notebookName }}
+    notebooks.opendatahub.io/oauth-logout-url: https://rhods-dashboard-redhat-ods-applications.apps.{{ .Values.domain }}/projects/{{ .Values.namespace }}?notebookLogout={{ .Values.notebookName }}
     opendatahub.io/accelerator-name: ""
     opendatahub.io/image-display-name: Standard Data Science
-    opendatahub.io/username: "{{ .user }}"
+    opendatahub.io/username: "{{ .Values.user }}"
     openshift.io/description: ""
-    openshift.io/display-name: "{{ .notebookName }}"
+    openshift.io/display-name: "{{ .Values.notebookName }}"
   labels:
-    app: "{{ .notebookName }}"
+    app: "{{ .Values.notebookName }}"
     opendatahub.io/dashboard: "true"
     opendatahub.io/odh-managed: "true"
-  name: "{{ .notebookName }}"
+  name: "{{ .Values.notebookName }}"
 spec:
   template:
     spec:
@@ -26,9 +26,9 @@ spec:
             --ServerApp.port=8888
                               --ServerApp.token=''
                               --ServerApp.password=''
-                              --ServerApp.base_url=/notebook/{{ .namespace }}/{{ .notebookName }}
+                              --ServerApp.base_url=/notebook/{{ .Values.namespace }}/{{ .Values.notebookName }}
                               --ServerApp.quit_button=False
-                              --ServerApp.tornado_settings={"user":"{{ .user }}","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.{{ .domain }}","hub_prefix":"/projects/{{ .namespace }}"}
+                              --ServerApp.tornado_settings={"user":"{{ .Values.user }}","hub_host":"https://rhods-dashboard-redhat-ods-applications.apps.{{ .Values.domain }}","hub_prefix":"/projects/{{ .Values.namespace }}"}
         - name: JUPYTER_IMAGE
           value: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.1
         - name: PIP_CERT
@@ -43,20 +43,20 @@ spec:
           value: /etc/pki/tls/custom-certs/ca-bundle.crt
         envFrom:
         - secretRef:
-            name: "aws-connection-{{ .dataConnectionName }}"
+            name: "aws-connection-{{ .Values.dataConnectionName }}"
         image: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:2024.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/{{ .namespace }}/{{ .notebookName }}/api
+            path: /notebook/{{ .Values.namespace }}/{{ .Values.notebookName }}/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
-        name: "{{ .notebookName }}"
+        name: "{{ .Values.notebookName }}"
         ports:
         - containerPort: 8888
           name: notebook-port
@@ -64,7 +64,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /notebook/{{ .namespace }}/{{ .notebookName }}/api
+            path: /notebook/{{ .Values.namespace }}/{{ .Values.notebookName }}/api
             port: notebook-port
             scheme: HTTP
           initialDelaySeconds: 10
@@ -80,7 +80,7 @@ spec:
             memory: 8Gi
         volumeMounts:
         - mountPath: /opt/app-root/src
-          name: "{{ .notebookName }}"
+          name: "{{ .Values.notebookName }}"
         - mountPath: /dev/shm
           name: shm
         - mountPath: /etc/pki/tls/custom-certs/ca-bundle.crt
@@ -92,7 +92,7 @@ spec:
         - --provider=openshift
         - --https-address=:8443
         - --http-address=
-        - --openshift-service-account={{ .notebookName }}
+        - --openshift-service-account={{ .Values.notebookName }}
         - --cookie-secret-file=/etc/oauth/config/cookie_secret
         - --cookie-expire=24h0m0s
         - --tls-cert=/etc/tls/private/tls.crt
@@ -101,8 +101,8 @@ spec:
         - --upstream-ca=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         - --email-domain=*
         - --skip-provider-button
-        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"{{ .notebookName }}","namespace":"$(NAMESPACE)"}
-        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.{{ .domain }}/projects/{{ .namespace }}?notebookLogout={{ .notebookName }}
+        - --openshift-sar={"verb":"get","resource":"notebooks","resourceAPIGroup":"kubeflow.org","resourceName":"{{ .Values.notebookName }}","namespace":"$(NAMESPACE)"}
+        - --logout-url=https://rhods-dashboard-redhat-ods-applications.apps.{{ .Values.domain }}/projects/{{ .Values.namespace }}?notebookLogout={{ .Values.notebookName }}
         env:
         - name: NAMESPACE
           valueFrom:
@@ -148,11 +148,11 @@ spec:
         - mountPath: /etc/tls/private
           name: tls-certificates
       enableServiceLinks: false
-      serviceAccountName: "{{ .notebookName }}"
+      serviceAccountName: "{{ .Values.notebookName }}"
       volumes:
-      - name: "{{ .notebookName }}"
+      - name: "{{ .Values.notebookName }}"
         persistentVolumeClaim:
-          claimName: "{{ .notebookName }}"
+          claimName: "{{ .Values.notebookName }}"
       - emptyDir:
           medium: Memory
         name: shm
@@ -166,8 +166,8 @@ spec:
       - name: oauth-config
         secret:
           defaultMode: 420
-          secretName: "{{ .notebookName }}-oauth-config"
+          secretName: "{{ .Values.notebookName }}-oauth-config"
       - name: tls-certificates
         secret:
           defaultMode: 420
-          secretName: "{{ .notebookName }}-tls"
+          secretName: "{{ .Values.notebookName }}-tls"

@@ -1,14 +1,14 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: "aws-connection-{{ .dataConnectionName }}"
+  name: "aws-connection-{{ .Values.dataConnectionName }}"
 spec:
   refreshInterval: "15s"
   secretStoreRef:
-    name: "{{ .clusterSecretStoreName }}"
+    name: "{{ .Values.clusterSecretStoreName }}"
     kind: ClusterSecretStore
   target:
-    name: "aws-connection-{{ .dataConnectionName }}"
+    name: "aws-connection-{{ .Values.dataConnectionName }}"
     template:
       metadata:
         labels:
@@ -16,7 +16,7 @@ spec:
           opendatahub.io/managed: "true"
         annotations:
           opendatahub.io/connection-type: s3
-          openshift.io/display-name: "{{ .dataConnectionName }}"
+          openshift.io/display-name: "{{ .Values.dataConnectionName }}"
       type: generic
       data:
         AWS_ACCESS_KEY_ID: "{{`{{ .AWS_ACCESS_KEY_ID }}`}}"
@@ -30,33 +30,33 @@ spec:
         conversionStrategy: Default	
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .dataConnectionName }}"
+        key: "{{ .Values.dataConnectionName }}"
         property: AWS_ACCESS_KEY_ID
     - secretKey: "AWS_DEFAULT_REGION"
       remoteRef:
         conversionStrategy: Default	
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .dataConnectionName }}"
+        key: "{{ .Values.dataConnectionName }}"
         property: AWS_DEFAULT_REGION
     - secretKey: "AWS_S3_BUCKET"
       remoteRef:
         conversionStrategy: Default	
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .dataConnectionName }}"
+        key: "{{ .Values.dataConnectionName }}"
         property: AWS_S3_BUCKET
     - secretKey: "AWS_S3_ENDPOINT"
       remoteRef:
         conversionStrategy: Default	
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .dataConnectionName }}"
+        key: "{{ .Values.dataConnectionName }}"
         property: AWS_S3_ENDPOINT
     - secretKey: "AWS_SECRET_ACCESS_KEY"
       remoteRef:
         conversionStrategy: Default	
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .dataConnectionName }}"
+        key: "{{ .Values.dataConnectionName }}"
         property: AWS_SECRET_ACCESS_KEY

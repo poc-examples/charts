@@ -3,17 +3,17 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     openshift.io/description: ""
-    openshift.io/display-name: "{{ .notebookName }}"
+    openshift.io/display-name: "{{ .Values.notebookName }}"
   finalizers:
     - kubernetes.io/pvc-protection
   labels:
     opendatahub.io/dashboard: "true"
-  name: "{{ .notebookName }}"
+  name: "{{ .Values.notebookName }}"
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: "{{ .storageSize }}"
+      storage: "{{ .Values.storageSize }}"
   storageClassName: gp3
   volumeMode: Filesystem
