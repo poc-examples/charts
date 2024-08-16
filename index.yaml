@@ -2598,6 +2598,16 @@ entries:
   langflow-ide:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-16T17:21:38.123228996Z"
+    description: A Helm chart that installs Node Feature Discovery in OpenShift
+    digest: 04c547b4460fb88b57a3f3a1cea5f421f9f4f29c6c6559f7dc67b0800451c749
+    name: langflow-ide
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/langflow-ide-0.1.2/langflow-ide-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-16T17:19:54.756666983Z"
     description: A Helm chart that installs Node Feature Discovery in OpenShift
     digest: 03a642bddad6994c53b15ff58d917e61f2e2c9555f300f1c96fed6f3f4245145
@@ -5681,4 +5691,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-16T17:19:54.757541431Z"
+generated: "2024-08-16T17:21:38.124092652Z"
