@@ -13,8 +13,8 @@ metadata:
   name: "{{ .Values.serviceName }}"
 spec:
   predictor:
-    maxReplicas: "{{ .Values.replicas }}"
-    minReplicas: "{{ .Values.replicas }}"
+    maxReplicas: {{ .Values.replicas | int }}
+    minReplicas: {{ .Values.replicas | int }}
     model:
       modelFormat:
         name: vLLM

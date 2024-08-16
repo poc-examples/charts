@@ -1,6 +1,6 @@
 serviceName: llama3
-replicas: "1"
-GPUCount: "2"
+replicas: 1
+GPUCount: 2
 dataConnection:
   create: false
   name: inference-models
