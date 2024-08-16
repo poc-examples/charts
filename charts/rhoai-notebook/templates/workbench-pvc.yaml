@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    openshift.io/description: ""
+    openshift.io/display-name: "{{ .notebookName }}"
+  finalizers:
+    - kubernetes.io/pvc-protection
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: "{{ .notebookName }}"
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: "{{ .storageSize }}"
+  storageClassName: gp3
+  volumeMode: Filesystem
