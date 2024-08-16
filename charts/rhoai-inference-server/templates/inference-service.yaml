@@ -1,0 +1,38 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  annotations:
+    openshift.io/display-name: "{{ .Values.serviceName }}"
+    serving.knative.openshift.io/enablePassthrough: "true"
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/rewriteAppHTTPProbers: "true"
+  finalizers:
+  - inferenceservice.finalizers
+  labels:
+    opendatahub.io/dashboard: "true"
+  name: "{{ .Values.serviceName }}"
+spec:
+  predictor:
+    maxReplicas: "{{ .Values.replicas }}"
+    minReplicas: "{{ .Values.replicas }}"
+    model:
+      modelFormat:
+        name: vLLM
+      name: ""
+      resources:
+        limits:
+          cpu: "{{ .Values.resources.cpu }}"
+          memory: "{{ .Values.resources.mem }}"
+          nvidia.com/gpu: "{{ .Values.GPUCount }}"
+        requests:
+          cpu: "{{ .Values.resources.cpu }}"
+          memory: "{{ .Values.resources.mem }}"
+          nvidia.com/gpu: "{{ .Values.GPUCount }}"
+      runtime: "{{ .Values.serviceName }}"
+      storage:
+        key: "aws-connection-{{ .Values.dataConnection.name }}"
+        path: "{{ .Values.dataConnection.modelPath }}"
+    tolerations:
+    - effect: NoSchedule
+      key: nvidia.com/gpu
+      operator: Exists
