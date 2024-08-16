@@ -4674,6 +4674,16 @@ entries:
   rhoai-inference-server:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-16T07:29:08.203919614Z"
+    description: A Helm chart for Kubernetes
+    digest: 2a67a5373d057a328d71b4ce23ad099c1420a7806c57a31de935c58e25c4f230
+    name: rhoai-inference-server
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-inference-server-0.1.2/rhoai-inference-server-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-16T07:25:52.59864376Z"
     description: A Helm chart for Kubernetes
     digest: 5a870a3d97f0a28250b46c283fca4fa491a85c75aab3d966bdac86a54d33adc8
@@ -5620,4 +5630,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-16T07:25:52.59954976Z"
+generated: "2024-08-16T07:29:08.204853367Z"
