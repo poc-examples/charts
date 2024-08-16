@@ -28,7 +28,7 @@ spec:
           cpu: "{{ .Values.resources.cpu }}"
           memory: "{{ .Values.resources.mem }}"
           nvidia.com/gpu: "{{ .Values.GPUCount }}"
-      runtime: "{{ .Values.serviceName }}"
+      runtime: "{{ .Values.servingRuntime }}"
       storage:
         key: "aws-connection-{{ .Values.dataConnection.name }}"
         path: "{{ .Values.dataConnection.modelPath }}"

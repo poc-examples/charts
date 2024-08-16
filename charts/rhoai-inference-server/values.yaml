@@ -1,4 +1,5 @@
 serviceName: llama3
+servingRuntime: dual-gpu-vllm-runtime
 replicas: 1
 GPUCount: 2
 dataConnection:
