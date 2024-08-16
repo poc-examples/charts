@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: langflow
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: langflow
+
