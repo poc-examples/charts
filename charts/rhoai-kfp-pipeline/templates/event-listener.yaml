@@ -20,7 +20,7 @@ spec:
           name: kfp-sync-pipeline
         params: 
           - name: GITHUB_REPO
-            value: $(params.gitrepo)
+            value: $(tt.params.gitrepo)
           - name: GITHUB_BRANCH
             value: 'main'
         podTemplate:
@@ -65,6 +65,9 @@ spec:
         - name: gitrevision
           kind: TriggerBinding
           value: $(extensions.truncated_sha)
+        - name: gitrepo
+          kind: TriggerBinding
+          value: "$(body.repository.html_url)"
       template:
         ref: kfp-pipeline-trigger-template
 ---
