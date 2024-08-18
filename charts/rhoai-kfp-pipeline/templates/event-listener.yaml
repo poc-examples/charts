@@ -1,0 +1,74 @@
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: kfp-pipeline-trigger-template
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision sha
+  resourcetemplates: 
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata: 
+        name: kfp-sync-$(tt.params.gitrevision)
+      spec:
+        serviceAccountName: openshift-pipelines
+        pipelineRef:
+          name: kfp-sync-pipeline
+        params: 
+          - name: GITHUB_REPO
+            value: $(tt.params.git_repo)
+          - name: GITHUB_BRANCH
+            value: 'main'
+        podTemplate:
+          securityContext:
+            runAsUser: 1000
+            fsGroup: 65532
+            fsGroupChangePolicy: "OnRootMismatch"
+        workspaces:
+        - name: source
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 1Gi
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: kfp-pipeline-listener
+spec:
+  triggers:
+    - name: filter-events
+      interceptors:
+        - ref:
+            name: "gitlab"
+            kind: ClusterInterceptor
+            apiVersion: triggers.tekton.dev
+          params:
+            - name: "eventTypes"
+              value: ["Push Hook"]
+        - ref:
+            name: cel
+          params:
+          - name: "overlays"
+            value:
+            - key: truncated_sha
+              expression: "body.after.truncate(7)"
+      bindings:
+        - name: gitrevision
+          value: $(extensions.truncated_sha)
+      template:
+        ref: image-pipeline-trigger-template
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: github-binding
+spec:
+  params:
+    - name: gitrevision
+      value: "$(body.after)"
