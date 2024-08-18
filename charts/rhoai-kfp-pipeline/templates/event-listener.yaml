@@ -77,4 +77,4 @@ spec:
     - name: gitrevision
       value: "$(body.after)"
     - name: gitrepo
-      value: "$(body.html_url)"
+      value: "$(body.repository.html_url)"
