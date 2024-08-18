@@ -4746,6 +4746,16 @@ entries:
   rhoai-kfp-pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-18T06:48:08.206783015Z"
+    description: A Helm chart for Kubernetes
+    digest: 729e9880ff2e3a8e53bca1ced68af40622c693659d2b573ca512898514c33864
+    name: rhoai-kfp-pipeline
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-kfp-pipeline-0.1.7/rhoai-kfp-pipeline-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-18T06:42:39.991110017Z"
     description: A Helm chart for Kubernetes
     digest: 64ccc935bb41a32ef482168712443653a618833951ccf85d481fe432b0136c96
@@ -5762,4 +5772,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-18T06:42:39.992919565Z"
+generated: "2024-08-18T06:48:08.207784795Z"
