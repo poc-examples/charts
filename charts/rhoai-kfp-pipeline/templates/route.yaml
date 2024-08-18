@@ -11,6 +11,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: el-pipeline-listener
+    name: el-kfp-pipeline-listener
     weight: 100
   wildcardPolicy: None
