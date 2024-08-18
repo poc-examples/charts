@@ -20,7 +20,7 @@ spec:
           name: kfp-sync-pipeline
         params: 
           - name: GITHUB_REPO
-            value: "$(tt.params.gitrepo)"
+            value: $(tt.params.gitrepo)
           - name: GITHUB_BRANCH
             value: 'main'
         podTemplate:
