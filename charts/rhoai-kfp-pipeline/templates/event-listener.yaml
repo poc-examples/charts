@@ -7,6 +7,8 @@ spec:
   params:
     - name: gitrevision
       description: The git revision sha
+    - name: gitrepo
+      description: The git repo
   resourcetemplates: 
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -18,7 +20,7 @@ spec:
           name: kfp-sync-pipeline
         params: 
           - name: GITHUB_REPO
-            value: https://github.com/test
+            value: "$(tt.params.gitrepo)"
           - name: GITHUB_BRANCH
             value: 'main'
         podTemplate:
@@ -74,3 +76,5 @@ spec:
   params:
     - name: gitrevision
       value: "$(body.after)"
+    - name: gitrepo
+      value: "$(body.html_url)"
