@@ -1,3 +1,0 @@
-{{ if not .Values.acm.enabled }}
-  {{ include "servicesDefinition" . }}
-{{- end }}
