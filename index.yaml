@@ -4743,6 +4743,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/rhoai-inference-server-0.1.0/rhoai-inference-server-0.1.0.tgz
     version: 0.1.0
+  rhoai-kfp-pipeline:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-18T05:46:21.249672838Z"
+    description: A Helm chart for Kubernetes
+    digest: b0e46fbf89adb680db0543f88563bbb55715944b3a3eccb26d382e7d737b4911
+    name: rhoai-kfp-pipeline
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-kfp-pipeline-0.1.0/rhoai-kfp-pipeline-0.1.0.tgz
+    version: 0.1.0
   rhoai-notebook:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5691,4 +5702,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-16T17:21:38.124092652Z"
+generated: "2024-08-18T05:46:21.251459218Z"
