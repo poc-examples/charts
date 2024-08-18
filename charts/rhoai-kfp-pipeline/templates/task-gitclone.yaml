@@ -52,6 +52,7 @@ spec:
       description: Revision to checkout. (branch, tag, sha, ref, etc...)
       type: string
       default: ""
+      type: string
     - name: refspec
       description: Refspec to fetch before checking out revision.
       default: ""
@@ -111,13 +112,17 @@ spec:
   results:
     - name: commit
       description: The precise commit SHA that was fetched by this Task.
+      type: string
     - name: url
       description: The precise URL that was fetched by this Task.
+      type: string
     - name: committer-date
       description: The epoch timestamp of the commit that was fetched by this Task.
+      type: string
   steps:
     - name: clone
       image: "$(params.gitInitImage)"
+      resources: {}
       env:
       - name: HOME
         value: "$(params.userHome)"

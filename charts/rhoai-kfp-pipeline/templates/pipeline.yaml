@@ -5,7 +5,9 @@ metadata:
 spec:
   params:
     - name: GITHUB_REPO
+      type: string
     - name: GITHUB_BRANCH
+      type: string
   workspaces:
     - name: source
   tasks:

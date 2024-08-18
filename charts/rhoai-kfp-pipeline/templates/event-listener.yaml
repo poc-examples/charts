@@ -18,7 +18,7 @@ spec:
           name: kfp-sync-pipeline
         params: 
           - name: GITHUB_REPO
-            value: $(tt.params.git_repo)
+            value: https://github.com/test
           - name: GITHUB_BRANCH
             value: 'main'
         podTemplate:
@@ -53,6 +53,7 @@ spec:
               value: ["Push Hook"]
         - ref:
             name: cel
+            kind: ClusterInterceptor
           params:
           - name: "overlays"
             value:
@@ -60,9 +61,10 @@ spec:
               expression: "body.after.truncate(7)"
       bindings:
         - name: gitrevision
+          kind: TriggerBinding
           value: $(extensions.truncated_sha)
       template:
-        ref: image-pipeline-trigger-template
+        ref: kfp-pipeline-trigger-template
 ---
 apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
