@@ -1,0 +1,10 @@
+name: "ansible"
+namespace: "gitlab-system"
+image: "registry.access.redhat.com/ubi9/python-311:latest"
+
+initialJob:
+  enable: true
+
+cron:
+  enabled: true
+  schedule: "*/30 * * * *"

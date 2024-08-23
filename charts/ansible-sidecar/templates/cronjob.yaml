@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "{{ .Values.name }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  schedule: "{{ .Values.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: ansible-runner
+          containers:
+          - name: "{{ .Values.name }}-cronjob"
+            image: "{{ .Values.image }}"
+            command: ["/bin/bash", "-c"]
+            args:
+              - |
+                pip install ansible;
+                pip install openshift;
+                ansible-galaxy install -r /etc/ansible/requirements.yaml
+                ansible-playbook /etc/ansible/playbook.yaml;
+            volumeMounts:
+            - name: playbook-volume
+              mountPath: /etc/ansible
+          volumes:
+          - name: playbook-volume
+            configMap:
+              name: "{{ .Values.name }}"
+          restartPolicy: Never
