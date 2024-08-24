@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: image-updater-plugin
+  name: image-updater-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
@@ -14,7 +14,7 @@ spec:
     chart: image-updater
     repoURL: https://poc-examples.github.io/charts
     targetRevision: "{{ .Values.gitops.updater.chartVersion }}"
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true

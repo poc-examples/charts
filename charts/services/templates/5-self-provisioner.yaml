@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "self-provisioner-plugin"
+  name: "self-provisioner-service"
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
@@ -16,7 +16,7 @@ spec:
     targetRevision: HEAD
     directory:
       recurse: true
-  project: plugins
+  project: system
   syncPolicy:
     retry:
       limit: 10

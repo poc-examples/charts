@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitlab-plugin
+  name: gitlab-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
@@ -20,7 +20,7 @@ spec:
           value: "{{ .Values.gitlab.namespace }}"
         - name: domain
           value: apps.{{ .Values.domain }}
-  project: plugins
+  project: system
   syncPolicy:
     retry:
       limit: 10

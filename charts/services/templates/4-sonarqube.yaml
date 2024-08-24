@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sonarqube-plugin
+  name: sonarqube-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
@@ -24,7 +24,7 @@ spec:
           value: "true"
         - name: route.enabled
           value: "true"
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true

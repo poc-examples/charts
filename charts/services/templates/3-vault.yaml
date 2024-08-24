@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vault-plugin
+  name: vault-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-4"
@@ -26,7 +26,7 @@ spec:
           dev:
             enabled: true
           enabled: true
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true

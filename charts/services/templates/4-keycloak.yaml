@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: keycloak-plugin
+  name: keycloak-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
@@ -17,7 +17,7 @@ spec:
     helm:
       valuesObject:
         domain: "{{ .Values.domain }}"
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true

@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: developer-hub-plugin
+  name: developer-hub-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
@@ -18,7 +18,7 @@ spec:
       parameters:
         - name: host
           value: "{{ .Values.domain }}"
-  project: plugins
+  project: system
   syncPolicy:
     retry:
       limit: 10

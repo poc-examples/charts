@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: advanced-cluster-security-plugin
+  name: advanced-cluster-security-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-4"
@@ -14,7 +14,7 @@ spec:
     chart: acs
     repoURL: https://poc-examples.github.io/charts
     targetRevision: "{{ .Values.acs.chartVersion }}"
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true

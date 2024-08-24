@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: machine-sets-plugin
+  name: system-machine-sets
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-6"
@@ -16,7 +16,7 @@ spec:
     targetRevision: "{{ .Values.machinesets.chartVersion }}"
     helm:
       valuesObject: {{ toJson .Values.machinesets.helmValues }}
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true
