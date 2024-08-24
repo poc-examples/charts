@@ -5179,6 +5179,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/servicemesh-0.1.0/servicemesh-0.1.0.tgz
     version: 0.1.0
+  services:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-24T17:52:13.360579093Z"
+    description: A Helm chart for Kubernetes
+    digest: 6c9b5d5fdad372a1f8c68fa0d707bb3af64207097baca21fc69175278c1cfb12
+    name: services
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/services-0.2.0/services-0.2.0.tgz
+    version: 0.2.0
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5803,4 +5814,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-23T18:40:57.432675505Z"
+generated: "2024-08-24T17:52:13.361529098Z"
