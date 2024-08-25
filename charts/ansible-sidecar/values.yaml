@@ -3,6 +3,12 @@ namespace: "default"
 image: "registry.access.redhat.com/ubi9/python-311:latest"
 role: default
 
+additionalVars:
+  vault:
+    enabled: true
+  gitops:
+    namespace: "openshift-gitops"
+
 initialJob:
   enable: true
 
