@@ -1,6 +1,7 @@
-name: "ansible"
-namespace: "gitlab-system"
+name: "default"
+namespace: "default"
 image: "registry.access.redhat.com/ubi9/python-311:latest"
+role: default
 
 initialJob:
   enable: true
@@ -8,3 +9,29 @@ initialJob:
 cron:
   enabled: true
   schedule: "*/30 * * * *"
+
+rules:
+  - apiGroups:
+      - "external-secrets.io"
+    resources: 
+      - "pushsecrets"
+    verbs:
+      - "get"
+      - "list"
+      - "create"
+      - "update"
+  - apiGroups:
+      - ""
+    resources:
+      - "secrets"
+    verbs:
+      - "get" 
+      - "list"
+      - "create"
+  - apiGroups:
+      - "apps"
+    resources:
+      - "deployments"
+    verbs:
+      - "get" 
+      - "list"

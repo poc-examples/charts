@@ -2,42 +2,19 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: deployment-manager
+  name: "{{ .Values.name }}"
 rules:
-- apiGroups: ["external-secrets.io"]
-  resources: ["pushsecrets"]
-  verbs: ["get", "list", "create", "update"]
-- apiGroups: [
-    ""
-  ]
-  resources: [
-    "secrets"
-  ]
-  verbs: [
-    "get", 
-    "list",
-    "create"
-  ]
-- apiGroups: [
-    "apps"
-  ]
-  resources: [
-    "deployments"
-  ]
-  verbs: [
-    "get", 
-    "list"
-  ]
+{{- toYaml .Values.rules | nindent 2 }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: deployment-manager-binding
+  name: "{{ .Values.name }}-binding"
 subjects:
 - kind: ServiceAccount
   name: ansible-runner
   namespace: "{{ .Values.namespace }}"
 roleRef:
   kind: Role
-  name: deployment-manager
+  name: "{{ .Values.name }}"
   apiGroup: rbac.authorization.k8s.io

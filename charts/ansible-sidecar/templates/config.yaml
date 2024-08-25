@@ -8,17 +8,20 @@ data:
   requirements.yaml: |
     ---
     roles:
-      - name: external-secrets
+      - name: "{{ .Values.role }}"
         src: https://github.com/poc-examples/ansible-roles.git
         scm: git
         version: main
-        path: bootstrapper-roles/external-secrets
+        path: bootstrapper-roles/"{{ .Values.role }}"
     collections:
       - name: community.kubernetes
+        source: https://galaxy.ansible.com
+      - name: community.okd
+        source: https://galaxy.ansible.com
 
   playbook.yaml: |
     ---
-    - name: Setup Base Operators
+    - name: "Run {{ .Values.role }} Role"
       hosts: localhost
       connection: local
       gather_facts: yes
@@ -32,4 +35,4 @@ data:
           validate_certs: false
 
       roles:
-        - external-secrets
+        - "{{ .Values.role }}"
