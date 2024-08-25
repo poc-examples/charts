@@ -17,6 +17,8 @@ spec:
             pip install openshift;
             ansible-galaxy install -r /etc/ansible/requirements.yaml
             ansible-playbook /etc/ansible/playbook.yaml;
+        env:
+          {{ toYaml .Values.env }}
       volumeMounts:
       - name: playbook-volume
         mountPath: /etc/ansible

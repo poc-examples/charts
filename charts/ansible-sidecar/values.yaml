@@ -3,6 +3,9 @@ namespace: "default"
 image: "registry.access.redhat.com/ubi9/python-311:latest"
 role: default
 
+env:
+  VAULT_TOKEN: placeholder
+
 additionalVars:
   vault:
     enabled: true
