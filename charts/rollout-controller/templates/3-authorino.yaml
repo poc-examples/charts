@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-4"
 spec:
   destination:
-    namespace: openshift-operators
+    namespace: authorino
     server: https://kubernetes.default.svc
   source:
     chart: authorino
