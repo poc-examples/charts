@@ -2,10 +2,10 @@ domain: openshift.io
 
 machinesets:
   chartVersion: 0.1.19
-  enabled: true
+  enabled: false
   helmValues:
     machineset: 
-      enabled: true
+      enabled: false
     machinesets:
       - name: acs
         machine_type: Standard_D8s_v3
@@ -15,7 +15,7 @@ registry:
 
 acs:
   chartVersion: 0.1.21
-  enabled: true
+  enabled: false
 
 acm:
   chartVersion: 0.1.5
@@ -23,19 +23,19 @@ acm:
 
 keycloak:
   chartVersion: 0.1.39
-  enabled: true
+  enabled: false
 
 gatekeeper:
   chartVersion: 0.1.16
-  enabled: true
+  enabled: false
 
 gitops:
   namespace: openshift-gitops
   channel: gitops-1.11
-  enabled: true
+  enabled: false
   updater:
     chartVersion: 0.1.0
-    enabled: true
+    enabled: false
 
 tekton:
   chartVersion: 0.1.66
@@ -43,11 +43,11 @@ tekton:
 
 sonarqube:
   chartVersion: ~8
-  enabled: true
+  enabled: false
 
 devhub:
   chartVersion: 0.1.9
-  enabled: true
+  enabled: false
 
 rhtas:
   chartVersion: 0.1.34
@@ -57,17 +57,21 @@ rhtas:
 gitlab:
   namespace: gitlab-system
   chartVersion: 0.1.34
-  enabled: true
+  enabled: false
 
 external_secrets:
-  enabled: true
+  enabled: false
   chartVersion: 0.1.11
   namespace: external-secrets
 
 vault:
   chartVersion: 0.27.0
-  enabled: true
+  enabled: false
 
 nfd:
-  enabled: true 
+  enabled: false 
   chartVersion: 0.1.3
+
+nvidiagpu:
+  enabled: false 
+  chartVersion: 0.1.1
