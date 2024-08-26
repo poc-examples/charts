@@ -13,7 +13,7 @@ spec:
   source:
     chart: authorino
     targetRevision: "{{ .Values.authorino.chartVersion }}"
-    repoURL: 'https://helm.releases.hashicorp.com'
+    repoURL: 'https://poc-examples.github.io/charts'
   project: system
   syncPolicy:
     automated:
