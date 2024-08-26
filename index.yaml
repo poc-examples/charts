@@ -5170,6 +5170,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-26T07:42:58.751567001Z"
+    description: A Helm chart for Kubernetes
+    digest: 8e778f97fb8f9fae0e5e8382dfc72eeb81243fb46917bc7a24ace3195704638c
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.6/rollout-controller-0.3.6.tgz
+    version: 0.3.6
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-26T07:41:00.0305916Z"
     description: A Helm chart for Kubernetes
     digest: ce7e34af3e41e72b2077675ebbd7ea86a4e5a6baf66821acd82a414edf1aa276
@@ -5292,6 +5302,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/services-0.2.0/services-0.2.0.tgz
     version: 0.2.0
   tekton:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-26T07:42:58.867399994Z"
+    description: A chart for deploying tekton
+    digest: be16ba72faa990df3423907af42673f7be89df0448eee734cd1e392ec84f0db1
+    name: tekton
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/tekton-0.1.69/tekton-0.1.69.tgz
+    version: 0.1.69
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-08-16T15:22:08.719074254Z"
@@ -5915,4 +5935,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-26T07:41:00.031380544Z"
+generated: "2024-08-26T07:42:58.869311121Z"
