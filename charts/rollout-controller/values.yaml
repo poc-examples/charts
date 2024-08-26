@@ -78,3 +78,7 @@ nfd:
 nvidiagpu:
   enabled: false 
   chartVersion: 0.1.1
+
+authorino:
+  enabled: false
+  chartVersion: 0.1.0
