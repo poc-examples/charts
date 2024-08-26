@@ -41,6 +41,9 @@ tekton:
   chartVersion: 0.1.66
   enabled: false
 
+chains:
+  enabled: false
+
 sonarqube:
   chartVersion: ~8
   enabled: false
