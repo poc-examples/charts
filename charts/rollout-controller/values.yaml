@@ -99,3 +99,7 @@ servicemesh:
   enabled: false
   chartVersion: 0.1.1
 
+rhoai:
+  enabled: false
+  chartVersion: 0.1.2
+
