@@ -1,4 +1,4 @@
-{{ if eq .Values.chains.enabled "true" }}
+{{ if .Values.chains.enabled }}
 apiVersion: operator.tekton.dev/v1alpha1
 kind: TektonConfig
 metadata:
