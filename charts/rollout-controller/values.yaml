@@ -82,3 +82,8 @@ nvidiagpu:
 authorino:
   enabled: false
   chartVersion: 0.1.0
+
+kiali:
+  enabled: false
+  chartVersion: 0.1.0
+
