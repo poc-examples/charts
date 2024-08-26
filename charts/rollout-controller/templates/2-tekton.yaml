@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: tekton-service
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   destination:
     namespace: "openshift-operators"
@@ -18,7 +20,7 @@ spec:
           value: "{{ .Values.domain }}"
       valuesObject: 
         chains: {{ toJson .Values.chains }}
-  project: plugins
+  project: system
   syncPolicy:
     automated:
       prune: true
