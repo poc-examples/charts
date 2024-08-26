@@ -87,3 +87,6 @@ kiali:
   enabled: false
   chartVersion: 0.1.0
 
+tracing:
+  enabled: false
+  chartVersion: 0.1.0
