@@ -18,8 +18,8 @@ spec:
       parameters:
         - name: domain
           value: "{{ .Values.domain }}"
-      valuesObject: 
-        chains: {{ toJson .Values.chains }}
+        - name: chains.enabled
+          value: {{ .Values.chains.enabled }}
   project: system
   syncPolicy:
     automated:
