@@ -90,3 +90,12 @@ kiali:
 tracing:
   enabled: false
   chartVersion: 0.1.0
+
+serverless:
+  enabled: false
+  chartVersion: 0.1.1
+
+servicemesh:
+  enabled: false
+  chartVersion: 0.1.1
+
