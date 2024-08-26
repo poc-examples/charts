@@ -1,4 +1,4 @@
-{{ if .Values.tekton.enabled }}
+{{ if eq .Values.tekton.enabled "true"}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
