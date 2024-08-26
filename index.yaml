@@ -5167,6 +5167,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
+  rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-26T06:36:58.068402255Z"
+    description: A Helm chart for Kubernetes
+    digest: 12827fffe28906202c9317800829b6bce488f565bdf9039aecacedc8f75fcca3
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.0/rollout-controller-0.3.0.tgz
+    version: 0.3.0
   serverless:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -5854,4 +5865,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-25T07:22:24.934157898Z"
+generated: "2024-08-26T06:36:58.069231766Z"
