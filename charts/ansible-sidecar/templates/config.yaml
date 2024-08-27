@@ -1,33 +1,36 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Values.name }}"
+  name: "{{ .Values.runner.name }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 data:
   requirements.yaml: |
     ---
     roles:
-      - name: "{{ .Values.role }}"
-        src: https://github.com/poc-examples/ansible-roles.git
+    {{- range .Values.requirements.roles }}
+      - name: "{{ .name }}"
+        src: "{{ .repo }}"
         scm: git
         version: main
-        path: bootstrapper-roles/"{{ .Values.role }}"
+        path: "{{ .name }}"
+    {{- end }}
     collections:
-      - name: community.kubernetes
-        source: https://galaxy.ansible.com
-      - name: community.okd
-        source: https://galaxy.ansible.com
+    {{- range .Values.requirements.collections }}
+      - name: "{{ .name }}"
+        source: "{{ .source }}"
+    {{- end }}
 
   playbook.yaml: |
     ---
-    - name: "Run {{ .Values.role }} Role"
+    - name: "Run {{ .Values.runner.name }} Playbook"
       hosts: localhost
       connection: local
       gather_facts: yes
       collections:
-        - community.okd
-        - community.kubernetes
+      {{- range .Values.requirements.collections }}
+        - "{{ .name }}"
+      {{- end }}
       vars:
         openshift:
           api_url: "https://kubernetes.default.svc"
@@ -46,4 +49,6 @@ data:
         {{- end }}
       {{- end }}
       roles:
-        - "{{ .Values.role }}"
+      {{- range .Values.requirements.roles }}
+        - "{{ .name }}"
+      {{- end }}

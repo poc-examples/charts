@@ -1,10 +1,20 @@
-name: "default"
-namespace: "default"
-image: "registry.access.redhat.com/ubi9/python-311:latest"
-role: default
+runner:
+  name: "default"
+  namespace: "default"
+  image: "registry.access.redhat.com/ubi9/python-311:latest"
+  env:
+    VAULT_TOKEN: placeholder
 
-env:
-  VAULT_TOKEN: placeholder
+requirements:
+  roles: 
+    - repo: "https://github.com/poc-examples/gitlab-role.git"
+      name: gitlab
+
+  collections:
+    - name: community.kubernetes
+      source: "https://galaxy.ansible.com"
+    - name: community.okd
+      source: "https://galaxy.ansible.com"
 
 additionalVars:
   vault:
@@ -13,10 +23,10 @@ additionalVars:
     namespace: "openshift-gitops"
 
 initialJob:
-  enable: true
+  enabled: true
 
 cron:
-  enabled: true
+  enabled: false
   schedule: "*/30 * * * *"
 
 rules:

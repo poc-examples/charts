@@ -1,15 +1,15 @@
-{{ if .Values.cron.enabled }}
+{{ if .Values.initialJob.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Values.name }}-job"
+  name: "{{ .Values.runner.name }}-job"
 spec:
   template:
     spec:
       serviceAccountName: ansible-runner
       containers:
-      - name: "{{ .Values.name }}-job"
-        image: "{{ .Values.image }}"
+      - name: "{{ .Values.runner.name }}-job"
+        image: "{{ .Values.runner.image }}"
         command: ["/bin/bash", "-c"]
         args:
           - |
@@ -18,13 +18,13 @@ spec:
             ansible-galaxy install -r /etc/ansible/requirements.yaml
             ansible-playbook /etc/ansible/playbook.yaml;
         env:
-          {{ toYaml .Values.env }}
+          {{ toYaml .Values.runner.env }}
       volumeMounts:
       - name: playbook-volume
         mountPath: /etc/ansible
       volumes:
       - name: playbook-volume
         configMap:
-          name: "{{ .Values.name }}"
+          name: "{{ .Values.runner.name }}"
       restartPolicy: Never
 {{ end }}
