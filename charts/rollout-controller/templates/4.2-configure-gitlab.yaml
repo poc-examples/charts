@@ -19,6 +19,8 @@ spec:
           value: apps.{{ .Values.domain }}
         - name: runner.name
           value: gitlab-configure
+        - name: runner.namespace
+          value: gitlab-system
       valuesObject:
         rules:
           - apiGroups:
