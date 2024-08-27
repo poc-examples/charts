@@ -486,6 +486,16 @@ entries:
   ansible-sidecar:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-27T18:24:56.008232722Z"
+    description: A Helm chart for Kubernetes
+    digest: ac0d31719c3ed4b5c5bec1854ef2186f324996d4d0ee7285f321837e8cb79d2b
+    name: ansible-sidecar
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/ansible-sidecar-0.1.16/ansible-sidecar-0.1.16.tgz
+    version: 0.1.16
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-27T17:36:27.74759101Z"
     description: A Helm chart for Kubernetes
     digest: 1c12910ceabc1a1324ab4d6eea4137e63fd5e99bddd9530b74155211783d745a
@@ -1913,6 +1923,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-27T18:24:56.115561727Z"
+    description: A Helm chart for Kubernetes
+    digest: fe2893cbffd55da1a671227f813953940b0151243d16467e0e0db284cba6436b
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.55/gitlab-0.1.55.tgz
+    version: 0.1.55
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-05-13T06:02:02.417606032Z"
@@ -5280,6 +5300,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-27T18:24:56.239626797Z"
+    description: A Helm chart for Kubernetes
+    digest: 2d6d49c955d05af96c74aa27fb2616f1baac7e37c330420f85e71db60a981866
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.31/rollout-controller-0.3.31.tgz
+    version: 0.3.31
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-27T17:57:06.310869459Z"
     description: A Helm chart for Kubernetes
     digest: 8567947e2f7afe6a88cf8f90e72cd6e3d2cd115959a3e094540118db7d805e8e
@@ -6285,4 +6315,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-27T17:57:06.312952123Z"
+generated: "2024-08-27T18:24:56.241847011Z"
