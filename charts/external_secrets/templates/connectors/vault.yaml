@@ -6,12 +6,6 @@ metadata:
   name: eso-admin-secret-store
 spec:
   conditions: []
-    # - namespaces:
-    #   - "{{ openshift.services.external_secrets.namespace }}"
-    #   - "{{ openshift.services.gitops.namespace }}"
-    #   - "cluster-secrets-admin"
-    #   - "gitlab-system"
-    #   - "backstage"
   provider:
     vault:
       server: "{{ .Values.vault.address }}"
