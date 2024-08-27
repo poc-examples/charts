@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Values.runner.name }}-requirements"
+  name: "{{ .Values.runner.name }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 data:
