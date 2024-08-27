@@ -19,6 +19,35 @@ spec:
           value: apps.{{ .Values.domain }}
         - name: runner.name
           value: gitlab-configure
+      valuesObject:
+        rules:
+          - apiGroups:
+              - "external-secrets.io"
+            resources: 
+              - "pushsecrets"
+            verbs:
+              - "get"
+              - "list"
+              - "create"
+              - "update"
+          - apiGroups:
+              - ""
+            resources:
+              - "secrets"
+            verbs:
+              - "get" 
+              - "list"
+              - "create"
+          - apiGroups:
+              - "apps"
+            resources:
+              - "deployments"
+            verbs:
+              - "get"
+              - "list"
+              - "create"
+              - "update"
+
   project: system
   syncPolicy:
     automated:
