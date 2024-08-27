@@ -18,7 +18,7 @@ spec:
             ansible-galaxy install -r /etc/ansible/requirements.yaml
             ansible-playbook /etc/ansible/playbook.yaml;
         env:
-          {{ toYaml .Values.runner.env }}
+{{ toYaml .Values.runner.env | indent 10 }}
       volumeMounts:
       - name: playbook-volume
         mountPath: /etc/ansible
