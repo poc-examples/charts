@@ -3,7 +3,8 @@ runner:
   namespace: "default"
   image: "registry.access.redhat.com/ubi9/python-311:latest"
   env:
-    VAULT_TOKEN: placeholder
+    - name: VAULT_TOKEN
+      value: placeholder
 
 requirements:
   roles: 
