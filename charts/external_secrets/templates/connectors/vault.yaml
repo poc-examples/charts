@@ -1,0 +1,26 @@
+{{- if .Values.vault }}
+{{- if .Values.vault.enabled }}
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: eso-admin-secret-store
+spec:
+  conditions: []
+    # - namespaces:
+    #   - "{{ openshift.services.external_secrets.namespace }}"
+    #   - "{{ openshift.services.gitops.namespace }}"
+    #   - "cluster-secrets-admin"
+    #   - "gitlab-system"
+    #   - "backstage"
+  provider:
+    vault:
+      server: "{{ .Values.vault.address }}"
+      path: "secret"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          namespace: "secrets-manager"
+          key: "token"
+{{- end }}
+{{- end }}

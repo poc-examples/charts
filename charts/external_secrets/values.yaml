@@ -1,0 +1,3 @@
+vault:
+  enabled: false
+  address: "http://vault-service.vault-server.svc.cluster.local:8200"
