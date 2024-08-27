@@ -17,6 +17,8 @@ spec:
       parameters:
         - name: domain
           value: apps.{{ .Values.domain }}
+        - name: runner.name
+          value: gitlab-configure
   project: system
   syncPolicy:
     automated:
