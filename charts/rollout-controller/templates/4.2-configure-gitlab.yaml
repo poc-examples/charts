@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     chart: ansible-sidecar
-    targetRevision: "{{ .Values.gitlab.chartVersion }}"
+    targetRevision: "0.1.5"
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
