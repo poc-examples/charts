@@ -64,12 +64,13 @@ gitlab:
 
 external_secrets:
   enabled: false
-  chartVersion: 0.1.11
+  chartVersion: 0.1.15
   namespace: external-secrets
 
 vault:
   chartVersion: 0.27.0
   enabled: false
+  address: "http://vault-service.vault-server.svc.cluster.local:8200"
 
 nfd:
   enabled: false 
