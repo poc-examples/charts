@@ -13,17 +13,18 @@ spec:
         spec:
           serviceAccountName: ansible-runner
           containers:
-          - name: "{{ .Values.runner.name }}-cronjob"
+          - name: "{{ .Values.runner.name }}-job"
             image: "{{ .Values.runner.image }}"
             command: ["/bin/bash", "-c"]
             args:
               - |
                 pip install ansible;
                 pip install openshift;
+                ls -la /etc/ansible
                 ansible-galaxy install -r /etc/ansible/requirements.yaml
                 ansible-playbook /etc/ansible/playbook.yaml;
             env:
-              {{ toYaml .Values.runner.env }}
+{{ toYaml .Values.runner.env | indent 14 }}
             volumeMounts:
             - name: playbook-volume
               mountPath: /etc/ansible
