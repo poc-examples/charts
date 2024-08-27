@@ -32,10 +32,9 @@ data:
         - "{{ .name }}"
       {{- end }}
       vars:
-        openshift:
-          api_url: "https://kubernetes.default.svc"
-          token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
-          validate_certs: false
+        api_url: "https://kubernetes.default.svc"
+        token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
+        validate_certs: false
       {{- range $key, $value := .Values.additionalVars }}
         {{ $key }}:
         {{- range $subkey, $subvalue := $value }}
