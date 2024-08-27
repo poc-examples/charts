@@ -15,6 +15,7 @@ spec:
           - |
             pip install ansible;
             pip install openshift;
+            ls -la /etc/ansible
             ansible-galaxy install -r /etc/ansible/requirements.yaml
             ansible-playbook /etc/ansible/playbook.yaml;
         env:
