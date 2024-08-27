@@ -486,6 +486,16 @@ entries:
   ansible-sidecar:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-27T16:22:31.075752286Z"
+    description: A Helm chart for Kubernetes
+    digest: 4012f67b20cfc74a972a1aedb49508bfa31a02d64d18192d2f5be5c7ce2c397b
+    name: ansible-sidecar
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/ansible-sidecar-0.1.8/ansible-sidecar-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-27T16:16:20.367718437Z"
     description: A Helm chart for Kubernetes
     digest: ed2d2c3a3953c852f33d52b745adf711d3b1817892fcc88a56be20d799775ea6
@@ -5210,6 +5220,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-27T16:22:31.172464298Z"
+    description: A Helm chart for Kubernetes
+    digest: dad050a4e2e0effdae50aec91720682500e0a1a021a5ae0602519aac080e2d13
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.20/rollout-controller-0.3.20.tgz
+    version: 0.3.20
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-27T16:17:00.521973656Z"
     description: A Helm chart for Kubernetes
     digest: 26f5edd485384d7582cf93375ebda7e12b003a2f3698308ea347339938b3b889
@@ -6115,4 +6135,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-27T16:17:00.522869237Z"
+generated: "2024-08-27T16:22:31.173962292Z"
