@@ -22,10 +22,17 @@ spec:
 {{ toYaml .Values.runner.env | indent 10 }}
       volumeMounts:
       - name: playbook-volume
-        mountPath: /etc/ansible
+        mountPath: /etc/ansible/playbook.yaml
+        subPath: playbook.yaml
+      - name: requirements-volume
+        mountPath: /etc/ansible/requirements.yaml
+        subPath: requirements.yaml
       volumes:
       - name: playbook-volume
         configMap:
-          name: "{{ .Values.runner.name }}"
+          name: "{{ .Values.runner.name }}-playbook"
+      - name: requirements-volume
+        configMap:
+          name: "{{ .Values.runner.name }}-requirements"
       restartPolicy: Never
 {{ end }}

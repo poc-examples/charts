@@ -1,26 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Values.runner.name }}"
+  name: "{{ .Values.runner.name }}-playbook"
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 data:
-  requirements.yaml: |
-    ---
-    roles:
-    {{- range .Values.requirements.roles }}
-      - name: "{{ .name }}"
-        src: "{{ .repo }}"
-        scm: git
-        version: main
-        path: "{{ .name }}"
-    {{- end }}
-    collections:
-    {{- range .Values.requirements.collections }}
-      - name: "{{ .name }}"
-        source: "{{ .source }}"
-    {{- end }}
-
   playbook.yaml: |
     ---
     - name: "Run {{ .Values.runner.name }} Playbook"
