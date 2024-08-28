@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     chart: ansible-sidecar
-    targetRevision: "0.1.16"
+    targetRevision: "0.1.17"
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
