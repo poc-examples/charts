@@ -12,6 +12,7 @@ spec:
         caProvider:
           type: ConfigMap
           name: kube-root-ca.crt
+          namespace: "{{ .Values.k8s.target.namespace }}"
           key: ca.crt
       auth:
         serviceAccountRef:
