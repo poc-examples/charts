@@ -486,6 +486,16 @@ entries:
   ansible-sidecar:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-08-28T09:16:06.090330941Z"
+    description: A Helm chart for Kubernetes
+    digest: e9f06f70c9ae7644305ee418e895d3c5c995129db639fb05fafd31d612aa52d6
+    name: ansible-sidecar
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/ansible-sidecar-0.1.17/ansible-sidecar-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-27T18:24:56.008232722Z"
     description: A Helm chart for Kubernetes
     digest: ac0d31719c3ed4b5c5bec1854ef2186f324996d4d0ee7285f321837e8cb79d2b
@@ -6365,4 +6375,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-28T09:08:09.04748373Z"
+generated: "2024-08-28T09:16:06.091536481Z"
