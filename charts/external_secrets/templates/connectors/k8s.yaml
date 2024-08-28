@@ -9,10 +9,12 @@ spec:
     kubernetes:
       server:
         url: https://kubernetes.default.svc
-        caBundle: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       auth:
         serviceAccountRef:
           name: "{{ .Values.k8s.target.serviceaccount }}"
           namespace: "{{ .Values.k8s.target.namespace }}"
 {{- end }}
 {{- end }}
+      auth:
+        serviceAccount:
+          name: "my-store"
