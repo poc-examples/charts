@@ -35,18 +35,7 @@ data:
         api_url: "https://kubernetes.default.svc"
         token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
         validate_certs: false
-      {{- range $key, $value := .Values.additionalVars }}
-        {{ $key }}:
-        {{- range $subkey, $subvalue := $value }}
-          {{- if eq (typeOf $subvalue) "string" }}
-          {{ $subkey }}: "{{ $subvalue }}"
-          {{- else if eq (typeOf $subvalue) "bool" }}
-          {{ $subkey }}: {{ $subvalue }}
-          {{- else }}
-          {{ $subkey }}: {{ $subvalue }}
-          {{- end }}
-        {{- end }}
-      {{- end }}
+{{ toYaml .Values.additionalVars | indent 8 }}
       roles:
       {{- range .Values.requirements.roles }}
         - "{{ .name }}"

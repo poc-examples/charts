@@ -22,6 +22,7 @@ additionalVars:
     enabled: true
   gitops:
     namespace: "openshift-gitops"
+  domain: apps.rosa.di00.p1.openshiftapps.com
 
 initialJob:
   enabled: true
