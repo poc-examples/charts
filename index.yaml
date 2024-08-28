@@ -5072,6 +5072,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/policies-0.1.0/policies-0.1.0.tgz
     version: 0.1.0
+  quay:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-28T23:23:42.67352416Z"
+    description: A Helm chart for Kubernetes
+    digest: c3cbf333ce6a4250256692b6a45ffe1f84bc2a27227ebbab605980889ff97062
+    name: quay
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/quay-0.1.0/quay-0.1.0.tgz
+    version: 0.1.0
   rhoai:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -6675,4 +6686,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-28T23:20:08.343100209Z"
+generated: "2024-08-28T23:23:42.675027511Z"
