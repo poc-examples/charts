@@ -15,7 +15,7 @@ spec:
           namespace: "{{ .Values.k8s.target.namespace }}"
           key: ca.crt
       auth:
-        serviceAccountRef:
+        serviceAccount:
           name: "{{ .Values.k8s.target.serviceaccount }}"
           namespace: "{{ .Values.k8s.target.namespace }}"
 {{- end }}
