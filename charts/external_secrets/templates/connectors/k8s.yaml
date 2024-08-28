@@ -12,7 +12,7 @@ spec:
         caBundle: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       auth:
         serviceAccountRef:
-          name: external-secrets-kubeaccess-sa
-          namespace: secrets-manager
+          name: "{{ .Values.k8s.target.serviceaccount }}"
+          namespace: "{{ .Values.k8s.target.namespace }}"
 {{- end }}
 {{- end }}
