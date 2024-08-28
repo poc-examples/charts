@@ -1,0 +1,25 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: init-config-bundle-secret
+  namespace: quay-registry
+stringData:
+  config.yaml: |
+    FEATURE_USER_INITIALIZE: true
+    FEATURE_PROXY_CACHE: true
+    BROWSER_API_CALLS_XHR_ONLY: false
+    FEATURE_USER_CREATION: false
+    SUPER_USERS:
+      - quayadmin
+    DISTRIBUTED_STORAGE_CONFIG:
+      default:
+        - S3Storage
+        - host: 's3.us-east-1.amazonaws.com'
+          s3_bucket: "quay-backend"
+          s3_access_key: <access-key>
+          s3_secret_key: <secret-key>
+          s3_region: "us-east-1"
+          storage_path: /datastorage/registry
+    DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
+    DISTRIBUTED_STORAGE_PREFERENCE:
+        - default
