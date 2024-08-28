@@ -59,12 +59,12 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.1.58
+  chartVersion: 0.1.60
   enabled: false
 
 external_secrets:
   enabled: false
-  chartVersion: 0.1.25
+  chartVersion: 0.1.27
   namespace: external-secrets
   k8sConnector:
     enabled: false
