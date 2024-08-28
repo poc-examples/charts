@@ -15,13 +15,13 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
-        - name: domain
-          value: apps.{{ .Values.domain }}
         - name: runner.name
           value: gitlab-configure
         - name: runner.namespace
           value: gitlab-system
       valuesObject:
+        additionalVars:
+          domain: apps.{{ .Values.domain }}
         rules:
           - apiGroups:
               - "external-secrets.io"
