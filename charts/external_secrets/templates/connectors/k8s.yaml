@@ -18,5 +18,6 @@ spec:
       auth:
         serviceAccount:
           name: "{{ .Values.k8s.target.serviceaccount }}"
+          namespace: "{{ .Values.k8s.target.namespace }}"
 {{- end }}
 {{- end }}
