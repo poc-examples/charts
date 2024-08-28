@@ -20,6 +20,3 @@ spec:
           namespace: "{{ .Values.k8s.target.namespace }}"
 {{- end }}
 {{- end }}
-      auth:
-        serviceAccount:
-          name: "my-store"
