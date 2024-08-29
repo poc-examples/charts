@@ -1740,6 +1740,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/distributed-tracing-0.1.0/distributed-tracing-0.1.0.tgz
     version: 0.1.0
+  external-secrets-connectors:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-08-29T15:03:20.415897155Z"
+    description: A Helm chart for Kubernetes
+    digest: fa057618599a80c01ce91b8922ba2d1e35ee5a12a1052ea52fbc2e5b9770787f
+    name: external-secrets-connectors
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/external-secrets-connectors-0.1.0/external-secrets-connectors-0.1.0.tgz
+    version: 0.1.0
   external_secrets:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -6716,4 +6727,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-08-29T15:00:31.922819131Z"
+generated: "2024-08-29T15:03:20.417632763Z"
