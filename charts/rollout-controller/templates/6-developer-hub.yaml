@@ -2,20 +2,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "self-provisioner-service"
+  name: developer-hub-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
-    namespace: "{{ .Values.gitops.namespace }}"
+    namespace: backstage
     server: https://kubernetes.default.svc
   source:
-    repoURL: "https://gitlab.apps.{{ .Values.domain }}/self-provisioned/manifests"
-    path: "applications"
-    targetRevision: HEAD
-    directory:
-      recurse: true
+    chart: developerhub
+    targetRevision: "{{ .Values.devhub.chartVersion }}"
+    repoURL: https://poc-examples.github.io/charts
+    helm:
+      parameters:
+        - name: host
+          value: "{{ .Values.domain }}"
   project: system
   syncPolicy:
     retry:

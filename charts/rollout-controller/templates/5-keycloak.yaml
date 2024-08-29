@@ -5,7 +5,7 @@ metadata:
   name: keycloak-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
     namespace: keycloak
