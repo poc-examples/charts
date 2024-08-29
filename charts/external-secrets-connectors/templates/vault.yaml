@@ -1,0 +1,22 @@
+{{- if .Values.vault }}
+{{- if .Values.vault.enabled }}
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: eso-admin-secret-store
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  conditions: []
+  provider:
+    vault:
+      server: "{{ .Values.vault.address }}"
+      path: "secret"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          namespace: "secrets-manager"
+          key: "token"
+{{- end }}
+{{- end }}
