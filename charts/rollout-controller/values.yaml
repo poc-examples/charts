@@ -64,7 +64,7 @@ gitlab:
 
 external_secrets:
   enabled: false
-  chartVersion: 0.1.28
+  chartVersion: 0.1.29
   namespace: external-secrets
   k8sConnector:
     enabled: false
