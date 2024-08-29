@@ -1,9 +1,0 @@
-vault:
-  enabled: false
-  address: "http://vault-service.vault-server.svc.cluster.local:8200"
-
-k8s:
-  enabled: false
-  target:
-    serviceaccount: external-secrets-kubeaccess-sa
-    namespace: secrets-manager
