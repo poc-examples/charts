@@ -5,7 +5,7 @@ metadata:
   name: vault-service
   namespace: "{{ .Values.gitops.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "-4"
+    argocd.argoproj.io/sync-wave: "-6"
 spec:
   destination:
     namespace: vault-server
