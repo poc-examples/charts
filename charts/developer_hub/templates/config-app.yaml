@@ -52,7 +52,7 @@ data:
           host: postgres
           port: 5432
           user: backstage
-          password: ${GITLAB_TOKEN}
+          password: ${DEVHUB_BACKEND_SECRET}
           database: backstage
   {{- else if .Values.backend.sqlite3.enabled }}
       database:
@@ -61,8 +61,10 @@ data:
   {{- end }}
 
     scaffolder:
+    {{- if .Values.gitlab.enabled }}
       gitlab:
         token: ${GITLAB_TOKEN}
+    {{- end }}
       defaultAuthor:
         name: SysAdmin
         email: sys@admin.com
@@ -89,7 +91,9 @@ data:
           changeOrigin: true
           secure: true
 
+      {{- if .Values.gitlab.enabled }}
         /gitlab.com:
           target: https://gitlab.apps.{{ .Values.host }}
           changeOrigin: true
           secure: false
+      {{- end }}

@@ -1,3 +1,4 @@
+{{- if .Values.gitlab.enabled }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -66,3 +67,4 @@ data:
                 if:
                   allOf:
                     - isGitlabAvailable
+{{- end }}

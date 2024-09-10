@@ -14,6 +14,7 @@ data:
         - type: url
           target: https://github.com/poc-examples/software-templates/blob/main/templates.yaml
       providers:
+      {{- if .Values.gitlab.enabled }}
         gitlab:
           selfHosted:
             host: "gitlab.apps.{{ .Values.host }}"
@@ -22,3 +23,4 @@ data:
                 seconds: 10
               timeout:
                 seconds: 60
+      {{- end }}
