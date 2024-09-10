@@ -19,11 +19,11 @@ spec:
         ports:
         - containerPort: 5432
         env:
-        - name: POSTGRES_DB
+        - name: POSTGRESQL_DATABASE
           value: backstage
-        - name: POSTGRES_USER
+        - name: POSTGRESQL_USER  
           value: backstage
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRESQL_PASSWORD  
           valueFrom:
             secretKeyRef:
               name: backend-credentials
