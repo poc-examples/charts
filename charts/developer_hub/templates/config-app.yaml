@@ -45,9 +45,20 @@ data:
         origin: "*"
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
         credentials: true
+  {{- if .Values.backend.postgres.enabled }}
+      database:
+        client: pg
+        connection:
+          host: postgres
+          port: 5432
+          user: backstage
+          password: ${GITLAB_TOKEN}
+          database: backstage
+  {{- else if .Values.backend.sqlite3.enabled }}
       database:
         client: better-sqlite3
         connection: ':memory:'
+  {{- end }}
 
     scaffolder:
       gitlab:

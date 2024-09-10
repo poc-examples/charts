@@ -1,3 +1,11 @@
+backend:
+  postgres:
+    enabled: true
+  sqlite3:
+    enabled: false
 
+gitlab:
+  enabled: false
 
-
+github:
+  enabled: false

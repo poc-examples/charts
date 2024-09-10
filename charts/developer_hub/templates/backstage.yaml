@@ -11,7 +11,9 @@ spec:
       configMaps:
         - name: backstage-app-config
         - name: argocd-plugin
+      {{- if .Values.gitlab.enabled }}
         - name: gitlab-plugin
+      {{- end }}
         - name: kubernetes-plugin
         - name: tech-radar-plugin
         - name: techdocs-plugin
@@ -23,8 +25,10 @@ spec:
         - name: SKIP_INTEGRITY_CHECK
           value: "true"
       secrets:
+      {{- if .Values.gitlab.enabled }}
         - name: gitlab-token
           key: GITLAB_TOKEN
+      {{- end }}
         - name: backend-credentials
           key: DEVHUB_BACKEND_SECRET
         - name: argocd-token
@@ -36,4 +40,4 @@ spec:
     route:
       enabled: true
   database:
-    enableLocalDb: true
+    enableLocalDb: {{ .Values.backend.sqlite3.enabled }}
