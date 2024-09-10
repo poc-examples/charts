@@ -31,16 +31,4 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: postgres-storage
-  volumeClaimTemplates:
-  - metadata:
-      name: postgres-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi
-      volumeMode: Filesystem
-    {{- if .Values.postgres.storageClassName }}
-      storageClassName: "{{ .Values.postgres.storageClassName }}"
-    {{- end }}
 {{ end }}
