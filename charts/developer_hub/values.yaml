@@ -9,3 +9,6 @@ gitlab:
 
 github:
   enabled: false
+
+postgres:
+  storageClassName: lvms-local
