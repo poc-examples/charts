@@ -14,11 +14,10 @@ spec:
         app: postgres
     spec:
       securityContext:
-        fsGroup: 65532
-        fsGroupChangePolicy: "OnRootMismatch"
+        fsGroup: 26
       containers:
       - name: postgres
-        image: postgres:13
+        image: registry.redhat.io/rhel8/postgresql-13:latest
         ports:
         - containerPort: 5432
         env:
