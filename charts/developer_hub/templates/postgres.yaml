@@ -13,6 +13,9 @@ spec:
       labels:
         app: postgres
     spec:
+      securityContext:
+        fsGroup: 65532
+        fsGroupChangePolicy: "OnRootMismatch"
       containers:
       - name: postgres
         image: postgres:13
