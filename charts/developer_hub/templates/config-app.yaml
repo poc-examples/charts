@@ -58,9 +58,7 @@ data:
           port: ${POSTGRES_PORT}
           user: ${POSTGRES_USER}
           password: ${POSTGRES_PASSWORD}
-          ssl:
-            require: false
-            rejectUnauthorized: false
+          ssl: false
   {{- else if .Values.backend.sqlite3.enabled }}
       database:
         client: better-sqlite3
