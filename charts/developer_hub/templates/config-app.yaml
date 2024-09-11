@@ -52,6 +52,7 @@ data:
         credentials: true
   {{- if .Values.backend.postgres.enabled }}
       database:
+        client: pg
         connection:
           host: ${POSTGRES_HOST}
           port: ${POSTGRES_PORT}
