@@ -1661,6 +1661,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-11T17:14:50.324545357Z"
+    description: A chart for deploying backstage
+    digest: 85779529d4abe942e32a51a1280845bb7aa9e8d70a4da7530004cf485c22d39b
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.1.45/developerhub-0.1.45.tgz
+    version: 0.1.45
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-11T17:09:49.232404757Z"
     description: A chart for deploying backstage
     digest: f876df112e52cf0703f02f1a46827dd886bde5a6d35d156dbdd226f55d116e36
@@ -7097,4 +7107,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-09-11T17:09:49.233995711Z"
+generated: "2024-09-11T17:14:50.325633495Z"
