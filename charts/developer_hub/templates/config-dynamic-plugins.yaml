@@ -79,6 +79,12 @@ data:
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
 
+      ###################################
+      ## PERMISSIONS PLUGIN CONFIGURATION
+      ###################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-permission-common
+
       ##################################
       ## TOPOLOGY PLUGIN CONFIGURATION
       ##################################
