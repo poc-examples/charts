@@ -22,12 +22,15 @@ spec:
         - name: POSTGRESQL_DATABASE
           value: backstage
         - name: POSTGRESQL_USER  
-          value: backstage
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: POSTGRES_USER
         - name: POSTGRESQL_PASSWORD  
           valueFrom:
             secretKeyRef:
-              name: backend-credentials
-              key: DEVHUB_BACKEND_SECRET
+              name: postgres-credentials
+              key: POSTGRES_PASSWORD
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: postgres-storage
