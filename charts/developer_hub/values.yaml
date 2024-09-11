@@ -1,8 +1,8 @@
 backend:
   postgres:
-    enabled: false
-  sqlite3:
     enabled: true
+  sqlite3:
+    enabled: false
 
 gitlab:
   enabled: false

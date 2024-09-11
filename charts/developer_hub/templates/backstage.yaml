@@ -29,6 +29,7 @@ spec:
         - name: gitlab-token
           key: GITLAB_TOKEN
       {{- end }}
+        - name: postgres-credentials
         - name: backend-credentials
           key: DEVHUB_BACKEND_SECRET
         - name: argocd-token

@@ -25,6 +25,11 @@ data:
     organization:
       name: ${ORGANIZATION_NAME}
 
+    postgresql:
+      enabled: false
+      auth:
+        existingSecret: postgres-credentials
+
     backend:
       auth:
         keys:
@@ -47,13 +52,13 @@ data:
         credentials: true
   {{- if .Values.backend.postgres.enabled }}
       database:
-        client: pg
         connection:
-          host: postgres
-          port: 5432
-          user: backstage
-          password: ${DEVHUB_BACKEND_SECRET}
-          database: backstage
+          host: ${POSTGRES_HOST}
+          port: ${POSTGRES_PORT}
+          user: ${POSTGRES_USER}
+          password: ${POSTGRES_PASSWORD}
+          ssl:
+            rejectUnauthorized: false
   {{- else if .Values.backend.sqlite3.enabled }}
       database:
         client: better-sqlite3
