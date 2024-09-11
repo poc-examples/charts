@@ -83,7 +83,7 @@ data:
       ## PERMISSIONS PLUGIN CONFIGURATION
       ###################################
       - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-permission-common
+        package: ./dynamic-plugins/dist/backstage-plugin-permission
 
       ##################################
       ## TOPOLOGY PLUGIN CONFIGURATION
