@@ -10,16 +10,16 @@ data:
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name:  # placeholder for 'backstage-<cr-name>'
+      name: developer-hub
     spec:
       replicas: 1
       selector:
         matchLabels:
-          rhdh.redhat.com/app:  # placeholder for 'backstage-<cr-name>'
+          rhdh.redhat.com/app: developer-hub
       template:
         metadata:
           labels:
-            rhdh.redhat.com/app:  # placeholder for 'backstage-<cr-name>'
+            rhdh.redhat.com/app: developer-hub
         spec:
           automountServiceAccountToken: false
           volumes:
@@ -101,9 +101,9 @@ data:
               env:
                 - name: APP_CONFIG_backend_listen_port
                   value: "7007"
-              envFrom:
-                - secretRef:
-                    name: <POSTGRESQL_SECRET>  # will be replaced with 'backstage-psql-secrets-<cr-name>'
+              # envFrom:
+              #   - secretRef:
+              #       name: <POSTGRESQL_SECRET>  # will be replaced with 'backstage-psql-secrets-<cr-name>'
               #            - secretRef:
               #                name: backstage-secrets
               volumeMounts:
