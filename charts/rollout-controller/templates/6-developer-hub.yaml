@@ -18,6 +18,8 @@ spec:
       parameters:
         - name: host
           value: "{{ .Values.domain }}"
+        - name: gitlab.enabled
+          value: "{{ .Values.gitlab.enabled }}"
   project: system
   syncPolicy:
     retry:

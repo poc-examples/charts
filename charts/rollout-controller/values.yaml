@@ -49,7 +49,7 @@ sonarqube:
   enabled: false
 
 devhub:
-  chartVersion: 0.1.15
+  chartVersion: 0.1.48
   enabled: false
 
 rhtas:
