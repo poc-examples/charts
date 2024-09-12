@@ -1,0 +1,19 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: allow-only-private-registry
+  namespace: openshift-gatekeeper-system
+spec:
+  enforcementAction: dryrun
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "openshift-*"
+      - "kube-*"
+      - "quay-*"
+  parameters:
+    repos:
+      - "docker.io"
+      - "quay.io"
