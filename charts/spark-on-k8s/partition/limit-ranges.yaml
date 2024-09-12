@@ -1,0 +1,28 @@
+# Limit Ranges establish min/max compute constraints at the namespace level.
+# They prevent excessive resource requests and guarantee a basic quality of service for pods.
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: compute-limits
+  namespace: spark-running-environment
+spec:
+  limits:
+  - type: Container
+    # This is about limiting resources. When you don't specify any limits for your container, Kubernetes won't allow the container to use more than this default amount.
+    # Default provides a reasonable limit for a container if one isn't mentioned & max should override default setting a limit for all containers.
+    default:
+      cpu: "2"
+      memory: 4Gi
+    # This is about guaranteeing resources. When you create a container and don't mention any specific requests, Kubernetes ensures this amount is set aside for you.
+    # Default Request provides a reasonable minimum amount of resources for a container if one isn't mentioned & min is the absolute floor when requesting amounts that might be to small.
+    defaultRequest:
+      cpu: "500m"
+      memory: 250Mi
+    # The maximum amount that a single container in a pod can request.
+    max:
+      cpu: "2"
+      memory: 4Gi
+    # The minimum amount that a single container in a pod can request.
+    min:
+      cpu: "500m"
+      memory: 250Mi

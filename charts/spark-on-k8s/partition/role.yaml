@@ -1,0 +1,28 @@
+# The role allows specific interactions with cluster resources like pods, configmaps, and more.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: spark-pod-scheduler
+  namespace: spark-running-environment
+rules:
+- apiGroups:
+    - security.openshift.io
+  resources:
+    - securitycontextconstraints
+  resourceNames:
+    - nonroot
+  verbs:
+    - use
+- apiGroups:
+    - ""
+  resources:
+    - configmaps
+    - pods
+    - persistentvolumeclaims
+    - services
+  verbs:
+    - list
+    - watch
+    - create
+    - delete
+    - deletecollection

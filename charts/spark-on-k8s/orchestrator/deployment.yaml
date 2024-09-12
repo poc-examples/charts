@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyspark-jupyter-notebook
+  namespace: workflow-orchestrator
+  labels:
+    app: pyspark-jupyter-notebook
+spec:
+  selector:
+    matchLabels:
+      app: pyspark-jupyter-notebook
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pyspark-jupyter-notebook
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 100
+        fsGroup: 100
+      serviceAccount: workflow-orchestrator-sa
+      serviceAccountName: workflow-orchestrator-sa
+      containers:
+        - name: pyspark-jupyter-notebook
+          image: quay.io/rh_ee_cengleby/pyspark-notebook:0.7
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 5Gi
+              cpu: "2"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+          ports:
+            - containerPort: 8888
+          volumeMounts:
+          - name: workdir
+            mountPath: /home/jovyan/work
+      volumes:
+      - name: workdir
+        persistentVolumeClaim:
+          claimName: pyspark-jupyter-notebook-work-files

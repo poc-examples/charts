@@ -1,0 +1,6 @@
+# Namespaces should be designated for distinct teams or projects, ensuring resource isolation.
+# Overpartitioning namespaces may result in inefficient resource utilization and idle compute.
+apiVersion: project.openshift.io/v1
+kind: Project
+metadata:
+  name: spark-running-environment

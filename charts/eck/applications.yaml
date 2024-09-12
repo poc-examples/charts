@@ -1,0 +1,45 @@
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch
+  namespace: elastic-monitoring
+spec:
+  version: 8.8.2
+  nodeSets:
+  - name: elastic-nodeset
+    count: 3 # Number of Shards
+    config:
+      node.store.allow_mmap: false
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Gi   # 50GB disk per shard seems to be optimum for performance as per elastic
+        storageClassName: standard  # Set the storage class
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: kibana
+  namespace: elastic-monitoring
+spec:
+  version: 8.8.2
+  count: 1
+  elasticsearchRef:
+    name: elasticsearch
+---
+apiVersion: apm.k8s.elastic.co/v1
+kind: ApmServer
+metadata:
+  name: apm-server
+  namespace: elastic-monitoring
+spec:
+  version: 8.8.2
+  count: 1
+  elasticsearchRef:
+    name: elasticsearch

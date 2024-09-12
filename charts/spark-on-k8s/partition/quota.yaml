@@ -1,0 +1,19 @@
+# Resource quotas act like a budget for the resources available to Spark jobs in the namespace. 
+# They prevent overuse, ensuring that other services in the cluster continue to run smoothly.
+# For optimal performance, periodically review and adjust these quotas based on actual usage.
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: namespace-compute-resources
+  namespace: spark-running-environment
+spec:
+  hard:
+    # Specifies the max number of pods allowed in this namespace at any given time.
+    pods: "20"
+    # Restricts the sum of all the pods cpu & memory requests
+    requests.cpu: "40"
+    requests.memory: 80Gi
+    # The upper limit on the combined CPU & memory usage of all pods in the namespace.
+    # This is the maximum amount the pods can use if they need to, but collectively, they shouldn't go beyond this set limit.
+    limits.cpu: "40"
+    limits.memory: 80Gi
