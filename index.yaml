@@ -2103,6 +2103,16 @@ entries:
   external-secrets-connectors:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-12T05:48:36.664116912Z"
+    description: A Helm chart for Kubernetes
+    digest: 679158e4a0a49eb761b5a5b76f36c238292d4ac1f827add92ab236ebe3601bd0
+    name: external-secrets-connectors
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/external-secrets-connectors-0.1.2/external-secrets-connectors-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-29T15:30:58.668693788Z"
     description: A Helm chart for Kubernetes
     digest: 8652d0eb79e41b2e3292668369b75a8abbdee2aaf459723040c5da74cc96d782
@@ -2333,6 +2343,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/external_secrets-0.1.7/external_secrets-0.1.7.tgz
     version: 0.1.7
   gatekeeper:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-09-12T05:48:36.788956742Z"
+    description: A Helm chart for Kubernetes
+    digest: 2494cf478fdcea66797407b7494ed1badff869a0a841054a2babb57b4e936a67
+    name: gatekeeper
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.17/gatekeeper-0.1.17.tgz
+    version: 0.1.17
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-04-26T06:18:09.714482946Z"
@@ -7167,4 +7187,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-09-12T04:26:32.756304913Z"
+generated: "2024-09-12T05:48:36.789917845Z"
