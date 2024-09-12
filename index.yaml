@@ -1661,6 +1661,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-12T04:26:32.625826248Z"
+    description: A chart for deploying backstage
+    digest: ea8cba9518d526378e618e59cdae6dbc4d9cdf0d70c30cb03277182fd2d5dc94
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.1.49/developerhub-0.1.49.tgz
+    version: 0.1.49
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-11T18:45:42.487269176Z"
     description: A chart for deploying backstage
     digest: d963785a6b1bedd9c3bf4981d63d510a8803ff72b142532df562aa5666fc5cbc
@@ -5932,6 +5942,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-12T04:26:32.755068374Z"
+    description: A Helm chart for Kubernetes
+    digest: 599dc9832fcb6302472205b9178dfb0b10763159cc31e1c83504d96f94b099f8
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.52/rollout-controller-0.3.52.tgz
+    version: 0.3.52
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-11T22:55:18.985632596Z"
     description: A Helm chart for Kubernetes
     digest: f64f8f42a820012c1eaab385ee2dba21b4cc9679043077e7a711628037e2af32
@@ -7147,4 +7167,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-09-11T22:55:18.986555748Z"
+generated: "2024-09-12T04:26:32.756304913Z"
