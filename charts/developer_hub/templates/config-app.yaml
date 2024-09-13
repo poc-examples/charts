@@ -96,6 +96,11 @@ data:
           changeOrigin: true
           secure: true
 
+        /data/api:
+          target: http://
+          secure: false
+          changeOrigin: true
+
       {{- if .Values.gitlab.enabled }}
         /gitlab.com:
           target: https://gitlab.apps.{{ .Values.host }}

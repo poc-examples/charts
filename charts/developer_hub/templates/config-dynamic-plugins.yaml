@@ -18,8 +18,8 @@ data:
       ## Generic PLUGIN CONFIGURATION
       ## Integrity: $(npm view @package dist.integrity)
       ##############################
-      - disabled: false
-        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+      # - disabled: false
+      #   package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
 
     {{- if .Values.gitlab.enabled }}
       ##############################
