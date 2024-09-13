@@ -57,6 +57,7 @@
 #               volumeMounts:
 #                 - mountPath: /dynamic-plugins-root
 #                   name: dynamic-plugins-root
+#                   subpath: dynamic-plugins
 #                 - mountPath: /opt/app-root/src/.npmrc.dynamic-plugins
 #                   name: dynamic-plugins-npmrc
 #                   readOnly: true

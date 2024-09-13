@@ -42,3 +42,4 @@ spec:
       enabled: true
   database:
     enableLocalDb: {{ .Values.backend.sqlite3.enabled }}
+    authSecretName: postgres-credentials

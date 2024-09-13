@@ -10,8 +10,6 @@ metadata:
     rhdh.redhat.com/app: backstage-developer-hub
 data:
   dynamic-plugins.yaml: |
-    includes:
-      - dynamic-plugins.default.yaml
     plugins:
 
       ##############################
