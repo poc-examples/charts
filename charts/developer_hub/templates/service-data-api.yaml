@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: devhub-data-api
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: devhub-data-api

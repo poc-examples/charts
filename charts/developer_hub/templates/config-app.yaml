@@ -96,8 +96,8 @@ data:
           changeOrigin: true
           secure: true
 
-        /data/api:
-          target: http://
+        /data:
+          target: http://devhub-data-api
           secure: false
           changeOrigin: true
 
