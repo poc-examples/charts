@@ -32,13 +32,8 @@ data:
 
     backend:
       auth:
-        providers:
-          guest: {}
-        externalAccess:
-          - type: legacy
-            options:
-              secret: ${DEVHUB_BACKEND_SECRET}
-              subject: legacy-catalog
+        keys:
+          - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
       listen:
         port: 7007
@@ -90,7 +85,7 @@ data:
       - Template
 
     permission:
-      enabled: true
+      enabled: ${PERMISSION_ENABLED}
 
     proxy:
       endpoints:
