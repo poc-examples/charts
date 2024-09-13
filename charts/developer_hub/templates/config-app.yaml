@@ -32,6 +32,9 @@ data:
 
     backend:
       auth:
+        providers:
+          guest:
+            development: true
         externalAccess:
           - type: legacy
             options:
