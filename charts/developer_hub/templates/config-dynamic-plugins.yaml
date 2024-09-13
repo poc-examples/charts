@@ -19,7 +19,7 @@ data:
       ## Integrity: $(npm view @package dist.integrity)
       ##############################
       - disabled: false
-        package: "@roadiehq/scaffolder-backend-module-http-request"
+        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
 
     {{- if .Values.gitlab.enabled }}
       ##############################
