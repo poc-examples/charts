@@ -50,6 +50,8 @@ sonarqube:
 
 devhub:
   chartVersion: 0.1.49
+  provisioner:
+    enabled: false
   enabled: false
 
 rhtas:
