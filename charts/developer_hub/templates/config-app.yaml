@@ -32,8 +32,9 @@ data:
 
     backend:
       auth:
-        keys:
-          - secret: ${DEVHUB_BACKEND_SECRET}
+        externalAccess:
+          keys:
+            - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
       listen:
         port: 7007
