@@ -90,6 +90,10 @@ data:
                   name: dynamic-plugins-npmrc
                   readOnly: true
                   subPath: .npmrc
+                - name: dynamic-plugins
+                  readOnly: true
+                  mountPath: /opt/app-root/src/dynamic-plugins.yaml
+                  subPath: dynamic-plugins.yaml
               workingDir: /opt/app-root/src
               resources:
                 requests:
