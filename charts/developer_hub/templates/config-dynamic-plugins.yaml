@@ -13,6 +13,12 @@ data:
       - dynamic-plugins.default.yaml
     plugins:
 
+      ##############################
+      ## GUEST AUTH BACKEND PROVIDER
+      ##############################
+      - disabled: false
+        package: @backstage/plugin-auth-backend-module-guest-provider
+
     {{- if .Values.gitlab.enabled }}
       ##############################
       ## GITLAB PLUGIN CONFIGURATION
