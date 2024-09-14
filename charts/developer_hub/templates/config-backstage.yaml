@@ -67,7 +67,7 @@ data:
           initContainers:
             - name: remove-lost-found
               image: busybox
-              command: ['sh', '-c', 'rm -rf /dynamic-plugins-root/lost+found']
+              command: ['sh', '-c', 'rm -rf /dynamic-plugins-root/lost+found && echo "Purge of lost+found was successful"']
               volumeMounts:
                 - mountPath: /dynamic-plugins-root
                   name: dynamic-plugins-root
