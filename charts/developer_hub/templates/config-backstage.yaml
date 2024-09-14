@@ -5,6 +5,19 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
   name: backstage-config
 data:
+  service.yaml: |
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: backstage-developer-hub
+    spec:
+      type: ClusterIP
+      selector:
+        rhdh.redhat.com/app: backstage-developer-hub
+      ports:
+        - name: http-backend
+          port: 80
+          targetPort: backend
   route.yaml: |
     apiVersion: route.openshift.io/v1
     kind: Route
@@ -20,19 +33,6 @@ data:
       to:
         kind: Service
         name: backstage-developer-hub
-  service.yaml: |
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: backstage-developer-hub
-    spec:
-      type: ClusterIP
-      selector:
-        rhdh.redhat.com/app: backstage-developer-hub
-      ports:
-        - name: http-backend
-          port: 80
-          targetPort: backend
   deployment.yaml: |
     apiVersion: apps/v1
     kind: Deployment
@@ -130,14 +130,10 @@ data:
               env:
                 - name: APP_CONFIG_backend_listen_port
                   value: "7007"
-              # envFrom:
-              #   - secretRef:
-              #       name: <POSTGRESQL_SECRET>  # will be replaced with 'backstage-psql-secrets-<cr-name>'
-              #            - secretRef:
-              #                name: backstage-secrets
               volumeMounts:
                 - mountPath: /opt/app-root/src/dynamic-plugins-root
                   name: dynamic-plugins-root
+                  subpath: dynamic-plugins
               resources:
                 requests:
                   cpu: 250m

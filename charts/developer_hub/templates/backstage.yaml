@@ -7,7 +7,7 @@ metadata:
 spec:
   application:
     appConfig:
-      # mountPath: /opt/app-root/src
+      mountPath: /opt/app-root/src
       configMaps:
         - name: app-config
         - name: argocd-plugin

@@ -7,9 +7,10 @@ metadata:
   labels:
     app.kubernetes.io/instance: developer-hub
     app.kubernetes.io/name: backstage
-    rhdh.redhat.com/app: backstage-developer-hub
 data:
   dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
     plugins:
 
     {{- if .Values.gitlab.enabled }}
