@@ -65,6 +65,12 @@ data:
                 optional: true
                 secretName: dynamic-plugins-npmrc
           initContainers:
+            - name: remove-lost-found
+              image: busybox
+              command: ['sh', '-c', 'rm -rf /dynamic-plugins-root/lost+found']
+              volumeMounts:
+                - mountPath: /dynamic-plugins-root
+                  name: dynamic-plugins-root
             - name: install-dynamic-plugins
               command:
                 - ./install-dynamic-plugins.sh
@@ -80,7 +86,6 @@ data:
               volumeMounts:
                 - mountPath: /dynamic-plugins-root
                   name: dynamic-plugins-root
-                  subpath: dynamic-plugins
                 - mountPath: /opt/app-root/src/.npmrc.dynamic-plugins
                   name: dynamic-plugins-npmrc
                   readOnly: true
@@ -133,7 +138,6 @@ data:
               volumeMounts:
                 - mountPath: /opt/app-root/src/dynamic-plugins-root
                   name: dynamic-plugins-root
-                  subpath: dynamic-plugins
               resources:
                 requests:
                   cpu: 250m
