@@ -16,8 +16,8 @@ data:
       ##############################
       ## GUEST AUTH BACKEND PROVIDER
       ##############################
-      - disabled: false
-        package: '@backstage/plugin-auth-backend-module-guest-provider'
+      # - disabled: false
+      #   package: '@backstage/plugin-auth-backend-module-guest-provider'
 
     {{- if .Values.gitlab.enabled }}
       ##############################
