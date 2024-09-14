@@ -29,8 +29,15 @@ data:
       enabled: false
       auth:
         existingSecret: postgres-credentials
+    
+    auth:
+      provider:
+        guest: {}
 
     backend:
+      auth:
+        provider:
+          guest: {}
       auth:
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
@@ -85,7 +92,7 @@ data:
       - Template
 
     permission:
-      enabled: true
+      enabled: false
 
     proxy:
       endpoints:
