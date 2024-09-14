@@ -36,9 +36,6 @@ data:
 
     backend:
       auth:
-        provider:
-          guest: {}
-      auth:
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
