@@ -10,6 +10,7 @@ spec:
       mountPath: /opt/app-root/src
       configMaps:
         - name: app-config
+        - name: dynamic-plugins
         - name: argocd-plugin
       {{- if .Values.gitlab.enabled }}
         - name: gitlab-plugin
@@ -36,7 +37,6 @@ spec:
           key: ARGOCD_TOKEN
         - name: service-account-token
           key: token
-    pluginConfig: dynamic-plugins
     replicas: 1
     route:
       enabled: true
