@@ -106,6 +106,8 @@ data:
         /data:
           target: http://devhub-data-api
           secure: false
+          headers:
+            Content-Type: 'application/json'
           changeOrigin: true
 
       {{- if .Values.gitlab.enabled }}
