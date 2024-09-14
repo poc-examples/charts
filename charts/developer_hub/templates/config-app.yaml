@@ -85,7 +85,7 @@ data:
       - Template
 
     permission:
-      enabled: ${PERMISSION_ENABLED}
+      enabled: true
 
     proxy:
       endpoints:
