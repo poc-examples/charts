@@ -19,5 +19,5 @@ spec:
             - containerPort: 8080
               protocol: TCP
           env:
-            - name: GITLAB_DOMAIN
+            - name: DOMAIN
               value: "{{ .Values.host }}"
