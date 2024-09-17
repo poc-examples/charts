@@ -12,9 +12,7 @@ data:
         - allow: [Component, System, Group, Resource, Location, Template, API]
       locations:
         - type: url
-          target: https://github.com/poc-examples/software-templates/blob/main/catalogs/argocd/templates.yaml
-        - type: url
-          target: https://github.com/poc-examples/software-templates/blob/main/catalogs/openshift-ai/templates.yaml
+          target: https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
       providers:
       {{- if .Values.gitlab.enabled }}
         gitlab:
