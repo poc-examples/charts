@@ -1,7 +1,0 @@
-domain: placeholder_yourdomain.com
-user: cluster-admin
-namespace: inference-servers
-notebookName: build-models
-storageSize: 100Gi
-dataConnectionName: inference-models
-clusterSecretStoreName: eso-admin-secret-store
