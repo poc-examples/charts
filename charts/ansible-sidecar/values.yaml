@@ -7,11 +7,17 @@ runner:
       value: placeholder
 
 requirements:
-  roles: 
-    - repo: "https://github.com/poc-examples/gitlab-role.git"
-      name: gitlab
+  # roles: 
+  #   - repo: "https://github.com/poc-examples/gitlab-role.git"
+  #     name: gitlab
 
   collections:
+    - name: bootstrap.workshop
+      source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/workshop
+      type: git
+      version: main
+      roles:
+        - name: gitlab
     - name: community.kubernetes
       source: "https://galaxy.ansible.com"
     - name: community.okd

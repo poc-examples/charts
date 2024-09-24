@@ -7,6 +7,7 @@ metadata:
 data:
   requirements.yaml: |
     ---
+    {{- if and .Values.requirements.roles (not (empty .Values.requirements.roles)) }}
     roles:
     {{- range .Values.requirements.roles }}
       - name: "{{ .name }}"
@@ -15,10 +16,19 @@ data:
         version: main
         path: "{{ .name }}"
     {{- end }}
+    {{ end }}
     collections:
     {{- range .Values.requirements.collections }}
       - name: "{{ .name }}"
+        {{- if .source }}
         source: "{{ .source }}"
+        {{- end }}
+        {{- if .type }}
+        type: "{{ .type }}"
+        {{- end }}
+        {{- if .version }}
+        version: "{{ .version }}"
+        {{- end }}
     {{- end }}
 
   playbook.yaml: |
@@ -37,6 +47,19 @@ data:
         validate_certs: false
 {{ toYaml .Values.additionalVars | indent 8 }}
       roles:
+
+      {{- if and .Values.requirements.roles (not (empty .Values.requirements.roles)) }}
       {{- range .Values.requirements.roles }}
         - "{{ .name }}"
       {{- end }}
+      {{ end }}
+
+      {{- if and .Values.requirements.collections (not (empty .Values.requirements.collections)) }}
+      {{- range .Values.requirements.collections }}
+      {{- if and .roles (not (empty .roles)) }}
+      {{- range .roles }}
+        - "{{ .name }}"
+      {{- end }}
+      {{- end }}
+      {{- end }}
+      {{ end }}
