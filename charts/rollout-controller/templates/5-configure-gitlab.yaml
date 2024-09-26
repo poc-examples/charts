@@ -22,7 +22,7 @@ spec:
           value: gitlab-system
       valuesObject:
         additionalVars:
-          domain: apps.{{ .Values.domain }}
+          domain: "{{ $baseDomain }}"
         rules:
           - apiGroups:
               - "external-secrets.io"

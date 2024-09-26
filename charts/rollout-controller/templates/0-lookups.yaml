@@ -1,0 +1,2 @@
+{{- $ingress := lookup "config.openshift.io/v1" "Ingress" "" "cluster" -}}
+{{- $baseDomain := index $ingress.spec "domain" -}}
