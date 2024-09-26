@@ -1,4 +1,6 @@
 {{ if .Values.gitlab.enabled }}
+{{- $ingress := lookup "config.openshift.io/v1" "Ingress" "" "cluster" -}}
+{{- $baseDomain := index $ingress.spec "domain" -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
