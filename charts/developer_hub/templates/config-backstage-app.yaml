@@ -1,11 +1,11 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: backstage-appconfig-developer-hub
+  name: backstage-app-config
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 data:
-  default.app-config.yaml: |
+  app-config.yaml: |
     app:
       title: Red Hat Developer Hub - Dev
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
