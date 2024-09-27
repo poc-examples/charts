@@ -112,13 +112,17 @@ data:
             Content-Type: 'application/json'
           changeOrigin: true
 
-        /developer-hub:
-          target: https://raw.githubusercontent.com/
+        '/developer-hub':
+          target: https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/config/developer-hub.json
           headers:
             Content-Type: 'application/json'
-          pathRewrite:
-            '^/api/proxy/developer-hub/tech-radar': '/poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json'
-            '^/api/proxy/developer-hub': '/poc-examples/charts/refs/heads/main/charts/developer_hub/config/developer-hub.json'
+          changeOrigin: true
+          secure: false
+
+        '/developer-hub/tech-radar':
+          target: https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
+          headers:
+            Content-Type: 'application/json'
           changeOrigin: true
           secure: false
 
