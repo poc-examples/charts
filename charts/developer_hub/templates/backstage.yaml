@@ -4,6 +4,7 @@ metadata:
   name: developer-hub
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   rawRuntimeConfig:
     backstageConfig: backstage-config
