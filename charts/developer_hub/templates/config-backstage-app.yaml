@@ -113,9 +113,9 @@ data:
           changeOrigin: true
 
         /developer-hub:
-          target: https://raw.githubusercontent.com/poc-examples/charts/main/packages/charts/developer_hub/config/
+          target: https://raw.githubusercontent.com/
           pathRewrite:
-            '^/api/proxy/developer-hub': '/data.json'
+            '^/api/proxy/developer-hub': '/poc-examples/charts/main/packages/charts/developer_hub/config/data.json'
           changeOrigin: true
           secure: false
 
