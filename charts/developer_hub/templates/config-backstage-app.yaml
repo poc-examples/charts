@@ -1,9 +1,9 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: backstage-app-config
+  name: backstage-appconfig-developer-hub
 data:
-  dynamic-app-config.yaml: |
+  default.app-config.yaml: |
     app:
       title: Red Hat Developer Hub - Dev
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
