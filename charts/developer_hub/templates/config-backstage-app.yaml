@@ -114,16 +114,12 @@ data:
 
         '/developer-hub':
           target: https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/config/developer-hub.json
-          headers:
-            Content-Type: 'application/json'
-          changeOrigin: true
+          changeOrigin: false
           secure: false
 
         '/developer-hub/tech-radar':
           target: https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
-          headers:
-            Content-Type: 'application/json'
-          changeOrigin: true
+          changeOrigin: false
           secure: false
 
       {{- if .Values.gitlab.enabled }}
