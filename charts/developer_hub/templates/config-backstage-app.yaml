@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: backstage-app-config
 data:
-  app-config.yaml: |
+  dynamic-app-config.yaml: |
     app:
       title: Red Hat Developer Hub - Dev
       baseUrl: "http://backstage-developer-hub-backstage.apps.{{ .Values.host }}"
