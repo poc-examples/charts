@@ -112,11 +112,11 @@ data:
             Content-Type: 'application/json'
           changeOrigin: true
 
-        /api/proxy/developer-hub:
+        /developer-hub:
           target: https://raw.githubusercontent.com
           pathRewrite:
             '^/api/proxy/developer-hub/tech-radar': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
-          '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/developer-hub.json
+            '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/developer-hub.json
           changeOrigin: true
           secure: true
 
