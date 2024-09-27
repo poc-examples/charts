@@ -115,7 +115,8 @@ data:
         /developer-hub:
           target: https://raw.githubusercontent.com/
           pathRewrite:
-            '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/data.json
+            '^/api/proxy/developer-hub/tech-radar': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
+            '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/homepage.json
           changeOrigin: true
           secure: false
 
