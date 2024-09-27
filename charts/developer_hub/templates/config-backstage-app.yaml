@@ -115,7 +115,7 @@ data:
         /developer-hub:
           target: https://raw.githubusercontent.com/
           pathRewrite:
-            '^/api/proxy/developer-hub': '/poc-examples/charts/main/packages/charts/developer_hub/config/data.json'
+            '^/api/proxy/developer-hub': /janus-idp/backstage-showcase/main/packages/app/public/homepage/data.json
           changeOrigin: true
           secure: false
 
