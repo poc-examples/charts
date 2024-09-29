@@ -45,6 +45,7 @@ spec:
               - "list"
               - "create"
               - "update"
+              - "patch"
           - apiGroups:
               - "apps"
             resources:
