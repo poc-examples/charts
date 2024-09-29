@@ -12,7 +12,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     chart: ansible-sidecar
-    targetRevision: "0.1.18"
+    targetRevision: "0.1.19"
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
@@ -21,6 +21,7 @@ spec:
         - name: runner.namespace
           value: gitlab-system
       valuesObject:
+        scope: ClusterRole
         additionalVars:
           domain: apps.{{ .Values.domain }}
         rules:
@@ -37,10 +38,12 @@ spec:
               - ""
             resources:
               - "secrets"
+              - "configmaps"
             verbs:
               - "get" 
               - "list"
               - "create"
+              - "update"
           - apiGroups:
               - "apps"
             resources:
