@@ -1,0 +1,22 @@
+apiVersion: external-secrets.io/v1alpha1
+kind: PushSecret
+metadata:
+  name: "gitlab-cert-secret-priming"
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  deletionPolicy: Delete
+  refreshInterval: 10s
+  secretStoreRefs:
+    - name: eso-admin-secret-store
+      kind: ClusterSecretStore
+  selector:
+    secret:
+      name: "gitlab-wildcard-tls-ca"
+  data:
+    - match:
+        secretKey: "cfssl_ca"
+        remoteRef:
+          remoteKey: "gitlab"
+          property: "cfssl_ca"
