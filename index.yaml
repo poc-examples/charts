@@ -3226,6 +3226,16 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-09-30T04:57:36.444354274Z"
+    description: A Helm chart for Kubernetes
+    digest: d5e99abc266b4b53187e55ae3dbea81e1389e8e9cab47c90194e8cc62b82e438
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.77/gitlab-0.1.77.tgz
+    version: 0.1.77
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-09-30T04:55:13.090192031Z"
     description: A Helm chart for Kubernetes
     digest: 76fb74214e119183abbdff82755c3145a1e281b7fba7bc6bffb70e43449eb3fc
@@ -8147,4 +8157,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-09-30T04:55:13.091337994Z"
+generated: "2024-09-30T04:57:36.445518508Z"
