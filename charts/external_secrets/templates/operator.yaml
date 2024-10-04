@@ -33,7 +33,13 @@ spec:
     rbac:
       create: true
     requeueInterval: 5m
-    resources: {}
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "256Mi"
+        cpu: "200m"
     securityContext: {}
     serviceAccount:
       annotations: {}
@@ -72,7 +78,13 @@ spec:
   rbac:
     create: true
   replicaCount: 1
-  resources: {}
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
   scopedNamespace: ''
   scopedRBAC: false
   securityContext: {}
@@ -108,7 +120,13 @@ spec:
     rbac:
       create: true
     replicaCount: 1
-    resources: {}
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
     securityContext: {}
     serviceAccount:
       annotations: {}
