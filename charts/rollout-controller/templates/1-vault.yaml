@@ -26,6 +26,13 @@ spec:
           dev:
             enabled: true
           enabled: true
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "168Mi"
+              cpu: "150m"
   project: system
   syncPolicy:
     automated:
