@@ -1,0 +1,20 @@
+gitlab:
+  # upgradeCheck:
+  #   enabled: false
+  certmanager:
+    install: false
+  certmanager-issuer:
+    email: admin@openshift.com
+  global:
+    edition: ce
+    serviceAccount:
+      name: gitlab-system
+      enabled: true
+      create: false
+    hosts:
+      domain: apps.{{ .Values.domain }}
+  ingress:
+    class: none
+    annotations:
+      route.openshift.io/termination: edge
+    configureCertmanager: false
