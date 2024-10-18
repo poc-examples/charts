@@ -13,7 +13,7 @@ spec:
   source:
     chart: gitlab
     targetRevision: "8.5.0"
-    repoURL: "https://charts.gitlab.io/gitlab"
+    repoURL: "https://charts.gitlab.io"
     helm:
       valuesObject:
         certmanager:
