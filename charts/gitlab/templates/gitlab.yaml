@@ -7,8 +7,6 @@ metadata:
 spec:
   chart:
     values:
-      upgradeCheck:
-        enabled: false
       certmanager:
         install: true
       certmanager-issuer:
