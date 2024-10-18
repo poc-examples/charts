@@ -16,8 +16,10 @@ spec:
     repoURL: "https://charts.gitlab.io"
     helm:
       valuesObject:
+        upgradeCheck:
+          enabled: false
         certmanager:
-          install: true
+          install: false
         certmanager-issuer:
           email: admin@openshift.com
         global:
