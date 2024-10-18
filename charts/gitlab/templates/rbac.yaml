@@ -2,37 +2,14 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: gitlab-cluster-role-binding
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: system:openshift:scc:privileged
 subjects:
 - kind: ServiceAccount
-  name: gitlab-service-shared-secrets
+  name: gitlab-nginx-ingress
   namespace: gitlab-system
 - kind: ServiceAccount
   name: gitlab-prometheus-server
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-certmanager-issuer
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-gitlab-runner
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-nginx-ingress
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-prometheus-server
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-redis
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: gitlab-service-shared-secrets
-  namespace: gitlab-system
-- kind: ServiceAccount
-  name: default
   namespace: gitlab-system
