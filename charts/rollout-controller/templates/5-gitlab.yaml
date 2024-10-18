@@ -12,27 +12,12 @@ spec:
     server: https://kubernetes.default.svc
   source:
     chart: gitlab
-    targetRevision: "8.5.0"
-    repoURL: "https://charts.gitlab.io"
+    targetRevision: "{{ .Values.gitlab.chartVersion }}"
+    repoURL: "https://poc-examples.github.io/charts"
     helm:
-      valuesObject:
-        upgradeCheck:
-          enabled: false
-        certmanager:
-          install: false
-        certmanager-issuer:
-          email: admin@openshift.com
-        global:
-          edition: ce
-          hosts:
-            domain: apps.{{ .Values.domain }}
-        ingress:
-          class: none
-          annotations:
-            route.openshift.io/termination: edge
-          configureCertmanager: false
-          tls:
-            secretName: null
+      parameters:
+        - name: global.hosts.domain
+          value: apps.{{ .Values.domain }}
   project: system
   syncPolicy:
     retry:
