@@ -7,6 +7,10 @@ gitlab:
     email: admin@openshift.com
   global:
     edition: ce
+    serviceAccount:
+      name: gitlab-system
+      enabled: true
+      create: false
     hosts:
       domain: apps.{{ .Values.domain }}
   ingress:
