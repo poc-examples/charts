@@ -24,4 +24,3 @@ spec:
           configureCertmanager: false
           tls:
             secretName: null
-    version: "{{ .Values.gitlab.version }}"
