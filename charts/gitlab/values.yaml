@@ -1,6 +1,18 @@
-namespace: gitlab-system
-
-domain: api.domain
-
 gitlab:
-  version: "8.3.4"
+  upgradeCheck:
+    enabled: false
+  certmanager:
+    install: false
+  certmanager-issuer:
+    email: admin@openshift.com
+  global:
+    edition: ce
+    hosts:
+      domain: apps.{{ .Values.domain }}
+  ingress:
+    class: none
+    annotations:
+      route.openshift.io/termination: edge
+    configureCertmanager: false
+    tls:
+      secretName: null
