@@ -24,3 +24,4 @@ spec:
           configureCertmanager: false
           tls:
             secretName: null
+    version: "8.5.0"
