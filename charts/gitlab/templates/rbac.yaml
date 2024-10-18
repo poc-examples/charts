@@ -36,3 +36,6 @@ subjects:
 - kind: ServiceAccount
   name: gitlab-system
   namespace: gitlab-system
+- kind: ServiceAccount
+  name: default
+  namespace: gitlab-system
