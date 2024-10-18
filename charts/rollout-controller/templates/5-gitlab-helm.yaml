@@ -11,13 +11,11 @@ spec:
     namespace: "{{ .Values.gitlab.namespace }}"
     server: https://kubernetes.default.svc
   source:
-    chart: gitlab
+    chart: gitlab-helm
     targetRevision: "{{ .Values.gitlab.chartVersion }}"
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
-        - name: namespace
-          value: "{{ .Values.gitlab.namespace }}"
         - name: domain
           value: apps.{{ .Values.domain }}
   project: system
