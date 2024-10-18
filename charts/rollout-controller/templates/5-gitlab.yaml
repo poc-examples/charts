@@ -16,7 +16,9 @@ spec:
     repoURL: "https://poc-examples.github.io/charts"
     helm:
       parameters:
-        - name: global.hosts.domain
+        - name: namespace
+          value: "{{ .Values.gitlab.namespace }}"
+        - name: domain
           value: apps.{{ .Values.domain }}
   project: system
   syncPolicy:
