@@ -1637,6 +1637,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/boot-0.1.0/boot-0.1.0.tgz
     version: 0.1.0
+  cert-manager:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-18T14:46:50.751820573Z"
+    description: A Helm chart for Kubernetes
+    digest: 9ecd5d24dc9255b4f6788851c605b835dbed205be0aa08d758866c4ed0ca7fe3
+    name: cert-manager
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/cert-manager-0.1.0/cert-manager-0.1.0.tgz
+    version: 0.1.0
   data-science-project:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -3234,6 +3245,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-18T14:46:50.841258081Z"
+    description: A Helm chart for Kubernetes
+    digest: 6a407d4083141fb02323ed8f04a2d2e1fda478fd594ff8c8b0811ab10f2ee47d
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.1.79/gitlab-0.1.79.tgz
+    version: 0.1.79
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-09-30T05:03:34.997735016Z"
@@ -6852,6 +6873,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-10-18T14:46:50.95815533Z"
+    description: A Helm chart for Kubernetes
+    digest: b6c822aec388af05c25bab754809a15ce155b62c99244ba31dbdbe222363b861
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.3.66/rollout-controller-0.3.66.tgz
+    version: 0.3.66
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-02T16:57:43.296026133Z"
     description: A Helm chart for Kubernetes
     digest: 79067f6bfdaaae503a31dc9fc0877010963313fd23ed5211fe7b35afb1d312e2
@@ -8197,4 +8228,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-10-04T17:14:05.395772677Z"
+generated: "2024-10-18T14:46:50.960021521Z"
