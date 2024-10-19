@@ -1,6 +1,2 @@
 namespace: gitlab-system
-
 domain: api.domain
-
-gitlab:
-  version: "8.3.4"
