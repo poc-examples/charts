@@ -16,6 +16,8 @@ ansible-sidecar:
         version: main
         roles:
           - name: install-plans
+      - name: kubernetes.core
+        source: "https://galaxy.ansible.com"
       - name: community.kubernetes
         source: "https://galaxy.ansible.com"
       - name: community.okd
