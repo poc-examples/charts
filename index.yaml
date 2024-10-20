@@ -3267,6 +3267,20 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-10-20T03:29:20.356005449Z"
+    dependencies:
+    - name: ansible-sidecar
+      repository: https://poc-examples.github.io/charts
+      version: 0.1.21
+    description: A Helm chart for Kubernetes
+    digest: 4850e47a7ff10eda25cbb4cf204820705f5bebbdc0a19ba6bc6003e1f0b73817
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.2.12/gitlab-0.2.12.tgz
+    version: 0.2.12
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-20T03:24:02.061876223Z"
     dependencies:
     - name: ansible-sidecar
@@ -8679,4 +8693,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-10-20T03:24:02.063129724Z"
+generated: "2024-10-20T03:29:20.357248965Z"
