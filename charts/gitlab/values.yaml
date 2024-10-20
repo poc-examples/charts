@@ -17,6 +17,10 @@ ansible-sidecar:
         version: main
         roles:
           - name: install-plans
+      - name: community.kubernetes
+        source: "https://galaxy.ansible.com"
+      - name: community.okd
+        source: "https://galaxy.ansible.com"
 
   additionalVars:
     namespace: "gitlab-system"
