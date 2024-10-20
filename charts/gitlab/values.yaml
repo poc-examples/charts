@@ -1,2 +1,36 @@
 namespace: gitlab-system
 domain: api.domain
+
+ansible-sidecar:
+  runner:
+    name: approval-install-plan
+    namespace: gitlab-system
+    metadata:
+      annotations:
+        argocd.argoproj.io/sync-wave: "-1"
+
+  requirements:
+    collections:
+      - name: bootstrap.workshop
+        source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/workshop
+        type: git
+        version: main
+        roles:
+          - name: install-plans
+
+  additionalVars:
+    namespace: "gitlab-system"
+    csv_name: "gitlab-operator-kubernetes.v1.4.0"
+
+  scope: Role
+  rules:
+    - apiGroups:
+        - "operators.coreos.com"
+      resources: 
+        - "installplans"
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+        - "update"
+        - "patch"

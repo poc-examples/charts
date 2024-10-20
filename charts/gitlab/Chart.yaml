@@ -22,3 +22,8 @@ version: 0.2.9
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
+
+dependencies:
+  - name: ansible-sidecar
+    version: "0.1.20"
+    repository: "https://charts.gitlab.io"
