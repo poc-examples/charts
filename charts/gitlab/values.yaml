@@ -5,9 +5,8 @@ ansible-sidecar:
   runner:
     name: approval-install-plan
     namespace: gitlab-system
-    metadata:
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
+    annotations:
+      argocd.argoproj.io/sync-wave: "-1"
 
   requirements:
     collections:
