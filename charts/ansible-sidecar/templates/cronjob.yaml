@@ -13,7 +13,7 @@ spec:
     spec:
       template:
         spec:
-          serviceAccountName: ansible-runner
+          serviceAccountName: "{{ .Values.runner.name }}-ansible-runner"
           containers:
           - name: "{{ .Values.runner.name }}-job"
             image: "{{ .Values.runner.image }}"

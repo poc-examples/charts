@@ -20,7 +20,7 @@ metadata:
 {{- end }}
 subjects:
 - kind: ServiceAccount
-  name: ansible-runner
+  name: "{{ .Values.runner.name }}-ansible-runner"
   namespace: "{{ .Values.runner.namespace }}"
 roleRef:
   kind: "{{ .Values.scope }}"
