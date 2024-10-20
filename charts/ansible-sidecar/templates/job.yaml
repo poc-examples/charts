@@ -3,6 +3,10 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{ .Values.runner.name }}-job"
+{{- if .Values.runner.annotations }}
+  annotations:
+{{- toYaml .Values.runner.annotations | nindent 4 }}
+{{- end }}
 spec:
   template:
     spec:

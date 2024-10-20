@@ -4,6 +4,8 @@ runner:
   name: "default"
   namespace: "default"
   image: "registry.access.redhat.com/ubi9/python-311:latest"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   env:
     - name: VAULT_TOKEN
       value: placeholder

@@ -3,6 +3,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: "{{ .Values.scope }}"
 metadata:
   name: "{{ .Values.runner.name }}"
+{{- if .Values.runner.annotations }}
+  annotations:
+{{- toYaml .Values.runner.annotations | nindent 4 }}
+{{- end }}
 rules:
 {{- toYaml .Values.rules | nindent 2 }}
 ---
@@ -10,6 +14,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: "{{ .Values.scope }}Binding"
 metadata:
   name: "{{ .Values.runner.name }}-binding"
+{{- if .Values.runner.annotations }}
+  annotations:
+{{- toYaml .Values.runner.annotations | nindent 4 }}
+{{- end }}
 subjects:
 - kind: ServiceAccount
   name: ansible-runner
