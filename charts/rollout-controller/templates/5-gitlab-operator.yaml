@@ -41,5 +41,9 @@ spec:
     - group: operators.coreos.com
       kind: Subscription
       jsonPointers:
-        - /status
+        - /
+    - group: operators.coreos.com
+      kind: InstallPlan
+      jsonPointers:
+        - /
 {{ end }}
