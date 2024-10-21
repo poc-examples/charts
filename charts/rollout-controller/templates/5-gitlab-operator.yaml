@@ -37,4 +37,10 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - Validate=false
+  ignoreDifferences:
+    - group: operators.coreos.com
+      kind: Subscription
+      jsonPointers:
+        - /status/conditions
+        - /status/installPlanRef
 {{ end }}
