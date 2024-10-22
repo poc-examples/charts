@@ -14,6 +14,10 @@ spec:
     chart: dev-spaces
     targetRevision: "{{ .Values.devspaces.chartVersion }}"
     repoURL: https://poc-examples.github.io/charts
+    helm:
+      parameters:
+        - name: domain
+          value: "{{ .Values.domain }}"
   project: system
   syncPolicy:
     retry:
