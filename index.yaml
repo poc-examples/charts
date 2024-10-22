@@ -1709,6 +1709,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/data-science-project-0.1.0/data-science-project-0.1.0.tgz
     version: 0.1.0
+  dev-spaces:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-22T04:20:58.056720202Z"
+    description: A chart for deploying dev spaces
+    digest: 680a09a0ca1c599e6334b8d783896dd208699167869df6fa0da18e7472ca3f0b
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.0/dev-spaces-0.1.0.tgz
+    version: 0.1.0
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -8771,4 +8782,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-10-21T20:28:53.34264174Z"
+generated: "2024-10-22T04:20:58.057731959Z"
