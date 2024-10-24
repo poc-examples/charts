@@ -33,6 +33,7 @@ objects:
       - python
       - -m
       - vllm.entrypoints.openai.api_server
+      - --trust-remote-code
       env:
       - name: HF_HOME
         value: /tmp/hf_home
