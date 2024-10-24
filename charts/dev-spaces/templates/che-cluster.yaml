@@ -26,8 +26,7 @@ spec:
       logLevel: ERROR
     devWorkspace:
       runningLimit: "2"
-    devfileRegistry:
-      disableInternalRegistry: false
+    devfileRegistry: {}
     metrics:
       enable: true
     pluginRegistry:
@@ -39,11 +38,5 @@ spec:
     secondsOfInactivityBeforeIdling: 1800
     storage:
       pvcStrategy: common
-      pvcClaimSize: 5Gi
   networking:
-    auth:
-      oAuthProxy:
-        cookieExpireSeconds: 86400
     domain: "apps.{{ .Values.domain }}"
-
-
