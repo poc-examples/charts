@@ -31,7 +31,7 @@ spec:
       enable: true
     pluginRegistry:
       disableInternalRegistry: true
-      openVSXURL: https://open-vsx.org/api
+      openVSXURL: https://open-vsx.org
   devEnvironments:
     startTimeoutSeconds: 300
     maxNumberOfWorkspacesPerUser: 5
