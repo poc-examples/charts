@@ -29,7 +29,7 @@ spec:
         helm:
           parameters:
             - name: domain
-              value: "{{ `{{.domain}}` }}"
+              value: "placeholder"
       project: system
       syncPolicy:
         retry:
