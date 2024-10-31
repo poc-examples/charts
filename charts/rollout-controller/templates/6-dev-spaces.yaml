@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: devspaces-service
+  name: devspaces-appset
   namespace: "{{ .Values.gitops.namespace }}"
 spec:
   goTemplate: true
@@ -15,7 +15,7 @@ spec:
             default: 'true'
   template: 
     metadata: 
-      name: devspaces-service
+      name: devspaces-service-app
       annotations:
         argocd.argoproj.io/sync-wave: "-1"
     spec:
