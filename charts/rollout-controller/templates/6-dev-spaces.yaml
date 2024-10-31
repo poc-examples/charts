@@ -9,10 +9,7 @@ spec:
   goTemplateOptions:
     - "missingkey=error"
   generators:
-    - clusters:
-        selector:
-          matchLabels:
-            default: 'true'
+    - clusters: {}
   template: 
     metadata: 
       name: devspaces-service
