@@ -7,7 +7,7 @@ metadata:
 spec:
   goTemplate: true
   goTemplateOptions:
-    - "missingkey=error"
+    - "missingkey=zero"
   generators:
     - clusters: {}
   template: 
@@ -26,7 +26,7 @@ spec:
         helm:
           parameters:
             - name: domain
-              value: "{{ `{{ domain }}` }}"
+              value: "{{ `{{ .domain }}` }}"
       project: system
       syncPolicy:
         retry:
