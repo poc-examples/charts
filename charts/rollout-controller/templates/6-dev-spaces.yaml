@@ -12,7 +12,7 @@ spec:
     - clusters:
         selector:
           matchLabels:
-            default: 'true'
+            default: in-cluster
   template: 
     metadata: 
       name: devspaces-service
