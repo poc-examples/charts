@@ -38,7 +38,7 @@ gitops:
     enabled: false
 
 tekton:
-  chartVersion: 0.1.70
+  chartVersion: 0.1.71
   enabled: false
 
 chains:
@@ -49,13 +49,11 @@ sonarqube:
   enabled: false
 
 devhub:
-  chartVersion: 0.1.119
-  provisioner:
-    enabled: false
+  chartVersion: 0.2.0
   enabled: false
 
 devspaces:
-  chartVersion: 0.1.2
+  chartVersion: 0.1.4
   enabled: false
 
 rhtas:
@@ -65,7 +63,7 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.2.14
+  chartVersion: 0.2.15
   enabled: true
 
 external_secrets:

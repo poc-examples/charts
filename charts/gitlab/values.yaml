@@ -1,5 +1,5 @@
 namespace: gitlab-system
-domain: api.domain
+domain: apps.domain.com
 
 ansible-sidecar:
   runner:

@@ -12,7 +12,7 @@ spec:
     - clusters:
         selector:
           matchLabels:
-            default: in-cluster
+            cluster: default
   template: 
     metadata: 
       name: devspaces-service
@@ -29,7 +29,7 @@ spec:
         helm:
           parameters:
             - name: domain
-              value: "{{ `{{ .metadata.labels.default }}` }}"
+              value: "{{ `{{ .metadata.labels.domain }}` }}"
       project: system
       syncPolicy:
         retry:

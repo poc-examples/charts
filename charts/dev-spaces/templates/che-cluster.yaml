@@ -39,4 +39,4 @@ spec:
     storage:
       pvcStrategy: common
   networking:
-    domain: "apps.{{ .Values.domain }}"
+    domain: "{{ .Values.domain }}"

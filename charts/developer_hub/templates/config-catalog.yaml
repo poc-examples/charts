@@ -19,7 +19,7 @@ data:
       {{- if .Values.gitlab.enabled }}
         gitlab:
           selfHosted:
-            host: "gitlab.apps.{{ .Values.host }}"
+            host: "gitlab.{{ .Values.host }}"
             schedule:
               frequency:
                 seconds: 10
