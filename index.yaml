@@ -1712,6 +1712,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-01T16:39:51.423213487Z"
+    description: A chart for deploying dev spaces
+    digest: a6b5d401d438b6c193f1c7d8568adfa4faabd18b68e24864db3dcf313eb096e5
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.4/dev-spaces-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-27T05:27:07.999267033Z"
     description: A chart for deploying dev spaces
     digest: ad71e34d366d266b90a758a44f4d5e85f9afbc5eed02d31676a96aa79d741d55
@@ -1751,6 +1761,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.0/dev-spaces-0.1.0.tgz
     version: 0.1.0
   developerhub:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-01T16:39:51.526824433Z"
+    description: A chart for deploying backstage
+    digest: 489550bcaf5b27dbdcd7ab49bbe447084c2fdde9c4ec889cedd55aa06d73ed05
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.2.0/developerhub-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-09-27T18:38:58.632378796Z"
@@ -3306,6 +3326,20 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-01T16:39:51.629734351Z"
+    dependencies:
+    - name: ansible-runner
+      repository: https://poc-examples.github.io/supporting-charts
+      version: 0.2.1
+    description: A Helm chart for Kubernetes
+    digest: 70ce329e00a7ca65c5ea8c81e907c83b1d2ddc124e5c0029d0bafc121025adc4
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.2.15/gitlab-0.2.15.tgz
+    version: 0.2.15
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-10-20T03:40:28.940742771Z"
@@ -7307,6 +7341,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-01T16:39:51.72643082Z"
+    description: A Helm chart for Kubernetes
+    digest: 4fdb58c160c09b926e1ea72bfe82aefebdc8e62b054aba6c69e6cc0c2722a786
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.4.0/rollout-controller-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-10-31T20:53:25.668354825Z"
     description: A Helm chart for Kubernetes
     digest: 8132730d30a07c5f92025c2a7be98e7314842cbb6b281114c8de75320ae1e91a
@@ -8341,6 +8385,16 @@ entries:
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-01T16:39:51.829895679Z"
+    description: A chart for deploying tekton
+    digest: c68bbaeabea08ff35cf0999e400712935d37ee4695c2fb12f8493f0fa35ebdd6
+    name: tekton
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/tekton-0.1.71/tekton-0.1.71.tgz
+    version: 0.1.71
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-26T07:46:49.651477106Z"
     description: A chart for deploying tekton
     digest: 0f524d519f029665fcb69d5ae31d8c45cad928ca1cfcf9be78b195cd4203946c
@@ -8982,4 +9036,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-10-31T20:53:25.669586797Z"
+generated: "2024-11-01T16:39:51.831898778Z"
