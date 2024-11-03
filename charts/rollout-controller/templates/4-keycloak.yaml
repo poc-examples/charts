@@ -1,9 +1,11 @@
-{{ if .Values.gitlab.enabled }}
+{{ if .Values.keycloak.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: gitlab-appset
+  name: keycloak-appset
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   goTemplate: true
   goTemplateOptions:
@@ -15,31 +17,20 @@ spec:
             cluster: default
   template:
     metadata:
-      name: gitlab-service
-      annotations:
-        argocd.argoproj.io/sync-wave: "-2"
+      name: keycloak-service
     spec:
       destination:
-        namespace: "{{ .Values.gitlab.namespace }}"
+        namespace: keycloak
         server: https://kubernetes.default.svc
       source:
-        chart: gitlab
-        targetRevision: "{{ .Values.gitlab.chartVersion }}"
+        chart: keycloak
         repoURL: "https://poc-examples.github.io/charts"
+        targetRevision: "{{ .Values.keycloak.chartVersion }}"
         helm:
-          parameters:
-            - name: namespace
-              value: "{{ .Values.gitlab.namespace }}"
-            - name: domain
-              value: "{{ `{{ .metadata.labels.domain }}` }}"
+          valuesObject:
+            domain: "{{ `{{ .metadata.labels.domain }}` }}"
       project: system
       syncPolicy:
-        retry:
-          limit: 10
-          backoff:
-            duration: 5s
-            factor: 2
-            maxDuration: 30s
         automated:
           prune: true
           selfHeal: true

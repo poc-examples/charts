@@ -4,6 +4,8 @@ kind: ApplicationSet
 metadata:
   name: tekton-appset
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   goTemplate: true
   goTemplateOptions:

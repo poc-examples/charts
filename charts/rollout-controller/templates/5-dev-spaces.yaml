@@ -4,6 +4,8 @@ kind: ApplicationSet
 metadata:
   name: devspaces-appset
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   goTemplate: true
   goTemplateOptions:
@@ -16,8 +18,6 @@ spec:
   template: 
     metadata: 
       name: devspaces-service
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
     spec:
       destination:
         namespace: devspaces

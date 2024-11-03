@@ -1,9 +1,11 @@
-{{ if .Values.devhub.enabled }}
+{{ if .Values.gitlab.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: developer-hub-appset
+  name: gitlab-appset
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   goTemplate: true
   goTemplateOptions:
@@ -15,23 +17,21 @@ spec:
             cluster: default
   template:
     metadata:
-      name: developer-hub-service
-      annotations:
-        argocd.argoproj.io/sync-wave: "-1"
+      name: gitlab-service
     spec:
       destination:
-        namespace: backstage
+        namespace: "{{ .Values.gitlab.namespace }}"
         server: https://kubernetes.default.svc
       source:
-        chart: developerhub
-        targetRevision: "{{ .Values.devhub.chartVersion }}"
-        repoURL: https://poc-examples.github.io/charts
+        chart: gitlab
+        targetRevision: "{{ .Values.gitlab.chartVersion }}"
+        repoURL: "https://poc-examples.github.io/charts"
         helm:
           parameters:
-            - name: host
+            - name: namespace
+              value: "{{ .Values.gitlab.namespace }}"
+            - name: domain
               value: "{{ `{{ .metadata.labels.domain }}` }}"
-            - name: gitlab.enabled
-              value: "{{ .Values.gitlab.enabled }}"
       project: system
       syncPolicy:
         retry:

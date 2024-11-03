@@ -1,9 +1,11 @@
-{{ if .Values.keycloak.enabled }}
+{{ if .Values.devhub.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: keycloak-appset
+  name: developer-hub-appset
   namespace: "{{ .Values.gitops.namespace }}"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   goTemplate: true
   goTemplateOptions:
@@ -15,22 +17,29 @@ spec:
             cluster: default
   template:
     metadata:
-      name: keycloak-service
-      annotations:
-        argocd.argoproj.io/sync-wave: "-2"
+      name: developer-hub-service
     spec:
       destination:
-        namespace: keycloak
+        namespace: backstage
         server: https://kubernetes.default.svc
       source:
-        chart: keycloak
-        repoURL: "https://poc-examples.github.io/charts"
-        targetRevision: "{{ .Values.keycloak.chartVersion }}"
+        chart: developerhub
+        targetRevision: "{{ .Values.devhub.chartVersion }}"
+        repoURL: https://poc-examples.github.io/charts
         helm:
-          valuesObject:
-            domain: "{{ `{{ .metadata.labels.domain }}` }}"
+          parameters:
+            - name: host
+              value: "{{ `{{ .metadata.labels.domain }}` }}"
+            - name: gitlab.enabled
+              value: "{{ .Values.gitlab.enabled }}"
       project: system
       syncPolicy:
+        retry:
+          limit: 10
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 30s
         automated:
           prune: true
           selfHeal: true
