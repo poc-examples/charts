@@ -3,42 +3,25 @@
   nameNormalized: default
   syncWave: "-6"
   chart: 
-    name: machinesets
-    url: https://poc-examples.github.io/charts
-    version: "{{ .Values.machinesets.chartVersion }}"
+    name: vault
+    url: https://helm.releases.hashicorp.com
+    version: "{{ .Values.vault.chartVersion }}"
   values:
-    scope: ClusterRole
-    additionalVars:
-      domain: "{{ `{{ .metadata.labels.domain }}` }}"
-    rules:
-      - apiGroups:
-          - "external-secrets.io"
-        resources: 
-          - "pushsecrets"
-        verbs:
-          - "get"
-          - "list"
-          - "create"
-          - "update"
-          - "patch"
-      - apiGroups:
-          - ""
-        resources:
-          - "secrets"
-          - "configmaps"
-        verbs:
-          - "get" 
-          - "list"
-          - "create"
-          - "update"
-          - "patch"
-      - apiGroups:
-          - "apps"
-        resources:
-          - "deployments"
-        verbs:
-          - "get"
-          - "list"
-          - "create"
-          - "update"
+    csi:
+      enabled: false
+    global:
+      openshift: true
+    injector:
+      enabled: false
+    server:
+      dev:
+        enabled: true
+      enabled: true
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
+        limits:
+          memory: "168Mi"
+          cpu: "150m"
 {{- end }}
