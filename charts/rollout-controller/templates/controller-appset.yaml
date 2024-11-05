@@ -31,8 +31,8 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
-        helm:
-          valuesObject: {{ `{{ .values }}` }}
+        # helm:
+        #   valuesObject: {{ `{{ .values }}` }}
       project: system
       syncPolicy:
         automated:
