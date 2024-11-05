@@ -33,7 +33,7 @@ spec:
         repoURL: "{{ `{{ .chart.url }}` }}"
         helm:
           valuesObject: 
-          {{ `{{ .values }}` }}
+          {{ `{{- include .values . | nindent 12 }}` }}
       project: system
       syncPolicy:
         automated:
