@@ -27,6 +27,8 @@ spec:
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
+      annotations:
+        argocd.argoproj.io/sync-wave: "{{ `{{ .syncWave }}` }}"
     spec:
       destination:
         namespace: "{{ .Values.gitlab.namespace }}"
