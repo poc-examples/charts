@@ -33,7 +33,7 @@ spec:
         repoURL: "{{ `{{ .chart.url }}` }}"
         helm:
           valuesObject: 
-            {{ `{{ toYaml .Values | indent 12 }}` }}
+            {{ `{{ .values | toYaml | indent 12 }}` }}
       project: system
       syncPolicy:
         automated:
