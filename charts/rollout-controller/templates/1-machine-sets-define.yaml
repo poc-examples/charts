@@ -5,7 +5,7 @@
     name: machinesets
     url: https://poc-examples.github.io/charts
     version: "{{ .Values.machinesets.chartVersion }}"
-  values:
+  values: |
     scope: ClusterRole
     additionalVars:
       domain: "{{ `{{ .metadata.labels.domain }}` }}"

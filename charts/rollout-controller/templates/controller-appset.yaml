@@ -24,6 +24,9 @@ spec:
       {{- if .Values.vault.enabled }}
         {{- include "vault" . | nindent 16 }}
       {{- end }}
+      {{- if .Values.gitlab.enabled }}
+        {{- include "certManager" . | nindent 16 }}
+      {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
