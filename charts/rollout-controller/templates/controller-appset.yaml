@@ -32,8 +32,7 @@ spec:
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
         helm:
-          valuesObject: 
-            {{ `{{ .values | toYaml | indent 12 }}` }}
+          valuesObject: {{ `{{ .values }}` }}
       project: system
       syncPolicy:
         automated:
