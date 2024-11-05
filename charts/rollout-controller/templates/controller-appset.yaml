@@ -8,18 +8,22 @@ spec:
   goTemplateOptions:
     - "missingkey=error"
   generators:
-    - clusters:
-        selector:
-          matchLabels:
-            cluster: default
-    - list:
-        elements:
-{{- if .Values.machinesets.enabled }}
-  {{- include "MachineSet" . | nindent 10 }}
-{{- end }}
-{{- if .Values.vault.enabled }}
-  {{- include "vault" . | nindent 10 }}
-{{- end }}
+    - merge:
+        mergeKeys:
+          - server
+        generators:
+          - clusters:
+              selector:
+                matchLabels:
+                  cluster: default
+          - list:
+              elements:
+      {{- if .Values.machinesets.enabled }}
+        {{- include "MachineSet" . | nindent 16 }}
+      {{- end }}
+      {{- if .Values.vault.enabled }}
+        {{- include "vault" . | nindent 16 }}
+      {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
