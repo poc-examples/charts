@@ -10,7 +10,7 @@ spec:
   generators:
     - merge:
         mergeKeys:
-          - server
+          - nameNormalized
         generators:
           - clusters:
               selector:

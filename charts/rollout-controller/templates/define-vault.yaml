@@ -1,5 +1,6 @@
 {{- define "vault" }}
 - application: vault-service
+  nameNormalized: default
   syncWave: "-6"
   chart: 
     name: machinesets
