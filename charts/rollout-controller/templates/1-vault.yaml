@@ -1,47 +1,47 @@
-{{ if .Values.vault.enabled }}
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: vault-service
-  namespace: "{{ .Values.gitops.namespace }}"
-  annotations:
-    argocd.argoproj.io/sync-wave: "-6"
-spec:
-  destination:
-    namespace: vault-server
-    server: https://kubernetes.default.svc
-  source:
-    chart: vault
-    targetRevision: "{{ .Values.vault.chartVersion }}"
-    repoURL: 'https://helm.releases.hashicorp.com'
-    helm:
-      valuesObject:
-        csi:
-          enabled: false
-        global:
-          openshift: true
-        injector:
-          enabled: false
-        server:
-          dev:
-            enabled: true
-          enabled: true
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-            limits:
-              memory: "168Mi"
-              cpu: "150m"
-  project: system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    managedNamespaceMetadata:
-      labels:
-        argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
-    syncOptions:
-      - CreateNamespace=true
-      - Validate=false
-{{ end }}
+# {{ if .Values.vault.enabled }}
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: vault-service
+#   namespace: "{{ .Values.gitops.namespace }}"
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-6"
+# spec:
+#   destination:
+#     namespace: vault-server
+#     server: https://kubernetes.default.svc
+#   source:
+#     chart: vault
+#     targetRevision: "{{ .Values.vault.chartVersion }}"
+#     repoURL: 'https://helm.releases.hashicorp.com'
+#     helm:
+#       valuesObject:
+#         csi:
+#           enabled: false
+#         global:
+#           openshift: true
+#         injector:
+#           enabled: false
+#         server:
+#           dev:
+#             enabled: true
+#           enabled: true
+#           resources:
+#             requests:
+#               memory: "128Mi"
+#               cpu: "100m"
+#             limits:
+#               memory: "168Mi"
+#               cpu: "150m"
+#   project: system
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     managedNamespaceMetadata:
+#       labels:
+#         argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+#     syncOptions:
+#       - CreateNamespace=true
+#       - Validate=false
+# {{ end }}
