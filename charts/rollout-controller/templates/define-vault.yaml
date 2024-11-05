@@ -6,7 +6,7 @@
     name: vault
     url: https://helm.releases.hashicorp.com
     version: "{{ .Values.vault.chartVersion }}"
-  values:
+  values: |
     csi:
       enabled: false
     global:
