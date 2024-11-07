@@ -108,8 +108,8 @@ spec:
   templatePatch: |
     spec:
       source:
-        {{ `{{- if (index . "values") }}` }}
         helm:
+        {{ `{{- if (index . "values") }}` }}
           values: |
             {{ `{{ .values }}` }}
         {{ `{{- end }}` }}
