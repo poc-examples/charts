@@ -10,6 +10,6 @@ spec:
   channel: stable
   installPlanApproval: Manual
   name: gitlab-operator-kubernetes
-  source: certified-operators
+  source: community-operators
   sourceNamespace: openshift-marketplace
   startingCSV: gitlab-operator-kubernetes.v1.4.0
