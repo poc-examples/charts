@@ -94,11 +94,6 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
-        {{ `{{ - if .values }}` }}
-        helm:
-          values: |
-            {{ `{{ .values }}` }}
-        {{ `{{ - end }}` }}
       project: system
       syncPolicy:
         automated:
@@ -110,3 +105,11 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        {{ `{{- if .values }}` }}
+        helm:
+          values: |
+            {{ `{{ .values }}` }}
+        {{ `{{- end }}` }}
