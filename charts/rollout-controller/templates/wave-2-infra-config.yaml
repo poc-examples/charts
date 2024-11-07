@@ -98,9 +98,11 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
+        {{ `{{ - if .values }}` }}
         helm:
           values: |
             {{ `{{ .values }}` }}
+        {{ `{{ - end }}` }}
       project: system
       syncPolicy:
         automated:
