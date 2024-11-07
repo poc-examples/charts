@@ -28,19 +28,11 @@ spec:
                   values: |
                     namespace: "{{ .Values.gitlab.namespace }}"
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
-              {{- end }}
-              {{- if .Values.gitlab.enabled }}
-                - application: gitlab-config
-                  namespace: "{{ .Values.gitlab.namespace }}"
-                  wave: "-1"
-                  chart: 
-                    name: ansible-runner
-                    url: https://poc-examples.github.io/supporting-charts
-                    version: "0.2.1"
-                  values: |
                     runner:
                       name: gitlab-configure
                       namespace: gitlab-system
+                      annotations:
+                        argocd.argoproj.io/sync-wave: "3"
                     scope: ClusterRole
                     additionalVars:
                       domain: "{{ `{{ .metadata.labels.domain }}` }}"
