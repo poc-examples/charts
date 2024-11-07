@@ -6,7 +6,7 @@ ansible-runner:
     name: approval-install-plan
     namespace: gitlab-system
     annotations:
-      argocd.argoproj.io/sync-wave: "3"
+      argocd.argoproj.io/sync-wave: "0"
 
   requirements:
     collections:
