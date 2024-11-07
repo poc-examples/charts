@@ -35,7 +35,7 @@ spec:
                   wave: "-1"
                   chart: 
                     name: ansible-runner
-                    url: https://poc-examples.github.io/charts
+                    url: https://poc-examples.github.io/supporting-charts
                     version: "0.2.1"
                   values: |
                     runner:
