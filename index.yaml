@@ -3338,6 +3338,20 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-07T07:16:01.908733486Z"
+    dependencies:
+    - name: ansible-runner
+      repository: https://poc-examples.github.io/supporting-charts
+      version: 0.2.1
+    description: A Helm chart for Kubernetes
+    digest: 168e7cad15f4717ebe9e5283866bc81ce5b2f23ff4704450d000dc4849f49cca
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.2.17/gitlab-0.2.17.tgz
+    version: 0.2.17
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-07T06:07:34.484387182Z"
     dependencies:
     - name: ansible-runner
@@ -7365,6 +7379,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-07T07:16:02.065621066Z"
+    description: A Helm chart for Kubernetes
+    digest: b50dd45f925ad3b0a23987c9fbddeed1ee202c235f151b5acd6e78f873c84c02
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.8/rollout-controller-0.5.8.tgz
+    version: 0.5.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-07T07:02:50.635073701Z"
     description: A Helm chart for Kubernetes
     digest: a5d751bd1eaca30ec64faaff6a5f896258c885fbd2bee5355704945b5236098f
@@ -9380,4 +9404,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-11-07T07:02:50.636855508Z"
+generated: "2024-11-07T07:16:02.068138407Z"
