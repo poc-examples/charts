@@ -30,44 +30,57 @@ spec:
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
                     ansible-runner:
                       runner:
-                        name: gitlab-configure
-                        namespace: gitlab-system
-                        annotations:
-                          argocd.argoproj.io/sync-wave: "3"
-                      scope: ClusterRole
-                      additionalVars:
-                        domain: "{{ `{{ .metadata.labels.domain }}` }}"
-                      rules:
-                        - apiGroups:
-                            - "external-secrets.io"
-                          resources: 
-                            - "pushsecrets"
-                          verbs:
-                            - "get"
-                            - "list"
-                            - "create"
-                            - "update"
-                            - "patch"
-                        - apiGroups:
-                            - ""
-                          resources:
-                            - "secrets"
-                            - "configmaps"
-                          verbs:
-                            - "get" 
-                            - "list"
-                            - "create"
-                            - "update"
-                            - "patch"
-                        - apiGroups:
-                            - "apps"
-                          resources:
-                            - "deployments"
-                          verbs:
-                            - "get"
-                            - "list"
-                            - "create"
-                            - "update"
+                        annotations: argocd.argoproj.io/sync-wave: "0"
+
+              {{- end }}
+              {{- if .Values.gitlab.enabled }}
+                - application: gitlab-config
+                  namespace: "{{ .Values.gitlab.namespace }}"
+                  wave: "-1"
+                  chart: 
+                    name: ansible-runner
+                    url: https://poc-examples.github.io/supporting-charts
+                    version: "0.2.1"
+                  values: |
+                    runner:
+                      name: gitlab-configure
+                      namespace: gitlab-system
+                      annotations:
+                        argocd.argoproj.io/sync-wave: "0"
+                    scope: ClusterRole
+                    additionalVars:
+                      domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    rules:
+                      - apiGroups:
+                          - "external-secrets.io"
+                        resources: 
+                          - "pushsecrets"
+                        verbs:
+                          - "get"
+                          - "list"
+                          - "create"
+                          - "update"
+                          - "patch"
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - "secrets"
+                          - "configmaps"
+                        verbs:
+                          - "get" 
+                          - "list"
+                          - "create"
+                          - "update"
+                          - "patch"
+                      - apiGroups:
+                          - "apps"
+                        resources:
+                          - "deployments"
+                        verbs:
+                          - "get"
+                          - "list"
+                          - "create"
+                          - "update"
               {{- end }}
   template:
     metadata:
