@@ -1,12 +1,12 @@
 namespace: gitlab-system
 domain: apps.domain.com
 
-ansible-sidecar:
+ansible-runner:
   runner:
     name: approval-install-plan
     namespace: gitlab-system
     annotations:
-      argocd.argoproj.io/sync-wave: "-1"
+      argocd.argoproj.io/sync-wave: "3"
 
   requirements:
     collections:

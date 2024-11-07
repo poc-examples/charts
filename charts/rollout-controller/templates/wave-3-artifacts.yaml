@@ -28,7 +28,7 @@ spec:
                   values: |
                     namespace: "{{ .Values.gitlab.namespace }}"
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
-                    ansible-sidecar:
+                    ansible-runner:
                       runner:
                         name: gitlab-configure
                         namespace: gitlab-system
