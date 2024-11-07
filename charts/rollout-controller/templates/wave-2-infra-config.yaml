@@ -25,7 +25,6 @@ spec:
                     name: nfd
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.nfd.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.nvidiagpu.enabled }}
                 - application: nvidia-gpu-service
@@ -35,7 +34,6 @@ spec:
                     name: nvidia-gpu-operator
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.nvidiagpu.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.gitlab.enabled }}
                 - application: cert-manager-service
@@ -45,7 +43,6 @@ spec:
                     name: cert-manager
                     url: https://poc-examples.github.io/charts
                     version: "0.1.0"
-                  values: ""
               {{- end }}
               {{- if .Values.gitops.updater.enabled }}
                 - application: image-updater-service
@@ -55,7 +52,6 @@ spec:
                     name: image-updater
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.gitops.updater.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.external_secrets.enabled }}
                 - application: secrets-connectors-service
