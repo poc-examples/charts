@@ -1,0 +1,101 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: infrastructure-config
+#   namespace: "{{ .Values.gitops.namespace }}"
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-5"
+# spec:
+#   goTemplate: true
+#   goTemplateOptions:
+#     - "missingkey=error"
+#   generators:
+#     - matrix:
+#         generators:
+#           - clusters:
+#               selector:
+#                 matchLabels:
+#                   cluster: default
+#           - list:
+#               elements:
+#               {{- if .Values.nfd.enabled }}
+#                 - application: node-feature-discovery-service
+#                   chart: 
+#                     name: nfd
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.nfd.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.nvidiagpu.enabled }}
+#                 - application: nvidia-gpu-service
+#                   chart: 
+#                     name: nvidia-gpu-operator
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.nvidiagpu.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.gitlab.enabled }}
+#                 - application: cert-manager-service
+#                   chart: 
+#                     name: cert-manager
+#                     url: https://poc-examples.github.io/charts
+#                     version: "0.1.0"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.gitops.updater.enabled }}
+#                 - application: image-updater-service
+#                   chart: 
+#                     name: image-updater
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.gitops.updater.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.external_secrets.enabled }}
+#                 - application: secrets-connectors-service
+#                   chart: 
+#                     name: external-secrets-connectors
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.external_secrets.connectors.chartVersion }}"
+#                   values: |
+#                     vault:
+#                       enabled: "{{ .Values.vault.enabled }}"
+#                       address: "{{ .Values.vault.address }}"
+#                     k8s:
+#                       enabled: "{{ .Values.external_secrets.k8sConnector.enabled }}"
+#               {{- end }}
+#               {{- if .Values.tekton.enabled }}
+#                 - application: tekton-service
+#                   chart: 
+#                     name: tekton
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.tekton.chartVersion }}"
+#                   values: |
+#                     chains:
+#                       enabled: {{ .Values.chains.enabled }}
+#                     domain: {{ `{{ .metadata.labels.domain }}` }}
+#               {{- end }}
+#   template:
+#     metadata:
+#       name: "{{ `{{ .application }}` }}"
+#     spec:
+#       destination:
+#         namespace: "{{ .Values.gitlab.namespace }}"
+#         server: "{{ `{{ .server }}` }}"
+#       source:
+#         chart: "{{ `{{ .chart.name }}` }}"
+#         targetRevision: "{{ `{{ .chart.version }}` }}"
+#         repoURL: "{{ `{{ .chart.url }}` }}"
+#         helm:
+#           values: |
+#             {{ `{{ .values }}` }}
+#       project: system
+#       syncPolicy:
+#         automated:
+#           prune: true
+#           selfHeal: true
+#         managedNamespaceMetadata:
+#           labels:
+#             argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+#         syncOptions:
+#           - CreateNamespace=true
+#           - Validate=false

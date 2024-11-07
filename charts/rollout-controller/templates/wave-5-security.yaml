@@ -1,0 +1,86 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: security
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-4"
+# spec:
+#   goTemplate: true
+#   goTemplateOptions:
+#     - "missingkey=error"
+#   generators:
+#     - matrix:
+#         generators:
+#           - clusters:
+#               selector:
+#                 matchLabels:
+#                   cluster: default
+#           - list:
+#               elements:
+#               {{- if .Values.gatekeeper.enabled }}
+#                 - application: gatekeeper-service
+#                   chart: 
+#                     name: gatekeeper
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.gatekeeper.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.acs.enabled }}
+#                 - application: advanced-cluster-security-service
+#                   chart: 
+#                     name: acs
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.acs.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.authorino.enabled }}
+#                 - application: authorino-service
+#                   chart: 
+#                     name: authorino
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.authorino.chartVersion }}"
+#                   values: ""
+#               {{- end }}
+#               {{- if .Values.keycloak.enabled }}
+#                 - application: keycloak-service
+#                   chart: 
+#                     name: keycloak
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.keycloak.chartVersion }}"
+#                   values: |
+#                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
+#               {{- end }}
+#               {{- if .Values.rhtas.enabled }}
+#                 - application: rhtas-service
+#                   chart: 
+#                     name: rhtas
+#                     url: https://poc-examples.github.io/charts
+#                     version: "{{ .Values.rhtas.chartVersion }}"
+#                   values: |
+#                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
+#               {{- end }}
+#   template:
+#     metadata:
+#       name: "{{ `{{ .application }}` }}"
+#     spec:
+#       destination:
+#         namespace: "{{ .Values.gitlab.namespace }}"
+#         server: "{{ `{{ .server }}` }}"
+#       source:
+#         chart: "{{ `{{ .chart.name }}` }}"
+#         targetRevision: "{{ `{{ .chart.version }}` }}"
+#         repoURL: "{{ `{{ .chart.url }}` }}"
+#         helm:
+#           values: |
+#             {{ `{{ .values }}` }}
+#       project: system
+#       syncPolicy:
+#         automated:
+#           prune: true
+#           selfHeal: true
+#         managedNamespaceMetadata:
+#           labels:
+#             argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+#         syncOptions:
+#           - CreateNamespace=true
+#           - Validate=false
