@@ -20,6 +20,7 @@ spec:
               elements:
               {{- if .Values.machinesets.enabled }}
                 - application: machine-sets-manager
+                  namespace: managed-machine-sets
                   chart: 
                     name: machinesets
                     url: https://poc-examples.github.io/charts
@@ -33,6 +34,7 @@ spec:
               {{- end }}
               {{- if .Values.vault.enabled }}
                 - application: vault-service
+                  namespace: vault-server
                   chart: 
                     name: vault
                     url: https://helm.releases.hashicorp.com
@@ -58,6 +60,7 @@ spec:
               {{- end }}
               {{- if .Values.external_secrets.enabled }}
                 - application: external-secrets-service
+                  namespace: external-secrets
                   chart: 
                     name: external_secrets
                     url: https://poc-examples.github.io/charts
@@ -74,7 +77,7 @@ spec:
       name: "{{ `{{ .application }}` }}"
     spec:
       destination:
-        namespace: "{{ .Values.gitlab.namespace }}"
+        namespace: "{{ `{{ .namespace }}` }}"
         server: "{{ `{{ .server }}` }}"
       source:
         chart: "{{ `{{ .chart.name }}` }}"
