@@ -98,6 +98,6 @@ spec:
       source:
         helm:
         {{ `{{- if (index . "values") }}` }}
-          values: |
-            {{ `{{ .values | indent 12 }}` }}
+          valuesObject:
+            {{ `{{ .values | toYaml | indent 12 }}` }}
         {{ `{{- end }}` }}
