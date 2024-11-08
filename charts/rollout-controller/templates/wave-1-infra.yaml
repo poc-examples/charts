@@ -99,5 +99,5 @@ spec:
         helm:
         {{ `{{- if (index . "values") }}` }}
           values: |
-            {{ `{{ .values | nindent 12 }}` }}
+            {{ `{{- .values | nindent 12 }}` }}
         {{ `{{- end }}` }}
