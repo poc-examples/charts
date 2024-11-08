@@ -38,7 +38,7 @@ spec:
                     name: vault
                     url: https://helm.releases.hashicorp.com
                     version: "{{ .Values.vault.chartVersion }}"
-                  values:
+                  values: |
                     csi:
                       enabled: false
                     global:
@@ -64,7 +64,7 @@ spec:
                     name: external_secrets
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.external_secrets.chartVersion }}"
-                  values:
+                  values: |
                     namespace: "{{ .Values.external_secrets.namespace }}"
                     gitops:
                       namespace: "{{ .Values.gitops.namespace }}"
@@ -98,6 +98,6 @@ spec:
       source:
         helm:
         {{ `{{- if (index . "values") }}` }}
-          valuesObject:
+          values: |
             {{ `{{ .values }}` }}
         {{ `{{- end }}` }}
