@@ -24,7 +24,6 @@ spec:
                     name: gatekeeper
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.gatekeeper.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.acs.enabled }}
                 - application: advanced-cluster-security-service
@@ -33,7 +32,6 @@ spec:
                     name: acs
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.acs.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.authorino.enabled }}
                 - application: authorino-service
@@ -42,7 +40,6 @@ spec:
                     name: authorino
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.authorino.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.keycloak.enabled }}
                 - application: keycloak-service
@@ -75,9 +72,6 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
-        helm:
-          values: |
-            {{ `{{ .values }}` }}
       project: system
       syncPolicy:
         automated:
@@ -89,3 +83,11 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{ .values }}` }}
+        {{ `{{- end }}` }}

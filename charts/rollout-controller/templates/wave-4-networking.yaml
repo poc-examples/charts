@@ -24,7 +24,6 @@ spec:
                     name: serverless
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.serverless.chartVersion }}"
-                  values: ""
               {{- end }}
               {{- if .Values.servicemesh.enabled }}
                 - application: servicemesh-service
@@ -33,7 +32,6 @@ spec:
                     name: servicemesh
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.servicemesh.chartVersion }}"
-                  values: ""
               {{- end }}
   template:
     metadata:
@@ -46,9 +44,6 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
-        helm:
-          values: |
-            {{ `{{ .values }}` }}
       project: system
       syncPolicy:
         automated:
@@ -60,3 +55,11 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{ .values }}` }}
+        {{ `{{- end }}` }}
