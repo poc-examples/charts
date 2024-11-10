@@ -12,3 +12,6 @@ github:
 
 postgres:
   storageClassName: lvms-local
+
+catalogs:
+  - https://raw.githubusercontent.com/poc-examples/software-templates/refs/heads/feat-guest-user/catalogs/templates.yaml

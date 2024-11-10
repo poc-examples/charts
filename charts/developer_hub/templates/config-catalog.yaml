@@ -12,9 +12,13 @@ data:
         pullRequestBranchName: backstage-integration
       rules:
         - allow: [Component, System, Group, Resource, Location, Template, API]
+      {{- if .Values.catalogs }}
       locations:
+      {{- range .Values.catalogs }}
         - type: url
-          target: https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
+          target: {{ . }}
+      {{- end }}
+      {{- end }}
       providers:
       {{- if .Values.gitlab.enabled }}
         gitlab:
