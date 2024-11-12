@@ -45,7 +45,7 @@ spec:
                   values: |
                     host: "{{ `{{ .metadata.labels.domain }}` }}"
                     catalogs:
-                      - https://raw.githubusercontent.com/poc-examples/software-templates/refs/heads/feat-guest-user/catalogs/templates.yaml
+                      - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
                     gitlab:
                       enabled: "{{ .Values.gitlab.enabled }}"
               {{- end }}
