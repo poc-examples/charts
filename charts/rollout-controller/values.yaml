@@ -110,5 +110,5 @@ servicemesh:
 
 rhoai:
   enabled: false
-  chartVersion: 0.1.4
+  chartVersion: 0.1.5
 
