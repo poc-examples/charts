@@ -1,3 +1,4 @@
+{{- if or .Values.rhtas.enabled .Values.keycloak.enabled .Values.gatekeeper.enabled .Values.acs.enabled .Values.authorino.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -91,3 +92,4 @@ spec:
           values: |
             {{ `{{- .values | nindent 12 }}` }}
         {{ `{{- end }}` }}
+{{- end }}
