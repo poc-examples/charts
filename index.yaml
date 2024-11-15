@@ -6938,6 +6938,16 @@ entries:
   rhoai:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-15T02:56:12.874487196Z"
+    description: A Helm chart for Kubernetes
+    digest: 074d3d0d25e29c2f83746543fe92859bd4a6f9a8adbc7cda52e7ca9be6ba7e57
+    name: rhoai
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-0.1.6/rhoai-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-13T20:29:44.399758929Z"
     description: A Helm chart for Kubernetes
     digest: 3c16919d5f75b585c9946ad2c2c1153d1b653f88953b4455db8cde7230b544a0
@@ -9698,4 +9708,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-11-14T19:17:26.543517909Z"
+generated: "2024-11-15T02:56:12.875947125Z"
