@@ -1,0 +1,10 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: devhub
+spec:
+  applicationMenu:
+    section: Developer Hub
+  href: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
+  location: ApplicationMenu
+  text: Developer Hub Dashboard
