@@ -1773,6 +1773,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-18T22:13:18.785903366Z"
+    description: A chart for deploying backstage
+    digest: d92e261ffe1fb0240e45524343b3579aeced00c72e69943e58263d0556d1e223
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.2.3/developerhub-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-12T05:19:46.116964139Z"
     description: A chart for deploying backstage
     digest: 728f07502e67d11bb4b752bdca60a3d4af482e00fb094f8a9dba4bd7de4c91b1
@@ -3356,6 +3366,20 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/gatekeeper-0.1.0/gatekeeper-0.1.0.tgz
     version: 0.1.0
   gitlab:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-18T22:13:18.949869704Z"
+    dependencies:
+    - name: ansible-runner
+      repository: https://poc-examples.github.io/supporting-charts
+      version: 0.2.1
+    description: A Helm chart for Kubernetes
+    digest: 47443735c470d3324a10e3ebd2b15a04279b749808f631c8938baae81509eff9
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.2.19/gitlab-0.2.19.tgz
+    version: 0.2.19
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-11-07T07:26:17.049835977Z"
@@ -6938,6 +6962,16 @@ entries:
   rhoai:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-11-18T22:13:19.174867054Z"
+    description: A Helm chart for Kubernetes
+    digest: 3c3557e7c5523f2053ee0f6b30ab21e8fbb087c86a2c73bce50b930fdafbb669
+    name: rhoai
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rhoai-0.1.7/rhoai-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-15T02:56:12.874487196Z"
     description: A Helm chart for Kubernetes
     digest: 074d3d0d25e29c2f83746543fe92859bd4a6f9a8adbc7cda52e7ca9be6ba7e57
@@ -7431,6 +7465,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-18T22:13:19.341094001Z"
+    description: A Helm chart for Kubernetes
+    digest: 0c306a9e4207f692cc0474d38448d5c3e6dba5187a3ef72849418936976abfde
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.34/rollout-controller-0.5.34.tgz
+    version: 0.5.34
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-11-14T19:17:26.542042313Z"
@@ -9708,4 +9752,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-11-15T02:56:12.875947125Z"
+generated: "2024-11-18T22:13:19.343826736Z"
