@@ -1,3 +1,4 @@
+{{- if or .Values.gitlab.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -146,3 +147,4 @@ spec:
           values: |
             {{ `{{- .values | nindent 12 }}` }}
         {{ `{{- end }}` }}
+{{- end }}
