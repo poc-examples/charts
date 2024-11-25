@@ -1,0 +1,39 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: openshift
+  labels:
+    app: sso
+    realm: openshift
+    client: openshift
+spec:
+  client:
+    redirectUris:
+      - "https://oauth-openshift.{{ .Values.domain }}/oauth2callback/*"
+    optionalClientScopes:
+      - address
+      - phone
+      - offline_access
+      - microprofile-jwt
+    defaultClientScopes:
+      - web-origins
+      - acr
+      - profile
+      - roles
+      - email
+    clientId: openshift
+    ## Client Secret Gets Injected into keycloak-client-secret-{clientname}
+    ## Maybe it AutoGenerates if left out.
+    # secret: openshift-client-secret
+    clientAuthenticatorType: client-secret
+    enabled: true
+    fullScopeAllowed: true
+    frontchannelLogout: false
+    name: openshift
+    standardFlowEnabled: true
+    protocol: openid-connect
+    directAccessGrantsEnabled: true
+    description: Client for OpenShift authentication
+  realmSelector:
+    matchLabels:
+      realm: openshift
