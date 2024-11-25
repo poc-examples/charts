@@ -1,16 +1,16 @@
-apiVersion: keycloak.org/v1alpha1
-kind: KeycloakRealm
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  name: tssc
-spec:
-  instanceSelector:
-    matchLabels:
-      app: sso
-  realm:
-    displayName: Red-Hat-Trusted-Artifact-Signer
-    enabled: true
-    id: trusted-artifact-signer
-    realm: trusted-artifact-signer
-    sslRequired: none
+# apiVersion: keycloak.org/v1alpha1
+# kind: KeycloakRealm
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#   name: tssc
+# spec:
+#   instanceSelector:
+#     matchLabels:
+#       app: sso
+#   realm:
+#     displayName: Red-Hat-Trusted-Artifact-Signer
+#     enabled: true
+#     id: trusted-artifact-signer
+#     realm: trusted-artifact-signer
+#     sslRequired: none
