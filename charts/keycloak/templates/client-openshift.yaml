@@ -21,10 +21,9 @@ spec:
       - profile
       - roles
       - email
+    defaultRoles:
+      - cluster-admin
     clientId: openshift
-    ## Client Secret Gets Injected into keycloak-client-secret-{clientname}
-    ## Maybe it AutoGenerates if left out.
-    # secret: openshift-client-secret
     clientAuthenticatorType: client-secret
     enabled: true
     fullScopeAllowed: true
