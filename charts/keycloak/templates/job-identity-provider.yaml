@@ -40,4 +40,10 @@ spec:
               name: rosa-token
           - secretRef:
               name: keycloak-client-secret-openshift
+        volumeMounts:
+          - name: ephemeral-storage
+            mountPath: /.config
       restartPolicy: Never
+      volumes:
+        - name: ephemeral-storage
+          emptyDir: {}
