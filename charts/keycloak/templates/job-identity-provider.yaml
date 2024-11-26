@@ -11,7 +11,6 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            cat /usr/bin/rosa > ~/rosa && chmod +x ~/rosa;
             echo $ROSA_TOKEN;
             rosa version;
         envFrom:
