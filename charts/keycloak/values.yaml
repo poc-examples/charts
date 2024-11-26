@@ -1,1 +1,3 @@
 domain: api.openshift.com
+cluster: 
+  name: rosa-rhoai-3
