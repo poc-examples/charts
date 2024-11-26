@@ -51,6 +51,9 @@ spec:
                     version: "{{ .Values.keycloak.chartVersion }}"
                   values: |
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    cluster:
+                      name: rosa-rhoai-3
+                      region: us-east-2
               {{- end }}
               {{- if .Values.rhtas.enabled }}
                 - application: rhtas-service
