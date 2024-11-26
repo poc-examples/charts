@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "sync-identity-provider"
+spec:
+  template:
+    spec:
+      containers:
+      - name: "sync-identity-provider-job"
+        image: "registry.ci.openshift.org/ci/rosa-aws-cli:latest"
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            cat /usr/bin/rosa > ~/rosa && chmod +x ~/rosa;
+            echo $ROSA_TOKEN;
+            rosa version;
+        envFrom:
+          - secretRef:
+              name: rosa-token
+      restartPolicy: Never
