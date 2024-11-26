@@ -50,7 +50,7 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.keycloak.chartVersion }}"
                   values: |
-                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    domain: {{ `{{ .metadata.labels.domain }}` }}
                     cluster:
                       name: rosa-rhoai-3
                       region: us-east-2
@@ -91,7 +91,6 @@ spec:
     spec:
       source:
         helm:
-          parameters: []
         {{ `{{- if (index . "values") }}` }}
           values: |
             {{ `{{- .values | nindent 12 }}` }}
