@@ -12,6 +12,7 @@ spec:
         args:
           - |
             rosa version;
+            rosa login --token=$ROSA_TOKEN;
 
             CLUSTER_NAME="{{ .Values.cluster.name }}";
             IDP_NAME="openshift";
