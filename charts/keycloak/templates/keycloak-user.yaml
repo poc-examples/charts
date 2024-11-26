@@ -22,3 +22,5 @@ spec:
     firstName: Chris
     lastName: Engleby
     username: admin
+    groups:
+      - cluster-admin
