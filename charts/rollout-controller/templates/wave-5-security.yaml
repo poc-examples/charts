@@ -91,6 +91,7 @@ spec:
     spec:
       source:
         helm:
+          parameters:
         {{ `{{- if (index . "values") }}` }}
           values: |
             {{ `{{- .values | nindent 12 }}` }}
