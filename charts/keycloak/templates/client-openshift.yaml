@@ -21,8 +21,6 @@ spec:
       - profile
       - roles
       - email
-    defaultRoles:
-      - cluster-admin
     clientId: openshift
     clientAuthenticatorType: client-secret
     enabled: true
