@@ -52,8 +52,8 @@ spec:
                   values: |
                     domain: {{ `{{ .metadata.labels.domain }}` }}
                     cluster:
-                      name: rosa-rhoai-3
-                      region: us-east-2
+                      name: {{ `{{ .metadata.labels.cluster_name }}` }}
+                      region: {{ `{{ .metadata.labels.region }}` }}
               {{- end }}
               {{- if .Values.rhtas.enabled }}
                 - application: rhtas-service
