@@ -30,6 +30,7 @@ spec:
                 --mapping-method "claim" \
                 --email-claims "email" \
                 --name-claims "name" \
+                --groups-claims "groups" \
                 --username-claims "preferred_username"\
                 --region "{{ .Values.cluster.region }}";
               echo "Identity provider $IDP_NAME added successfully.";
