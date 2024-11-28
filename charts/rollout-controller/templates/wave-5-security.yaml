@@ -94,7 +94,6 @@ spec:
                             - name: keycloak
                     additionalVars:
                       domain: "{{ `{{ .metadata.labels.domain }}` }}"
-                      rosa_token: "{{ `{{ lookup('env', item) }}` }}"
                     rules: []
               {{- end }}
   template:
