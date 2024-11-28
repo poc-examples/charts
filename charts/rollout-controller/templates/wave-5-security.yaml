@@ -42,6 +42,16 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.authorino.chartVersion }}"
               {{- end }}
+              {{- if .Values.rhtas.enabled }}
+                - application: rhtas-service
+                  namespace: rhtas
+                  chart: 
+                    name: rhtas
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.rhtas.chartVersion }}"
+                  values: |
+                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
+              {{- end }}
               {{- if .Values.keycloak.enabled }}
                 - application: keycloak-service
                   namespace: keycloak
@@ -55,15 +65,36 @@ spec:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}
               {{- end }}
-              {{- if .Values.rhtas.enabled }}
-                - application: rhtas-service
-                  namespace: rhtas
+              {{- if .Values.keycloak.enabled }}
+                - application: keycloak-post-config
+                  namespace: "{{ .Values.gitlab.namespace }}"
+                  wave: "-1"
                   chart: 
-                    name: rhtas
-                    url: https://poc-examples.github.io/charts
-                    version: "{{ .Values.rhtas.chartVersion }}"
+                    name: ansible-runner
+                    url: https://poc-examples.github.io/supporting-charts
+                    version: "0.2.2"
                   values: |
-                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    runner:
+                      name: keycloak-post-configure
+                      namespace: keycloak
+                      annotations:
+                        argocd.argoproj.io/sync-wave: "0"
+                      envFrom:
+                        - secretRef:
+                            name: rosa-token
+                        - secretRef:
+                            name: keycloak-client-secret-openshift
+                    requirements:
+                      collections:
+                        - name: bootstrap.operator_post_config
+                          source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/operator_post_config
+                          type: git
+                          version: main
+                          roles:
+                            - name: keycloak
+                    additionalVars:
+                      domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    rules: []
               {{- end }}
   template:
     metadata:
