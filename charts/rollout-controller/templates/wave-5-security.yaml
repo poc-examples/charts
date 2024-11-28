@@ -84,6 +84,8 @@ spec:
                             name: rosa-token
                         - secretRef:
                             name: keycloak-client-secret-openshift
+                        - secretRef:
+                            name: credential-keycloak
                     requirements:
                       collections:
                         - name: bootstrap.post_operator_configuration
