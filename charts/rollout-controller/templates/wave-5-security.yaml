@@ -67,7 +67,7 @@ spec:
               {{- end }}
               {{- if .Values.keycloak.enabled }}
                 - application: keycloak-post-config
-                  namespace: "{{ .Values.gitlab.namespace }}"
+                  namespace: "keycloak"
                   wave: "-1"
                   chart: 
                     name: ansible-runner
