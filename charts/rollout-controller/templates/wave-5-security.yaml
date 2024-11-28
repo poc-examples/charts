@@ -86,8 +86,8 @@ spec:
                             name: keycloak-client-secret-openshift
                     requirements:
                       collections:
-                        - name: bootstrap.operator_post_config
-                          source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/operator_post_config
+                        - name: bootstrap.post_operator_configuration
+                          source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/post_operator_configuration
                           type: git
                           version: main
                           roles:
