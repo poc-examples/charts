@@ -94,6 +94,8 @@ spec:
                             - name: keycloak
                     additionalVars:
                       domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                      cluster_name: "{{ `{{ .metadata.labels.cluster_name }}` }}"
+                      region: "{{ `{{ .metadata.labels.region }}` }}"
                     rules: []
               {{- end }}
   template:
