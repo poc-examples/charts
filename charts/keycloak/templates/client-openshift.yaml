@@ -10,6 +10,17 @@ spec:
   client:
     redirectUris:
       - "https://oauth-openshift.{{ .Values.domain }}/oauth2callback/*"
+    protocolMappers:
+      - name: groups
+        protocol: openid-connect
+        protocolMapper: oidc-group-membership-mapper
+        consentRequired: false
+        config:
+          full.path: "false"
+          id.token.claim: "true"
+          access.token.claim: "true"
+          claim.name: "groups"
+          userinfo.token.claim: "true"
     optionalClientScopes:
       - address
       - phone
