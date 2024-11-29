@@ -25,7 +25,7 @@ spec:
                   chart: 
                     name: ansible-runner
                     url: https://poc-examples.github.io/supporting-charts
-                    version: "0.2.5"
+                    version: "0.2.6"
                   values: |
                     runner:
                       name: keycloak-post-configure
