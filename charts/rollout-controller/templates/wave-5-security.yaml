@@ -4,7 +4,7 @@ kind: ApplicationSet
 metadata:
   name: security
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-4"
 spec:
   goTemplate: true
   goTemplateOptions:
@@ -64,41 +64,6 @@ spec:
                     cluster:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}
-              {{- end }}
-              {{- if .Values.keycloak.enabled }}
-                - application: keycloak-post-config
-                  namespace: "keycloak"
-                  wave: "-1"
-                  chart: 
-                    name: ansible-runner
-                    url: https://poc-examples.github.io/supporting-charts
-                    version: "0.2.5"
-                  values: |
-                    runner:
-                      name: keycloak-post-configure
-                      namespace: keycloak
-                      annotations:
-                        argocd.argoproj.io/sync-wave: "0"
-                      envFrom:
-                        - secretRef:
-                            name: rosa-token
-                        - secretRef:
-                            name: keycloak-client-secret-openshift
-                        - secretRef:
-                            name: credential-keycloak
-                    requirements:
-                      collections:
-                        - name: bootstrap.post_operator_configuration
-                          source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/post_operator_configuration
-                          type: git
-                          version: main
-                          roles:
-                            - name: keycloak
-                    additionalVars:
-                      domain: "{{ `{{ .metadata.labels.domain }}` }}"
-                      cluster_name: "{{ `{{ .metadata.labels.cluster_name }}` }}"
-                      region: "{{ `{{ .metadata.labels.region }}` }}"
-                    rules: []
               {{- end }}
   template:
     metadata:

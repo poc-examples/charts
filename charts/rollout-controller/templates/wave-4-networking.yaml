@@ -4,7 +4,7 @@ kind: ApplicationSet
 metadata:
   name: networking
   annotations:
-    argocd.argoproj.io/sync-wave: "-4"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   goTemplate: true
   goTemplateOptions:
