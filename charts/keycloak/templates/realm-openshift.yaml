@@ -4,6 +4,8 @@ metadata:
   name: openshift
   labels:
     realm: openshift
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   instanceSelector:
     matchLabels:

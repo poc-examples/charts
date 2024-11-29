@@ -6,6 +6,8 @@ metadata:
     app: sso
     realm: openshift
     client: openshift
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   client:
     redirectUris:
