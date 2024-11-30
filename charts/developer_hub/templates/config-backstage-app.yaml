@@ -34,13 +34,18 @@ data:
     
     auth:
       environment: development
-      provider:
-        guest:
-          enabled: true
+      providers:
+        oidc:
+          development:
+          clientId: ${CLIENT_ID}
+          clientSecret: ${CLIENT_SECRET}
+          metadataUrl: https://keycloak-keycloak.{{ .Values.host }}/auth/realms/openshift
+          prompt: auto
+    signInPage: oidc
 
     backend:
       auth:
-        dangerouslyDisableDefaultAuthPolicy: true
+        # dangerouslyDisableDefaultAuthPolicy: true
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.{{ .Values.host }}"
