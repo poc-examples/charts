@@ -34,6 +34,8 @@ data:
     
     auth:
       environment: development
+      session:
+        secret: session-secret
       providers:
         oidc:
           development:
@@ -45,7 +47,7 @@ data:
 
     backend:
       auth:
-        # dangerouslyDisableDefaultAuthPolicy: true
+        # dangerouslyDisableDefaultAuthPolicy: trueoidc
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "http://backstage-developer-hub-backstage.{{ .Values.host }}"
@@ -54,7 +56,7 @@ data:
       csp:
         connect-src:
           - "'self'"
-          - 'http:'
+
           - 'https:'
         img-src:
           - "'self'"
