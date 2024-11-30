@@ -37,10 +37,10 @@ data:
       providers:
         oidc:
           development:
-          clientId: ${CLIENT_ID}
-          clientSecret: ${CLIENT_SECRET}
-          metadataUrl: https://keycloak-keycloak.{{ .Values.host }}/auth/realms/openshift/.well-known/openid-configuration
-          prompt: auto
+            clientId: ${CLIENT_ID}
+            clientSecret: ${CLIENT_SECRET}
+            metadataUrl: https://keycloak-keycloak.{{ .Values.host }}/auth/realms/openshift/.well-known/openid-configuration
+            prompt: auto
     signInPage: oidc
 
     backend:
