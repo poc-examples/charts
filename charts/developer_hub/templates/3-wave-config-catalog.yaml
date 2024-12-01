@@ -19,10 +19,6 @@ data:
           target: {{ . }}
       {{- end }}
       {{- end }}
-      processors:
-        - type: user
-          options:
-            enableDynamicEntities: true
       providers:
       {{- if .Values.gitlab.enabled }}
         gitlab:
@@ -39,6 +35,7 @@ data:
             baseUrl: https://keycloak-keycloak.{{ .Values.host }}/auth
             loginRealm: master
             realm: ${CLIENT_ID}
+            clientId: "admin-cli"
             username: ${KEYCLOAK_ADMIN_USERNAME}
             password: ${KEYCLOAK_ADMIN_PASSWORD}
             schedule:
