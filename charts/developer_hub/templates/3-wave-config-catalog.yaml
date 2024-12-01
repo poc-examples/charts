@@ -19,6 +19,10 @@ data:
           target: {{ . }}
       {{- end }}
       {{- end }}
+      processors:
+        - type: user
+          options:
+            enableDynamicEntities: true
       providers:
       {{- if .Values.gitlab.enabled }}
         gitlab:
