@@ -22,7 +22,7 @@ acm:
   enabled: false
 
 keycloak:
-  chartVersion: 0.1.58
+  chartVersion: 0.1.63
   enabled: false
 
 gatekeeper:
@@ -49,7 +49,7 @@ sonarqube:
   enabled: false
 
 devhub:
-  chartVersion: 0.2.3
+  chartVersion: 0.2.26
   enabled: false
 
 devspaces:
