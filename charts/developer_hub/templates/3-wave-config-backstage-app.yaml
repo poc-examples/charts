@@ -49,7 +49,7 @@ data:
 
     backend:
       auth:
-        # dangerouslyDisableDefaultAuthPolicy: trueoidc
+        dangerouslyDisableDefaultAuthPolicy: true
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
