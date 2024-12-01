@@ -35,6 +35,7 @@ spec:
           key: GITLAB_TOKEN
       {{- end }}
         - name: keycloak-client-secret-openshift
+        - name: credential-keycloak
         - name: postgres-credentials
         - name: backend-credentials
           key: DEVHUB_BACKEND_SECRET
