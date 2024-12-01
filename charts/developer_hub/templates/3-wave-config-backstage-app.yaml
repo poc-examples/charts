@@ -45,6 +45,7 @@ data:
             prompt: auto
             signIn:
               resolvers:
+                - resolver: usernameMatchingUserEntityName
     signInPage: oidc
 
     backend:
