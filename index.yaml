@@ -1773,6 +1773,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-12-01T01:42:48.73243231Z"
+    description: A chart for deploying backstage
+    digest: a2658a5fa086c9e3f55b015113c552c221250669f30730af8b3a0085f58b0972
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.2.10/developerhub-0.2.10.tgz
+    version: 0.2.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-11-30T19:23:18.735760215Z"
     description: A chart for deploying backstage
     digest: 1e23813ec47143b75570db57e16f9cc610934cfb6504b93edff9f0280273ac0b
@@ -4531,6 +4541,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/image-updater-0.1.0/image-updater-0.1.0.tgz
     version: 0.1.0
   keycloak:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-12-01T01:42:48.867319619Z"
+    description: A Helm chart for Kubernetes
+    digest: f672c65a3f6e6837e3089c7e2e89ebc627e34f3261d71003760d6a3697a23482
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.60/keycloak-0.1.60.tgz
+    version: 0.1.60
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-11-30T06:58:15.964574182Z"
@@ -10232,4 +10252,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2024-11-30T19:23:18.73727385Z"
+generated: "2024-12-01T01:42:48.868989313Z"
