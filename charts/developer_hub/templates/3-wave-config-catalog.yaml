@@ -11,7 +11,7 @@ data:
         entityFilename: catalog-info.yaml
         pullRequestBranchName: backstage-integration
       rules:
-        - allow: [Component, System, Group, Resource, Location, Template, API]
+        - allow: [User, Group, Component, System, Group, Resource, Location, Template, API]
       {{- if .Values.catalogs }}
       locations:
       {{- range .Values.catalogs }}
