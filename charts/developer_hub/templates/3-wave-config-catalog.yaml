@@ -32,7 +32,7 @@ data:
       {{- end }}
         keycloakOrg:
           default:
-            baseUrl: https://keycloak-keycloak.{{ .Values.host }}
+            baseUrl: https://keycloak-keycloak.{{ .Values.host }}/auth
             loginRealm: ${CLIENT_ID}
             realm: ${CLIENT_ID}
             clientId: ${CLIENT_ID}
