@@ -41,10 +41,12 @@ spec:
     enabled: true
     fullScopeAllowed: true
     frontchannelLogout: false
+    authorizationServicesEnabled: true
     name: openshift
     standardFlowEnabled: true
     protocol: openid-connect
     directAccessGrantsEnabled: true
+    serviceAccountsEnabled: true
     description: Client for OpenShift authentication
   realmSelector:
     matchLabels:
