@@ -35,8 +35,6 @@ data:
             baseUrl: https://keycloak-keycloak.{{ .Values.host }}/auth
             loginRealm: master
             realm: ${CLIENT_ID}
-            clientId: ${CLIENT_ID}
-            clientSecret: ${CLIENT_SECRET}
             username: ${KEYCLOAK_ADMIN_USERNAME}
             password: ${KEYCLOAK_ADMIN_PASSWORD}
             schedule:
