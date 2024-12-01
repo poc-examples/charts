@@ -37,8 +37,6 @@ data:
             realm: ${CLIENT_ID}
             clientId: ${CLIENT_ID}
             clientSecret: ${CLIENT_SECRET}
-            username: admin
-            password: admin
             schedule:
               frequency: { minutes: 30 }
               timeout: { minutes: 3 }
