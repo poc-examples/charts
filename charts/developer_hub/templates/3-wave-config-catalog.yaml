@@ -30,3 +30,14 @@ data:
               timeout:
                 seconds: 60
       {{- end }}
+        keycloakOrg:
+          default:
+            baseUrl: https://keycloak-keycloak.{{ .Values.host }}
+            loginRealm: ${CLIENT_ID}
+            realm: ${CLIENT_ID}
+            clientId: ${CLIENT_ID}
+            clientSecret: ${CLIENT_SECRET}
+            schedule:
+              frequency: { minutes: 30 }
+              timeout: { minutes: 3 }
+              initialDelay: { seconds: 15 }

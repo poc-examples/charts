@@ -14,10 +14,10 @@ data:
     plugins:
 
       ##############################
-      ## GUEST AUTH BACKEND PROVIDER
+      ## KEYCLOAK BACKEND PLUGIN
       ##############################
-      # - disabled: false
-      #   package: '@backstage/plugin-auth-backend-module-guest-provider'
+      - disabled: false
+        package: './dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic'
 
     {{- if .Values.gitlab.enabled }}
       ##############################
