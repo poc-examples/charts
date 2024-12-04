@@ -1,0 +1,25 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8shostnetwork
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sHostNetwork
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8shostnetwork
+
+        violation[{"msg": "host network and host ports are not allowed"}] {
+          input.review.object.spec.hostNetwork == true
+        }
+
+        violation[{"msg": "host network and host ports are not allowed"}] {
+          container := input.review.object.spec.containers[_]
+          container.ports[_].hostPort > 0
+        }

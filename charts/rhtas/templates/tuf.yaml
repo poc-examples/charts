@@ -1,0 +1,28 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: Tuf
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: tuf
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+spec:
+  externalAccess:
+    enabled: true
+    host: tuff.apps.{{ .Values.domain}}
+  keys:
+    - name: rekor.pub
+      secretRef:
+        key: signing.pub
+        name: rekor-signing-secret
+    - name: fulcio_v1.crt.pem
+      # secretRef:
+      #   key: cert
+      #   name: fulcio-cert-fulciolpf85
+    - name: ctfe.pub
+      secretRef:
+        key: public 
+        name: ctlog-ctlog-keys
+  port: 80

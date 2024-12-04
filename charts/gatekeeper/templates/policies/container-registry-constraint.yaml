@@ -1,0 +1,26 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedrepos
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedRepos
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8sallowedrepos
+
+        violation[{"msg": msg, "details": {"container": container.name, "image": container.image}}] {
+          container := input.review.object.spec.containers[_]
+          # Initialize 'allowed' as false, and it's set to true if any repo matches
+          allowed := false
+          # Check if the container image starts with any of the allowed repositories
+          allowed = any({true | repo := input.parameters.repos[_] ; startswith(container.image, repo)})
+          not allowed
+          msg := sprintf("image '%v' in container '%v' is not from an allowed repository", [container.image, container.name])
+        }

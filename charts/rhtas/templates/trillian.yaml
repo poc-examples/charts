@@ -1,0 +1,16 @@
+kind: Trillian
+apiVersion: rhtas.redhat.com/v1alpha1
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: trillian
+spec:
+  database:
+    create: true
+    pvc:
+      retain: true
+      size: 5Gi

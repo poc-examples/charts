@@ -3,15 +3,15 @@ kind: GitLab
 metadata:
   name: gitlab
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   chart:
     values:
       certmanager:
         install: true
       certmanager-issuer:
-        email: "admin@cluster.local"
+        email: "admin@openshift.com"
       global:
         edition: ce
         hosts:
@@ -23,4 +23,4 @@ spec:
           configureCertmanager: false
           tls:
             secretName: null
-    version: 7.9.2
+    version: "8.4.0"

@@ -1,0 +1,35 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: Fulcio
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: fulcio
+spec:
+  certificate:
+    commonName: fulcio.apps.{{ .Values.domain}}
+    organizationEmail: cengleby@redhat.com
+    organizationName: Red Hat
+    # caRef:
+    #   name: ca-key-pair
+    #   key: ca.crt
+    # privateKeyRef:
+    #   name: ca-key-pair
+    #   key: ca.key
+    # privateKeyPasswordRef:
+    #   key: passphrase
+    #   name: ca-key-pair
+  config:
+    OIDCIssuers:
+      - ClientID: sigstore
+        Issuer: 'https://kubernetes.default.svc'
+        IssuerURL: 'https://kubernetes.default.svc'
+        Type: kubernetes
+  externalAccess:
+    enabled: true
+  monitoring:
+    enabled: false
+

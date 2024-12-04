@@ -9,10 +9,10 @@ data:
       - instances:
         - name: main
           password: ${ARGOCD_TOKEN}
-          url: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}
+          url: https://openshift-gitops-server-openshift-gitops.{{ .Values.host }}
           username: admin
         type: config
-      baseUrl: https://openshift-gitops-server-openshift-gitops.apps.{{ .Values.host }}
+      baseUrl: https://openshift-gitops-server-openshift-gitops.{{ .Values.host }}
 
     dynamicPlugins:
       frontend:

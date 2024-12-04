@@ -1,0 +1,24 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: admin
+  labels:
+    app: sso
+    realm: openshift
+spec:
+  realmSelector:
+    matchLabels:
+      realm: openshift
+  user:
+    credentials:
+      - type: password
+        # temporary: true
+        value: admin
+    email: admin@openshift.com
+    emailVerified: false
+    enabled: true
+    firstName: Chris
+    lastName: Engleby
+    username: admin

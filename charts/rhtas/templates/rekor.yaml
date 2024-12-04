@@ -1,0 +1,33 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: Rekor
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: rekor
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+spec:
+  backFillRedis:
+    enabled: true
+    schedule: 0 0 * * *
+  externalAccess:
+    enabled: true
+    host: rekor.apps.{{ .Values.domain}}
+  monitoring:
+    enabled: false
+  pvc:
+    retain: true
+    size: 5Gi
+  rekorSearchUI:
+    enabled: true
+  signer:
+    keyRef:
+      name: rekor-signing-secret
+      key: signing.key
+    kms: secret
+    # passwordRef:
+    #   name: rekor-signing-secret
+    #   key: signing.password
+

@@ -1,0 +1,141 @@
+{{ if .Values.chains.enabled }}
+apiVersion: operator.tekton.dev/v1alpha1
+kind: TektonConfig
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    openshift-pipelines.tekton.dev/sa-created: "true"
+    operator.tekton.dev/release-version: 1.14.3
+  name: config
+spec:
+  addon:
+    params:
+    - name: communityClusterTasks
+      value: "true"
+    - name: clusterTasks
+      value: "true"
+    - name: pipelineTemplates
+      value: "true"
+  chain:
+
+    #################################
+    ######### TASKRUN CONFIG ########
+    #################################
+    artifacts.taskrun.format: in-toto
+    artifacts.taskrun.storage: tekton,oci
+    artifacts.taskrun.signer: x509
+
+    #################################
+    #### PIPELINE RUN CONFIG ########
+    #################################
+    artifacts.pipelinerun.format: in-toto
+    artifacts.pipelinerun.storage: tekton,oci
+    artifacts.pipelinerun.signer: x509
+
+    #################################
+    # SEND TRANSPARENCY LOGS TO REKOR
+    #################################
+    transparency.enabled: 'true'
+    transparency.url: https://rekor.{{ .Values.domain}}
+
+    #################################
+    ### KEYLESS SIGNING W/ FULCIO ###
+    #################################
+    # signers.x509.fulcio.enabled: true
+    # signers.x509.fulcio.address: 'https://fulcio-server-rhtas.{{ .Values.domain}}'
+    # signers.x509.fulcio.issuer: 'https://keycloak-keycloak.{{ .Values.domain}}/auth/realms/trusted-artifact-signer'
+    # signers.x509.fulcio.provider: 'oidc'
+    # signers.x509.tuf.mirror.url: 'https://tuff.{{ .Values.domain}}'
+
+    disabled: false
+    options:
+      disabled: false
+  config: {}
+  dashboard:
+    options:
+      disabled: false
+    readonly: false
+  hub:
+    options:
+      disabled: false
+  params:
+  - name: createRbacResource
+    value: "true"
+  pipeline:
+    await-sidecar-readiness: true
+    coschedule: workspaces
+    default-service-account: pipeline
+    disable-affinity-assistant: true
+    disable-creds-init: false
+    enable-api-fields: beta
+    enable-bundles-resolver: true
+    enable-cel-in-whenexpression: false
+    enable-cluster-resolver: true
+    enable-custom-tasks: true
+    enable-git-resolver: true
+    enable-hub-resolver: true
+    enable-param-enum: false
+    enable-provenance-in-status: true
+    enable-step-actions: false
+    enable-tekton-oci-bundles: true
+    enforce-nonfalsifiability: none
+    keep-pod-on-cancel: false
+    max-result-size: 4096
+    metrics.count.enable-reason: false
+    metrics.pipelinerun.duration-type: histogram
+    metrics.pipelinerun.level: pipeline
+    metrics.taskrun.duration-type: histogram
+    metrics.taskrun.level: task
+    options:
+      disabled: false
+    params:
+    - name: enableMetrics
+      value: "true"
+    performance:
+      disable-ha: false
+    require-git-ssh-secret-known-hosts: false
+    results-from: termination-message
+    running-in-environment-with-injected-sidecars: true
+    send-cloudevents-for-runs: false
+    set-security-context: false
+    trusted-resources-verification-no-match-policy: ignore
+  platforms:
+    openshift:
+      pipelinesAsCode:
+        enable: true
+        options:
+          disabled: false
+        settings:
+          application-name: Pipelines as Code CI
+          auto-configure-new-github-repo: "false"
+          bitbucket-cloud-check-source-ip: "true"
+          custom-console-name: ""
+          custom-console-url: ""
+          custom-console-url-pr-details: ""
+          custom-console-url-pr-tasklog: ""
+          error-detection-from-container-logs: "true"
+          error-detection-max-number-of-lines: "50"
+          error-detection-simple-regexp: ^(?P<filename>[^:]*):(?P<line>[0-9]+):(?P<column>[0-9]+):([
+            ]*)?(?P<error>.*)
+          error-log-snippet: "true"
+          remember-ok-to-test: "false"
+          remote-tasks: "true"
+          secret-auto-create: "true"
+          secret-github-app-token-scoped: "true"
+      scc:
+        default: pipelines-scc
+  profile: all
+  pruner:
+    disabled: false
+    keep: 10
+    resources:
+    - pipelinerun
+    schedule: 0/15 * * * *
+  targetNamespace: openshift-pipelines
+  trigger:
+    default-service-account: pipeline
+    enable-api-fields: stable
+    options:
+      disabled: false
+{{ end }}

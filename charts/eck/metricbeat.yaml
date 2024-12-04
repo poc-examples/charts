@@ -1,0 +1,213 @@
+---
+apiVersion: beat.k8s.elastic.co/v1beta1
+kind: Beat
+metadata:
+  name: metricbeat
+  namespace: elastic-monitoring
+spec:
+  type: metricbeat
+  version: 8.8.2
+  # Connection to ElasticSearch
+  elasticsearchRef:
+    name: elasticsearch
+  # Connection to Kibana
+  kibanaRef:
+    name: kibana
+  config:
+    metricbeat:
+      autodiscover:
+        providers:
+        # Provider for Kubernetes
+        - type: kubernetes
+          scope: cluster
+          node: ${NODE_NAME}
+          unique: true
+          templates:
+            - config:
+                # Kubernetes State metrics 
+                - module: kubernetes
+                  hosts: ["https://kube-state-metrics.openshift-monitoring.svc:8443"]
+                  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+                  ssl.verification_mode: none
+                  ssl.certificate_authorities:
+                    - /var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt
+                  period: 10s
+                  timeout: 30s
+                  add_metadata: true
+                  metricsets:
+                    - state_node
+                    - state_deployment
+                    - state_daemonset
+                    - state_replicaset
+                    - state_pod
+                    - state_container
+                    - state_cronjob
+                    - state_resourcequota
+                    - state_statefulset
+                    - event             # Track K8s events
+                    - scheduler         # Monitor K8s scheduler performance
+                    - controllermanager # Monitor K8s controller manager performance
+                  processors:
+                    - add_kubernetes_metadata:
+                        in_cluster: true
+                        host: ${NODE_NAME}
+                        default_indexers.enabled: false
+                        default_matchers.enabled: false
+                    - drop_event:
+                        when:
+                          equals:
+                            kubernetes.labels.control-plane: "elastic-operator"
+                # Kubernetes API Server metrics
+                - module: kubernetes
+                  metricsets:
+                    - apiserver
+                  hosts: ["https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"]
+                  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+                  ssl.verification_mode: none
+                  period: 30s
+                  processors:
+                    - add_kubernetes_metadata:
+                        in_cluster: true
+                        host: ${NODE_NAME}
+                        default_indexers.enabled: false
+                        default_matchers.enabled: false
+        - hints:
+            default_config: {}
+            enabled: "true"
+          node: ${NODE_NAME}
+          type: kubernetes
+      modules:
+      # System Metrics 
+      - module: system
+        period: 10s
+        metricsets:
+          - cpu
+          - load
+          - memory
+          - network
+          - process
+          - process_summary
+          - uptime            # Monitor system uptime
+          - diskio            # Track Disk I/O
+        process:
+          include_top_n:
+            by_cpu: 5
+            by_memory: 5
+        processes:
+          - .*
+        processors:
+          - add_kubernetes_metadata:
+              in_cluster: true
+              host: ${NODE_NAME}
+              default_indexers.enabled: false
+              default_matchers.enabled: false
+          - drop_event:
+              when:
+                equals:
+                  kubernetes.labels.control-plane: "elastic-operator"
+      # Filesystem Metrics 
+      - module: system
+        period: 1m
+        metricsets:
+          - filesystem
+          - fsstat
+        processors:
+          - add_kubernetes_metadata:
+              in_cluster: true
+              host: ${NODE_NAME}
+              default_indexers.enabled: false
+              default_matchers.enabled: false
+          - drop_event:
+              when:
+                regexp:
+                  system:
+                    filesystem:
+                      mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib)($|/)
+          - drop_event:
+              when:
+                equals:
+                  kubernetes.labels.control-plane: "elastic-operator"
+      # Kubernetes Node Metrics 
+      - module: kubernetes
+        period: 10s
+        node: ${NODE_NAME}
+        hosts:
+        - https://${NODE_NAME}:10250
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        ssl:
+          verification_mode: none
+        ssl.certificate_authorities:
+          - /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
+        metricsets:
+          - node
+          - system
+          - pod
+          - container
+          - volume
+        processors:
+          - add_kubernetes_metadata:
+              in_cluster: true
+              host: ${NODE_NAME}
+              default_indexers.enabled: false
+              default_matchers.enabled: false
+          - add_cloud_metadata:
+              providers: 
+                - azure
+          - add_host_metadata: {}
+          - drop_event:
+              when:
+                equals:
+                  kubernetes.labels.control-plane: "elastic-operator"
+
+  daemonSet:
+    podTemplate:
+      spec:
+        serviceAccountName: metricbeat
+        automountServiceAccountToken: true
+        tolerations:
+          - key: "node-role.kubernetes.io/master"
+            operator: "Exists"
+            effect: "NoSchedule"
+        containers:
+        - args:
+          - -e
+          - -c
+          - /etc/beat.yml
+          - -system.hostfs=/hostfs
+          name: metricbeat
+          securityContext:
+            runAsUser: 0
+            privileged: true  # Necessary to access kubelet API
+          volumeMounts:
+          - mountPath: /hostfs/sys/fs/cgroup
+            name: cgroup
+          - mountPath: /var/run/docker.sock
+            name: dockersock
+          - mountPath: /hostfs/proc
+            name: proc
+          env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          # Resource Limits and Requests for the Metricbeat Pod
+          # Increase resources when collection intervals are increased or
+          # When node activity is high
+          resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 1Gi
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true  # Provides richer host metadata
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - hostPath:
+            path: /sys/fs/cgroup
+          name: cgroup
+        - hostPath:
+            path: /var/run/docker.sock
+          name: dockersock
+        - hostPath:
+            path: /proc
+          name: proc

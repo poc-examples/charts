@@ -1,0 +1,176 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ansible-playbook
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+data:
+  playbook.yaml: |
+    ---
+    - name: Setup Base Operators
+      hosts: localhost
+      connection: local
+      gather_facts: yes
+      collections:
+        - community.okd
+        - community.kubernetes
+      vars:
+        state: present
+        openshift:
+          api_url: "https://kubernetes.default.svc"
+          token: "{{ `{{ lookup('file', '/var/run/secrets/kubernetes.io/serviceaccount/token') }}` }}"
+          validate_certs: false
+
+      tasks:
+
+        - name: Get cluster infrastructure details
+          uri:
+            url: "{{ `{{openshift.api_url}}` }}/apis/config.openshift.io/v1/infrastructures/cluster"
+            method: GET
+            headers:
+              Authorization: "Bearer {{ `{{ openshift.token }}` }}"
+              Accept: "application/json"
+            validate_certs: no
+            status_code: 200
+          register: infra_details
+          ignore_errors: yes
+
+        - name: debug
+          debug:
+            msg: "{{ `{{ infra_details }}` }}"
+
+        - name: ACS Machines - Fetch Existing Worker MachineSet Information
+          community.kubernetes.k8s_info:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            api_version: machine.openshift.io/v1beta1
+            kind: MachineSet
+            namespace: openshift-machine-api
+          register: all_machinesets
+
+        - name: debug
+          debug:
+            msg: "{{ `{{ all_machinesets }}` }}"
+
+        - name: Filter MachineSets where any name has 'worker'
+          set_fact:
+            existing_machinesets: "{{ `{{ all_machinesets.resources | selectattr('metadata.name', 'search', 'worker') | list }}` }}"
+
+        - name: debug
+          debug:
+            msg: "{{ `{{ existing_machinesets }}` }}"
+
+        - name: SET FACTS
+          set_fact:
+            provider_spec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value }}` }}"
+
+        # - debug:
+        #     msg: "{{ `{{ infra_details.json.status.platformStatus.type | lower }}` }}"
+
+        # - debug:
+        #     msg: "{{ `{{ existing_machinesets[0] }}` }}"
+
+        - name: ACS - If Azure Enable MachineSet
+          community.okd.k8s:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            state: "{{ `{{ state }}` }}"
+            definition:
+              apiVersion: machine.openshift.io/v1beta1
+              kind: MachineSet
+              metadata:
+                name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                namespace: openshift-machine-api
+              spec:
+                replicas: 1
+                selector:
+                  matchLabels:
+                    machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                    supports: acs
+                template:
+                  metadata:
+                    labels:
+                      machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-acs-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}1"
+                      supports: acs
+                  spec:
+                    providerSpec:
+                      value:
+
+                        acceleratedNetworking: true
+
+                        # Other Machine Set Configurations
+                        kind: "AzureMachineProviderSpec"
+                        location: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.location }}` }}"
+                        osDisk:
+                          diskSettings: {}
+                          diskSizeGB: 128
+                          managedDisk:
+                            # Locally Redundant Premium SSDs
+                            storageAccountType: Premium_LRS
+                          osType: Linux
+                        
+                        # GPU Enabled Machine Type
+                        networkResourceGroup: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.networkResourceGroup }}` }}"
+                        vmSize: "{{ `{{ lookup('env', 'MANAGED_MACHINE_TYPE') }}` }}"
+                        image:
+                          offer: "{{ `{{ provider_spec.image.offer }}` }}"
+                          publisher: "{{ `{{ provider_spec.image.publisher }}` }}"
+                          sku: "{{ `{{ provider_spec.image.sku }}` }}"
+                          version: "{{ `{{ provider_spec.image.version }}` }}"
+                        subnet: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.subnet }}` }}"
+                        vnet: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.vnet }}` }}"
+                        zone: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.zone }}` }}"
+          when:
+            - "'Azure' in infra_details.json.spec.platformSpec.type"
+
+        - name: ACS - If AWS Enable MachineSet
+          community.okd.k8s:
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            state: "{{ `{{ state }}` }}"
+            definition:
+              apiVersion: machine.openshift.io/v1beta1
+              kind: MachineSet
+              metadata:
+                name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                namespace: openshift-machine-api
+              spec:
+                replicas: 2
+                selector:
+                  matchLabels:
+                    machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                template:
+                  metadata:
+                    labels:
+                      machine.openshift.io/cluster-api-machineset: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+                  spec:
+                    providerSpec: "{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec | combine({'value': {'instanceType': lookup('env', 'MANAGED_MACHINE_TYPE') | default('m5.xlarge')}}, recursive=True) }}` }}"
+
+          when:
+            - "'AWS' in infra_details.json.spec.platformSpec.type"
+
+        - name: debug
+          debug:
+            msg: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+
+        - name: Wait for MachineSet to be schedulable
+          community.kubernetes.k8s_info:
+            api_version: machine.openshift.io/v1beta1
+            host: "{{ `{{ openshift.api_url }}` }}"
+            api_key: "{{ `{{ openshift.token }}` }}"
+            validate_certs: "{{ `{{ openshift.validate_certs }}` }}"
+            kind: MachineSet
+            name: "{{ `{{ infra_details.json.status.infrastructureName }}` }}-managed-workers-{{ `{{ existing_machinesets[0].spec.template.spec.providerSpec.value.placement.region }}` }}1"
+            namespace: openshift-machine-api
+          register: machineset_status
+          until: >
+            machineset_status.resources | length > 0 and
+            'status' in machineset_status.resources[0] and
+            'readyReplicas' in machineset_status.resources[0].status and
+            'replicas' in machineset_status.resources[0].status and
+            machineset_status.resources[0].status.readyReplicas == machineset_status.resources[0].status.replicas
+          retries: 60
+          delay: 10

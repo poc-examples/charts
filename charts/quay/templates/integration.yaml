@@ -1,0 +1,14 @@
+apiVersion: quay.redhat.com/v1
+kind: QuayIntegration
+metadata:
+  name: quay
+spec:
+  clusterID: openshift
+  credentialsSecret:
+    name: quay-credentials
+    namespace: openshift-operators
+  denylistNamespaces:
+    - quay-registry
+  insecureRegistry: true
+  quayHostname: 'https://quay-quay-quay-registry.apps.<domain>'
+  scheduledImageStreamImport: true

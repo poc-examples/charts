@@ -1,0 +1,114 @@
+domain: openshift.io
+
+machinesets:
+  chartVersion: 0.1.19
+  enabled: false
+  helmValues:
+    machineset: 
+      enabled: false
+    machinesets:
+      - name: acs
+        machine_type: Standard_D8s_v3
+ 
+registry:
+  enabled: false
+
+acs:
+  chartVersion: 0.1.21
+  enabled: false
+
+acm:
+  chartVersion: 0.1.5
+  enabled: false
+
+keycloak:
+  chartVersion: 0.1.63
+  enabled: false
+
+gatekeeper:
+  chartVersion: 0.1.16
+  enabled: false
+
+gitops:
+  namespace: openshift-gitops
+  channel: gitops-1.11
+  enabled: false
+  updater:
+    chartVersion: 0.1.0
+    enabled: false
+
+tekton:
+  chartVersion: 0.1.71
+  enabled: false
+
+chains:
+  enabled: false
+
+sonarqube:
+  chartVersion: ~8
+  enabled: false
+
+devhub:
+  chartVersion: 0.2.26
+  enabled: false
+
+devspaces:
+  chartVersion: 0.1.5
+  enabled: false
+
+rhtas:
+  chartVersion: 0.1.34
+  namespace: rhtas
+  enabled: false
+
+gitlab:
+  namespace: gitlab-system
+  chartVersion: 0.2.19
+  enabled: false
+
+external_secrets:
+  enabled: false
+  chartVersion: 0.1.31
+  namespace: external-secrets
+  connectors:
+    chartVersion: 0.1.1
+  k8sConnector:
+    enabled: false
+
+vault:
+  chartVersion: 0.27.0
+  enabled: false
+  address: "http://vault-service.vault-server.svc.cluster.local:8200"
+
+nfd:
+  enabled: false 
+  chartVersion: 0.1.3
+
+nvidiagpu:
+  enabled: false 
+  chartVersion: 0.1.1
+
+authorino:
+  enabled: false
+  chartVersion: 0.1.0
+
+kiali:
+  enabled: false
+  chartVersion: 0.1.0
+
+tracing:
+  enabled: false
+  chartVersion: 0.1.0
+
+serverless:
+  enabled: false
+  chartVersion: 0.1.1
+
+servicemesh:
+  enabled: false
+  chartVersion: 0.1.1
+
+rhoai:
+  enabled: false
+  chartVersion: 0.1.5
+

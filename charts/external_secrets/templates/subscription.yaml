@@ -4,9 +4,9 @@ metadata:
   name: "{{ .Values.namespace }}"
   namespace: "{{ .Values.namespace }}"
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
-  channel: "{{ .Values.subscription.channel }}"
+  channel: "stable"
   installPlanApproval: Automatic
   name: "{{ .Values.namespace }}-operator"
   source: community-operators

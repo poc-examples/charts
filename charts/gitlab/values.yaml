@@ -1,3 +1,41 @@
 namespace: gitlab-system
+domain: apps.domain.com
 
-domain: api.domain
+ansible-runner:
+  runner:
+    name: approval-install-plan
+    namespace: gitlab-system
+    annotations:
+      argocd.argoproj.io/sync-wave: "0"
+
+  requirements:
+    collections:
+      - name: bootstrap.workshop
+        source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/workshop
+        type: git
+        version: main
+        roles:
+          - name: install-plans
+      - name: kubernetes.core
+        source: "https://galaxy.ansible.com"
+      - name: community.kubernetes
+        source: "https://galaxy.ansible.com"
+      - name: community.okd
+        source: "https://galaxy.ansible.com"
+
+  additionalVars:
+    namespace: "gitlab-system"
+    csv_name: "gitlab-operator-kubernetes.v1.4.0"
+
+  scope: Role
+  rules:
+    - apiGroups:
+        - "operators.coreos.com"
+      resources: 
+        - "installplans"
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+        - "update"
+        - "patch"

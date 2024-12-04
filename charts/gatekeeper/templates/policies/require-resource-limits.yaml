@@ -1,0 +1,11 @@
+# apiVersion: constraints.gatekeeper.sh/v1beta1
+# kind: K8sResourceLimits
+# metadata:
+#   name: enforce-cpu-limits
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# spec:
+#   match:
+#     kinds:
+#       - apiGroups: [""]
+#         kinds: ["Pod"]

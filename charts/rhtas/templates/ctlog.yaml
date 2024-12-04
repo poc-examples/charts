@@ -1,0 +1,23 @@
+apiVersion: rhtas.redhat.com/v1alpha1
+kind: CTlog
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  labels:
+    app.kubernetes.io/instance: secure-sign
+    app.kubernetes.io/name: secure-sign
+    app.kubernetes.io/part-of: trusted-artifact-signer
+  name: ctlog
+spec:
+  ## PASSING in self-created sigining secrets seems to be ignored and 
+  ## returning go code errors are not verbose enough currentl defaulting to letting logs 
+  ## create their own for the time being.
+  # privateKeyPasswordRef:
+  #   key: passphrase
+  #   name: ctlog-ctlog-keys
+  # privateKeyRef:
+  #   key: private
+  #   name: ctlog-ctlog-keys
+  # publicKeyRef:
+  #   key: public
+  #   name: ctlog-ctlog-keys

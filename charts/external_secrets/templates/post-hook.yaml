@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: application-post-hook
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  template:
+    spec:
+      serviceAccountName: ansible-runner
+      containers:
+      - name: application-post-hook
+        image: registry.access.redhat.com/ubi9/python-311:latest
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            pip install ansible;
+            pip install openshift;
+            ansible-galaxy collection install community.kubernetes;
+            ansible-playbook /etc/ansible/playbook.yaml;
+        volumeMounts:
+        - name: playbook-volume
+          mountPath: /etc/ansible
+      volumes:
+      - name: playbook-volume
+        configMap:
+          name: ansible-playbook
+      restartPolicy: Never

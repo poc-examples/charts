@@ -1,0 +1,17 @@
+apiVersion: operator.gatekeeper.sh/v1alpha1
+kind: Gatekeeper
+metadata:
+  name: gatekeeper
+  namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  webhook:
+    logLevel: INFO
+    emitAdmissionEvents: Disabled
+  audit:
+    auditInterval: '60s'
+    logLevel: INFO
+  validatingWebhook: Enabled
+  mutatingWebhook: Disabled

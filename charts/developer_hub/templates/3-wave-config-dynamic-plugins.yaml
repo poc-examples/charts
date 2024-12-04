@@ -1,0 +1,100 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: dynamic-plugins
+  labels:
+    app.kubernetes.io/instance: developer-hub
+    app.kubernetes.io/name: backstage
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+    plugins:
+
+      ##############################
+      ## KEYCLOAK BACKEND PLUGIN
+      ##############################
+      - disabled: false
+        package: './dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic'
+
+    {{- if .Values.gitlab.enabled }}
+      ##############################
+      ## GITLAB PLUGIN CONFIGURATION
+      ##############################
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gitlab-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab-backend-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
+    {{- end }}
+
+      ##############################
+      ## TEKTON PLUGIN CONFIGURATION
+      ##############################
+      - disabled: false
+        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              janus-idp.backstage-plugin-tekton:
+                mountPoints:
+                  - mountPoint: entity.page.ci/cards
+                    importName: TektonCI
+                    config:
+                      layout:
+                        gridColumn: "1 / -1"
+                      if:
+                        allOf:
+                          - isTektonCIAvailable
+
+      ##################################
+      ## TECH RADAR PLUGIN CONFIGURATION
+      ##################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+
+      ###############################
+      ## ARGOCD PLUGIN CONFIGURATION
+      ###############################
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd
+
+      ##################################
+      ## KUBERNETES PLUGIN CONFIGURATION
+      ##################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
+
+      ##################################
+      ## TOPOLOGY PLUGIN CONFIGURATION
+      ##################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              janus-idp.backstage-plugin-topology:
+                mountPoints:
+                  - mountPoint: entity.page.topology/cards
+                    importName: TopologyPage
+                    config:
+                      layout:
+                        gridColumn: "1 / -1"
+                        height: 75vh
+                      if:
+                        anyOf:
+                          - hasAnnotation: backstage.io/kubernetes-id
+                          - hasAnnotation: backstage.io/kubernetes-namespace

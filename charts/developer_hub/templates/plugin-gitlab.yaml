@@ -1,3 +1,4 @@
+{{- if .Values.gitlab.enabled }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -20,12 +21,12 @@ data:
       gitlab:
         - host: gitlab.com
           token: ${GITLAB_TOKEN}
-          apiBaseUrl: "https://gitlab.apps.{{ .Values.host }}/api/v4"
-          baseUrl: "https://gitlab.apps.{{ .Values.host }}"
-        - host: gitlab.apps.{{ .Values.host }}
+          apiBaseUrl: "https://gitlab.{{ .Values.host }}/api/v4"
+          baseUrl: "https://gitlab.{{ .Values.host }}"
+        - host: gitlab.{{ .Values.host }}
           token: ${GITLAB_TOKEN}
-          apiBaseUrl: "https://gitlab.apps.{{ .Values.host }}/api/v4"
-          baseUrl: "https://gitlab.apps.{{ .Values.host }}"
+          apiBaseUrl: "https://gitlab.{{ .Values.host }}/api/v4"
+          baseUrl: "https://gitlab.{{ .Values.host }}"
 
     dynamicPlugins:
       frontend:
@@ -66,3 +67,4 @@ data:
                 if:
                   allOf:
                     - isGitlabAvailable
+{{- end }}

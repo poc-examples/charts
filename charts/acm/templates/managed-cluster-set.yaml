@@ -1,0 +1,10 @@
+apiVersion: cluster.open-cluster-management.io/v1beta2
+kind: ManagedClusterSet
+metadata:
+  annotations:
+    cluster.open-cluster-management.io/submariner-broker-ns: local-cluster-broker
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  name: local-cluster
+spec:
+  clusterSelector:
+    selectorType: ExclusiveClusterSetLabel

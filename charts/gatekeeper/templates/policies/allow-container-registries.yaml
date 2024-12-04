@@ -1,0 +1,13 @@
+# apiVersion: constraints.gatekeeper.sh/v1beta1
+# kind: K8sAllowedRepos
+# metadata:
+#   name: allowed-repos
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# spec:
+#   match:
+#     kinds:
+#       - apiGroups: [""]
+#         kinds: ["Pod"]
+#   parameters:
+#     repos: ["docker.io/officialrepo/", "gcr.io/"]

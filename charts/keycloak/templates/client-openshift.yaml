@@ -1,0 +1,53 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: openshift
+  labels:
+    app: sso
+    realm: openshift
+    client: openshift
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  client:
+    redirectUris:
+      - "https://oauth-openshift.{{ .Values.domain }}/oauth2callback/*"
+      - "https://backstage-developer-hub-backstage.{{ .Values.domain }}/*"
+      - "http://backstage-developer-hub-backstage.{{ .Values.domain }}/*"
+    protocolMappers:
+      - name: groups
+        protocol: openid-connect
+        protocolMapper: oidc-group-membership-mapper
+        consentRequired: false
+        config:
+          full.path: "false"
+          id.token.claim: "true"
+          access.token.claim: "true"
+          claim.name: "groups"
+          userinfo.token.claim: "true"
+    optionalClientScopes:
+      - address
+      - phone
+      - offline_access
+      - microprofile-jwt
+    defaultClientScopes:
+      - web-origins
+      - acr
+      - profile
+      - roles
+      - email
+    clientId: openshift
+    clientAuthenticatorType: client-secret
+    enabled: true
+    fullScopeAllowed: true
+    frontchannelLogout: false
+    authorizationServicesEnabled: true
+    name: openshift
+    standardFlowEnabled: true
+    protocol: openid-connect
+    directAccessGrantsEnabled: true
+    serviceAccountsEnabled: true
+    description: Client for OpenShift authentication
+  realmSelector:
+    matchLabels:
+      realm: openshift

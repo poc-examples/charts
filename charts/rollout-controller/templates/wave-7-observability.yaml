@@ -1,0 +1,67 @@
+{{- if or .Values.kiali.enabled .Values.tracing.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: observability
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
+  generators:
+    - matrix:
+        generators:
+          - clusters:
+              selector:
+                matchLabels:
+                  cluster: default
+          - list:
+              elements:
+              {{- if .Values.kiali.enabled }}
+                - application: kiali-service
+                  namespace: kiali-ossm
+                  chart: 
+                    name: kiali
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.kiali.chartVersion }}"
+              {{- end }}
+              {{- if .Values.tracing.enabled }}
+                - application: distributed-tracing-service
+                  namespace: openshift-distributed-tracing
+                  chart: 
+                    name: distributed-tracing
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.tracing.chartVersion }}"
+              {{- end }}
+  template:
+    metadata:
+      name: "{{ `{{ .application }}` }}"
+    spec:
+      destination:
+        namespace: "{{ `{{ .namespace }}` }}"
+        server: "{{ `{{ .server }}` }}"
+      source:
+        chart: "{{ `{{ .chart.name }}` }}"
+        targetRevision: "{{ `{{ .chart.version }}` }}"
+        repoURL: "{{ `{{ .chart.url }}` }}"
+      project: system
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+        syncOptions:
+          - CreateNamespace=true
+          - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{- .values | nindent 12 }}` }}
+        {{ `{{- end }}` }}
+{{- end }}
