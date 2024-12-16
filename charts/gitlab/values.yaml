@@ -25,7 +25,7 @@ ansible-runner:
 
   additionalVars:
     namespace: "gitlab-system"
-    csv_name: "gitlab-operator-kubernetes.v1.4.0"
+    csv_name: "gitlab-operator-kubernetes.v1.7.2"
 
   scope: Role
   rules:

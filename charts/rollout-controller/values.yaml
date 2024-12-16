@@ -63,7 +63,7 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.2.20
+  chartVersion: 0.2.21
   enabled: false
 
 external_secrets:
