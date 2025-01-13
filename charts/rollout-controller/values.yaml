@@ -62,7 +62,7 @@ rhtas:
   enabled: false
 
 gitlab:
-  namespace: gitlab-system
+  namespacgitlabe: gitlab-system
   chartVersion: 0.2.21
   enabled: false
 
@@ -105,6 +105,10 @@ serverless:
   chartVersion: 0.1.1
 
 servicemesh:
+  enabled: false
+  chartVersion: 0.1.1
+
+quay:
   enabled: false
   chartVersion: 0.1.1
 

@@ -18,6 +18,17 @@ spec:
                   cluster: default
           - list:
               elements:
+              {{- if .Values.quay.enabled }}
+                - application: quay-service
+                  namespace: "quay-registry"
+                  wave: "-2"
+                  chart: 
+                    name: quay
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.quay.chartVersion }}"
+                  values: |
+                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
+              {{- end }}
               {{- if .Values.gitlab.enabled }}
                 - application: gitlab-service
                   namespace: "{{ .Values.gitlab.namespace }}"
