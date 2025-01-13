@@ -112,6 +112,10 @@ quay:
   enabled: false
   chartVersion: 0.1.1
 
+quay_bridge:
+  enabled: true
+  chartVersion: 0.1.1
+
 rhoai:
   enabled: false
   chartVersion: 0.1.5
