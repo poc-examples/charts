@@ -7439,6 +7439,16 @@ entries:
   quay:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-13T19:34:00.684822567Z"
+    description: A Helm chart for Kubernetes
+    digest: 1921a4eeff64b5910a7c59549ede5e97b8dcffe7265f9bcac87102270e8dc953
+    name: quay
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/quay-0.1.3/quay-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-13T19:07:15.240397876Z"
     description: A Helm chart for Kubernetes
     digest: be188a7741b8aa53456b80cb26ca2963cccebe049b83004168eafb77bc05ff87
@@ -10540,4 +10550,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-01-13T19:07:15.241878962Z"
+generated: "2025-01-13T19:34:00.686261352Z"
