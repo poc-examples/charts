@@ -10,5 +10,5 @@ spec:
   denylistNamespaces:
     - quay-registry
   insecureRegistry: true
-  quayHostname: 'https://quay-quay-quay-registry.apps.{{ .Values.domain }}'
+  quayHostname: 'https://quay-quay-quay-registry.{{ .Values.domain }}'
   scheduledImageStreamImport: true
