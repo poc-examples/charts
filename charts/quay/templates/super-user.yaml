@@ -1,8 +1,0 @@
-kind: Secret
-apiVersion: v1
-metadata:
-  name: quay-credentials
-stringData:
-  superuser-username: quayadmin
-  superuser-password: quayadmin
-  superuser-email: quayadmin@quayadmin.com
