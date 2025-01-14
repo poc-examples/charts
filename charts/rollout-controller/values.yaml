@@ -110,11 +110,11 @@ servicemesh:
 
 quay:
   enabled: false
-  chartVersion: 0.1.1
+  chartVersion: 0.1.6
 
 quay_bridge:
   enabled: true
-  chartVersion: 0.1.1
+  chartVersion: 0.1.4
 
 rhoai:
   enabled: false
