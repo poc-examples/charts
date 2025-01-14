@@ -9,6 +9,17 @@ spec:
     namespace: "{{ .Values.namespace }}"
   denylistNamespaces:
     - quay-registry
+    - dedicated-admin
+    - keycloak
+    - external-secrets
+    - secrets-connectors
+    - cert-manager
+    - secrets-manager
+    - ack-system
+    - upbound-system
+    - gitlab-system
+    - backstage
+    - vault-server
   insecureRegistry: true
   quayHostname: 'https://quay-quay-quay-registry.{{ .Values.domain }}'
   scheduledImageStreamImport: true
