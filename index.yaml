@@ -7439,6 +7439,16 @@ entries:
   quay:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-16T00:27:25.950463054Z"
+    description: A Helm chart for Kubernetes
+    digest: 6686cfcb23641afd1067660e7e21461807aef7c6dde1533a2fa3dbc303e5923c
+    name: quay
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/quay-0.1.9/quay-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-16T00:21:10.274465347Z"
     description: A Helm chart for Kubernetes
     digest: 9765689f28f5d457d11f5172334dffdcfb53ea9f213824e7ef31a219253ef4fe
@@ -8074,6 +8084,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-01-16T00:27:26.034956761Z"
+    description: A Helm chart for Kubernetes
+    digest: 9d002a516d9070f6bdbafe6abab08a43f7a6b22e3b9e6089e395d72bc3d0ff0c
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.67/rollout-controller-0.5.67.tgz
+    version: 0.5.67
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-01-14T00:41:01.687503797Z"
@@ -10661,4 +10681,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-01-16T00:21:10.275760206Z"
+generated: "2025-01-16T00:27:26.03811386Z"
