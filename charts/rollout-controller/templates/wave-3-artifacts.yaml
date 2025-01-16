@@ -28,6 +28,7 @@ spec:
                     version: "{{ .Values.quay.chartVersion }}"
                   values: |
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    region: "{{ `{{ .metadata.labels.region }}` }}"
               {{- end }}
               {{- if .Values.gitlab.enabled }}
                 - application: gitlab-service

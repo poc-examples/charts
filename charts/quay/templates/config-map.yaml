@@ -5,7 +5,7 @@ metadata:
 spec:
   refreshInterval: "15s"
   secretStoreRef:
-    name: "{{ .Values.clusterSecretStoreName }}"
+    name: "kubernetes-secrets-store"
     kind: ClusterSecretStore
   target:
     name: "init-config-bundle-secret"
@@ -23,11 +23,11 @@ spec:
           DISTRIBUTED_STORAGE_CONFIG:
             s3Storage:
               - S3Storage
-              - host: "s3.{{ .Values.dataConnection.config.defaultRegion }}.amazonaws.com"
+              - host: "s3.{{ .Values.region }}.amazonaws.com"
                 s3_bucket: "quay-storage-demo-1"
                 s3_access_key: "{{`{{ .AWS_ACCESS_KEY_ID }}`}}"
                 s3_secret_key: "{{`{{ .AWS_SECRET_ACCESS_KEY }}`}}"
-                s3_region: "{{ .Values.dataConnection.config.defaultRegion }}"
+                s3_region: "{{ .Values.region}}"
                 storage_path: /datastorage/registry
           DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
           DISTRIBUTED_STORAGE_PREFERENCE:
@@ -38,14 +38,14 @@ spec:
         conversionStrategy: Default
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .Values.dataConnection.secretRef }}"
+        key: aws-credentials
         property: AWS_ACCESS_KEY_ID
     - secretKey: "AWS_SECRET_ACCESS_KEY"
       remoteRef:
         conversionStrategy: Default
         decodingStrategy: None
         metadataPolicy: None
-        key: "{{ .Values.dataConnection.secretRef }}"
+        key: aws-credentials
         property: AWS_SECRET_ACCESS_KEY
 
 

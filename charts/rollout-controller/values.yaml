@@ -110,7 +110,7 @@ servicemesh:
 
 quay:
   enabled: false
-  chartVersion: 0.1.6
+  chartVersion: 0.1.9
 
 quay_bridge:
   enabled: true
