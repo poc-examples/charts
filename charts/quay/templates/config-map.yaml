@@ -18,6 +18,7 @@ spec:
           BROWSER_API_CALLS_XHR_ONLY: false
           FEATURE_USER_CREATION: true
           FEATURE_ASSIGN_OAUTH_TOKEN: true
+          FEATURE_SUPERUSERS_FULL_ACCESS: true
           SUPER_USERS:
             - quayadmin
           DISTRIBUTED_STORAGE_CONFIG:
