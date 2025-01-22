@@ -12,6 +12,10 @@ spec:
     enabled: false
   externalAccess:
     enabled: true
+  keycloakDeploymentSpec:
+    experimental:
+      args:
+        - '-Dkeycloak.profile=preview'
   profile: preview
   instances: 1
   DisableDefaultServiceMonitor: true
