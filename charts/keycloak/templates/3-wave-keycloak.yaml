@@ -14,7 +14,7 @@ spec:
     enabled: true
   keycloakDeploymentSpec:
     experimental:
-      args:
+      command:
         - '-Dkeycloak.profile=preview'
   profile: preview
   instances: 1
