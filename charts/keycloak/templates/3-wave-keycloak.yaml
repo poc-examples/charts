@@ -13,10 +13,8 @@ spec:
   externalAccess:
     enabled: true
   keycloakDeploymentSpec:
-    env:
-      - name: KC_FEATURES
-        value: "token-exchange"
-      - name: JAVA_OPTS
-        value: "-Dkeycloak.profile=preview"
+    args:
+      - "-Dkeycloak.profile=preview"
+      - "-Dkeycloak.profile.feature.token_exchange=enabled"
   instances: 1
   DisableDefaultServiceMonitor: true
