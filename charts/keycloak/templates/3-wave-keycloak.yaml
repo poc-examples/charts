@@ -14,8 +14,9 @@ spec:
     enabled: true
   keycloakDeploymentSpec:
     experimental:
-      command:
-        - '-Dkeycloak.profile=preview'
+      env:
+        - name: JAVA_OPTS
+          value: '-Dkeycloak.profile=preview -Dkeycloak.profile.feature.token_exchange=enabled'
   profile: preview
   instances: 1
   DisableDefaultServiceMonitor: true
