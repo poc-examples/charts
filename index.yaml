@@ -4731,6 +4731,16 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-22T04:16:08.08038895Z"
+    description: A Helm chart for Kubernetes
+    digest: 14544befbb0c0b31d5f9540511be9645d1d8e1f0a251f0697e576a656eb51675
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.1.64/keycloak-0.1.64.tgz
+    version: 0.1.64
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-12-01T06:12:32.090008532Z"
     description: A Helm chart for Kubernetes
     digest: 3c30ca7fb9d3830615b71182956d7eb492f9f6e1b0c129ee4a80f8523ad9f87e
@@ -7560,6 +7570,16 @@ entries:
   quay-bridge:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-22T04:16:08.187993017Z"
+    description: A Helm chart for Kubernetes
+    digest: 0642e1fde57325db00f3c9c494b6ad61f01efb9be92ab3a3660a7c314e52ee47
+    name: quay-bridge
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/quay-bridge-0.1.5/quay-bridge-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-14T00:30:19.484628213Z"
     description: A Helm chart for Kubernetes
     digest: cc5dfd7af73bc4091788511785a910a7dfcc1872a51edfacf4974a3e5f1be23a
@@ -8104,6 +8124,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-01-22T04:16:08.319291511Z"
+    description: A Helm chart for Kubernetes
+    digest: e0039625a7d686e9183114d7477b75c820b2525ae6a93afb09c258a7b57c7d90
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.69/rollout-controller-0.5.69.tgz
+    version: 0.5.69
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-01-16T00:27:26.034956761Z"
@@ -10701,4 +10731,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-01-16T04:22:27.186399431Z"
+generated: "2025-01-22T04:16:08.321726378Z"
