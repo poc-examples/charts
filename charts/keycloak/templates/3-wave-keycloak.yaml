@@ -15,8 +15,6 @@ spec:
   keycloakDeploymentSpec:
     experimental:
       args:
-        - '-Dkeycloak.profile=preview'
-        - '-Dkeycloak.profile.feature.token-exchange=enabled'
-        - '-Dkeycloak.profile.feature.impersonation=disabled'
+        - '--features=preview'
   instances: 1
   DisableDefaultServiceMonitor: true
