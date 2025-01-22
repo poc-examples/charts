@@ -12,9 +12,6 @@ spec:
     enabled: false
   externalAccess:
     enabled: true
-  keycloakDeploymentSpec:
-    args:
-      - "-Dkeycloak.profile=preview"
-      - "-Dkeycloak.profile.feature.token_exchange=enabled"
+  profile: preview
   instances: 1
   DisableDefaultServiceMonitor: true
