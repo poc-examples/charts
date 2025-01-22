@@ -12,5 +12,11 @@ spec:
     enabled: false
   externalAccess:
     enabled: true
+  keycloakDeploymentSpec:
+    experimental:
+      args:
+        - '-Dkeycloak.profile=preview'
+        - '-Dkeycloak.profile.feature.token-exchange=enabled'
+        - '-Dkeycloak.profile.feature.impersonation=disabled'
   instances: 1
   DisableDefaultServiceMonitor: true

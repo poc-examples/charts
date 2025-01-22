@@ -22,7 +22,7 @@ acm:
   enabled: false
 
 keycloak:
-  chartVersion: 0.1.63
+  chartVersion: 0.1.64
   enabled: false
 
 gatekeeper:
@@ -110,11 +110,11 @@ servicemesh:
 
 quay:
   enabled: false
-  chartVersion: 0.1.9
+  chartVersion: 0.1.11
 
 quay_bridge:
   enabled: true
-  chartVersion: 0.1.4
+  chartVersion: 0.1.5
 
 rhoai:
   enabled: false

@@ -20,6 +20,8 @@ spec:
     - gitlab-system
     - backstage
     - vault-server
+    - rhacs-operator
+    - stackrox
   insecureRegistry: true
   quayHostname: 'https://quay-quay-quay-registry.{{ .Values.domain }}'
   scheduledImageStreamImport: true
