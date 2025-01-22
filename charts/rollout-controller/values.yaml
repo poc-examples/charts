@@ -113,7 +113,7 @@ quay:
   chartVersion: 0.1.11
 
 quay_bridge:
-  enabled: true
+  enabled: false
   chartVersion: 0.1.5
 
 rhoai:
