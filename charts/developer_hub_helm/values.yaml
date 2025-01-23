@@ -257,7 +257,6 @@ redhat-developer-hub:
 # Approved
   route:
     enabled: true
-    # host: devhub-developer-hub-backstage.{{ .Values.host }}
     path: "/"
     wildcardPolicy: None
     tls:
