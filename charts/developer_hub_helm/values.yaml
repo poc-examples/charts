@@ -61,7 +61,7 @@ redhat-developer-hub:
       # upstream.postgresql.primary.extraEnvVars value), but this doesn't allow us to
       # create multiple DBs. Since Backstage requires by default 5 different DBs, we
       # can't accommodate that properly.
-      appConfig: {}
+      appConfig: ""
       extraAppConfig:
         - configMapRef: techdocs-plugin
           filename: techdocs-plugin.yaml
@@ -250,8 +250,8 @@ redhat-developer-hub:
 
     postgresql:
       enabled: false
-    ingress:
-      host: "{{ .Values.global.host }}"
+    # ingress:
+    #   host: "{{ .Values.global.host }}"
 
 
 # Approved
@@ -327,6 +327,12 @@ redhat-developer-hub:
 
 
 host: api.openshift.io
+
+backend:
+  postgres:
+    enabled: true
+  sqlite3:
+    enabled: false
 
 gitlab:
   enabled: false
