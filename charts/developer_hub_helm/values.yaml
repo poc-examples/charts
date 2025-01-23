@@ -70,10 +70,10 @@ redhat-developer-hub:
           filename: tech-radar-plugin.yaml
         - configMapRef: kubernetes-plugin
           filename: kubernetes-plugin.yaml
-      {{- if .Values.gitlab.enabled }}
-        - configMapRef: gitlab-plugin
-          filename: gitlab-plugin.yaml
-      {{- end }}
+      # {{- if .Values.gitlab.enabled }}
+      #   - configMapRef: gitlab-plugin
+      #     filename: gitlab-plugin.yaml
+      # {{- end }}
         - configMapRef: argocd-plugin
           filename: argocd-plugin.yaml
         - configMapRef: dynamic-plugins
@@ -115,7 +115,40 @@ redhat-developer-hub:
         periodSeconds: 10
         successThreshold: 1
         timeoutSeconds: 2
+      extraEnvVarsSecrets:
+        - postgres-credentials
+        - keycloak-client-secret-openshift
+        - credential-keycloak
       extraEnvVars:
+        # SIMPLY FOR DEBUGGING
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: '0'
+        - name: SKIP_INTEGRITY_CHECK
+          value: "true"
+        - name: LOG_LEVEL
+          value: info
+        # FOR USE WITH DYNAMIC PLUGINS
+        # - name: GITLAB_TOKEN
+        #   valueFrom:
+        #     secretKeyRef:
+        #       key: GITLAB_TOKEN
+        #       name: gitlab-token
+        - name: DEVHUB_BACKEND_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: DEVHUB_BACKEND_SECRET
+              name: backend-credentials
+        - name: ARGOCD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: ARGOCD_TOKEN
+              name: argocd-token
+        - name: token
+          valueFrom:
+            secretKeyRef:
+              key: token
+              name: service-account-token
+        # DEFAULTS
         - name: BACKEND_SECRET
           valueFrom:
             secretKeyRef:
@@ -213,47 +246,9 @@ redhat-developer-hub:
               name: npmcacache
           workingDir: /opt/app-root/src
       installDir: /opt/app-root/src
-      podAnnotations:
-        checksum/dynamic-plugins: >-
-          {{- include "common.tplvalues.render" ( dict "value" .Values.global.dynamic "context" $) | sha256sum }}
+    
     postgresql:
-      enabled: true
-      postgresqlDataDir: /var/lib/pgsql/data/userdata
-      image:
-        registry: registry.redhat.io
-        repository: rhel9/postgresql-15@sha256
-        # tag is set to digest via prepare.sh script
-        # tag: "${POSTGRESQL_DIGEST}"
-
-        tag: afaaab335eba328d9ee3702086f6a6574e70045066669055fd684077f1b320d0
-      auth:
-        secretKeys:
-          adminPasswordKey: postgres-password
-          userPasswordKey: password
-      primary:
-        # TODO: https://issues.redhat.com/browse/RHIDP-2645
-        podSecurityContext:
-          enabled: false
-        containerSecurityContext:
-          enabled: false
-        resources:
-          requests:
-            cpu: 250m
-            memory: 256Mi
-          limits:
-            cpu: 250m
-            memory: 1024Mi
-            ephemeral-storage: 20Mi
-        persistence:
-          enabled: true
-          size: 1Gi
-          mountPath: /var/lib/pgsql/data
-        extraEnvVars:
-          - name: POSTGRESQL_ADMIN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: postgres-password
-                name: '{{- include "postgresql.v1.secretName" . }}'
+      enabled: false
     ingress:
       host: "{{ .Values.global.host }}"
 
