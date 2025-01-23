@@ -247,7 +247,7 @@ redhat-developer-hub:
               name: npmcacache
           workingDir: /opt/app-root/src
       installDir: /opt/app-root/src
-    
+
     postgresql:
       enabled: false
     ingress:
