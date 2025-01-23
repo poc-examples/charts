@@ -1,0 +1,43 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: catalog-config
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+data:
+  catalog-config.yaml: |
+    catalog:
+      import:
+        entityFilename: catalog-info.yaml
+        pullRequestBranchName: backstage-integration
+      rules:
+        - allow: [User, Group, Component, System, Group, Resource, Location, Template, API]
+      {{- if .Values.catalogs }}
+      locations:
+      {{- range .Values.catalogs }}
+        - type: url
+          target: {{ . }}
+      {{- end }}
+      {{- end }}
+      providers:
+      {{- if .Values.gitlab.enabled }}
+        gitlab:
+          selfHosted:
+            host: "gitlab.{{ .Values.host }}"
+            schedule:
+              frequency:
+                seconds: 10
+              timeout:
+                seconds: 60
+      {{- end }}
+        keycloakOrg:
+          default:
+            baseUrl: https://keycloak-keycloak.{{ .Values.host }}/auth
+            loginRealm: master
+            realm: ${CLIENT_ID}
+            username: ${KEYCLOAK_ADMIN_USERNAME}
+            password: ${KEYCLOAK_ADMIN_PASSWORD}
+            schedule:
+              frequency: { minutes: 30 }
+              timeout: { minutes: 3 }
+              initialDelay: { seconds: 15 }

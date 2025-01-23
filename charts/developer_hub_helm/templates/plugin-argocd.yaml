@@ -1,0 +1,38 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: argocd-plugin
+data:
+  argocd-plugin.yaml: |
+    argocd:
+      appLocatorMethods:
+      - instances:
+        - name: main
+          password: ${ARGOCD_TOKEN}
+          url: https://openshift-gitops-server-openshift-gitops.{{ .Values.host }}
+          username: admin
+        type: config
+      baseUrl: https://openshift-gitops-server-openshift-gitops.{{ .Values.host }}
+
+    dynamicPlugins:
+      frontend:
+        roadiehq.backstage-plugin-argo-cd:
+          mountPoints:
+            - mountPoint: entity.page.overview/cards
+              importName: EntityArgoCDOverviewCard
+              config:
+                layout:
+                  gridColumnEnd:
+                    lg: "span 8"
+                    xs: "span 12"
+                if:
+                  allOf:
+                    - isArgocdAvailable
+            - mountPoint: entity.page.cd/cards
+              importName: EntityArgoCDHistoryCard
+              config:
+                layout:
+                  gridColumn: "1 / -1"
+                if:
+                  allOf:
+                    - isArgocdAvailable

@@ -1,0 +1,29 @@
+[
+    {
+      "title": "Dropdown 1",
+      "isExpanded": false,
+      "links": [
+        {
+          "iconUrl": "https://imagehost.com/image.png",
+          "label": "Dropdown 1 Item 1",
+          "url": "https://example.com/"
+        },
+        {
+          "iconUrl": "https://imagehost2.org/icon.png",
+          "label": "Dropdown 1 Item 2",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "title": "Dropdown 2",
+      "isExpanded": true,
+      "links": [
+        {
+          "iconUrl": "http://imagehost3.edu/img.jpg",
+          "label": "Dropdown 2 Item 1",
+          "url": "http://example.com"
+        }
+      ]
+    }
+]

@@ -1,0 +1,50 @@
+# apiVersion: rhdh.redhat.com/v1alpha1
+# kind: Backstage
+# metadata:
+#   name: developer-hub
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# spec:
+#   rawRuntimeConfig:
+#     backstageConfig: backstage-config
+#   application:
+#     appConfig:
+#       mountPath: /opt/app-root/src
+#       configMaps:
+#         - name: backstage-app-config
+#         - name: dynamic-plugins
+#         - name: argocd-plugin
+#       {{- if .Values.gitlab.enabled }}
+#         - name: gitlab-plugin
+#       {{- end }}
+#         - name: kubernetes-plugin
+#         - name: tech-radar-plugin
+#         - name: techdocs-plugin
+#         - name: catalog-config
+#     extraEnvs:
+#       envs:
+#         - name: NODE_TLS_REJECT_UNAUTHORIZED
+#           value: '0'
+#         - name: SKIP_INTEGRITY_CHECK
+#           value: "true"
+#         - name: LOG_LEVEL
+#           value: info
+#       secrets:
+#       {{- if .Values.gitlab.enabled }}
+#         - name: gitlab-token
+#           key: GITLAB_TOKEN
+#       {{- end }}
+#         - name: keycloak-client-secret-openshift
+#         - name: credential-keycloak
+#         - name: postgres-credentials
+#         - name: backend-credentials
+#           key: DEVHUB_BACKEND_SECRET
+#         - name: argocd-token
+#           key: ARGOCD_TOKEN
+#         - name: service-account-token
+#           key: token
+#     replicas: 1
+#     route:
+#       enabled: true
+#   database:
+#     enableLocalDb: {{ .Values.backend.sqlite3.enabled }}
