@@ -77,8 +77,8 @@ redhat-developer-hub:
       # {{- end }}
         - configMapRef: argocd-plugin
           filename: argocd-plugin.yaml
-        - configMapRef: dynamic-plugins
-          filename: dynamic-plugins.yaml
+        # - configMapRef: dynamic-plugins
+        #   filename: dynamic-plugins.yaml
         - configMapRef: backstage-app-config
           filename: app-config.yaml
       containerSecurityContext:
@@ -183,7 +183,7 @@ redhat-developer-hub:
         - name: dynamic-plugins
           configMap:
             defaultMode: 420
-            name: '{{ printf "%s-dynamic-plugins" .Release.Name }}'
+            name: 'dynamic-plugins'
             optional: true
         # Optional volume that allows exposing the `.npmrc` file (through a `dynamic-plugins-npmrc` secret)
         # to be used when running `npm pack` during the dynamic plugins installation by the initContainer.
