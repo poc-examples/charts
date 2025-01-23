@@ -1,4 +1,4 @@
-{{- if or .Values.gitlab.enabled }}
+{{- if or .Values.quay_bridge.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
