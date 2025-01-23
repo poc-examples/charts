@@ -61,7 +61,7 @@ redhat-developer-hub:
       # upstream.postgresql.primary.extraEnvVars value), but this doesn't allow us to
       # create multiple DBs. Since Backstage requires by default 5 different DBs, we
       # can't accommodate that properly.
-      appConfig: ""
+      appConfig: {}
       extraAppConfig:
         - configMapRef: techdocs-plugin
           filename: techdocs-plugin.yaml
