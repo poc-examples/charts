@@ -257,6 +257,7 @@ redhat-developer-hub:
 # Approved
   route:
     enabled: true
+    host: api.openshift.io
     path: "/"
     wildcardPolicy: None
     tls:
