@@ -260,19 +260,14 @@ redhat-developer-hub:
 
 # Approved
   route:
-    annotations: {}
     enabled: true
-    host: "{{ .Values.global.host }}"
     path: "/"
     wildcardPolicy: None
     tls:
       enabled: true
       termination: "edge"
-      certificate: ""
-      key: ""
-      caCertificate: ""
-      destinationCACertificate: ""
       insecureEdgeTerminationPolicy: "Redirect"
+
   nameOverride: developer-hub
 
 
