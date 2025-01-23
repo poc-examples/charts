@@ -1770,6 +1770,21 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.0/dev-spaces-0.1.0.tgz
     version: 0.1.0
+  developer_hub_helm:
+  - apiVersion: v2
+    appVersion: 1.3.4
+    created: "2025-01-23T03:57:48.569491106Z"
+    dependencies:
+    - name: redhat-developer-hub
+      repository: https://charts.openshift.io/
+      version: 1.3.4
+    description: A chart for deploying backstage
+    digest: 38cbc648c9250f04baf591434820625e5a5c1d96b2b41506eb42c9f10ea01cdf
+    name: developer_hub_helm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developer_hub_helm-0.0.1/developer_hub_helm-0.0.1.tgz
+    version: 0.0.1
   developerhub:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -10821,4 +10836,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-01-23T01:17:30.050678665Z"
+generated: "2025-01-23T03:57:48.570734803Z"
