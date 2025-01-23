@@ -326,7 +326,7 @@ redhat-developer-hub:
 
 
 
-
+host: api.openshift.io
 
 backend:
   postgres:
