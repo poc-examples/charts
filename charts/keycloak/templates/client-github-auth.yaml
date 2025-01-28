@@ -8,7 +8,6 @@ spec:
     clientId: github-auth
     surrogateAuthRequired: false
     enabled: true
-    alwaysDisplayInConsole: false
     clientAuthenticatorType: client-secret
     secret: "XXXXXXXXXXXXXXXXXX"
     redirectUris: []
