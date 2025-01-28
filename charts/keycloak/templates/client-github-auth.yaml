@@ -4,7 +4,7 @@ metadata:
   name: github-auth
   labels:
     app: sso
-    realm: openshift
+    realm: tekton
     client: github-auth
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
@@ -35,4 +35,4 @@ spec:
       - microprofile-jwt
   realmSelector:
     matchLabels:
-      app: tekton
+      realm: tekton
