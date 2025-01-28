@@ -12,6 +12,7 @@ spec:
   client:
     clientId: github-auth
     enabled: true
+    name: github-auth
     clientAuthenticatorType: client-secret
     standardFlowEnabled: false
     implicitFlowEnabled: false
