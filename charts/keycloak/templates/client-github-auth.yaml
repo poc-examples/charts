@@ -97,5 +97,5 @@ spec:
       - microprofile-jwt
   realmSelector:
     matchLabels:
-      app: keycloak
+      app: tekton
   roles: []

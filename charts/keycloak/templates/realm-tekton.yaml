@@ -1,0 +1,17 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  name: tekton
+  labels:
+    realm: tekton
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  instanceSelector:
+    matchLabels:
+      app: sso
+  realm:
+    displayName: tekton Authentication Realm
+    enabled: true
+    id: tekton
+    realm: tekton
