@@ -19,7 +19,6 @@ spec:
     directAccessGrantsEnabled: false
     serviceAccountsEnabled: true
     publicClient: false
-    frontchannelLogout: false
     protocol: openid-connect
     fullScopeAllowed: true
     defaultClientScopes:
