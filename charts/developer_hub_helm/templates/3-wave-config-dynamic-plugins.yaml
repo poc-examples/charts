@@ -19,6 +19,12 @@ data:
       - disabled: false
         package: './dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic'
 
+      ##############################
+      ## FROM GITHUB AS WRAPPER
+      ##############################
+      - disabled: false
+        package: 'https://raw.githubusercontent.com/poc-examples/dynamic-plugin-wrapper/'
+
     {{- if .Values.gitlab.enabled }}
       ##############################
       ## GITLAB PLUGIN CONFIGURATION

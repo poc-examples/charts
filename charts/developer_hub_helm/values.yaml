@@ -269,64 +269,7 @@ redhat-developer-hub:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# CUSTOM TO THE HELM CHART
 host: api.openshift.io
 
 backend:

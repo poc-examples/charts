@@ -7,12 +7,15 @@ metadata:
     realm: tekton
     client: github-auth
   annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   client:
     clientId: github-auth
     enabled: true
     name: github-auth
+    secret: github-auth-secret
     clientAuthenticatorType: client-secret
     standardFlowEnabled: false
     implicitFlowEnabled: false
