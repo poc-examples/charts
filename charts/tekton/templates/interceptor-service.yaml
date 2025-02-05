@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: interceptor-service
+  labels:
+    app: interceptor
+spec:
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  selector:
+    app: interceptor
+  type: ClusterIP
