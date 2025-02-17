@@ -38,7 +38,7 @@ gitops:
     enabled: false
 
 tekton:
-  chartVersion: 0.1.71
+  chartVersion: 0.1.73
   enabled: false
 
 chains:
