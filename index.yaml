@@ -483,6 +483,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/acs-0.1.0/acs-0.1.0.tgz
     version: 0.1.0
+  amq:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-18T20:00:36.887086096Z"
+    description: A Helm chart for Kubernetes
+    digest: 2e71d7c2088553426a62899e4377d67d744342d783b33eb7b9530fe85235a762
+    name: amq
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/amq-0.0.1/amq-0.0.1.tgz
+    version: 0.0.1
   ansible-sidecar:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -8521,6 +8532,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-02-18T20:00:37.017381685Z"
+    description: A Helm chart for Kubernetes
+    digest: 1d0101a5ee11148f15f044c673a2af7e2e515c15d70836e8e47bcba07960e44f
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.78/rollout-controller-0.5.78.tgz
+    version: 0.5.78
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-02-18T19:41:58.069472458Z"
     description: A Helm chart for Kubernetes
     digest: 430674b14d7d996ebb26b5c98171fbe3b868f2146c03fafc9c948d74e0f42097
@@ -11216,4 +11237,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-02-18T19:41:58.071608378Z"
+generated: "2025-02-18T20:00:37.018993416Z"
