@@ -120,3 +120,6 @@ rhoai:
   enabled: false
   chartVersion: 0.1.5
 
+amq:
+  enabled: true
+  chartVersion: 0.0.1

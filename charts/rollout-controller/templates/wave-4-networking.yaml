@@ -34,6 +34,14 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.servicemesh.chartVersion }}"
               {{- end }}
+              {{- if .Values.amq.enabled }}
+                - application: amq-streams-service
+                  namespace: kafka-streams
+                  chart: 
+                    name: amq
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.amq.chartVersion }}"
+              {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
