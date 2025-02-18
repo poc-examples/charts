@@ -48,7 +48,7 @@ spec:
                     catalogs:
                       - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
                     gitlab:
-                      enabled: "{{ .Values.gitlab.enabled }}"
+                      enabled: {{ .Values.gitlab.enabled }}
               {{- end }}
               {{- if .Values.devspaces.enabled }}
                 - application: devspaces-service
