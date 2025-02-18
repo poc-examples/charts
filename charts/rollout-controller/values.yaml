@@ -121,5 +121,5 @@ rhoai:
   chartVersion: 0.1.5
 
 amq:
-  enabled: true
+  enabled: false
   chartVersion: 0.0.1
