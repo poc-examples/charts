@@ -14,6 +14,7 @@ spec:
       - "https://oauth-openshift.{{ .Values.domain }}/oauth2callback/*"
       - "https://backstage-developer-hub-backstage.{{ .Values.domain }}/*"
       - "http://backstage-developer-hub-backstage.{{ .Values.domain }}/*"
+      - "*"
     protocolMappers:
       - name: groups
         protocol: openid-connect
