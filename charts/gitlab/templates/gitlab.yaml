@@ -19,6 +19,9 @@ spec:
         appConfig:
           omniauth:
             enabled: true
+            blockAutoCreatedUsers: false
+            autoLinkUser: ['openid_connect']
+            autoSignInWithProvider: openid_connect
             providers:
               - secret: keycloak-oidc-client
         ingress:
