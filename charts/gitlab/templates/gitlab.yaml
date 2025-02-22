@@ -19,6 +19,7 @@ spec:
         appConfig:
           omniauth:
             enabled: true
+            allowSingleSignOn: ["openid_connect"]
             blockAutoCreatedUsers: false
             autoLinkUser: ['openid_connect']
             providers:
