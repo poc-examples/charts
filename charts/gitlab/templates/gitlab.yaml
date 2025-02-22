@@ -12,14 +12,16 @@ spec:
         install: true
       certmanager-issuer:
         email: "admin@openshift.com"
+      # https://docs.gitlab.com/charts/charts/globals/ for settings
       global:
         edition: ce
         hosts:
           domain: "{{ .Values.domain }}"
         appConfig:
+          # https://docs.gitlab.com/integration/omniauth/#configure-common-settings
           omniauth:
             enabled: true
-            allowSingleSignOn: ["openid_connect"]
+            allowSingleSignOn: ["openid_connect`"]
             blockAutoCreatedUsers: false
             autoLinkUser: ['openid_connect']
             providers:
