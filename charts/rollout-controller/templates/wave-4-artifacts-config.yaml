@@ -35,14 +35,14 @@ spec:
                   namespace: "{{ .Values.gitlab.namespace }}"
                   wave: "-2"
                   chart: 
-                    name: gitlab-runner-secret
+                    name: gitlab-runner
                     url: https://charts.gitlab.io
                     version: "0.73.1"
                   values: |
                     runners:
                       name: "default"
                       executor: kubernetes
-                      secret: gitlab-runner
+                      secret: gitlab-runner-secret
                       config: |
                         [[runners]]
                           [runners.kubernetes]
@@ -65,7 +65,7 @@ spec:
       project: system
       syncPolicy:
         automated:
-          prune: true
+          prune: false
           selfHeal: true
         managedNamespaceMetadata:
           labels:
