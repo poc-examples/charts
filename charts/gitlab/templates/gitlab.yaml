@@ -26,6 +26,9 @@ spec:
             autoLinkUser: ['openid_connect']
             providers:
               - secret: keycloak-oidc-client
+        runner:
+          registrationToken:
+            secret: gitlab-runner-secret
         ingress:
           class: none
           annotations:
