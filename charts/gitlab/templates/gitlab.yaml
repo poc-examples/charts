@@ -36,4 +36,15 @@ spec:
           configureCertmanager: false
           tls:
             secretName: null
+      gitlab-runner:
+        install: true
+        rbac:
+          create: true
+        runners:
+          locked: false
+          secret: gitlab-runner-secret
+          config: |
+            [[runners]]
+              [runners.kubernetes]
+              image = "ubuntu:22.04"
     version: "8.4.6"
