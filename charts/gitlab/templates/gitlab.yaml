@@ -37,12 +37,7 @@ spec:
           tls:
             secretName: null
       gitlab-runner:
-        install: true
-        rbac:
-          create: true
         runners:
-          locked: false
-          secret: gitlab-runner-secret
           config: |
             [[runners]]
               [runners.kubernetes]
