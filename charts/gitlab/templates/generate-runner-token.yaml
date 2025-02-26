@@ -5,8 +5,8 @@ metadata:
   name: gitlab-runner-token
 spec:
   length: 64
-  symbols: false
-  digits: true
+  symbols: 0
+  digits: 5
   noUpper: false
   allowRepeat: true
 ---
