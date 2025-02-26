@@ -1,4 +1,4 @@
-{{- if or .Values.quay_bridge.enabled }}
+{{- if or .Values.quay_bridge.enabled .Values.gitlab.runners.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -30,7 +30,7 @@ spec:
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
                     namespace: "quay-registry"
               {{- end }}
-              {{- if .Values.gitlab.enabled }}
+              {{- if .Values.gitlab.runners.enabled }}
                 - application: gitlab-runner-service
                   namespace: "{{ .Values.gitlab.namespace }}"
                   wave: "-2"
