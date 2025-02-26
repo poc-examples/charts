@@ -46,7 +46,7 @@ spec:
                     runners:
                       name: "default"
                       executor: kubernetes
-                      secret: gitlab-runner-secret
+                      secret: runner-secret
                       config: |
                         [[runners]]
                           [runners.kubernetes]
