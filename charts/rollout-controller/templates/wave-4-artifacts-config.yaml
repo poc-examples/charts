@@ -30,6 +30,25 @@ spec:
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
                     namespace: "quay-registry"
               {{- end }}
+              {{- if .Values.gitlab.enabled }}
+                - application: gitlab-runner-service
+                  namespace: "{{ .Values.gitlab.namespace }}"
+                  wave: "-2"
+                  chart: 
+                    name: gitlab-runner-secret
+                    url: https://charts.gitlab.io
+                    version: "0.73.1"
+                  values: |
+                    runners:
+                      name: "default"
+                      executor: kubernetes
+                      secret: gitlab-runner
+                      config: |
+                        [[runners]]
+                          [runners.kubernetes]
+                            namespace = "gitlab"
+                            image = "ubuntu:22.04"
+              {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"

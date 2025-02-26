@@ -62,9 +62,11 @@ rhtas:
   enabled: false
 
 gitlab:
-  namespacgitlabe: gitlab-system
+  namespace: gitlab-system
   chartVersion: 0.2.21
   enabled: false
+  runners: 
+    enabled: true
 
 external_secrets:
   enabled: false
