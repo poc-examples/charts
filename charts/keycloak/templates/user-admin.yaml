@@ -14,8 +14,10 @@ spec:
   user:
     credentials:
       - type: password
-        # temporary: true
-        value: admin
+        valueFrom:
+          secretKeyRef:
+            name: keycloak-admin-user
+            key: password
     email: admin@openshift.com
     emailVerified: false
     enabled: true
