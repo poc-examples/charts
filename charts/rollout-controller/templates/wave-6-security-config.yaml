@@ -51,7 +51,15 @@ spec:
                       domain: "{{ `{{ .metadata.labels.domain }}` }}"
                       cluster_name: "{{ `{{ .metadata.labels.cluster_name }}` }}"
                       region: "{{ `{{ .metadata.labels.region }}` }}"
-                    rules: []
+                    rules:
+                      - apiGroups:
+                          - ""
+                        resources:
+                          - "secrets"
+                        verbs:
+                          - "get" 
+                          - "list"
+                          - "create"
               {{- end }}
   template:
     metadata:
