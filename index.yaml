@@ -3834,6 +3834,20 @@ entries:
   gitlab:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-02-26T19:13:37.884427095Z"
+    dependencies:
+    - name: ansible-runner
+      repository: https://poc-examples.github.io/supporting-charts
+      version: 0.2.1
+    description: A Helm chart for Kubernetes
+    digest: 2680f91807410530c165ded2f039aacf62be9d49aa0a6fdebd3d1832ebe03bfc
+    name: gitlab
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/gitlab-0.2.39/gitlab-0.2.39.tgz
+    version: 0.2.39
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-02-26T17:51:41.2546019Z"
     dependencies:
     - name: ansible-runner
@@ -11565,4 +11579,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-02-26T17:51:41.256171067Z"
+generated: "2025-02-26T19:13:37.887293889Z"
