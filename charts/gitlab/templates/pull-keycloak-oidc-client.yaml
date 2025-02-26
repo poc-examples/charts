@@ -1,0 +1,36 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: "keycloak-oidc-client"
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: "eso-admin-secret-store"
+    kind: ClusterSecretStore
+  target:
+    name: "keycloak-oidc-client"
+    template:
+      type: generic
+      data:
+        provider: |
+          name: "openid_connect"
+          label: "Keycloak"
+          args:
+            name: "openid_connect"
+            client_options:
+              identifier: "openshift"
+              secret: "{{`{{ .CLIENT_SECRET }}`}}"
+              redirect_uri: "https://gitlab.{{ .Values.domain }}/users/auth/openid_connect/callback"
+            scope: ["openid", "profile", "email"]
+            response_type: "code"
+            issuer: "https://keycloak-keycloak.{{ .Values.domain }}/auth/realms/openshift"
+            discovery: true
+            uid_field: "uid"
+  data:
+    - secretKey: "CLIENT_SECRET"
+      remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        metadataPolicy: None
+        key: keycloak-client-secret-openshift
+        property: CLIENT_SECRET
