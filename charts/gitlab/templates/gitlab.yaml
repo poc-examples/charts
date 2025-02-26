@@ -21,7 +21,7 @@ spec:
           # https://docs.gitlab.com/integration/omniauth/#configure-common-settings
           omniauth:
             enabled: true
-            allowSingleSignOn: ["openid_connect`"]
+            allowSingleSignOn: ["openid_connect"]
             blockAutoCreatedUsers: false
             autoLinkUser: ['openid_connect']
             providers:
