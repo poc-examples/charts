@@ -30,12 +30,7 @@ spec:
           registrationToken:
             secret: gitlab-runner-secret
         ingress:
-          class: none
-          annotations:
-            route.openshift.io/termination: edge
-          configureCertmanager: false
-          tls:
-            secretName: null
+          enabled: false
       gitlab-runner:
         runners:
           config: |
