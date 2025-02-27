@@ -5292,6 +5292,16 @@ entries:
   image-updater:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-02-27T17:16:05.678340375Z"
+    description: A Helm chart for Kubernetes
+    digest: 31ff9bd258ec16c1477efcbc7d6aaecbed0cd32ba153ce7f4dfd2ac848bfcbe3
+    name: image-updater
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/image-updater-0.1.1/image-updater-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-30T17:13:56.918241211Z"
     description: A Helm chart for Kubernetes
     digest: 1795371a0126924188407449f797ff4a1be06d9cf99957cd9c4d9beda7f14fb7
@@ -11803,4 +11813,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-02-27T04:38:30.03332317Z"
+generated: "2025-02-27T17:16:05.680281997Z"
