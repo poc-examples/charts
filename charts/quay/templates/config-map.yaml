@@ -25,7 +25,7 @@ spec:
             s3Storage:
               - S3Storage
               - host: "s3.{{ .Values.region }}.amazonaws.com"
-                s3_bucket: "quay-storage-demo-1"
+                s3_bucket: "quay-storage-demo-2"
                 s3_access_key: "{{`{{ .AWS_ACCESS_KEY_ID }}`}}"
                 s3_secret_key: "{{`{{ .AWS_SECRET_ACCESS_KEY }}`}}"
                 s3_region: "{{ .Values.region}}"
