@@ -53,6 +53,8 @@ spec:
                           [runners.kubernetes]
                             namespace = "gitlab-system"
                             image = "ubuntu:22.04"
+                            privileged = true
+                            service_account = "gitlab-runner-service"                          
               {{- end }}
   template:
     metadata:
