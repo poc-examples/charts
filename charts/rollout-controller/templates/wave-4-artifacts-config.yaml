@@ -51,7 +51,7 @@ spec:
                       config: |
                         [[runners]]
                           [runners.kubernetes]
-                            namespace = "gitlab"
+                            namespace = "gitlab-system"
                             image = "ubuntu:22.04"
               {{- end }}
   template:
