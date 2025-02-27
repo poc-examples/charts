@@ -28,7 +28,7 @@ spec:
               - secret: keycloak-oidc-client
         runner:
           registrationToken:
-            secret: gitlab-runner-secret
+            secret: runner-secret
         ingress:
           enabled: false
       gitlab-runner:
