@@ -39,7 +39,7 @@ spec:
                     url: https://charts.gitlab.io
                     version: "0.73.1"
                   values: |
-                    gitlabUrl: "https://gits.{{ `{{ .metadata.labels.domain }}` }}"
+                    gitlabUrl: "https://gitlab.{{ `{{ .metadata.labels.domain }}` }}"
                     serviceAccount:
                       create: true
                     rbac:
