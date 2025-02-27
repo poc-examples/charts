@@ -55,11 +55,10 @@ spec:
                             image = "ubuntu:22.04"
                             privileged = true
                             service_account = "gitlab-runner-service"
-                          [runners.kubernetes.volumes]
-                            [[runners.kubernetes.volumes.secret]]
-                              name = "test-org-test-quay-pull-secret"
-                              mount_path = "/run/secret"
-                              read_only = true
+                          [[runners.kubernetes.volumes.secret]]
+                            name = "test-org-test-quay-pull-secret"
+                            mount_path = "/run/secret"
+                            read_only = true
               {{- end }}
   template:
     metadata:
