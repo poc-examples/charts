@@ -36,13 +36,12 @@ spec:
       disableInternalRegistry: true
       openVSXURL: https://open-vsx.org
   devEnvironments:
-    properties:
-      defaultComponents:
-        - name: dev-tools
-          container:
-            image: quay.io/cgruver0/che/dev-tools:latest
-            memoryLimit: 6Gi
-            mountSources: true
+    defaultComponents:
+      - name: dev-tools
+        container:
+          image: quay.io/cgruver0/che/dev-tools:latest
+          memoryLimit: 6Gi
+          mountSources: true
     startTimeoutSeconds: 300
     maxNumberOfWorkspacesPerUser: 5
     secondsOfInactivityBeforeIdling: 1800
