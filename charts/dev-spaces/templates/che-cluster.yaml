@@ -39,7 +39,7 @@ spec:
     defaultComponents:
       - name: dev-tools
         container:
-          image: quay.io/cgruver0/che/dev-tools:latest
+          image: quay.io/cgruver0/che/dot-net:fedora
           memoryLimit: 6Gi
           mountSources: true
     startTimeoutSeconds: 300
