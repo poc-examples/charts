@@ -39,7 +39,7 @@ spec:
     defaultComponents:
       - name: dev-tools
         container:
-          image: quay.io/kevchu3/devspaces-dotnet-python
+          image: image-registry.openshift-image-registry.svc:5000/openshift/devspaces-dotnet-python:latest
           memoryLimit: 6Gi
           mountSources: true
     startTimeoutSeconds: 300
