@@ -27,6 +27,7 @@ spec:
                     url: https://poc-examples.github.io/supporting-charts
                     version: "0.2.6"
                   values: |
+                    scope: ClusterRole
                     runner:
                       name: keycloak-post-configure
                       namespace: keycloak
