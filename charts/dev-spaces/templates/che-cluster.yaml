@@ -29,7 +29,8 @@ spec:
       logLevel: ERROR
     devWorkspace:
       runningLimit: "2"
-    devfileRegistry: {}
+    devfileRegistry:
+      disableInternalRegistry: false
     metrics:
       enable: true
     pluginRegistry:
