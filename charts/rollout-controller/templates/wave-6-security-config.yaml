@@ -27,6 +27,7 @@ spec:
                     url: https://poc-examples.github.io/supporting-charts
                     version: "0.2.6"
                   values: |
+                    scope: ClusterRole
                     runner:
                       name: keycloak-post-configure
                       namespace: keycloak
@@ -60,6 +61,22 @@ spec:
                           - "get" 
                           - "list"
                           - "create"
+                      - apiGroups:
+                          - "config.openshift.io"
+                        resources:
+                          - "infrastructures"
+                        verbs:
+                          - "get"
+                          - "list"
+                      - apiGroups:
+                          - "config.openshift.io"
+                        resources:
+                          - "oauths"
+                        verbs:
+                          - "get"
+                          - "list"
+                          - "update"
+                          - "patch"
               {{- end }}
   template:
     metadata:
