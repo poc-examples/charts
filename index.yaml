@@ -1723,6 +1723,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-11T19:24:19.289769889Z"
+    description: A chart for deploying dev spaces
+    digest: 203ff40d47fce1d7c963762496ae90df86e10515930a402b5a72930d6b010fa9
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.13/dev-spaces-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-04T15:01:23.845997478Z"
     description: A chart for deploying dev spaces
     digest: 1f36d03f8bbc93d3c014fedbdad5a74af7c6cb22215f5623a3f4f80015d2c093
@@ -9028,6 +9038,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-11T19:24:19.381884519Z"
+    description: A Helm chart for Kubernetes
+    digest: 2ab176ca70f4461107707faf9eddd960bf3ae2827e7940425fc1b188cebbec4c
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.5.97/rollout-controller-0.5.97.tgz
+    version: 0.5.97
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-03T05:40:54.306375873Z"
     description: A Helm chart for Kubernetes
     digest: f308ce58533edd701cc351ce95aa6726dfd12b37909302455ac666c51617eaaf
@@ -11913,4 +11933,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-04-04T15:01:23.847414239Z"
+generated: "2025-04-11T19:24:19.385337055Z"
