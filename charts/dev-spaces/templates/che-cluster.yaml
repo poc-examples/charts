@@ -25,10 +25,12 @@ spec:
     cheServer:
       debug: true
       logLevel: INFO
+      clusterRoles:
+        - "developers"
     dashboard:
       logLevel: ERROR
     devWorkspace:
-      runningLimit: "2"
+      runningLimit: "1"
     devfileRegistry: {}
     metrics:
       enable: true
@@ -39,9 +41,12 @@ spec:
     defaultComponents:
       - name: dev-tools
         container:
-          image: quay.io/cgruver0/che/dot-net:fedora
+          image: image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/devspaces-dotnet-python:latest
           memoryLimit: 6Gi
           mountSources: true
+    user:
+      clusterRoles:
+        - "developers"
     startTimeoutSeconds: 300
     maxNumberOfWorkspacesPerUser: 5
     secondsOfInactivityBeforeIdling: 1800
