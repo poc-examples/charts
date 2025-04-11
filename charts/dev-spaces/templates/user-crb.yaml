@@ -1,0 +1,14 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: developers-operator
+  labels:
+    app.kubernetes.io/part-of: che.eclipse.org
+subjects:
+  - kind: ServiceAccount
+    name: devspaces-operator
+    namespace: openshift-operators
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: developers
