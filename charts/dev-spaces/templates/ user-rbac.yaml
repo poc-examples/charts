@@ -28,6 +28,7 @@ rules:
   - imagestreams
   - imagestreamimports
   - imagestreamimages
+  - imagestreamtags
   verbs:
   - create
   - get
