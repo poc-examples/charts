@@ -27,6 +27,7 @@ rules:
   resources:
   - imagestreams
   - imagestreamimports
+  - imagestreamimages
   verbs:
   - create
   - get
