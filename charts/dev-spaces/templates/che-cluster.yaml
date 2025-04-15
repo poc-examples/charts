@@ -38,6 +38,8 @@ spec:
       disableInternalRegistry: true
       openVSXURL: https://open-vsx.org
   devEnvironments:
+    nodeSelector:
+      type: lab
     defaultComponents:
       - name: dev-tools
         container:
