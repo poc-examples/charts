@@ -9,7 +9,7 @@
         "url": "https://console-openshift-console.apps.nb-demo-01.6jz4.p1.openshiftapps.com/dashboards"
       },
       {
-        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/images/devspaces.png",
+        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/devspaces.png",
         "label": "OpenShift Dev Spaces",
         "url": "https://devspaces.apps.nb-demo-01.6jz4.p1.openshiftapps.com/"
       },
@@ -19,12 +19,12 @@
         "url": "https://openshift-gitops-server-openshift-gitops.apps.nb-demo-01.6jz4.p1.openshiftapps.com/"
       },
       {
-        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/images/gitlab.png",
+        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/gitlab.png",
         "label": "GitLab",
         "url": "https://gitlab.apps.nb-demo-01.6jz4.p1.openshiftapps.com/"
       },
       {
-        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/refs/heads/main/charts/developer_hub/images/jaeger.png",
+        "iconUrl": "https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/jaeger.png",
         "label": "Jaeger UI - Grafana Tempo",
         "url": "https://tempo-sample-query-frontend-observability.apps.nb-demo-01.6jz4.p1.openshiftapps.com/"
       }
