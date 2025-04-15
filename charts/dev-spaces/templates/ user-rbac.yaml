@@ -27,6 +27,8 @@ rules:
   resources:
   - imagestreams
   - imagestreamimports
+  - imagestreamimages
+  - imagestreamtags
   verbs:
   - create
   - get
@@ -63,5 +65,6 @@ rules:
   - create
   - get
   - list
+  - patch
   - update
   - delete
