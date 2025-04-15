@@ -6,9 +6,6 @@ metadata:
     app.kubernetes.io/part-of: che.eclipse.org
 subjects:
   - kind: ServiceAccount
-    name: che
-    namespace: openshift-operators
-  - kind: ServiceAccount
     name: devspaces-operator
     namespace: openshift-operators
 roleRef:
