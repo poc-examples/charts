@@ -44,7 +44,7 @@ spec:
       - name: dev-tools
         container:
           image: image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/devspaces-dotnet-python:latest
-          memoryLimit: 1Gi
+          memoryLimit: 2Gi
           cpuLimit: "1"
           mountSources: true
     user:
