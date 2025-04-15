@@ -1723,6 +1723,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-15T13:52:35.522023466Z"
+    description: A chart for deploying dev spaces
+    digest: 75d35ed81c52d83e32c4ab4192e59fe95743159691e6bc3f4d6908fb87d0e5af
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.23/dev-spaces-0.1.23.tgz
+    version: 0.1.23
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-15T13:45:26.627468871Z"
     description: A chart for deploying dev spaces
     digest: 83a7a05194311630aa0538033fef3b4f07b5b7e5602e60439457c489a0c4ea67
@@ -12033,4 +12043,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-04-15T13:45:26.629525515Z"
+generated: "2025-04-15T13:52:35.523803248Z"
