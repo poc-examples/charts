@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/part-of: che.eclipse.org
 subjects:
   - kind: ServiceAccount
-    name: devspaces-operator
+    name: che
     namespace: openshift-operators
 roleRef:
   apiGroup: rbac.authorization.k8s.io
