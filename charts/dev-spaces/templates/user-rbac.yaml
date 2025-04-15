@@ -40,6 +40,7 @@ rules:
   resources:
   - buildconfigs
   - builds
+  - buildconfigs/instantiatebinary
   verbs:
   - create
   - get
