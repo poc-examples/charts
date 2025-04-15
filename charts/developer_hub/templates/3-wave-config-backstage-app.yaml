@@ -65,6 +65,7 @@ data:
           - "'self'"
           - 'data:'
           - ${JIRA_URL}
+          - 'raw.githubusercontent.com'
       cors:
         origin: "*"
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
