@@ -37,7 +37,7 @@ data:
       session:
         secret: session-secret
       providers:
-        oidc:
+        keycloak:
           development:
             clientId: ${CLIENT_ID}
             clientSecret: ${CLIENT_SECRET}
@@ -46,11 +46,11 @@ data:
             signIn:
               resolvers:
                 - resolver: emailMatchingUserEntityProfileEmail
-    signInPage: oidc
+    signInPage: keycloak
 
     backend:
       auth:
-        dangerouslyDisableDefaultAuthPolicy: true
+        dangerouslyDisableDefaultAuthPolicy: false
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
@@ -59,7 +59,6 @@ data:
       csp:
         connect-src:
           - "'self'"
-
           - 'https:'
         img-src:
           - "'self'"
