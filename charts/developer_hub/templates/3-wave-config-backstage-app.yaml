@@ -33,14 +33,12 @@ data:
         existingSecret: postgres-credentials
     
     auth:
-      environment: development
+      environment: production
       session:
         secret: session-secret
       providers:
-        guest:
-          dangerouslyAllowOutsideDevelopment: false
         oidc:
-          development:
+          production:
             clientId: ${CLIENT_ID}
             clientSecret: ${CLIENT_SECRET}
             metadataUrl: https://keycloak-keycloak.{{ .Values.host }}/auth/realms/openshift/.well-known/openid-configuration
