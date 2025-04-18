@@ -33,6 +33,7 @@ data:
         existingSecret: postgres-credentials
     
     auth:
+      # Set to development in order to gain guest access
       environment: production
       session:
         secret: session-secret
@@ -50,7 +51,6 @@ data:
 
     backend:
       auth:
-        dangerouslyDisableDefaultAuthPolicy: false
         keys:
           - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
