@@ -37,7 +37,9 @@ data:
       session:
         secret: session-secret
       providers:
-        keycloak:
+        guest:
+          dangerouslyAllowOutsideDevelopment: false
+        oidc:
           development:
             clientId: ${CLIENT_ID}
             clientSecret: ${CLIENT_SECRET}
@@ -46,7 +48,7 @@ data:
             signIn:
               resolvers:
                 - resolver: emailMatchingUserEntityProfileEmail
-    signInPage: keycloak
+    signInPage: oidc
 
     backend:
       auth:
