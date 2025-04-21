@@ -486,6 +486,16 @@ entries:
   amq:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-04-21T15:46:40.353713162Z"
+    description: A Helm chart for Kubernetes
+    digest: de566b7fe104d9e2c225d60171b25f48d28966500259df4f66dab8587fb7cfcc
+    name: amq
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/amq-0.0.2/amq-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-02-18T20:00:36.887086096Z"
     description: A Helm chart for Kubernetes
     digest: 2e71d7c2088553426a62899e4377d67d744342d783b33eb7b9530fe85235a762
@@ -12133,4 +12143,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-04-18T18:04:01.501163188Z"
+generated: "2025-04-21T15:46:40.355926916Z"
