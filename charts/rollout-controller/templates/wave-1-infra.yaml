@@ -46,9 +46,18 @@ spec:
                     injector:
                       enabled: false
                     server:
+                      enabled: true
                       dev:
                         enabled: true
-                      enabled: true
+                      extraSecretEnvironmentVars:
+                        - envName: VAULT_DEV_ROOT_TOKEN_ID
+                          secretName: vault-token
+                          secretKey: VAULT_DEV_ROOT_TOKEN_ID
+                      route:
+                        enabled: true
+                        host: "vault.{{ `{{ .metadata.labels.domain }}` }}"
+                        tls:
+                          termination: edge
                       resources:
                         requests:
                           memory: "128Mi"
