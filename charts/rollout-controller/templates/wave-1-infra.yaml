@@ -50,7 +50,7 @@ spec:
                       dev:
                         enabled: true
                         devRootToken: "{{ `{{ .metadata.labels.vault_token }}` }}"
-                      {{ `{{- if ne .metadata.labels.role "shared" }}` }}
+                      {{ `{{- if eq .metadata.labels.role "shared" }}` }}
                       route:
                         enabled: true
                         host: "vault.{{ `{{ .metadata.labels.domain }}` }}"
