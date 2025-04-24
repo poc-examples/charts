@@ -48,12 +48,8 @@ spec:
                     server:
                       enabled: true
                       dev:
-                        enabled: false
-                      extraSecretEnvironmentVars:
-                        - envName: VAULT_DEV_ROOT_TOKEN_ID
-                          secretName: vault-token
-                          secretKey: VAULT_DEV_ROOT_TOKEN_ID
-                      extraArgs: "-dev"
+                        enabled: true
+                        devRootToken: "{{ `{{ .metadata.labels.vault_token }}` }}"
                       route:
                         enabled: true
                         host: "vault.{{ `{{ .metadata.labels.domain }}` }}"
