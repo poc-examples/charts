@@ -35,16 +35,15 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.nvidiagpu.chartVersion }}"
               {{- end }}
-              # potentially removing this as I don't think it's needed
-              # {{- if .Values.gitlab.enabled }}
-              #   - application: cert-manager-service
-              #     namespace: cert-manager
-              #     wave: "-2"
-              #     chart: 
-              #       name: cert-manager
-              #       url: https://poc-examples.github.io/charts
-              #       version: "0.1.0"
-              # {{- end }}
+              {{- if .Values.gitlab.enabled }}
+                - application: cert-manager-service
+                  namespace: cert-manager
+                  wave: "-2"
+                  chart: 
+                    name: cert-manager
+                    url: https://poc-examples.github.io/charts
+                    version: "0.1.0"
+              {{- end }}
               {{- if .Values.gitops.updater.enabled }}
                 - application: image-updater-service
                   namespace: "{{ .Values.gitops.namespace }}"
