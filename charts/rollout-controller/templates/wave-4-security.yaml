@@ -63,7 +63,7 @@ spec:
                   values: |
                     domain: {{ `{{ .metadata.labels.domain }}` }}
                     shared:
-                      enabled: "{{ .Values.shared.enabled }}"
+                      enabled: {{ .Values.shared.enabled }}
                     cluster:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}
