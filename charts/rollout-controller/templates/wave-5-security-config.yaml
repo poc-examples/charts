@@ -49,7 +49,11 @@ spec:
                           roles:
                             - name: keycloak
                     additionalVars:
+                    {{- if eq .Values.shared.enabled "True" }}
+                      domain: "{{ `{{ .metadata.annotations.shared_domain }}` }}"
+                    {{- else }}
                       domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    {{- end }}
                       cluster_name: "{{ `{{ .metadata.labels.cluster_name }}` }}"
                       region: "{{ `{{ .metadata.labels.region }}` }}"
                     rules:

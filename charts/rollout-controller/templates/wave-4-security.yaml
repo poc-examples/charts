@@ -26,6 +26,7 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.gatekeeper.chartVersion }}"
               {{- end }}
+              #Probably Should go on shared w/ another chart for bootstrapping workers
               {{- if .Values.acs.enabled }}
                 - application: advanced-cluster-security-service
                   namespace: rhacs-operator
@@ -61,6 +62,8 @@ spec:
                     version: "{{ .Values.keycloak.chartVersion }}"
                   values: |
                     domain: {{ `{{ .metadata.labels.domain }}` }}
+                    shared:
+                      enabled: "{{ .Values.shared.enabled }}"
                     cluster:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}

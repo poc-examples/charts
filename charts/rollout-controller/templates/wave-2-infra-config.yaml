@@ -72,7 +72,7 @@ spec:
                     k8s:
                       enabled: "{{ .Values.external_secrets.k8sConnector.enabled }}"
               {{- end }}
-              # Needs to be adjusted for shared cluster configuration
+              # Maybe: Needs to be adjusted for shared cluster configuration
               {{- if .Values.tekton.enabled }}
                 - application: tekton-service
                   namespace: "openshift-pipelines"
