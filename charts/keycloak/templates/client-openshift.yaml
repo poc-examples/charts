@@ -1,3 +1,4 @@
+{{- if not .Values.shared.enabled }}
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakClient
 metadata:
@@ -52,3 +53,4 @@ spec:
   realmSelector:
     matchLabels:
       realm: openshift
+{{- end }}

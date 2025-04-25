@@ -1,3 +1,4 @@
+{{- if not .Values.shared.enabled }}
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakRealm
 metadata:
@@ -15,3 +16,4 @@ spec:
     enabled: true
     id: tekton
     realm: tekton
+{{- end }}
