@@ -26,7 +26,8 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.gatekeeper.chartVersion }}"
               {{- end }}
-              #Probably Should go on shared w/ another chart for bootstrapping workers
+              # Probably Should go on shared w/ another chart for bootstrapping workers
+              # Ill refactor when I get around to using it again
               {{- if .Values.acs.enabled }}
                 - application: advanced-cluster-security-service
                   namespace: rhacs-operator
@@ -43,6 +44,8 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.authorino.chartVersion }}"
               {{- end }}
+              # Probably Should go on shared w/ another chart for bootstrapping workers
+              # Ill refactor when I get around to using it again
               {{- if .Values.rhtas.enabled }}
                 - application: rhtas-service
                   namespace: rhtas

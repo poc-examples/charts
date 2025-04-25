@@ -18,7 +18,7 @@ spec:
                   cluster: default
           - list:
               elements:
-              # Need to refactor for multi-cluster configuration
+              # Need to refactor for multi-cluster configurations
               {{- if .Values.quay_bridge.enabled }}
                 - application: quay-bridge-service
                   namespace: "quay-registry"
