@@ -31,7 +31,18 @@ spec:
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
                     namespace: "quay-registry"
               {{- end }}
-              {{- if .Values.gitlab.runners.enabled }}
+              {{- if and .Values.gitlab.enabled .Values.shared.enabled }}
+                - application: gitlab-repo-connector
+                  namespace: "openshift-gitops"
+                  wave: "-2"
+                  chart: 
+                    name: gitlab-repo-credentials
+                    url: https://poc-examples.github.io/supporting-charts
+                    version: "0.0.1"
+                  values: |
+                    domain: "{{ `{{ .metadata.annotations.shared_domain }}` }}"
+              {{- end }}
+              {{- if and .Values.gitlab.runners.enabled (not .Values.shared.enabled) }}
                 - application: gitlab-runner-service
                   namespace: "{{ .Values.gitlab.namespace }}"
                   wave: "-2"

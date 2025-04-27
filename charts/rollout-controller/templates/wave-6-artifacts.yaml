@@ -30,7 +30,7 @@ spec:
                     domain: "{{ `{{ .metadata.labels.domain }}` }}"
                     region: "{{ `{{ .metadata.labels.region }}` }}"
               {{- end }}
-              {{- if .Values.gitlab.enabled }}
+              {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) }}
                 - application: gitlab-service
                   namespace: "{{ .Values.gitlab.namespace }}"
                   wave: "-2"
@@ -78,7 +78,7 @@ spec:
                             - "patch"
 
               {{- end }}
-              {{- if .Values.gitlab.enabled }}
+              {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) }}
                 - application: gitlab-config
                   namespace: "{{ .Values.gitlab.namespace }}"
                   wave: "-1"
