@@ -1,4 +1,4 @@
-{{- if or .Values.gitlab.enabled .Values.quay.enabled }}
+{{- if or (and .Values.gitlab.enabled (not .Values.shared.enabled)) .Values.quay.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
