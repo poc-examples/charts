@@ -49,6 +49,8 @@ spec:
                       - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
                     gitlab:
                       enabled: {{ .Values.gitlab.enabled }}
+                    clusters:
+                      {{ toYaml .Values.clusters }}
               {{- end }}
               {{- if .Values.devspaces.enabled }}
                 - application: devspaces-service

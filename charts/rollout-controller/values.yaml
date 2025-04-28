@@ -1,5 +1,7 @@
 domain: openshift.io
 
+clusters: []
+
 machinesets:
   chartVersion: 0.1.19
   enabled: false
