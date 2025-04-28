@@ -50,7 +50,7 @@ spec:
                     gitlab:
                       enabled: {{ .Values.gitlab.enabled }}
                     clusters:
-                      {{ toYaml .Values.clusters }}
+{{ toYaml .Values.clusters | indent 22 }}
               {{- end }}
               {{- if .Values.devspaces.enabled }}
                 - application: devspaces-service
