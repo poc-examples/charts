@@ -39,8 +39,10 @@ spec:
         - name: postgres-credentials
         - name: backend-credentials
           key: DEVHUB_BACKEND_SECRET
-        - name: argocd-token
-          key: ARGOCD_TOKEN
+      {{- range .Values.clusters }}
+        - name: "{{ .name }}-argocd-token"
+          key: "{{ .name }}-ARGOCD_TOKEN"
+      {{- end }}
         - name: service-account-token
           key: token
     replicas: 1
