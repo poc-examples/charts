@@ -70,6 +70,7 @@ spec:
                       address: "vault.{{ `{{ .metadata.annotations.shared_domain }}` }}"
                     k8s:
                       enabled: "{{ .Values.external_secrets.k8sConnector.enabled }}"
+                    cluster_name: "{{ `{{ .metadata.labels.cluster_name }}` }}"
               {{- end }}
               # Maybe: Needs to be adjusted for shared cluster configuration
               {{- if .Values.tekton.enabled }}
