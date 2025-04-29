@@ -9,7 +9,7 @@ data:
       - instances:
         {{- range .Values.clusters }}
         - name: {{ .name }}
-          password: ${{ .name }}-ARGOCD_TOKEN
+          password: ${{ .name }}_ARGOCD_TOKEN
           url: https://openshift-gitops-server-openshift-gitops.{{ .domain }}
           username: admin
         {{- end }}
