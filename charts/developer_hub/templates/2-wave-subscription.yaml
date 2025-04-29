@@ -1,3 +1,24 @@
+# ------------------------------------------------------------------------------
+# 2-wave-subscription.yaml
+# Author: Christopher Engleby
+#
+# This resource defines a Subscription for the Red Hat Developer Hub (RHDH)
+# Operator via Operator Lifecycle Manager (OLM).
+#
+# A Subscription automatically installs and tracks updates for a specific
+# Operator from a designated Operator catalog source.
+#
+# This configuration pulls the RHDH operator from the `redhat-operators` index
+# (usually synced from registry.redhat.io) located in the `openshift-marketplace`.
+# The `channel` specifies which version stream to track — in this case, `fast-1.2`.
+#
+# Setting `installPlanApproval: Automatic` means that version upgrades will
+# happen without manual approval.
+#
+# The ArgoCD sync wave ensures this applies after the OperatorGroup
+# and before any dependent custom resources.
+# ------------------------------------------------------------------------------
+
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:

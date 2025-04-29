@@ -1,3 +1,21 @@
+# ------------------------------------------------------------------------------
+# 1-wave-operator-group.yaml
+# Author: Christopher Engleby
+#
+# This resource defines an OperatorGroup for the Developer Hub (Backstage).
+#
+# An OperatorGroup is a Kubernetes resource used by the Operator Lifecycle
+# Manager (OLM) to define the scope (namespaces) that an operator should
+# watch and manage.
+#
+# In this case, the OperatorGroup ensures that the Backstage operator (if used)
+# will target the namespace it is deployed in — often required for Operators
+# that manage CRDs like Templates or Software Catalogs.
+#
+# The ArgoCD sync wave annotation ensures this is applied *before* other
+# dependent resources (like the Subscription or custom resources).
+# ------------------------------------------------------------------------------
+
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:

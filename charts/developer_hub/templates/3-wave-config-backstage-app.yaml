@@ -1,3 +1,22 @@
+# ------------------------------------------------------------------------------
+# 3-wave-config-backstage-app.yaml
+# Author: Christopher Engleby
+#
+# This ConfigMap defines the full application configuration for the
+# Red Hat Developer Hub (RHDH), which is based on Backstage.
+#
+# It sets branding, authentication providers, proxy routing, backend behavior,
+# database settings, permissions, and scaffolder integration.
+#
+# This is the core application-level configuration for the Backstage instance
+# and will be mounted into the pod at runtime.
+#
+# ArgoCD sync-wave ensures this runs after Operator installation but before
+# Backstage is deployed.
+#
+# NOTE: Values in this file are templatized with Helm, allowing customization during install.
+# ------------------------------------------------------------------------------
+
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -6,6 +25,13 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 data:
   app-config.yaml: |
+
+    #######################################################################
+    # App Metadata and Branding
+    #
+    # Sets the display title, logos (full and icon), and color palette for
+    # the Red Hat Developer Hub web UI.
+    #######################################################################
     app:
       title: Red Hat Developer Hub - Dev
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
@@ -33,8 +59,7 @@ data:
         existingSecret: postgres-credentials
     
     auth:
-      # Set to development in order to gain guest access
-      environment: production
+      environment: production # Set to `development` in order to gain guest access
       session:
         secret: session-secret
       providers:

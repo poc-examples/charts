@@ -8,11 +8,13 @@ data:
       clusterLocatorMethods:
         - type: config
           clusters:
-            - authProvider: serviceAccount
-              name: demo-cluster
+            {{- range .Values.clusters  }}
+            - authProvider: oidc
+              name: {{ .name }}
               skipTLSVerify: true
-              serviceAccountToken: ${token}
-              url: https://api.{{ .Values.host }}:6443
+              oidcTokenProvider: oidc
+              url: https://api.{{ .domain }}:6443
+            {{- end }}
       customResources:
         - apiVersion: v1
           group: route.openshift.io
