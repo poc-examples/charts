@@ -8,7 +8,7 @@ data:
       appLocatorMethods:
       - instances:
         {{- range .Values.clusters }}
-        - name: {{ .name }}
+        - name: {{ .stage }}
           password: ${{ .name }}_ARGOCD_TOKEN
           url: https://openshift-gitops-server-openshift-gitops.{{ .domain }}
           username: admin
