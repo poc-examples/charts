@@ -34,7 +34,7 @@ spec:
                       annotations:
                         argocd.argoproj.io/sync-wave: "0"
                       envFrom:
-                        {{- if .Values.cluster.type }}
+                        {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
                         - secretRef:
                             name: rosa-token
                         {{- endif }}
