@@ -34,8 +34,10 @@ spec:
                       annotations:
                         argocd.argoproj.io/sync-wave: "0"
                       envFrom:
+                        {{- if .Values.cluster.type }}
                         - secretRef:
                             name: rosa-token
+                        {{- endif }}
                         - secretRef:
                             name: keycloak-client-secret-openshift
                         - secretRef:
