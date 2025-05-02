@@ -37,7 +37,7 @@ spec:
                         {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
                         - secretRef:
                             name: rosa-token
-                        {{- endif }}
+                        {{- end }}
                         - secretRef:
                             name: keycloak-client-secret-openshift
                         - secretRef:
