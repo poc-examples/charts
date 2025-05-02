@@ -70,6 +70,7 @@ spec:
                     cluster:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}
+                      type: {{ `{{ .metadata.labels.type }}` }}
               {{- end }}
   template:
     metadata:
