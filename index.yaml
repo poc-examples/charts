@@ -5677,6 +5677,16 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-02T20:45:01.510809928Z"
+    description: A Helm chart for Kubernetes
+    digest: 18fe68c6dae0ab46d8bc2697431936fc93a824c4411fbd01ab258e8fe3d41455
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/keycloak-0.2.3/keycloak-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-25T19:34:37.729167719Z"
     description: A Helm chart for Kubernetes
     digest: 2fbd191d10bc097c95df3bd3256c2c9f3e1e57301e4a6300e34594135c92f4e4
@@ -9332,6 +9342,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-02T20:45:01.655751649Z"
+    description: A Helm chart for Kubernetes
+    digest: c1b53db42d95a04e8b4b2b37cdaae3462017f43c01dabd0f608430f96e6e06d4
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.9/rollout-controller-0.6.9.tgz
+    version: 0.6.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-04-29T16:28:00.149591224Z"
     description: A Helm chart for Kubernetes
     digest: 28cea3fcc12cebbc396a8a1c8aaf50aadd96d128934ca6245acf256ba2405758
@@ -12407,4 +12427,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-04-29T18:58:18.290678227Z"
+generated: "2025-05-02T20:45:01.659558276Z"
