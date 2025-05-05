@@ -6861,6 +6861,16 @@ entries:
   minio:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-05T17:06:51.304175245Z"
+    description: A Helm chart that installs Minio for OpenShift
+    digest: db82946921405656c13b211c38efe631307ed080601477a2be43cb6de06d0d17
+    name: minio
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/minio-0.0.2/minio-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-05T16:59:00.54104877Z"
     description: A Helm chart that installs Minio for OpenShift
     digest: 957fbc2f694e9bcd353181bfe8baa56a0967e8fc89bc34284fbf6ea8fe0a3a26
@@ -12498,4 +12508,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-05T16:59:00.740209293Z"
+generated: "2025-05-05T17:06:51.307415903Z"
