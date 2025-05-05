@@ -20,9 +20,6 @@ spec:
           envFrom:
             - secretRef:
                 name: minio-credentials
-          env:
-            - name: MINIO_API_ROOT_ACCESS
-              value: "on"
           ports:
             - containerPort: 9000
             - containerPort: 9090
