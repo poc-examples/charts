@@ -1,31 +1,34 @@
-# Deploys a new MinIO Pod into the metadata.namespace Kubernetes namespace
-#
-# The `spec.containers[0].args` contains the command run on the pod
-# The `/data` directory corresponds to the `spec.containers[0].volumeMounts[0].mountPath`
-# That mount path corresponds to a Kubernetes HostPath which binds `/data` to a local drive or volume on the worker node where the pod runs
-# 
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
+  name: minio
   labels:
     app: minio
-  name: minio
 spec:
-  containers:
-  - name: minio
-    image: quay.io/minio/minio:latest
-    ports:
-      - containerPort: 9000
-      - containerPort: 9090
-    command:
-    - /bin/bash
-    - -c
-    args: 
-    - minio server /data --console-address :9090
-    volumeMounts:
-    - mountPath: /data
-      name: minio-storage
-  volumes:
-  - name: minio-storage
-    persistentVolumeClaim:
-      claimName: minio-storage
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: quay.io/minio/minio:latest
+          ports:
+            - containerPort: 9000
+            - containerPort: 9090
+          command:
+            - /bin/bash
+            - -c
+          args:
+            - minio server /data --console-address :9090
+          volumeMounts:
+            - name: minio-storage
+              mountPath: /data
+      volumes:
+        - name: minio-storage
+          persistentVolumeClaim:
+            claimName: minio-storage
