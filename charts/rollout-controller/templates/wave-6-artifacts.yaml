@@ -25,7 +25,7 @@ spec:
                   chart:
                     name: minio
                     url: https://poc-examples.github.io/charts
-                    version: "0.0.1"
+                    version: "{{ .Values.minio.chartVersion }}"
               {{- end }}
               {{- if .Values.quay.enabled }}
                 - application: quay-service
