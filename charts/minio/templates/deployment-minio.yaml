@@ -21,7 +21,7 @@ spec:
             - secretRef:
                 name: minio-credentials
           env:
-            - key: MINIO_API_ROOT_ACCESS
+            - name: MINIO_API_ROOT_ACCESS
               value: "on"
           ports:
             - containerPort: 9000
