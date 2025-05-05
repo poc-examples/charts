@@ -21,9 +21,8 @@ spec:
     - minio server /data --console-address :9090
     volumeMounts:
     - mountPath: /data
-      name: localvolume # Corresponds to the `spec.volumes` Persistent Volume
+      name: minio-storage
   volumes:
-  - name: localvolume
-    hostPath: # MinIO generally recommends using locally-attached volumes
-      path: /mnt/disk1/data # Specify a path to a local drive or volume on the Kubernetes worker node
-      type: DirectoryOrCreate # The path to the last directory must exist
+  - name: minio-storage
+    persistentVolumeClaim:
+      claimName: minio-storage
