@@ -23,27 +23,9 @@ spec:
                   namespace: minio-operator
                   wave: "-2"
                   chart:
-                    name: operator
-                    url: https://operator.min.io
-                    version: "{{ .Values.minio.chartVersion }}"
-                    values: |
-                      operator:
-                        securityContext:
-                          runAsUser: null
-                          runAsGroup: null
-                          fsGroup: null
-                          # runAsNonRoot: true
-
-                        containerSecurityContext:
-                          runAsUser: null
-                          runAsGroup: null
-                          # runAsNonRoot: true
-                          # allowPrivilegeEscalation: false
-                          # capabilities:
-                          #   drop:
-                          #     - ALL
-                          # seccompProfile:
-                          #   type: RuntimeDefault
+                    name: minio
+                    url: https://poc-examples.github.io/charts
+                    version: "0.0.1"
               {{- end }}
               {{- if .Values.quay.enabled }}
                 - application: quay-service
