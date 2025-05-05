@@ -17,6 +17,9 @@ spec:
       containers:
         - name: minio
           image: quay.io/minio/minio:latest
+          envFrom:
+            - secretRef:
+                name: minio-credentials
           ports:
             - containerPort: 9000
             - containerPort: 9090
