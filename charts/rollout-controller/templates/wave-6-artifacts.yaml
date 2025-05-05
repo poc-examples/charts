@@ -1,4 +1,4 @@
-{{- if or (and .Values.gitlab.enabled (not .Values.shared.enabled)) .Values.quay.enabled }}
+{{- if or (and .Values.gitlab.enabled (not .Values.shared.enabled)) .Values.quay.enabled .Values.minio.enabled}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -18,6 +18,15 @@ spec:
                   cluster: default
           - list:
               elements:
+              {{- if .Values.minio.enabled }}
+                - application: minio-service
+                  namespace: minio-operator
+                  wave: "-2"
+                  chart:
+                    name: operator
+                    url: https://operator.min.io
+                    version: "{{ .Values.minio.chartVersion }}"
+              {{- end }}
               {{- if .Values.quay.enabled }}
                 - application: quay-service
                   namespace: "quay-registry"

@@ -88,6 +88,10 @@ nfd:
   enabled: false 
   chartVersion: 0.1.3
 
+minio:
+  enabled: false
+  chartVersion: 4.3.7
+
 nvidiagpu:
   enabled: false 
   chartVersion: 0.1.1
