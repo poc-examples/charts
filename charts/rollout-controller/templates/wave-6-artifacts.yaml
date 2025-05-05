@@ -26,6 +26,24 @@ spec:
                     name: operator
                     url: https://operator.min.io
                     version: "{{ .Values.minio.chartVersion }}"
+                    values: |
+                      operator:
+                        securityContext:
+                          runAsUser: null
+                          runAsGroup: null
+                          fsGroup: null
+                          # runAsNonRoot: true
+
+                        containerSecurityContext:
+                          runAsUser: null
+                          runAsGroup: null
+                          # runAsNonRoot: true
+                          # allowPrivilegeEscalation: false
+                          # capabilities:
+                          #   drop:
+                          #     - ALL
+                          # seccompProfile:
+                          #   type: RuntimeDefault
               {{- end }}
               {{- if .Values.quay.enabled }}
                 - application: quay-service
