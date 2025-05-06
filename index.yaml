@@ -12165,6 +12165,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/services-0.2.0/services-0.2.0.tgz
     version: 0.2.0
+  system_roles:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-06T20:36:30.063625725Z"
+    description: A Helm chart for Kubernetes
+    digest: 454db3bfbb394d869a1a061e1c2539f0fbf6e0482fcca53d0545b7701984c98a
+    name: system_roles
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/system_roles-0.0.1/system_roles-0.0.1.tgz
+    version: 0.0.1
   tekton:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -12839,4 +12850,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-06T15:09:39.319524435Z"
+generated: "2025-05-06T20:36:30.065359766Z"
