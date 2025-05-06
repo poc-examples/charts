@@ -1,3 +1,5 @@
+host: "api.openshift.io"
+
 backend:
   postgres:
     enabled: true
