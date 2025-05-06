@@ -7091,6 +7091,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/nvidia-gpu-operator-0.1.0/nvidia-gpu-operator-0.1.0.tgz
     version: 0.1.0
+  opentelemetry:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-06T03:50:41.640480552Z"
+    description: A Helm chart for Kubernetes
+    digest: 45230b77bd5a7a9eb8ae5ab50ade73b1d3f7b111c81d10546e01d20af1fac344
+    name: opentelemetry
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/opentelemetry-0.0.1/opentelemetry-0.0.1.tgz
+    version: 0.0.1
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -12668,4 +12679,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-05T20:49:07.265527556Z"
+generated: "2025-05-06T03:50:41.643619188Z"
