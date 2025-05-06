@@ -7114,6 +7114,16 @@ entries:
   opentelemetry:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-06T14:50:10.844864603Z"
+    description: A Helm chart for Kubernetes
+    digest: badaf883370ae17a22e1f56b9de882073d9073908a012497d84705322c1cc570
+    name: opentelemetry
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/opentelemetry-0.0.10/opentelemetry-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-06T04:43:29.686678925Z"
     description: A Helm chart for Kubernetes
     digest: 2b72fef0b2183dff0def256e18975843cbebce1d5df7a0a5f5fa6f47019657e5
@@ -12809,4 +12819,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-06T13:50:42.855163956Z"
+generated: "2025-05-06T14:50:10.846963352Z"
