@@ -25,6 +25,8 @@ spec:
                     name: opentelemetry
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.opentelemetry.chartVersion }}"
+                  values: |
+                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
               {{- end }}
               {{- if .Values.kiali.enabled }}
                 - application: kiali-service
