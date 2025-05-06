@@ -51,7 +51,7 @@ sonarqube:
   enabled: false
 
 opentelemetry:
-  chartVersion: 0.0.9
+  chartVersion: 0.0.11
   enabled: false
 
 devhub:
@@ -94,7 +94,7 @@ nfd:
 
 minio:
   enabled: false
-  chartVersion: 4.3.7
+  chartVersion: 0.0.18
 
 nvidiagpu:
   enabled: false 
