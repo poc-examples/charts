@@ -1,4 +1,4 @@
-{{- if or .Values.kiali.enabled .Values.tracing.enabled }}
+{{- if or .Values.kiali.enabled .Values.tracing.enabled .Values.opentelemetry.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -18,6 +18,14 @@ spec:
                   cluster: default
           - list:
               elements:
+              {{- if .Values.opentelemetry.enabled }}
+                - application: opentelemetry-service
+                  namespace: opentelemetry
+                  chart: 
+                    name: opentelemetry
+                    url: https://poc-examples.github.io/charts
+                    version: "{{ .Values.opentelemetry.chartVersion }}"
+              {{- end }}
               {{- if .Values.kiali.enabled }}
                 - application: kiali-service
                   namespace: kiali-ossm
