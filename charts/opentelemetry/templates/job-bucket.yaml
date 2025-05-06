@@ -11,7 +11,7 @@ spec:
       containers:
       - name: "bucket-creator"
         image: "docker.io/cengleby86/minio-cli:latest"
-        command: ["/bin/bash", "-c"]
+        command: ["/bin/sh", "-c"]
         args:
           - |
             mc alias set default https://minio-api-minio-operator.{{ .Values.domain }} ${access_key_id} ${access_key_secret};
