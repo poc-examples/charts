@@ -2219,6 +2219,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.2.6
+    created: "2025-05-06T13:50:42.726990672Z"
+    description: A chart for deploying Red Hat Developer Hub.
+    digest: fef177a06abf9c6dc7088efd2ed902ab48a24a7d8cc7a05d4d100d4b99c6c5fe
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.3.2/developerhub-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: 1.2.6
     created: "2025-04-29T18:58:18.289075244Z"
     description: A chart for deploying Red Hat Developer Hub.
     digest: 04c1afe42699b72dd5117825b870d6c537c6a5b5bb7a45d0891abe892881eb7d
@@ -6859,6 +6869,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/machinesets-0.1.0/machinesets-0.1.0.tgz
     version: 0.1.0
   minio:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-06T13:50:42.852700009Z"
+    description: A Helm chart that installs Minio for OpenShift
+    digest: 5f3fb1788aae3203c05633556f1b65b7aeffbcc640e0b4534ba12bb73b74237f
+    name: minio
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/minio-0.0.18/minio-0.0.18.tgz
+    version: 0.0.18
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-05-05T20:49:07.263543464Z"
@@ -12789,4 +12809,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-06T04:47:23.981023551Z"
+generated: "2025-05-06T13:50:42.855163956Z"
