@@ -1,8 +1,7 @@
 apiVersion: tempo.grafana.com/v1alpha1
 kind: TempoStack
 metadata:
-  name: sample
-  namespace: observability
+  name: tempo-stack
 spec:
   storageSize: 10Gi
   storage:

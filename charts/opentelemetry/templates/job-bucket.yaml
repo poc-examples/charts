@@ -15,7 +15,7 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            mc alias set default https://minio-api-minio-operator.${DOMAIN} ${access_key_id} ${access_key_secret};
+            mc alias set default https://minio-api-minio-operator.{{ .Values.domain }} ${access_key_id} ${access_key_secret};
             mc mb default/opentelemetry;
         envFrom:
           - secretRef:
