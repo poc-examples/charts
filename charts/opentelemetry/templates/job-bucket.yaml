@@ -18,7 +18,12 @@ spec:
                 http://minio-api.minio-operator.svc.cluster.local:9000 \
                 ${access_key_id} \
                 ${access_key_secret};
-            mc mb default/opentelemetry;
+            if mc ls default/opentelemetry >/dev/null 2>&1; then
+                echo "Bucket 'opentelemetry' already exists."
+            else
+                echo "Bucket 'opentelemetry' does not exist. Creating it..."
+                mc mb default/opentelemetry
+            fi
         envFrom:
           - secretRef:
               name: minio-credentials
