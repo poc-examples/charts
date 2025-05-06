@@ -51,7 +51,7 @@ sonarqube:
   enabled: false
 
 opentelemetry:
-  chartVersion: 0.0.2
+  chartVersion: 0.0.9
   enabled: false
 
 devhub:
