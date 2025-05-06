@@ -8,7 +8,6 @@ metadata:
 spec:
   template:
     spec:
-      serviceAccountName: "minio-bucket"
       containers:
       - name: "bucket-creator"
         image: "docker.io/cengleby86/minio-cli:latest"
