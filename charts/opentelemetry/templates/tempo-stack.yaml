@@ -1,0 +1,23 @@
+apiVersion: tempo.grafana.com/v1alpha1
+kind: TempoStack
+metadata:
+  name: sample
+  namespace: observability
+spec:
+  storageSize: 10Gi
+  storage:
+    secret:
+      name: minio-credentials
+      type: s3
+    tls:
+      enabled: false
+  template:
+    queryFrontend:
+      jaegerQuery:
+        authentication:
+          enabled: true
+        enabled: true
+        ingress:
+          route:
+            termination: edge
+          type: route
