@@ -71,6 +71,8 @@ spec:
                       name: {{ `{{ .metadata.labels.cluster_name }}` }}
                       region: {{ `{{ .metadata.labels.region }}` }}
                       type: {{ `{{ .metadata.labels.type }}` }}
+                    settings:
+                      registrationAllowed: {{ .Values.keycloak.settings.registrationAllowed }}
               {{- end }}
   template:
     metadata:

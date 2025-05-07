@@ -25,6 +25,8 @@ acm:
 
 keycloak:
   chartVersion: 0.2.3
+  settings:
+    registrationAllowed: false
   enabled: false
 
 gatekeeper:
