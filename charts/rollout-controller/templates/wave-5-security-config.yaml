@@ -67,6 +67,7 @@ spec:
                           - "get" 
                           - "list"
                           - "create"
+                          - "patch"
                       - apiGroups:
                           - "config.openshift.io"
                         resources:
