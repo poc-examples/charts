@@ -24,9 +24,7 @@ acm:
   enabled: false
 
 keycloak:
-  chartVersion: 0.2.4
-  settings:
-    registrationAllowed: false
+  chartVersion: 0.2.5
   enabled: false
 
 gatekeeper:
