@@ -2,4 +2,5 @@ domain: api.openshift.com
 cluster: 
   name: rosa-rhoai-3
   region: us-east-2
-registrationAllowed: false
+settings:
+  registrationAllowed: false
