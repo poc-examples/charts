@@ -1,7 +1,7 @@
 apiVersion: console.openshift.io/v1
 kind: ConsoleLink
 metadata:
-  name: Jaeger Dashboard
+  name: jaeger-dashboard
 spec:
   applicationMenu:
     section: Observability
