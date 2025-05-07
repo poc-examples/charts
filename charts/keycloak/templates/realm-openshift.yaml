@@ -16,5 +16,5 @@ spec:
     enabled: true
     id: openshift
     realm: openshift
-    registrationAllowed: "{{ .Values.settings.registrationAllowed }}"
+    registrationAllowed: "{{ .Values.settings.registrationAllowed | bool }}"
 {{- end }}
