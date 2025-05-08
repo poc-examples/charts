@@ -141,10 +141,10 @@ data:
           secure: true
 
         /developer-hub:
-          target: https://raw.githubusercontent.com/
+          target: https://dynamic-dashboard.backstage.svc.cluster.local/
           pathRewrite:
-            '^/api/proxy/developer-hub/tech-radar': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
-            '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/homepage.json
+            '^/api/proxy/developer-hub/tech-radar': /radar
+            '^/api/proxy/developer-hub': /dashboard
           changeOrigin: true
           secure: false
 
