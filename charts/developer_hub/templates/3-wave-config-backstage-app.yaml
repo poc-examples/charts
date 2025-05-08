@@ -140,13 +140,6 @@ data:
           changeOrigin: true
           secure: true
 
-        /data:
-          target: http://devhub-data-api
-          secure: false
-          headers:
-            Content-Type: 'application/json'
-          changeOrigin: true
-
         /developer-hub:
           target: https://raw.githubusercontent.com/
           pathRewrite:
