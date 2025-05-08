@@ -141,7 +141,7 @@ data:
           secure: true
 
         /developer-hub:
-          target: https://dynamic-dashboard.backstage.svc.cluster.local/
+          target: http://dynamic-dashboard.backstage.svc.cluster.local/
           pathRewrite:
             '^/api/proxy/developer-hub/tech-radar': /radar
             '^/api/proxy/developer-hub': /dashboard
