@@ -50,11 +50,6 @@ data:
         spec:
           automountServiceAccountToken: false
           volumes:
-            - configMap:
-                defaultMode: 420
-                name: argocd-entities-config
-                optional: false
-              name: argocd-components
             - ephemeral:
                 volumeClaimTemplate:
                   spec:
@@ -149,8 +144,6 @@ data:
               volumeMounts:
                 - mountPath: /opt/app-root/src/dynamic-plugins-root
                   name: dynamic-plugins-root
-                - mountPath: /opt/app-root/src/argocd-components
-                  name: argocd-components
               resources:
                 requests:
                   cpu: 250m

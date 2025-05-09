@@ -45,6 +45,10 @@ spec:
       {{- end }}
         - name: service-account-token
           key: token
+    extraFiles: 
+      mountPath: /opt/app-root/src/extra-files
+      configMaps:
+        - name: argocd-entities-config
     replicas: 1
     route:
       enabled: true
