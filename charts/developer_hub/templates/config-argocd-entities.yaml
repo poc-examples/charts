@@ -6,29 +6,20 @@ data:
   argocd.yaml: |
     ---
     apiVersion: backstage.io/v1alpha1
-    kind: System
+    kind: Resource
     metadata:
-      name: argocd-appdev
+      name: argocd-instances
       description: Collection of ArgoCD Instances used for app dev
     spec:
+      type: configuration
+      lifecycle: production
       owner: cluster-admins
+      instances:
   {{- range .Values.clusters }}
     {{- if ne .role "shared" }}
-    ---
-    apiVersion: backstage.io/v1alpha1
-    kind: Component
-    metadata:
-      name: {{ .stage }}
-      description: ArgoCD Instance
-      tags:
-        - argo-instance
-    spec:
-      type: argo-instance
-      lifecycle: {{ .stage }}
-      system: argocd-appdev
-      owner: cluster-admins
-      clusterDomain: {{ .domain }}
-      cluster: {{ .name }}
-      role: {{ .role }}
+        - name: {{ .stage }}
+          domain: {{ .domain }}
+          cluster: {{ .name }}
+          role: {{ .role }}
     {{- end }}
   {{- end }}
