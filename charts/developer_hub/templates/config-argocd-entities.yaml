@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-entities-config
+data:
+  argocd.yaml: |
+  {{- range .Values.clusters }}
+    {{- if ne .role "shared" }}
+    ---
+    apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: {{ .stage }}
+      description: ArgoCD Instance
+      tags:
+        - argo-instance
+    spec:
+      type: argo-instance
+      lifecycle: {{ .stage }}
+      owner: devops-team
+      domain: {{ .domain }}
+      cluster: {{ .name }}
+      role: {{ .role }}
+    {{-end }}
+  {{- end }}
