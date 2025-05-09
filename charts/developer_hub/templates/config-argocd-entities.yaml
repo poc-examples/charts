@@ -16,7 +16,7 @@ data:
       owner: cluster-admins
       instances:
   {{- range .Values.clusters }}
-    {{- if ne .role "shared" }}
+    {{- if eq .role "workload" }}
         - name: {{ .stage }}
           domain: {{ .domain }}
           cluster: {{ .name }}
