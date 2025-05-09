@@ -55,7 +55,7 @@ opentelemetry:
   enabled: false
 
 devhub:
-  chartVersion: 0.2.26
+  chartVersion: 0.3.7
   enabled: false
 
 devspaces:
