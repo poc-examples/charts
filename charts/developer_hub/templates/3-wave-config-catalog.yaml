@@ -76,6 +76,8 @@ data:
       #######################################################################
       {{- if .Values.catalogs }}
       locations:
+        - type: file
+          target: /opt/app-root/src/argocd-components/argocd.yaml
       {{- range .Values.catalogs }}
         - type: url
           target: {{ . }}
