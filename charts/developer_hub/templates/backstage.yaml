@@ -41,7 +41,7 @@ spec:
           key: DEVHUB_BACKEND_SECRET
       {{- range .Values.clusters }}
         - name: "{{ .name }}-argocd-token"
-          key: "{{ .name }}_ARGOCD_TOKEN"
+          key: "{{ .stage }}_ARGOCD_TOKEN"
       {{- end }}
         - name: service-account-token
           key: token
