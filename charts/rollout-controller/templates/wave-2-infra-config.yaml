@@ -1,3 +1,10 @@
+{{- if or .Values.nfd.enabled 
+          .Values.nvidiagpu.enabled 
+          .Values.gitlab.enabled 
+          .Values.gitops.updater.enabled 
+          .Values.external_secrets.enabled 
+          .Values.tekton.enabled 
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -118,3 +125,4 @@ spec:
           values: |
             {{ `{{- .values | nindent 12 }}` }}
         {{ `{{- end }}` }}
+{{- end }}

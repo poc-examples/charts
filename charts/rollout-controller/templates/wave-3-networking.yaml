@@ -1,4 +1,7 @@
-{{- if or .Values.serverless.enabled .Values.servicemesh.enabled .Values.amq.enabled }}
+{{- if or .Values.serverless.enabled 
+          .Values.servicemesh.enabled 
+          .Values.amq.enabled 
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:

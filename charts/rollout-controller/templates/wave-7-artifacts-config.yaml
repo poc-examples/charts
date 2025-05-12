@@ -1,4 +1,8 @@
-{{- if or .Values.quay_bridge.enabled .Values.gitlab.runners.enabled (and .Values.gitlab.enabled .Values.shared.enabled)}}
+{{- if or .Values.quay_bridge.enabled 
+          .Values.gitlab.runners.enabled 
+          (and .Values.gitlab.enabled .Values.shared.enabled)
+          (and .Values.gitlab.runners.enabled (not .Values.shared.enabled))
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:

@@ -1,4 +1,7 @@
-{{- if or .Values.kiali.enabled .Values.tracing.enabled .Values.opentelemetry.enabled }}
+{{- if or .Values.opentelemetry.enabled 
+          .Values.kiali.enabled 
+          .Values.tracing.enabled
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:

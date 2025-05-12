@@ -55,11 +55,11 @@ opentelemetry:
   enabled: false
 
 devhub:
-  chartVersion: 0.3.7
+  chartVersion: 0.3.15
   enabled: false
 
 devspaces:
-  chartVersion: 0.1.5
+  chartVersion: 0.1.26
   enabled: false
 
 rhtas:
@@ -69,7 +69,7 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.2.21
+  chartVersion: 0.2.46
   enabled: false
   runners: 
     enabled: true
@@ -79,7 +79,7 @@ external_secrets:
   chartVersion: 0.1.31
   namespace: external-secrets
   connectors:
-    chartVersion: 0.1.1
+    chartVersion: 0.1.6
   k8sConnector:
     enabled: false
 
@@ -122,7 +122,7 @@ servicemesh:
 
 quay:
   enabled: false
-  chartVersion: 0.1.11
+  chartVersion: 0.1.13
 
 quay_bridge:
   enabled: false
@@ -134,4 +134,4 @@ rhoai:
 
 amq:
   enabled: false
-  chartVersion: 0.0.1
+  chartVersion: 0.0.2

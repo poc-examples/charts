@@ -1,4 +1,8 @@
-{{- if or .Values.sonarqube.enabled .Values.devhub.enabled .Values.devspaces.enabled .Values.rhoai.enabled }}
+{{- if or .Values.sonarqube.enabled 
+          .Values.devhub.enabled 
+          .Values.devspaces.enabled 
+          .Values.rhoai.enabled 
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:

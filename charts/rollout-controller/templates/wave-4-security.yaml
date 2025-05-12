@@ -1,4 +1,9 @@
-{{- if or .Values.rhtas.enabled .Values.keycloak.enabled .Values.gatekeeper.enabled .Values.acs.enabled .Values.authorino.enabled }}
+{{- if or .Values.gatekeeper.enabled 
+          .Values.acs.enabled 
+          .Values.authorino.enabled
+          .Values.rhtas.enabled
+          .Values.keycloak.enabled 
+}}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
