@@ -82,6 +82,7 @@ spec:
                       namespace: "{{ .Values.gitops.namespace }}"
                     subscription:
                       channel: stable
+                    test: "{{ `{{ metadata.labels['keycloak.settings.registrationAllowed'] }}` }}"
               {{- end }}
   template:
     metadata:
