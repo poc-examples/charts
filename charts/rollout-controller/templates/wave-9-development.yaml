@@ -16,10 +16,9 @@ spec:
   generators:
     - matrix:
         generators:
-          - clusters:
-              selector:
-                matchLabels:
-                  cluster: default
+          - clusterDecisionResource:
+              configMapRef: cluster-app-context-cfg
+              name: cluster-app-context
           - list:
               elements:
               {{- if .Values.sonarqube.enabled }}
@@ -48,7 +47,7 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.devhub.chartVersion }}"
                   values: |
-                    host: "{{ `{{ .metadata.labels.domain }}` }}"
+                    host: "{{ `{{ .cluster.domain }}` }}"
                     catalogs:
                       - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
                     gitlab:
@@ -64,7 +63,7 @@ spec:
                     url: https://poc-examples.github.io/charts
                     version: "{{ .Values.devspaces.chartVersion }}"
                   values: |
-                    domain: "{{ `{{ .metadata.labels.domain }}` }}"
+                    domain: "{{ `{{ .cluster.domain }}` }}"
               {{- end }}
               {{- if .Values.rhoai.enabled }}
                 - application: rhoai-service
