@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: orchestrator
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
+  generators:
+    - matrix:
+        generators:
+          - clusterDecisionResource:
+              configMapRef: cluster-app-context-cfg
+              name: cluster-app-context
+          - list:
+              elements:
+                - application: rollout-controller
+                  namespace: openshift-gitops
+                  chart: 
+                    name: rollout-controller
+                    url: https://poc-examples.github.io/charts
+                    version: "0.6.40"
+                  values: |
+                    {{ `{{ toYaml .clusters | nindent 20 }}` }}
+  template:
+    metadata:
+      name: "{{ `{{ .application }}` }}"
+    spec:
+      destination:
+        namespace: "{{ `{{ .namespace }}` }}"
+        server: "{{ `{{ .server }}` }}"
+      source:
+        chart: "{{ `{{ .chart.name }}` }}"
+        targetRevision: "{{ `{{ .chart.version }}` }}"
+        repoURL: "{{ `{{ .chart.url }}` }}"
+      project: system
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            argocd.argoproj.io/managed-by: "openshift-gitops"
+        syncOptions:
+          - CreateNamespace=true
+          - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{- .values | nindent 12 }}` }}
+        {{ `{{- end }}` }}
