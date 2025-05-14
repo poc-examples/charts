@@ -7,30 +7,20 @@ spec:
   goTemplateOptions:
     - "missingkey=error"
   generators:
-    - matrix:
-        generators:
-          - clusterDecisionResource:
-              configMapRef: cluster-app-context-cfg
-              name: cluster-app-context
-          - list:
-              elements:
-                - application: rollout-controller-test
-                  namespace: openshift-gitops
-                  chart: 
-                    name: rollout-controller
-                    url: https://poc-examples.github.io/charts
-                    version: "0.6.40"
+    - clusterDecisionResource:
+        configMapRef: cluster-app-context-cfg
+        name: cluster-app-context
   template:
     metadata:
-      name: "{{ `{{ .application }}` }}"
+      name: "rollout-controller-test"
     spec:
       destination:
-        namespace: "{{ `{{ .namespace }}` }}"
-        server: "{{ `{{ .server }}` }}"
+        namespace: "openshift-gitops"
+        server: "https://kubernetes.default.svc"
       source:
-        chart: "{{ `{{ .chart.name }}` }}"
-        targetRevision: "{{ `{{ .chart.version }}` }}"
-        repoURL: "{{ `{{ .chart.url }}` }}"
+        chart: "rollout-controller"
+        targetRevision: "0.6.40"
+        repoURL: "https://poc-examples.github.io/charts"
       project: system
       syncPolicy:
         automated:
@@ -42,11 +32,3 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - Validate=false
-  templatePatch: |
-    spec:
-      source:
-        helm:
-        {{ `{{- if (index . "values") }}` }}
-          values: |
-            {{ `{{- .values | nindent 12 }}` }}
-        {{ `{{- end }}` }}
