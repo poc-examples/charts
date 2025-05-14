@@ -21,7 +21,7 @@ spec:
         repoURL: "https://poc-examples.github.io/charts"
         helm:
           values: |
-            {{ `{{ rendered_clusters }}` }}
+            {{ `{{ config }}` }}
       project: system
       syncPolicy:
         automated:
