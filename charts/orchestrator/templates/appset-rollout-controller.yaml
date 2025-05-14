@@ -14,7 +14,7 @@ spec:
               name: cluster-app-context
           - list:
               elements:
-                - application: rollout-controller
+                - application: rollout-controller-test
                   namespace: openshift-gitops
                   chart: 
                     name: rollout-controller
