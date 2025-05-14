@@ -7415,6 +7415,16 @@ entries:
   orchestrator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-14T03:19:04.412791487Z"
+    description: A Helm chart for Kubernetes
+    digest: 4ffde4e15fe636ff7f4d4e7968ab0acfc028bbf42c6ba29d242e555a160d6348
+    name: orchestrator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/orchestrator-0.0.4/orchestrator-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-14T02:51:42.678374838Z"
     description: A Helm chart for Kubernetes
     digest: 9d35c712d0626fc66dda38309229dbd5d514ff8d48c3c4f0f4112b29d8406e2b
@@ -13191,4 +13201,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-14T02:51:42.680059707Z"
+generated: "2025-05-14T03:19:04.415387355Z"
