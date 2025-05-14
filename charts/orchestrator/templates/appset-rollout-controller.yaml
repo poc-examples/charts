@@ -20,8 +20,6 @@ spec:
                     name: rollout-controller
                     url: https://poc-examples.github.io/charts
                     version: "0.6.40"
-                  values: |
-                    {{ `{{ toYaml .clusters | nindent 20 }}` }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
