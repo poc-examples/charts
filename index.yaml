@@ -7412,6 +7412,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/opentelemetry-0.0.1/opentelemetry-0.0.1.tgz
     version: 0.0.1
+  orchestrator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-14T02:26:32.818833329Z"
+    description: A Helm chart for Kubernetes
+    digest: 08f7aa27ba1eaf1bb9fc993b4d056361e7cb2213ab755a88a813f7c5cc50fa99
+    name: orchestrator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/orchestrator-0.0.1/orchestrator-0.0.1.tgz
+    version: 0.0.1
   pipeline:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -13160,4 +13171,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-13T20:40:07.260571875Z"
+generated: "2025-05-14T02:26:32.820431054Z"
