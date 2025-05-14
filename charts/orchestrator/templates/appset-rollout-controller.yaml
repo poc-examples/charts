@@ -1,26 +1,27 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+apiVersion: infra.poc.io/v1alpha1
+kind: JinjaTemplate
 metadata:
-  name: orchestrator
+  name: rollout-controller-template
 spec:
-  goTemplate: true
-  goTemplateOptions:
-    - "missingkey=error"
-  generators:
-    - clusterDecisionResource:
-        configMapRef: cluster-app-context-cfg
-        name: cluster-app-context
+  source:
+    configMapRef: cluster-values
+    key: vars.yaml
   template:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
     metadata:
       name: "rollout-controller-test"
     spec:
       destination:
-        namespace: "openshift-gitops"
-        server: "https://kubernetes.default.svc"
+        namespace: openshift-gitops
+        server: 'https://kubernetes.default.svc'
       source:
         chart: "rollout-controller"
         targetRevision: "0.6.40"
         repoURL: "https://poc-examples.github.io/charts"
+        helm:
+          values: |
+            {{ `{{ rendered_clusters }}` }}
       project: system
       syncPolicy:
         automated:
