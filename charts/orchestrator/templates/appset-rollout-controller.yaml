@@ -21,7 +21,7 @@ spec:
         repoURL: "https://poc-examples.github.io/charts"
         helm:
           values: |
-            {{ `{{ values.config }}` }}
+            {{ `{{ values.config | to_yaml }}` }}
       project: system
       syncPolicy:
         automated:
