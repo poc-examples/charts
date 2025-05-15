@@ -21,7 +21,7 @@ spec:
         repoURL: "https://poc-examples.github.io/charts"
         helm:
           values: |
-    {{ `{{ values.config | to_nice_yaml(indent=2) | indent(8, True) }}` }}
+    {{ `{{ values.config | to_nice_yaml(indent=2) | rstrip | indent(8, True) }}` }}
       project: system
       syncPolicy:
         automated:
