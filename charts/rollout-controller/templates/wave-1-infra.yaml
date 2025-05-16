@@ -13,84 +13,78 @@ spec:
   goTemplateOptions:
     - "missingkey=error"
   generators:
-    - matrix:
-        generators:
-          - clusters:
-              selector:
-                matchLabels:
-                  cluster: default
-          - list:
-              elements:
-              {{- if .Values.machinesets.enabled }}
-                - application: machine-sets-manager
-                  namespace: managed-machine-sets
-                  chart: 
-                    name: machinesets
-                    url: https://poc-examples.github.io/charts
-                    version: "{{ .Values.machinesets.chartVersion }}"
-                  values: |
-                    machineset: 
-                      enabled: false
-                    machinesets:
-                      - name: acs
-                        machine_type: Standard_D8s_v3
-              {{- end }}
-              {{- if .Values.vault.enabled }}
-                - application: vault-service
-                  namespace: vault-server
-                  chart:
-                    name: vault
-                    url: https://helm.releases.hashicorp.com
-                    version: "{{ .Values.vault.chartVersion }}"
-                  values: |
-                    csi:
-                      enabled: false
-                    global:
-                      openshift: true
-                    injector:
-                      enabled: false
-                    server:
-                      enabled: true
-                      dev:
-                        enabled: true
-                        devRootToken: "{{ .Values.vault.token }}"
-                      {{ if eq .Values.cluster.role "shared" }}
-                      route:
-                        enabled: true
-                        host: "vault.{{ .Values.cluster.domain }}"
-                        tls:
-                          termination: edge
-                      {{- end }}
-                      resources:
-                        requests:
-                          memory: "128Mi"
-                          cpu: "100m"
-                        limits:
-                          memory: "168Mi"
-                          cpu: "150m"
-              {{- end }}
-              {{- if .Values.external_secrets.enabled }}
-                - application: external-secrets-service
-                  namespace: external-secrets
-                  chart: 
-                    name: external_secrets
-                    url: https://poc-examples.github.io/charts
-                    version: "{{ .Values.external_secrets.chartVersion }}"
-                  values: |
-                    namespace: "{{ .Values.external_secrets.namespace }}"
-                    gitops:
-                      namespace: "{{ .Values.gitops.namespace }}"
-                    subscription:
-                      channel: stable
-                    test: "{{ .Values.keycloak.settings.registrationAllowed }}"
-              {{- end }}
+    - list:
+        elements:
+        {{- if .Values.machinesets.enabled }}
+          - application: machine-sets-manager
+            namespace: managed-machine-sets
+            chart: 
+              name: machinesets
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.machinesets.chartVersion }}"
+            values: |
+              machineset: 
+                enabled: false
+              machinesets:
+                - name: acs
+                  machine_type: Standard_D8s_v3
+        {{- end }}
+        {{- if .Values.vault.enabled }}
+          - application: vault-service
+            namespace: vault-server
+            chart:
+              name: vault
+              url: https://helm.releases.hashicorp.com
+              version: "{{ .Values.vault.chartVersion }}"
+            values: |
+              csi:
+                enabled: false
+              global:
+                openshift: true
+              injector:
+                enabled: false
+              server:
+                enabled: true
+                dev:
+                  enabled: true
+                  devRootToken: "{{ .Values.vault.token }}"
+                {{ if eq .Values.cluster.role "shared" }}
+                route:
+                  enabled: true
+                  host: "vault.{{ .Values.cluster.domain }}"
+                  tls:
+                    termination: edge
+                {{- end }}
+                resources:
+                  requests:
+                    memory: "128Mi"
+                    cpu: "100m"
+                  limits:
+                    memory: "168Mi"
+                    cpu: "150m"
+        {{- end }}
+        {{- if .Values.external_secrets.enabled }}
+          - application: external-secrets-service
+            namespace: external-secrets
+            chart: 
+              name: external_secrets
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.external_secrets.chartVersion }}"
+            values: |
+              namespace: "{{ .Values.external_secrets.namespace }}"
+              gitops:
+                namespace: "{{ .Values.gitops.namespace }}"
+              subscription:
+                channel: stable
+              test: "{{ .Values.keycloak.settings.registrationAllowed }}"
+        {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
     spec:
       destination:
         namespace: "{{ `{{ .namespace }}` }}"
-        server: "{{ `{{ .server }}` }}"
+        server: "https://kubernetes.default.svc"
       source:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
