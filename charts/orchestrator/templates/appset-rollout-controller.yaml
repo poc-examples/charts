@@ -16,9 +16,9 @@ spec:
         namespace: openshift-gitops
         server: 'https://kubernetes.default.svc'
       source:
-        chart: "services-cluster"
-        targetRevision: "0.0.19"
-        repoURL: "https://poc-examples.github.io/workshops"
+        chart: "rollout-controller
+        targetRevision: "0.6.41"
+        repoURL: "https://poc-examples.github.io/charts"
         helm:
           values: |
     {{ `{{ values.config | to_nice_yaml(indent=2) | trim | indent(8, True) }}` }}
