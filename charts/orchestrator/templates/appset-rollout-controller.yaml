@@ -10,7 +10,7 @@ spec:
     apiVersion: argoproj.io/v1alpha1
     kind: Application
     metadata:
-      name: "rollout-controller"
+      name: "{{ .Values.controller.name }}-rollout-controller"
     spec:
       destination:
         namespace: openshift-gitops
