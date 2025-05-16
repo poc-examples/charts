@@ -7415,6 +7415,16 @@ entries:
   orchestrator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-16T07:20:25.89997398Z"
+    description: A Helm chart for Kubernetes
+    digest: 2e43c5ceef2310dd30ddd3d0d7213aa55d2c32db1fa641768dcd8a2baef6ef6c
+    name: orchestrator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/orchestrator-0.0.35/orchestrator-0.0.35.tgz
+    version: 0.0.35
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-16T07:11:57.936751959Z"
     description: A Helm chart for Kubernetes
     digest: 40d03ee6c060a6236a67710d93e95236935213a80ac1a9d1562807d056fa8176
@@ -10173,6 +10183,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-16T07:20:26.010088113Z"
+    description: A Helm chart for Kubernetes
+    digest: 0ff9456396760bbf5d89a875c7bbeac563657ee07f22cdc2be3e0f9714b44461
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.46/rollout-controller-0.6.46.tgz
+    version: 0.6.46
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-05-16T07:11:58.053736781Z"
@@ -13561,4 +13581,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-16T07:11:58.055806341Z"
+generated: "2025-05-16T07:20:26.012165349Z"
