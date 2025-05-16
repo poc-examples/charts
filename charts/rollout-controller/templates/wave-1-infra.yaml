@@ -53,14 +53,14 @@ spec:
                       enabled: true
                       dev:
                         enabled: true
-                        devRootToken: "{{ `{{ .metadata.labels.vault_token }}` }}"
-                      {{ `{{- if eq .metadata.labels.role "shared" }}` }}
+                        devRootToken: "{{ .Values.vault.token }}"
+                      {{ if eq .Values.cluster.role "shared" }}
                       route:
                         enabled: true
-                        host: "vault.{{ `{{ .metadata.labels.domain }}` }}"
+                        host: "vault.{{ .Values.cluster.domain }}"
                         tls:
                           termination: edge
-                      {{ `{{- end }}` }}
+                      {{- end }}
                       resources:
                         requests:
                           memory: "128Mi"
@@ -82,7 +82,7 @@ spec:
                       namespace: "{{ .Values.gitops.namespace }}"
                     subscription:
                       channel: stable
-                    test: "{{ `{{ metadata.labels['keycloak.settings.registrationAllowed'] }}` }}"
+                    test: "{{ .Values.keycloak.settings.registrationAllowed }}"
               {{- end }}
   template:
     metadata:
