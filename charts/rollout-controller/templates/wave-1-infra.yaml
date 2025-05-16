@@ -47,7 +47,7 @@ spec:
                 enabled: true
                 dev:
                   enabled: true
-                  devRootToken: "{{ .Values.vault.token }}"
+                  devRootToken: "{{ .Values.settings.vault.token }}"
                 {{ if eq .Values.cluster.role "shared" }}
                 route:
                   enabled: true
@@ -76,7 +76,7 @@ spec:
                 namespace: "{{ .Values.gitops.namespace }}"
               subscription:
                 channel: stable
-              test: "{{ .Values.keycloak.settings.registrationAllowed }}"
+              test: "{{ .Values.settings.keycloak.registrationAllowed }}"
         {{- end }}
   template:
     metadata:
