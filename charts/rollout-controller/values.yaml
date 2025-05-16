@@ -72,7 +72,7 @@ gitlab:
   chartVersion: 0.2.46
   enabled: false
   runners: 
-    enabled: true
+    enabled: false
 
 external_secrets:
   enabled: false
