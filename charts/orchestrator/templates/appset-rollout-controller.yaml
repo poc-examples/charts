@@ -22,7 +22,7 @@ spec:
         helm:
           values: |
     {{ `{{ values.config | to_nice_yaml(indent=2) | trim | indent(8, True) }}` }}
-      project: system
+      project: default
       syncPolicy:
         automated:
           prune: true
