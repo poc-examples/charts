@@ -20,71 +20,71 @@ spec:
         elements:
         {{- if .Values.nfd.enabled }}
         - application: node-feature-discovery-service
-            namespace: openshift-nfd
-            wave: "-2"
-            chart: 
+          namespace: openshift-nfd
+          wave: "-2"
+          chart: 
             name: nfd
             url: https://poc-examples.github.io/charts
             version: "{{ .Values.nfd.chartVersion }}"
         {{- end }}
         {{- if .Values.nvidiagpu.enabled }}
         - application: nvidia-gpu-service
-            namespace: nvidia-gpu-operator
-            wave: "-2"
-            chart: 
+          namespace: nvidia-gpu-operator
+          wave: "-2"
+          chart: 
             name: nvidia-gpu-operator
             url: https://poc-examples.github.io/charts
             version: "{{ .Values.nvidiagpu.chartVersion }}"
         {{- end }}
         {{- if .Values.gitlab.enabled }}
         - application: cert-manager-service
-            namespace: cert-manager
-            wave: "-2"
-            chart: 
+          namespace: cert-manager
+          wave: "-2"
+          chart: 
             name: cert-manager
             url: https://poc-examples.github.io/charts
             version: "0.1.0"
         {{- end }}
         {{- if .Values.gitops.updater.enabled }}
         - application: image-updater-service
-            namespace: "{{ .Values.gitops.namespace }}"
-            wave: "-2"
-            chart: 
+          namespace: "{{ .Values.gitops.namespace }}"
+          wave: "-2"
+          chart: 
             name: image-updater
             url: https://poc-examples.github.io/charts
             version: "{{ .Values.gitops.updater.chartVersion }}"
         {{- end }}
         {{- if .Values.external_secrets.enabled }}
         - application: secrets-connectors-service
-            namespace: secrets-connectors
-            wave: "-2"
-            chart: 
+          namespace: secrets-connectors
+          wave: "-2"
+          chart: 
             name: external-secrets-connectors
             url: https://poc-examples.github.io/supporting-charts
             version: "{{ .Values.external_secrets.connectors.chartVersion }}"
-            values: |
+          values: |
             vault:
-                enabled: "{{ .Values.vault.enabled }}"
-                address: "{{ .Values.vault.address }}"
+              enabled: "{{ .Values.vault.enabled }}"
+              address: "{{ .Values.vault.address }}"
             shared:
-                enabled: "{{ .Values.shared.enabled }}"
-                address: "vault.{{ .Values.shared.domain }}"
+              enabled: "{{ .Values.shared.enabled }}"
+              address: "vault.{{ .Values.shared.domain }}"
             k8s:
-                enabled: "{{ .Values.external_secrets.k8sConnector.enabled }}"
+              enabled: "{{ .Values.external_secrets.k8sConnector.enabled }}"
             cluster_name: "{{ .Values.cluster.name }}"
         {{- end }}
         # Maybe: Needs to be adjusted for shared cluster configuration
         {{- if .Values.tekton.enabled }}
         - application: tekton-service
-            namespace: "openshift-pipelines"
-            wave: "-1"
-            chart: 
+          namespace: "openshift-pipelines"
+          wave: "-1"
+          chart: 
             name: tekton
             url: https://poc-examples.github.io/charts
             version: "{{ .Values.tekton.chartVersion }}"
-            values: |
+          values: |
             chains:
-                enabled: {{ .Values.chains.enabled }}
+              enabled: {{ .Values.chains.enabled }}
             domain: {{ .Values.cluster.domain }}
         {{- end }}
   template:
