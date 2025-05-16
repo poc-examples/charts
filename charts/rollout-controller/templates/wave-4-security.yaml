@@ -1,0 +1,106 @@
+{{- if or .Values.gatekeeper.enabled 
+          .Values.acs.enabled 
+          .Values.authorino.enabled
+          .Values.rhtas.enabled
+          .Values.keycloak.enabled 
+}}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: security
+  annotations:
+    argocd.argoproj.io/sync-wave: "-6"
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
+  generators:
+    - list:
+        elements:
+        {{- if .Values.gatekeeper.enabled }}
+          - application: gatekeeper-service
+            namespace: gatekeeper
+            chart: 
+              name: gatekeeper
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.gatekeeper.chartVersion }}"
+        {{- end }}
+        # Probably Should go on shared w/ another chart for bootstrapping workers
+        # Ill refactor when I get around to using it again
+        {{- if .Values.acs.enabled }}
+          - application: advanced-cluster-security-service
+            namespace: rhacs-operator
+            chart: 
+              name: acs
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.acs.chartVersion }}"
+        {{- end }}
+        {{- if .Values.authorino.enabled }}
+          - application: authorino-service
+            namespace: authorino
+            chart: 
+              name: authorino
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.authorino.chartVersion }}"
+        {{- end }}
+        # Probably Should go on shared w/ another chart for bootstrapping workers
+        # Ill refactor when I get around to using it again
+        {{- if .Values.rhtas.enabled }}
+          - application: rhtas-service
+            namespace: rhtas
+            chart: 
+              name: rhtas
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.rhtas.chartVersion }}"
+            values: |
+              domain: {{ .Values.cluster.domain }}
+        {{- end }}
+        {{- if .Values.keycloak.enabled }}
+          - application: keycloak-service
+            namespace: keycloak
+            chart: 
+              name: keycloak
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.keycloak.chartVersion }}"
+            values: |
+              domain: {{ .Values.cluster.domain }}
+              shared:
+                enabled: {{ .Values.shared.enabled }}
+              cluster:
+                name: {{ .Values.cluster.name }}
+                region: {{ .Values.cloud.region }}
+                type: {{ .Values.cluster.type }}
+              settings:
+                registrationAllowed: {{ .Values.settings.keycloak.registrationAllowed }}
+        {{- end }}
+  template:
+    metadata:
+      name: "{{ `{{ .application }}` }}"
+    spec:
+      destination:
+        namespace: "{{ `{{ .namespace }}` }}"
+        server: "https://kubernetes.default.svc"
+      source:
+        chart: "{{ `{{ .chart.name }}` }}"
+        targetRevision: "{{ `{{ .chart.version }}` }}"
+        repoURL: "{{ `{{ .chart.url }}` }}"
+      project: system
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+        syncOptions:
+          - CreateNamespace=true
+          - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{- .values | nindent 12 }}` }}
+        {{ `{{- end }}` }}
+{{- end }}
