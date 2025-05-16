@@ -16,7 +16,7 @@ spec:
         namespace: openshift-gitops
         server: 'https://kubernetes.default.svc'
       source:
-        chart: "rollout-controller
+        chart: "rollout-controller"
         targetRevision: "0.6.41"
         repoURL: "https://poc-examples.github.io/charts"
         helm:
