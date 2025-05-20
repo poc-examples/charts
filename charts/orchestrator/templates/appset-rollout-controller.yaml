@@ -17,7 +17,7 @@ spec:
         server: 'https://kubernetes.default.svc'
       source:
         chart: "rollout-controller"
-        targetRevision: "0.6.49"
+        targetRevision: "0.6.50
         repoURL: "https://poc-examples.github.io/charts"
         helm:
           values: |
