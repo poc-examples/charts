@@ -63,10 +63,6 @@ spec:
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
       project: capacity
-      syncPolicy:
-        automated:
-          prune: "{{ `{{ .syncPolicy.automated.prune }}` }}"
-          selfHeal: "{{ `{{ .syncPolicy.automated.selfHeal }}` }}"
         managedNamespaceMetadata:
           labels:
             argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
@@ -75,6 +71,10 @@ spec:
           - Validate=false
   templatePatch: |
     spec:
+      syncPolicy:
+        automated:
+          prune: {{ `{{ .syncPolicy.automated.prune }}` }}
+          selfHeal: {{ `{{ .syncPolicy.automated.selfHeal }}` }}
       source:
         helm:
         {{ `{{- if (index . "values") }}` }}
