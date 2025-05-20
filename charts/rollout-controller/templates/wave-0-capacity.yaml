@@ -62,11 +62,11 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
+      project: capacity
       syncPolicy:
         automated:
           prune: false
           selfHeal: false
-      project: capacity
         managedNamespaceMetadata:
           labels:
             argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
