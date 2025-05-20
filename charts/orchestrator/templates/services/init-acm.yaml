@@ -1,0 +1,68 @@
+{{ if hasKey .Values "acm" }}
+{{ if .Values.acm.enabled }}
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: services
+  annotations:
+    policy.open-cluster-management.io/description: Installs Services on Administrative Cluster
+    policy.open-cluster-management.io/categories: CM Configuration Management
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  disabled: false
+  remediationAction: enforce
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: services
+        spec:
+          remediationAction: enforce
+          severity: low
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                {{ include "servicesDefinition" . | nindent 16 }}
+---
+apiVersion: cluster.open-cluster-management.io/v1beta1
+kind: Placement
+metadata:
+  name: services-policies-placement
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  clusterSets:
+    - local-cluster
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: services-policies-placement-binding
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "-1"
+placementRef:
+  name: "services-policies-placement"
+  apiGroup: cluster.open-cluster-management.io
+  kind: Placement
+subjects:
+  - name: services-policies
+    apiGroup: policy.open-cluster-management.io
+    kind: PolicySet
+---
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: services-policies
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  description: Policy for bootstrapping cluster with intial services
+  policies:
+    - "services"
+{{- end }}
+{{ end }}

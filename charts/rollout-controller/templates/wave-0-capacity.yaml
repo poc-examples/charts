@@ -62,7 +62,7 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
-      project: system
+      project: capacity
       syncPolicy:
         automated:
           prune: "{{ `{{ .syncPolicy.automated.prune }}` }}"

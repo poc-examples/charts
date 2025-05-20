@@ -1,9 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: system
+  name: capacity
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
-  description: "Project that holds all system resources."
+  description: "Project that holds controller configurations."
   sourceRepos:
     - '*'
   destinations:
@@ -12,3 +14,6 @@ spec:
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
+  # namespaceResourceBlacklist:
+  #   - group: ''
+  #     kind: 'Secret'

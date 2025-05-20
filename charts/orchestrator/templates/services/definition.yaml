@@ -1,0 +1,34 @@
+{{- define "servicesDefinition"}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: "{{ .Values.controller.name  }}-rollout-controller"
+  namespace: "{{ .Values.gitops.namespace }}"
+spec:
+  destination:
+    namespace: "{{ .Values.gitops.namespace }}"
+    server: 'https://kubernetes.default.svc'
+  source:
+    chart: rollout-controller
+    repoURL: https://poc-examples.github.io/charts
+    targetRevision: "{{ .Values.controller.chartVersion }}"
+    helm:
+      valuesObject: {{ toJson .Values }}
+  project: controllers
+  syncPolicy:
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 30s
+    automated:
+      prune: false
+      selfHeal: true
+    managedNamespaceMetadata:
+      labels:
+        argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=false
+{{- end }}
