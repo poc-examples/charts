@@ -6770,6 +6770,20 @@ entries:
   machinesets:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-20T19:28:03.074133264Z"
+    dependencies:
+    - name: ansible-runner
+      repository: https://poc-examples.github.io/supporting-charts
+      version: 0.2.6
+    description: A Helm chart for Kubernetes
+    digest: cdf14eed61a09c19494e9db5c53ce5da8caf40e2f6dbb4d012a14df1fffef7c9
+    name: machinesets
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/machinesets-0.1.27/machinesets-0.1.27.tgz
+    version: 0.1.27
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-11T18:36:39.910124874Z"
     description: A Helm chart for Kubernetes
     digest: 441be6f50ed7e89fd6752ded0860db20405fedc2a26e24b543f432610061dc38
@@ -10295,6 +10309,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-20T19:28:03.215833105Z"
+    description: A Helm chart for Kubernetes
+    digest: 27d8ccd16513cc624d6475fd6b7fc77d96db5c93a4175d63558ca8e1b2f2f17e
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.56/rollout-controller-0.6.56.tgz
+    version: 0.6.56
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-20T17:02:07.441047373Z"
     description: A Helm chart for Kubernetes
     digest: 864d3711fb3cb77b6165981c6a8bfe7341011563c5b74bfd0ff59bbf43496fc2
@@ -13781,4 +13805,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-20T17:02:07.443377903Z"
+generated: "2025-05-20T19:28:03.21807799Z"
