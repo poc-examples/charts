@@ -1,0 +1,84 @@
+{{- if or 
+  (and .Values.acs.enabled .Values.acs.enableCapacity)
+  (and .Values.acm.enabled .Values.acm.enableCapacity)
+  (and .Values.tekton.enabled .Values.tekton.enableCapacity)
+  (and .Values.devspaces.enabled .Values.devspaces.enableCapacity)
+  (and .Values.quay.enabled .Values.quay.enableCapacity)
+  (and .Values.rhoai.enabled .Values.rhoai.enableCapacity)
+}}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: capacity
+  annotations:
+    argocd.argoproj.io/sync-wave: "-10"
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - "missingkey=error"
+  generators:
+    - list:
+        elements:
+        {{- if (and .Values.acs.enabled .Values.acs.enableCapacity) }}
+          - application: acs-capacity
+            namespace: acs-capacity
+            chart: 
+              name: machinesets-noexist
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.machinesets.chartVersion }}"
+            syncPolicy:
+              automated:
+                prune: true
+                selfHeal: true
+            values: |
+              cloud:
+                type: "{{ .Values.cluster.type }}"
+                {{- if (eq .Values.cluster.type "aro") }}
+                location: "{{ .Values.cluster.location }}"
+                {{- end }}
+                {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
+                region: "{{ .Values.cluster.region }}"
+                {{- end }}
+              machineset: 
+                name: acs-capacity
+                {{- if (eq .Values.cluster.type "aro") }}
+                machine_type: Standard_D8s_v3
+                {{- end }}
+                {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
+                machine_type: Standard_D8s_v3
+                {{- end }}
+                count: 1
+                label:
+                  platform.poc-examples.com/workload-role: acs
+        {{- end }}
+  template:
+    metadata:
+      name: "{{ `{{ .application }}` }}"
+    spec:
+      destination:
+        namespace: "{{ `{{ .namespace }}` }}"
+        server: "https://kubernetes.default.svc"
+      source:
+        chart: "{{ `{{ .chart.name }}` }}"
+        targetRevision: "{{ `{{ .chart.version }}` }}"
+        repoURL: "{{ `{{ .chart.url }}` }}"
+      project: system
+      syncPolicy:
+        automated:
+          prune: "{{ `{{ .syncPolicy.automated.prune }}` }}"
+          selfHeal: "{{ `{{ .syncPolicy.automated.selfHeal }}` }}"
+        managedNamespaceMetadata:
+          labels:
+            argocd.argoproj.io/managed-by: "{{ .Values.gitops.namespace }}"
+        syncOptions:
+          - CreateNamespace=true
+          - Validate=false
+  templatePatch: |
+    spec:
+      source:
+        helm:
+        {{ `{{- if (index . "values") }}` }}
+          values: |
+            {{ `{{- .values | nindent 12 }}` }}
+        {{ `{{- end }}` }}
+{{- end }}

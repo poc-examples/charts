@@ -3,25 +3,20 @@ domain: openshift.io
 clusters: []
 
 machinesets:
-  chartVersion: 0.1.19
-  enabled: false
-  helmValues:
-    machineset: 
-      enabled: false
-    machinesets:
-      - name: acs
-        machine_type: Standard_D8s_v3
- 
+  chartVersion: 0.1.26
+
 registry:
   enabled: false
 
 acs:
   chartVersion: 0.1.21
   enabled: false
+  enableCapacity: true
 
 acm:
   chartVersion: 0.1.5
   enabled: false
+  enableCapacity: true
 
 keycloak:
   chartVersion: 0.2.7
@@ -42,6 +37,7 @@ gitops:
 tekton:
   chartVersion: 0.1.73
   enabled: false
+  enableCapacity: false
 
 chains:
   enabled: false
@@ -61,6 +57,7 @@ devhub:
 devspaces:
   chartVersion: 0.1.26
   enabled: false
+  enableCapacity: false
 
 rhtas:
   chartVersion: 0.1.34
@@ -123,6 +120,7 @@ servicemesh:
 quay:
   enabled: false
   chartVersion: 0.1.13
+  enableCapacity: true
 
 quay_bridge:
   enabled: false
@@ -131,6 +129,7 @@ quay_bridge:
 rhoai:
   enabled: false
   chartVersion: 0.1.5
+  enableCapacity: true
 
 amq:
   enabled: false
