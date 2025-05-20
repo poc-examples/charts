@@ -62,6 +62,10 @@ spec:
         chart: "{{ `{{ .chart.name }}` }}"
         targetRevision: "{{ `{{ .chart.version }}` }}"
         repoURL: "{{ `{{ .chart.url }}` }}"
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: false
       project: capacity
         managedNamespaceMetadata:
           labels:
