@@ -19,9 +19,9 @@ spec:
   generators:
     - list:
         elements:
-        {{- if (and .Values.acs.enabled .Values.acs.enableCapacity) }}
-          - application: acs-capacity
-            namespace: acs-capacity
+        {{- if (and .Values.devspaces.enabled .Values.devspaces.enableCapacity) }}
+          - application: devspaces-capacity
+            namespace: devspaces-capacity
             chart: 
               name: machinesets-noexist
               url: https://poc-examples.github.io/charts
@@ -40,7 +40,7 @@ spec:
                 region: "{{ .Values.cluster.region }}"
                 {{- end }}
               machineset: 
-                name: acs-capacity
+                name: devspaces-capacity
                 {{- if (eq .Values.cluster.type "aro") }}
                 machine_type: Standard_D8s_v3
                 {{- end }}
@@ -49,7 +49,7 @@ spec:
                 {{- end }}
                 count: 1
                 label:
-                  platform.poc-examples.com/workload-role: acs
+                  platform.poc-examples.com/workload-role: devspaces
         {{- end }}
   template:
     metadata:
