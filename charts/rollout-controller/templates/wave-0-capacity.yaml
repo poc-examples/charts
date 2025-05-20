@@ -36,26 +36,26 @@ spec:
                   name: general-capacity
                   namespace: devspaces-capacity
                   envFrom: []
-              additionalVars:
-                cloud:
-                  type: "{{ .Values.cluster.type }}"
-                  {{- if (eq .Values.cluster.type "aro") }}
-                  location: "{{ .Values.cluster.location }}"
-                  {{- end }}
-                  {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
-                  region: "{{ .Values.cluster.region }}"
-                  {{- end }}
-                machineset: 
-                  name: devspaces-capacitycapacity
-                  {{- if (eq .Values.cluster.type "aro") }}
-                  machine_type: Standard_D8s_v3
-                  {{- end }}
-                  {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
-                  machine_type: Standard_D8s_v3
-                  {{- end }}
-                  count: 1
-                  label:
-                    platform.poc-examples.com/workload-role: devspaces
+                additionalVars:
+                  cloud:
+                    type: "{{ .Values.cluster.type }}"
+                    {{- if (eq .Values.cluster.type "aro") }}
+                    location: "{{ .Values.cluster.location }}"
+                    {{- end }}
+                    {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
+                    region: "{{ .Values.cluster.region }}"
+                    {{- end }}
+                  machineset: 
+                    name: devspaces-capacitycapacity
+                    {{- if (eq .Values.cluster.type "aro") }}
+                    machine_type: Standard_D8s_v3
+                    {{- end }}
+                    {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
+                    machine_type: Standard_D8s_v3
+                    {{- end }}
+                    count: 1
+                    label:
+                      platform.poc-examples.com/workload-role: devspaces
         {{- end }}
   template:
     metadata:
