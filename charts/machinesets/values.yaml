@@ -1,5 +1,46 @@
-machineset:
-  enabled: true
-machinesets:
-  - name: acs
-    machine_type: t3.2xlarge
+ansible-runner:
+  scope: ClusterRole
+  runner:
+    name: ansible-job
+    namespace: default
+    annotations:
+      argocd.argoproj.io/sync-wave: "0"
+    envFrom: []
+      # - secretRef:
+      #     name: keycloak-client-secret-openshift
+  requirements:
+    collections:
+      - name: bootstrap.workshop
+        source: https://github.com/poc-examples/ansible-collections.git#/bootstrap/post_operator_configuration
+        type: git
+        version: main
+        roles:
+          - name: machinesets
+  additionalVars: []
+  rules:
+    - apiGroups:
+        - ""
+      resources:
+        - "secrets"
+      verbs:
+        - "get" 
+        - "list"
+        - "create"
+        - "patch"
+    - apiGroups:
+        - "config.openshift.io"
+      resources:
+        - "infrastructures"
+      verbs:
+        - "get"
+        - "list"
+    - apiGroups:
+        - "machine.openshift.io"
+      resources:
+        - "machinesets"
+      verbs: 
+        - "get"
+        - "list"
+        - "watch"
+        - "create"
+        - "patch"
