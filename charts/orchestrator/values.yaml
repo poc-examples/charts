@@ -3,7 +3,7 @@ domain: openshift.api
 ## Current Default Rollout-Controller
 controller:
   name: infrastructure
-  chartVersion: 0.6.60
+  chartVersion: 0.6.61
 
 # GitOps
 gitops:
@@ -90,5 +90,5 @@ devhub:
   enabled: false
 
 devspaces:
-  chartVersion: 0.1.26
+  chartVersion: 0.1.27
   enabled: false

@@ -59,6 +59,10 @@ spec:
               version: "{{ .Values.devspaces.chartVersion }}"
             values: |
               domain: "{{ .Values.cluster.domain }}"
+              {{- if .Values.devspaces.enableCapacity }}
+              capacity:
+                enabled: true
+              {{- end }}
         {{- end }}
         {{- if .Values.rhoai.enabled }}
           - application: rhoai-service

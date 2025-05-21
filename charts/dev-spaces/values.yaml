@@ -1,1 +1,4 @@
 domain: api.domain.com
+
+capacity: 
+  enabled: false

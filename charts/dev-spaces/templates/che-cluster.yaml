@@ -38,8 +38,10 @@ spec:
       disableInternalRegistry: true
       openVSXURL: https://open-vsx.org
   devEnvironments:
+    {{- if .Values.capacity.enabled  }}
     nodeSelector:
-      type: lab
+      platform.poc-examples.com/workload-role: "devspaces-capacity"
+    {{- end }}
     defaultComponents:
       - name: dev-tools
         container:
