@@ -15,20 +15,6 @@ spec:
   generators:
     - list:
         elements:
-        {{- if .Values.machinesets.enabled }}
-          - application: machine-sets-manager
-            namespace: managed-machine-sets
-            chart: 
-              name: machinesets
-              url: https://poc-examples.github.io/charts
-              version: "{{ .Values.machinesets.chartVersion }}"
-            values: |
-              machineset: 
-                enabled: false
-              machinesets:
-                - name: acs
-                  machine_type: Standard_D8s_v3
-        {{- end }}
         {{- if .Values.vault.enabled }}
           - application: vault-service
             namespace: vault-server
