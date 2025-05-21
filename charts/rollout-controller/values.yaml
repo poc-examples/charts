@@ -134,3 +134,4 @@ rhoai:
 amq:
   enabled: false
   chartVersion: 0.0.2
+  enableCapacity: false
