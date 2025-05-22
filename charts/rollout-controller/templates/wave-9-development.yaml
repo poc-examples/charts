@@ -3,6 +3,10 @@
           .Values.devspaces.enabled 
           .Values.rhoai.enabled 
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -52,7 +56,7 @@ spec:
                 {{- toYaml .Values.clusters | trim | nindent 16 }}
         {{- end }}
         {{- if .Values.devspaces.enabled }}
-          - application: "{{ if eq .Values.controller.name 'workshop' }}workshop-{{ end }}devspaces-service"
+          - application: "{{ $prefix }}devspaces-service"
             namespace: devspaces
             chart: 
               name: dev-spaces
