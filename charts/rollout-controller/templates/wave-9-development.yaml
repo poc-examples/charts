@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: "{{ .Values.controller.name }}-developer-services"
+  name: developer-services
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
@@ -52,7 +52,7 @@ spec:
                 {{- toYaml .Values.clusters | trim | nindent 16 }}
         {{- end }}
         {{- if .Values.devspaces.enabled }}
-          - application: devspaces-service
+          - application: "{{ if eq .Values.controller.name 'workshop' }}workshop-{{ end }}devspaces-service"
             namespace: devspaces
             chart: 
               name: dev-spaces
