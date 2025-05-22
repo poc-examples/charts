@@ -24,7 +24,7 @@ spec:
           - application: sonarqube-service
             namespace: sonarqube
             chart: 
-              name: sonarqube
+              name: "{{ $prefix }}sonarqube"
               url: https://poc-examples.github.io/charts
               version: "{{ .Values.sonarqube.chartVersion }}"
             values: |
@@ -70,7 +70,7 @@ spec:
               {{- end }}
         {{- end }}
         {{- if .Values.rhoai.enabled }}
-          - application: rhoai-service
+          - application: "{{ $prefix }}rhoai-service"
             namespace: redhat-ods-operator
             chart: 
               name: rhoai

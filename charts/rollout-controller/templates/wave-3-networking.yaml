@@ -2,6 +2,10 @@
           .Values.servicemesh.enabled 
           .Values.amq.enabled 
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -16,7 +20,7 @@ spec:
     - list:
         elements:
         {{- if .Values.serverless.enabled }}
-          - application: serverless-service
+          - application: "{{ $prefix }}serverless-service"
             namespace: openshift-serverless
             chart: 
               name: serverless
@@ -24,7 +28,7 @@ spec:
               version: "{{ .Values.serverless.chartVersion }}"
         {{- end }}
         {{- if .Values.servicemesh.enabled }}
-          - application: servicemesh-service
+          - application: "{{ $prefix }}servicemesh-service"
             namespace: openshift-servicemesh
             chart: 
               name: servicemesh
@@ -32,7 +36,7 @@ spec:
               version: "{{ .Values.servicemesh.chartVersion }}"
         {{- end }}
         {{- if .Values.amq.enabled }}
-          - application: amq-streams-service
+          - application: "{{ $prefix }}amq-streams-service"
             namespace: kafka-streams
             chart: 
               name: amq

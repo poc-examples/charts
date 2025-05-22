@@ -2,6 +2,10 @@
           .Values.kiali.enabled 
           .Values.tracing.enabled
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -16,7 +20,7 @@ spec:
     - list:
         elements:
         {{- if .Values.opentelemetry.enabled }}
-          - application: opentelemetry-service
+          - application: "{{ $prefix }}opentelemetry-service"
             namespace: opentelemetry
             chart: 
               name: opentelemetry
@@ -26,7 +30,7 @@ spec:
               domain: "{{ .Values.cluster.domain  }}"
         {{- end }}
         {{- if .Values.kiali.enabled }}
-          - application: kiali-service
+          - application: "{{ $prefix }}kiali-service"
             namespace: kiali-ossm
             chart: 
               name: kiali
@@ -34,7 +38,7 @@ spec:
               version: "{{ .Values.kiali.chartVersion }}"
         {{- end }}
         {{- if .Values.tracing.enabled }}
-          - application: distributed-tracing-service
+          - application: "{{ $prefix }}distributed-tracing-service"
             namespace: openshift-distributed-tracing
             chart: 
               name: distributed-tracing

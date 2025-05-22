@@ -7,6 +7,10 @@
   (and .Values.rhoai.enabled .Values.rhoai.enableCapacity)
   (and .Values.amq.enabled .Values.amq.enableCapacity)
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -49,7 +53,7 @@ spec:
                     count: 1
         {{- end }}
         {{- if (and .Values.devspaces.enabled .Values.devspaces.enableCapacity) }}
-          - application: devspaces-capacity
+          - application: "{{ $prefix }}devspaces-capacity"
             namespace: devspaces-capacity
             chart: 
               name: machinesets
@@ -77,7 +81,7 @@ spec:
                     count: 1
         {{- end }}
         {{- if (and .Values.quay.enabled .Values.quay.enableCapacity) }}
-          - application: quay-capacity
+          - application: "{{ $prefix }}quay-capacity"
             namespace: quay-capacity
             chart: 
               name: machinesets
@@ -105,7 +109,7 @@ spec:
                     count: 1
         {{- end }}
         {{- if (and .Values.rhoai.enabled .Values.rhoai.enableCapacity) }}
-          - application: rhoai-capacity
+          - application: "{{ $prefix }}rhoai-capacity"
             namespace: rhoai-capacity
             chart: 
               name: machinesets
@@ -133,7 +137,7 @@ spec:
                     count: 1
         {{- end }}
         {{- if (and .Values.amq.enabled .Values.amq.enableCapacity) }}
-          - application: kakfa-capacity
+          - application: "{{ $prefix }}kakfa-capacity"
             namespace: kakfa-capacity
             chart: 
               name: machinesets

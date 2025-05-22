@@ -5,6 +5,10 @@
           .Values.external_secrets.enabled 
           .Values.tekton.enabled 
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -19,7 +23,7 @@ spec:
     - list:
         elements:
         {{- if .Values.nfd.enabled }}
-        - application: node-feature-discovery-service
+        - application: "{{ $prefix }}node-feature-discovery-service"
           namespace: openshift-nfd
           wave: "-2"
           chart: 
@@ -28,7 +32,7 @@ spec:
             version: "{{ .Values.nfd.chartVersion }}"
         {{- end }}
         {{- if .Values.nvidiagpu.enabled }}
-        - application: nvidia-gpu-service
+        - application: "{{ $prefix }}nvidia-gpu-service"
           namespace: nvidia-gpu-operator
           wave: "-2"
           chart: 
@@ -75,7 +79,7 @@ spec:
         {{- end }}
         # Maybe: Needs to be adjusted for shared cluster configuration
         {{- if .Values.tekton.enabled }}
-        - application: tekton-service
+        - application: "{{ $prefix }}tekton-service"
           namespace: "openshift-pipelines"
           wave: "-1"
           chart: 

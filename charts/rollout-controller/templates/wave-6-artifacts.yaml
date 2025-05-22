@@ -2,6 +2,10 @@
           .Values.quay.enabled
           (and .Values.gitlab.enabled (not .Values.shared.enabled)) 
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -16,7 +20,7 @@ spec:
     - list:
         elements:
         {{- if .Values.minio.enabled }}
-          - application: minio-service
+          - application: "{{ $prefix }}minio-service"
             namespace: minio-operator
             wave: "-2"
             chart:
@@ -25,7 +29,7 @@ spec:
               version: "{{ .Values.minio.chartVersion }}"
         {{- end }}
         {{- if .Values.quay.enabled }}
-          - application: quay-service
+          - application: "{{ $prefix }}quay-service"
             namespace: "quay-registry"
             wave: "-2"
             chart: 

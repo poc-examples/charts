@@ -3,6 +3,10 @@
           (and .Values.gitlab.enabled .Values.shared.enabled)
           (and .Values.gitlab.runners.enabled (not .Values.shared.enabled))
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -24,7 +28,7 @@ spec:
               elements:
               # Need to refactor for multi-cluster configurations
               {{- if .Values.quay_bridge.enabled }}
-                - application: quay-bridge-service
+                - application: "{{ $prefix }}quay-bridge-service"
                   namespace: "quay-registry"
                   wave: "-2"
                   chart: 

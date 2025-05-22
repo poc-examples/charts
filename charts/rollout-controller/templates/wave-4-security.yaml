@@ -4,6 +4,10 @@
           .Values.rhtas.enabled
           .Values.keycloak.enabled 
 }}
+{{- $prefix := "" }}
+{{- if eq .Values.controller.name "workshop" }}
+  {{- $prefix = "workshop-" }}
+{{- end }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -18,7 +22,7 @@ spec:
     - list:
         elements:
         {{- if .Values.gatekeeper.enabled }}
-          - application: gatekeeper-service
+          - application: "{{ $prefix }}gatekeeper-service"
             namespace: gatekeeper
             chart: 
               name: gatekeeper
@@ -28,7 +32,7 @@ spec:
         # Probably Should go on shared w/ another chart for bootstrapping workers
         # Ill refactor when I get around to using it again
         {{- if .Values.acs.enabled }}
-          - application: advanced-cluster-security-service
+          - application: "{{ $prefix }}advanced-cluster-security-service"
             namespace: rhacs-operator
             chart: 
               name: acs
@@ -36,7 +40,7 @@ spec:
               version: "{{ .Values.acs.chartVersion }}"
         {{- end }}
         {{- if .Values.authorino.enabled }}
-          - application: authorino-service
+          - application: "{{ $prefix }}authorino-service"
             namespace: authorino
             chart: 
               name: authorino
@@ -46,7 +50,7 @@ spec:
         # Probably Should go on shared w/ another chart for bootstrapping workers
         # Ill refactor when I get around to using it again
         {{- if .Values.rhtas.enabled }}
-          - application: rhtas-service
+          - application: "{{ $prefix }}rhtas-service"
             namespace: rhtas
             chart: 
               name: rhtas
