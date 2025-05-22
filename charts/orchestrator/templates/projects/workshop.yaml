@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: workshop
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  description: "Project that holds workshop configurations."
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
