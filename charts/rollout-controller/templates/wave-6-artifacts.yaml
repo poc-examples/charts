@@ -38,7 +38,11 @@ spec:
               version: "{{ .Values.quay.chartVersion }}"
             values: |
               domain: "{{ .Values.cluster.domain }}"
-              region: "{{ .Values.cloud.region }}"
+              ###########################################################
+              ## DO Not Use Region Refactor to Minio to reduce reliance 
+              ## reduce reliance  on cloud
+              ###########################################################
+              # region: "{{ .Values.cloud.region }}"
         {{- end }}
         {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) }}
           - application: gitlab-service
