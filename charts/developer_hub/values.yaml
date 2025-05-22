@@ -17,5 +17,6 @@ postgres:
 
 catalogs:
   - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
+  - https://github.com/poc-examples/software-templates/blob/main/workshop/templates.yaml
 
 clusters: []
