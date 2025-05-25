@@ -99,7 +99,7 @@ spec:
             chart: 
               name: ansible-runner
               url: https://poc-examples.github.io/supporting-charts
-              version: "0.2.1"
+              version: "0.2.7"
             values: |
               runner:
                 name: gitlab-configure
@@ -109,6 +109,8 @@ spec:
               scope: ClusterRole
               additionalVars:
                 domain: "{{ .Values.cluster.domain }}"
+              additionalPackages:
+                - python-gitlab
               rules:
                 - apiGroups:
                     - "external-secrets.io"
