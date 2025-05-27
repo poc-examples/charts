@@ -14120,6 +14120,16 @@ entries:
   user-sync:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-05-27T04:06:52.16368336Z"
+    description: A Helm chart that installs Node Feature Discovery in OpenShift
+    digest: fdf7a0395cb2269658ff762bf3d72ebecc445916942600a52ff1133e68ece6ea
+    name: user-sync
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/user-sync-0.1.2/user-sync-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-27T03:57:45.450852292Z"
     description: A Helm chart that installs Node Feature Discovery in OpenShift
     digest: 0ffe108976d5f0da3b11ca601fd4a9821b17db3f275c15a506cb6f0ed9a038be
@@ -14170,4 +14180,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-27T03:57:45.452560643Z"
+generated: "2025-05-27T04:06:52.166539461Z"
