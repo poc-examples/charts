@@ -9,7 +9,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: networking
+  name: {{ $prefix }}networking
   annotations:
     argocd.argoproj.io/sync-wave: "-7"
 spec:

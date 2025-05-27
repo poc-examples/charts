@@ -9,7 +9,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: artifacts
+  name: {{ $prefix }}artifacts
   annotations:
     argocd.argoproj.io/sync-wave: "-4"
 spec:
