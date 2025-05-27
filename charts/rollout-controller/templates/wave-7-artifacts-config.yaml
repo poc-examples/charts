@@ -50,6 +50,17 @@ spec:
                   values: |
                     domain: "{{ .Values.shared.domain }}"
               {{- end }}
+              {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) .Values.keycloak.enabled }}
+                - application: user-sync-service
+                  namespace: "user-sync"
+                  wave: "-2"
+                  chart: 
+                    name: user-sync
+                    url: https://poc-examples.github.io/charts
+                    version: "0.1.4"
+                  values: |
+                    domain: "{{ .Values.shared.domain }}"
+              {{- end }}
               {{- if and .Values.gitlab.runners.enabled (not .Values.shared.enabled) }}
                 - application: gitlab-runner-service
                   namespace: "{{ .Values.gitlab.namespace }}"
