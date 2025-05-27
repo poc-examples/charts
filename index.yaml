@@ -14117,6 +14117,17 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/trustification-0.1.0/trustification-0.1.0.tgz
     version: 0.1.0
+  user-sync:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-27T03:55:04.746675238Z"
+    description: A Helm chart that installs Node Feature Discovery in OpenShift
+    digest: 6539e651f649368207f4212a2b2fd39d99ad5afb02ccc446afa6db67173cc442
+    name: user-sync
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/user-sync-0.1.0/user-sync-0.1.0.tgz
+    version: 0.1.0
   vault:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -14149,4 +14160,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-05-25T06:09:31.525878032Z"
+generated: "2025-05-27T03:55:04.748578259Z"
