@@ -54,7 +54,7 @@ spec:
               url: https://poc-examples.github.io/charts
               version: "0.1.4"
             values: |
-              domain: "{{ .Values.shared.domain }}"
+              domain: "{{ .Values.cluster.domain }}"
         {{- end }}
         {{- if and .Values.gitlab.runners.enabled (not .Values.shared.enabled) }}
           - application: gitlab-runner-service
