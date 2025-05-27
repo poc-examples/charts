@@ -2,6 +2,7 @@
           .Values.gitlab.runners.enabled 
           (and .Values.gitlab.enabled .Values.shared.enabled)
           (and .Values.gitlab.runners.enabled (not .Values.shared.enabled))
+          (and .Values.gitlab.enabled (not .Values.shared.enabled) .Values.keycloak.enabled)
 }}
 {{- $prefix := "" }}
 {{- if eq .Values.controller.name "workshop" }}
