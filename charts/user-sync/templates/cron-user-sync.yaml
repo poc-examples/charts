@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "user-sync-cronjob"
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: "user-sync-job"
+              image: "docker.io/cengleby86/user-sync:latest"
+              envFrom:
+                - secretRef:
+                    name: keycloak-credentials
+                - secretRef:
+                    name: gitlab-credentials
+              env:
+                - name: DOMAIN  
+                  value: "{{ .Values.domain }}"
+                - name: GITLAB_USERNAME
+                  value: "root"
+          restartPolicy: Never
