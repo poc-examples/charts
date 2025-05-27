@@ -19,79 +19,73 @@ spec:
   goTemplateOptions:
     - "missingkey=error"
   generators:
-    - matrix:
-        generators:
-          - clusters:
-              selector:
-                matchLabels:
-                  cluster: default
-          - list:
-              elements:
-              # Need to refactor for multi-cluster configurations
-              {{- if .Values.quay_bridge.enabled }}
-                - application: "{{ $prefix }}quay-bridge-service"
-                  namespace: "quay-registry"
-                  wave: "-2"
-                  chart: 
-                    name: quay-bridge
-                    url: https://poc-examples.github.io/charts
-                    version: "{{ .Values.quay_bridge.chartVersion }}"
-                  values: |
-                    domain: "{{ .Values.cluster.domain }}"
-                    namespace: "quay-registry"
-              {{- end }}
-              {{- if and .Values.gitlab.enabled .Values.shared.enabled }}
-                - application: gitlab-repo-connector
-                  namespace: "openshift-gitops"
-                  wave: "-2"
-                  chart: 
-                    name: gitlab-repo-credentials
-                    url: https://poc-examples.github.io/supporting-charts
-                    version: "0.0.1"
-                  values: |
-                    domain: "{{ .Values.shared.domain }}"
-              {{- end }}
-              {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) .Values.keycloak.enabled }}
-                - application: user-sync-service
-                  namespace: "user-sync"
-                  wave: "-2"
-                  chart: 
-                    name: user-sync
-                    url: https://poc-examples.github.io/charts
-                    version: "0.1.4"
-                  values: |
-                    domain: "{{ .Values.shared.domain }}"
-              {{- end }}
-              {{- if and .Values.gitlab.runners.enabled (not .Values.shared.enabled) }}
-                - application: gitlab-runner-service
-                  namespace: "{{ .Values.gitlab.namespace }}"
-                  wave: "-2"
-                  chart: 
-                    name: gitlab-runner
-                    url: https://charts.gitlab.io
-                    version: "0.73.1"
-                  values: |
-                    gitlabUrl: "https://gitlab.{{ .Values.cluster.domain }}"
-                    serviceAccount:
-                      create: true
-                    rbac:
-                      create: true
-                    runners:
-                      name: "default"
-                      executor: kubernetes
-                      secret: runner-secret
-                      config: |
-                        [[runners]]
-                          [runners.kubernetes]
-                            namespace = "gitlab-system"
-                            image = "ubuntu:22.04"
-                            privileged = true
-                            service_account = "gitlab-runner-service"
-                          [[runners.kubernetes.volumes.secret]]
-                            name = "test-org-test-quay-pull-secret"
-                            mount_path = "/run/secret"
-                            read_only = true
-              {{- end }}
+    - list:
+        elements:
+        # Need to refactor for multi-cluster configurations
+        {{- if .Values.quay_bridge.enabled }}
+          - application: "{{ $prefix }}quay-bridge-service"
+            namespace: "quay-registry"
+            wave: "-2"
+            chart: 
+              name: quay-bridge
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.quay_bridge.chartVersion }}"
+            values: |
+              domain: "{{ .Values.cluster.domain }}"
+              namespace: "quay-registry"
+        {{- end }}
+        {{- if and .Values.gitlab.enabled .Values.shared.enabled }}
+          - application: gitlab-repo-connector
+            namespace: "openshift-gitops"
+            wave: "-2"
+            chart: 
+              name: gitlab-repo-credentials
+              url: https://poc-examples.github.io/supporting-charts
+              version: "0.0.1"
+            values: |
+              domain: "{{ .Values.shared.domain }}"
+        {{- end }}
+        {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) .Values.keycloak.enabled }}
+          - application: user-sync-service
+            namespace: "user-sync"
+            wave: "-2"
+            chart: 
+              name: user-sync
+              url: https://poc-examples.github.io/charts
+              version: "0.1.4"
+            values: |
+              domain: "{{ .Values.shared.domain }}"
+        {{- end }}
+        {{- if and .Values.gitlab.runners.enabled (not .Values.shared.enabled) }}
+          - application: gitlab-runner-service
+            namespace: "{{ .Values.gitlab.namespace }}"
+            wave: "-2"
+            chart: 
+              name: gitlab-runner
+              url: https://charts.gitlab.io
+              version: "0.73.1"
+            values: |
+              gitlabUrl: "https://gitlab.{{ .Values.cluster.domain }}"
+              serviceAccount:
+                create: true
+              rbac:
+                create: true
+              runners:
+                name: "default"
+                executor: kubernetes
+                secret: runner-secret
+                config: |
+                  [[runners]]
+                    [runners.kubernetes]
+                      namespace = "gitlab-system"
+                      image = "ubuntu:22.04"
+                      privileged = true
+                      service_account = "gitlab-runner-service"
+                    [[runners.kubernetes.volumes.secret]]
+                      name = "test-org-test-quay-pull-secret"
+                      mount_path = "/run/secret"
+                      read_only = true
+        {{- end }}
   template:
     metadata:
       name: "{{ `{{ .application }}` }}"
