@@ -1,6 +1,6 @@
 {{- if or .Values.nfd.enabled 
           .Values.nvidiagpu.enabled 
-          .Values.gitlab.enabled 
+          (and .Values.gitlab.enabled (not .Values.shared.enabled))
           .Values.gitops.updater.enabled 
           .Values.external_secrets.enabled 
           .Values.tekton.enabled 
@@ -40,7 +40,7 @@ spec:
             url: https://poc-examples.github.io/charts
             version: "{{ .Values.nvidiagpu.chartVersion }}"
         {{- end }}
-        {{- if .Values.gitlab.enabled }}
+        {{- if (and .Values.gitlab.enabled (not .Values.shared.enabled)) }}
         - application: cert-manager-service
           namespace: cert-manager
           wave: "-2"

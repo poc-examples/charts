@@ -1,5 +1,5 @@
 {{- if or .Values.sonarqube.enabled 
-          .Values.devhub.enabled 
+          (and .Values.devhub.enabled (not .Values.shared.enabled))
           .Values.devspaces.enabled 
           .Values.rhoai.enabled 
 }}
@@ -38,7 +38,7 @@ spec:
               route:
                 enabled: "true"
         {{- end }}
-        {{- if .Values.devhub.enabled }}
+        {{- if and .Values.devhub.enabled (not .Values.shared.enabled) }}
           - application: developer-hub-service
             namespace: backstage
             chart: 

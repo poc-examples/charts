@@ -3,7 +3,7 @@ domain: openshift.api
 ## Current Default Rollout-Controller
 controller:
   name: infrastructure
-  chartVersion: 0.6.76
+  chartVersion: 0.6.77
 
 # GitOps
 gitops:
@@ -20,7 +20,7 @@ external_secrets:
   chartVersion: 0.1.30
   namespace: external-secrets
   connectors:
-    chartVersion: 0.1.6
+    chartVersion: 0.1.7
   k8sConnector:
     enabled: true
 

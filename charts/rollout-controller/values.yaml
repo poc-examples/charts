@@ -76,7 +76,7 @@ external_secrets:
   chartVersion: 0.1.31
   namespace: external-secrets
   connectors:
-    chartVersion: 0.1.6
+    chartVersion: 0.1.7
   k8sConnector:
     enabled: false
 
