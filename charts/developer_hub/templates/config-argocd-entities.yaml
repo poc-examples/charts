@@ -18,11 +18,9 @@ data:
         domain: "{{ .Values.host }}"
       instances:
   {{- range .Values.clusters }}
-    {{- if eq .role "workload" }}
         - name: {{ .stage }}
           domain: {{ .domain }}
           cluster: {{ .name }}
           role: {{ .role }}
           type: {{ .type }}
-    {{- end }}
   {{- end }}
