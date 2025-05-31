@@ -72,13 +72,8 @@ spec:
                 additionalVars:
                   machineset: 
                     name: devspaces-capacity
-                    {{- if (eq .Values.cluster.type "aro") }}
-                    type: Standard_D8s_v3
-                    {{- end }}
-                    {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
-                    type: Standard_D8s_v3
-                    {{- end }}
-                    count: 1
+                    type: {{ .Values.devspaces.sku }}
+                    count: {{ .Values.devspaces.count }}
         {{- end }}
         {{- if (and .Values.quay.enabled .Values.quay.enableCapacity) }}
           - application: "{{ $prefix }}quay-capacity"
@@ -156,13 +151,8 @@ spec:
                 additionalVars:
                   machineset: 
                     name: kakfa-capacity
-                    {{- if (eq .Values.cluster.type "aro") }}
-                    type: Standard_D8s_v3
-                    {{- end }}
-                    {{- if or (eq .Values.cluster.type "rosa") (eq .Values.cluster.type "hcp") }}
-                    type: Standard_D8s_v3
-                    {{- end }}
-                    count: 1
+                    type: {{ .Values.amq.sku }}
+                    count: {{ .Values.amq.count }}
         {{- end }}
   template:
     metadata:
