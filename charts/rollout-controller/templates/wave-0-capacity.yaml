@@ -38,7 +38,7 @@ spec:
             values: |
               ansible-runner:
                 runner:
-                  name: general-capacity
+                  name: acs-general-capacity
                   namespace: acs-capacity
                   envFrom: []
                 additionalVars:
@@ -66,7 +66,7 @@ spec:
             values: |
               ansible-runner:
                 runner:
-                  name: general-capacity
+                  name: devspaces-general-capacity
                   namespace: devspaces-capacity
                   envFrom: []
                 additionalVars:
@@ -89,7 +89,7 @@ spec:
             values: |
               ansible-runner:
                 runner:
-                  name: general-capacity
+                  name: quay-general-capacity
                   namespace: quay-capacity
                   envFrom: []
                 additionalVars:
@@ -117,7 +117,7 @@ spec:
             values: |
               ansible-runner:
                 runner:
-                  name: general-capacity
+                  name: rhoai-general-capacity
                   namespace: rhoai-capacity
                   envFrom: []
                 additionalVars:
@@ -145,7 +145,7 @@ spec:
             values: |
               ansible-runner:
                 runner:
-                  name: general-capacity
+                  name: kafka-general-capacity
                   namespace: kakfa-capacity
                   envFrom: []
                 additionalVars:
