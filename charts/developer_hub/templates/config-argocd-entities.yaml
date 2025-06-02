@@ -16,6 +16,12 @@ data:
       owner: cluster-admins
       services:
         domain: "{{ .Values.host }}"
+      devspaces:
+  {{- range .Values.clusters }}
+    {{- if eq .stage "dev" }}
+        domain: "{{ .domain }}"
+    {{- end }}
+  {{- end }}
       instances:
   {{- range .Values.clusters }}
         - name: {{ .stage }}
