@@ -86,7 +86,7 @@ rhoai:
 
 # Developer Experience
 devhub:
-  chartVersion: 0.3.18
+  chartVersion: 0.3.19
   enabled: false
 
 devspaces:
