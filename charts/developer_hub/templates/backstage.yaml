@@ -5,8 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  rawRuntimeConfig:
-    backstageConfig: backstage-config
+  # rawRuntimeConfig:
+  #   backstageConfig: backstage-config
   application:
     dynamicPluginsConfigMapName: dynamic-plugins
     appConfig:
