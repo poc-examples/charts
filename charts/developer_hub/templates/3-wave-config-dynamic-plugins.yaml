@@ -37,7 +37,7 @@ data:
       ## TEKTON PLUGIN CONFIGURATION
       ##############################
       - disabled: false
-        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+        package: ./dynamic-plugins/dist/backstage-community-plugin-tekton
         pluginConfig:
           dynamicPlugins:
             frontend:
