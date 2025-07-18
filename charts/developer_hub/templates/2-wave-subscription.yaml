@@ -26,7 +26,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: rhdh
 spec:
-  channel: fast-1.2
+  channel: fast-1.6
   installPlanApproval: Automatic
   name: rhdh
   source: redhat-operators
