@@ -55,10 +55,10 @@ data:
       ##################################
       ## TECH RADAR PLUGIN CONFIGURATION
       ##################################
-      - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
-      - disabled: false
-        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+      # - disabled: false
+      #   package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
+      # - disabled: false
+      #   package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
 
       ###############################
       ## ARGOCD PLUGIN CONFIGURATION
