@@ -33,6 +33,13 @@ data:
         package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
     {{- end }}
 
+      ##################################
+      ## DYNAMIC HOME PAGE PLUGIN CONFIGURATION
+      ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+      ##################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-dynamic-home-page
+
       ##############################
       ## TEKTON PLUGIN CONFIGURATION
       ##############################
