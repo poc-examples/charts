@@ -16,6 +16,18 @@ data:
               importName: DynamicHomePage
           mountPoints:
             - mountPoint: home.page/cards
+              importName: Headline
+              config:
+                layouts:
+                  xl: { h: 1 }
+                  lg: { h: 1 }
+                  md: { h: 1 }
+                  sm: { h: 1 }
+                  xs: { h: 1 }
+                  xxs: { h: 1 }
+                props:
+                  title: Important info
+            - mountPoint: home.page/cards
               importName: SearchBar
               config:
                 layouts:
