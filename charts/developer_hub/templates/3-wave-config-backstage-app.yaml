@@ -146,7 +146,7 @@ data:
             '^/api/proxy/developer-hub/tech-radar': /radar
             '^/api/proxy/developer-hub': /dashboard
           changeOrigin: true
-          secure: false
+          secure: tryue
 
       {{- if .Values.gitlab.enabled }}
         /gitlab.com:
