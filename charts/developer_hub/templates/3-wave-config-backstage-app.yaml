@@ -140,13 +140,13 @@ data:
           changeOrigin: true
           secure: true
 
-        # /developer-hub:
-        #   target: http://dynamic-dashboard.backstage.svc.cluster.local/
-        #   pathRewrite:
-        #     '^/api/proxy/developer-hub/tech-radar': /radar
-        #     # '^/api/proxy/developer-hub': /dashboard
-        #   changeOrigin: true
-        #   secure: false
+        /developer-hub:
+          target: http://dynamic-dashboard.backstage.svc.cluster.local/
+          pathRewrite:
+            '^/api/proxy/developer-hub/tech-radar': /radar
+            '^/api/proxy/developer-hub': /dashboard
+          changeOrigin: true
+          secure: false
 
       {{- if .Values.gitlab.enabled }}
         /gitlab.com:
