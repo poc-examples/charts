@@ -17,7 +17,7 @@ data:
               config:
                 props:
                   title: RHDH demo instance
-                  subtitle: 'Welcome {{dispayName}}'
+                  subtitle: 'Welcome {{ `{{displayName}}` }}'
                   localClock:
                     format: full
           mountPoints:
