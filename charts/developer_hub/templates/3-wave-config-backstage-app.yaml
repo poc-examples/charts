@@ -85,6 +85,7 @@ data:
         connect-src:
           - "'self'"
           - 'https:'
+          - 'http:'
         img-src:
           - "'self'"
           - 'data:'
@@ -146,7 +147,7 @@ data:
             '^/api/proxy/developer-hub/tech-radar': /radar
             '^/api/proxy/developer-hub': /dashboard
           changeOrigin: true
-          secure: tryue
+          secure: false
 
       {{- if .Values.gitlab.enabled }}
         /gitlab.com:
