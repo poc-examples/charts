@@ -32,7 +32,7 @@ data:
                   xs: { h: 1 }
                   xxs: { h: 1 }
                 props:
-                  title: Notification: System Maintenance Schedule 7/21/2025
+                  title: "Notification: System Maintenance Schedule 7/21/2025"
             - mountPoint: home.page/cards
               importName: SearchBar
               config:
