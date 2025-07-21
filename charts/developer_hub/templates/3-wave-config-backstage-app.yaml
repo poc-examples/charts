@@ -133,7 +133,7 @@ data:
       enabled: false
 
     techRadar:
-      url: /developer-hub/tech-radar
+      url: /api/proxy/developer-hub/tech-radar
 
     proxy:
 
