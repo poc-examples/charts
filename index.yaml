@@ -2229,6 +2229,16 @@ entries:
   developerhub:
   - apiVersion: v2
     appVersion: 1.2.6
+    created: "2025-07-21T02:42:17.201860283Z"
+    description: A chart for deploying Red Hat Developer Hub.
+    digest: 028eb9e5aff4264b36e06ac33c2036bf542e69d92d86907d6df8eb7e10559668
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.4.24/developerhub-0.4.24.tgz
+    version: 0.4.24
+  - apiVersion: v2
+    appVersion: 1.2.6
     created: "2025-07-21T02:23:47.628598097Z"
     description: A chart for deploying Red Hat Developer Hub.
     digest: d86f8718d7a3dec44baa7c772f3a77eabcb315382653e8bde4754734f80753b0
@@ -14660,4 +14670,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-07-21T02:23:47.630528509Z"
+generated: "2025-07-21T02:42:17.204487042Z"
