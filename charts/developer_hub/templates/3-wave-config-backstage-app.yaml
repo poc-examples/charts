@@ -145,7 +145,7 @@ data:
         /tech-radar:
           target: http://dynamic-dashboard.backstage.svc.cluster.local
           pathRewrite:
-            '^/api/tech-radar/data': /radar
+            '^/api/proxy/tech-radar/data': /radar
 
         /developer-hub:
           target: http://dynamic-dashboard.backstage.svc.cluster.local/
