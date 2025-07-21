@@ -136,7 +136,7 @@ data:
       enabled: false
 
     techRadar:
-      url: "https://backstage-developer-hub-backstage.{{ .Values.host }}/api/proxy/developer-hub/tech-radar"
+      url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"
 
     proxy:
 
