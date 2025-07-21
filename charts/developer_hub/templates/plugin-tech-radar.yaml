@@ -8,6 +8,8 @@ data:
     ## Tech Radar Plugin Configuration
     ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.4/html/customizing/proc-customize-rhdh-tech-radar-page_configuring-techdocs
     ##################################################
+    techRadar:
+      url: http://dynamic-dashboard.backstage.svc.cluster.local/radar
     dynamicPlugins:
       frontend:
         backstage-community.plugin-tech-radar:
@@ -15,7 +17,7 @@ data:
             - name: techRadar
               importName: TechRadarIcon
           dynamicRoutes:
-            - path: /proxy/tech-radar
+            - path: /tech-radar
               importName: TechRadarPage
               menuItem:
                 icon: techRadar
