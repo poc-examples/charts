@@ -75,9 +75,9 @@ data:
     signInPage: oidc
 
     backend:
-      auth:
-        keys:
-          - secret: ${DEVHUB_BACKEND_SECRET}
+      # auth:
+      #   keys:
+      #     - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       listen:
         port: 7007
@@ -141,10 +141,10 @@ data:
           changeOrigin: true
           secure: true
 
-        /api/tech-radar/data:
-          target: http://dynamic-dashboard.backstage.svc.cluster.local/radar
-          changeOrigin: true
-          secure: false
+        '/api/tech-radar/data':
+          target: http://dynamic-dashboard.backstage.svc.cluster.local
+          pathRewrite:
+            '^/api/tech-radar/data': /radar
 
         /developer-hub:
           target: http://dynamic-dashboard.backstage.svc.cluster.local/
