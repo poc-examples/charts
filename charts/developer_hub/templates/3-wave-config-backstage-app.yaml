@@ -133,7 +133,7 @@ data:
       enabled: false
 
     techRadar:
-      url: /api/proxy/developer-hub/tech-radar
+      url: "https://backstage-developer-hub-backstage.{{ .Values.host }}/api/proxy/developer-hub/tech-radar"
 
     proxy:
 
