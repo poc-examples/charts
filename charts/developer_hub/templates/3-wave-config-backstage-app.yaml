@@ -41,14 +41,20 @@ data:
         theme:
           light:
             primaryColor: ${PRIMARY_LIGHT_COLOR}
-            headerColor1: '#be0000'
-            headerColor2: '#f56d6d'
-            navigationIndicatorColor: '#be0000'
+            palette:
+              navigation:
+                indicator: '#be0000'
+            pageTheme:
+              home:
+                backgroundColor: '#be0000'
           dark:
             primaryColor: ${PRIMARY_DARK_COLOR}
-            headerColor1: '#be0000'
-            headerColor2: '#f56d6d'
-            navigationIndicatorColor: '#be0000'
+            palette:
+              navigation:
+                indicator: '#be0000'
+            pageTheme:
+              home:
+                backgroundColor: '#be0000'
 
     organization:
       name: ${ORGANIZATION_NAME}
