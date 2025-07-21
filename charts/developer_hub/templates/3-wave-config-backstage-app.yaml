@@ -83,7 +83,7 @@ data:
         port: 7007
       reading:
         allow:
-          - host: "backstage-developer-hub-backstage.{{ .Values.host }}"
+          - host: "dynamic-dashboard.backstage.svc.cluster.local"
       csp:
         connect-src:
           - "'self'"
