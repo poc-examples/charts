@@ -32,7 +32,7 @@ data:
                   xs: { h: 1 }
                   xxs: { h: 1 }
                 props:
-                  title: Important info
+                  title: Notification: System Maintenance Schedule 7/21/2025
             - mountPoint: home.page/cards
               importName: SearchBar
               config:
@@ -53,6 +53,8 @@ data:
                   sm: { w: 12, h: 8 }
                   xs: { w: 12, h: 8 }
                   xxs: { w: 12, h: 8 }
+                props:
+                  groupByKind: true
             - mountPoint: home.page/cards
               importName: CatalogStarredEntitiesCard
               config:
