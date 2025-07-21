@@ -133,6 +133,12 @@ data:
       enabled: false
 
     proxy:
+
+      '/api/tech-radar/data':
+        target: http://dynamic-dashboard.backstage.svc.cluster.local
+        pathRewrite:
+          '^/api/tech-radar/data': /radar
+
       endpoints:
         /quay/api:
           target: https://quay.io/
@@ -140,11 +146,6 @@ data:
             X-Requested-With: 'XMLHttpRequest'
           changeOrigin: true
           secure: true
-
-        '/api/tech-radar/data':
-          target: http://dynamic-dashboard.backstage.svc.cluster.local
-          pathRewrite:
-            '^/api/tech-radar/data': /radar
 
         /developer-hub:
           target: http://dynamic-dashboard.backstage.svc.cluster.local/
