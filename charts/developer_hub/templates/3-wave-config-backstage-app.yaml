@@ -81,6 +81,9 @@ data:
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       listen:
         port: 7007
+      reading:
+        allow:
+          - host: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       csp:
         connect-src:
           - "'self'"
