@@ -81,6 +81,9 @@ data:
     signInPage: oidc
 
     backend:
+      cache:
+        store: redis
+        connection: redis://redis:password@redis.backstage.svc.cluster.local:6379
       # auth:
       #   keys:
       #     - secret: ${DEVHUB_BACKEND_SECRET}
