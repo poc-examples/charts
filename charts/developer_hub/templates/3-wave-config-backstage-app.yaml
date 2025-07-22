@@ -147,6 +147,10 @@ data:
     techRadar:
       url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"
 
+    techdocs:
+      cache:
+        ttl: 3600000
+
     proxy:
 
       endpoints:
