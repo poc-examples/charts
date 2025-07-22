@@ -9,7 +9,7 @@
 # watch and manage.
 #
 # In this case, the OperatorGroup ensures that the Backstage operator (if used)
-# will target the namespace it is deployed in — often required for Operators
+# will target the namespace it is deployed in; often required for Operators
 # that manage CRDs like Templates or Software Catalogs.
 #
 # The ArgoCD sync wave annotation ensures this is applied *before* other
