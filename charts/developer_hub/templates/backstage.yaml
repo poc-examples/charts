@@ -5,6 +5,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
+  deployment:
+    patch:
+      kind: StatefulSet
   application:
     dynamicPluginsConfigMapName: dynamic-plugins
     appConfig:
