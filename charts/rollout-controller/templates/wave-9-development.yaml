@@ -48,7 +48,7 @@ spec:
             values: |
               redhat-developer-hub:
                 route:
-                  host: "https://backstage-developer-hub-backstage.{{ .Values.cluster.domain }}"
+                  host: "backstage-developer-hub-backstage.{{ .Values.cluster.domain }}"
               host: "{{ .Values.cluster.domain }}"
               catalogs:
                 - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
