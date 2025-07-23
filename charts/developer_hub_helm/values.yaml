@@ -176,7 +176,7 @@ redhat-developer-hub:
 
         - name: audit-log-data
           persistentVolumeClaim:
-            claimName: '{{ printf "%s-audit-log" .Release.Name }}'
+            claimName: audit-log
 
         - name: dynamic-plugins
           configMap:
