@@ -230,6 +230,8 @@ redhat-developer-hub:
           env:
             - name: NPM_CONFIG_USERCONFIG
               value: /opt/app-root/src/.npmrc.dynamic-plugins
+            - name: SKIP_INTEGRITY_CHECK
+              value: 'true'
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /dynamic-plugins-root
