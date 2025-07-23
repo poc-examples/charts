@@ -38,8 +38,8 @@ redhat-developer-hub:
     backstage:
       image:
         registry: registry.redhat.io
-        repository: rhdh/rhdh-hub-rhel9
-        tag: 1.6.3-1752683867
+        repository: rhdh/rhdh-hub-rhel9@sha256
+        tag: 677c7bc9730cf58a93e19ea7ba70a12147ea50e503668ddc57d47d408d9dc68c
       command: []
       # FIXME (tumido): USE POSTGRES_PASSWORD and POSTGRES_USER instead of POSTGRES_ADMIN_PASSWORD
       # This is a hack. In {fedora,rhel}/postgresql images, regular user is forbidden
