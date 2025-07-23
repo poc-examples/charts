@@ -46,6 +46,9 @@ spec:
               url: https://poc-examples.github.io/charts
               version: {{ ternary .Values.devhub.chartVersion .Values.devhub.helm.chartVersion .Values.devhub.helm.enabled }}
             values: |
+              redhat-developer-hub:
+                route:
+                  host: "https://backstage-developer-hub-backstage.{{ .Values.cluster.domain }}"
               host: "{{ .Values.cluster.domain }}"
               catalogs:
                 - https://github.com/poc-examples/software-templates/blob/main/catalogs/templates.yaml
