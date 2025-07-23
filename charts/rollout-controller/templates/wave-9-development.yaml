@@ -42,9 +42,9 @@ spec:
           - application: developer-hub-service
             namespace: backstage
             chart: 
-              name: developerhub
+              name: "{{ ternary 'developerhub' 'developer_hub_helm' .Values.devhub.helm.enabled }}"
               url: https://poc-examples.github.io/charts
-              version: "{{ .Values.devhub.chartVersion }}"
+              version: "{{ ternary .Values.devhub.chartVersion .Values.devhub.helm.chartVersion .Values.devhub.helm.enabled }}"
             values: |
               host: "{{ .Values.cluster.domain }}"
               catalogs:
