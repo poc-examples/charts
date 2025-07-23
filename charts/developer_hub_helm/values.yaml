@@ -109,8 +109,8 @@ redhat-developer-hub:
         - configMapRef: kubernetes-plugin
           filename: kubernetes-plugin.yaml
       # {{- if .Values.gitlab.enabled }}
-      #   - configMapRef: gitlab-plugin
-      #     filename: gitlab-plugin.yaml
+        - configMapRef: gitlab-plugin
+          filename: gitlab-plugin.yaml
       # {{- end }}
         - configMapRef: argocd-plugin
           filename: argocd-plugin.yaml
@@ -132,12 +132,12 @@ redhat-developer-hub:
           value: "true"
         - name: LOG_LEVEL
           value: info
-        # FOR USE WITH DYNAMIC PLUGINS
-        # - name: GITLAB_TOKEN
-        #   valueFrom:
-        #     secretKeyRef:
-        #       key: GITLAB_TOKEN
-        #       name: gitlab-token
+        #FOR USE WITH DYNAMIC PLUGINS
+        - name: GITLAB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: GITLAB_TOKEN
+              name: gitlab-token
         - name: DEVHUB_BACKEND_SECRET
           valueFrom:
             secretKeyRef:
