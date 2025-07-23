@@ -6,21 +6,92 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
 data:
   catalog-config.yaml: |
+
+    ###########################################################################
+    # Developer Hub Catalog Core Configuration
+    #
+    # This section tells Backstage:
+    # - How to discover components from repositories
+    # - Which types of entities are supported
+    # - Where to fetch them from (e.g., GitLab, Keycloak)
+    ###########################################################################
+
     catalog:
+
+      #######################################################################
+      # Entity Import Behavior
+      #
+      # When a repository is created from a template, Backstage will look
+      # for a file named `catalog-info.yaml` to register the component.
+      #
+      # If the repo isn't already connected to Backstage, it will open a PR
+      # using the branch below to add this file.
+      #######################################################################
       import:
         entityFilename: catalog-info.yaml
         pullRequestBranchName: backstage-integration
+
+      #######################################################################
+      # Allowed Entity Types
+      #
+      # This controls which kinds of entities can be imported into the catalog.
+      # Common kinds include:
+      # - Component: services, apps, etc.
+      # - System: a logical collection of components
+      # - API: an API described with OpenAPI or GraphQL
+      # - Template: scaffolder templates
+      # - Location: external sources of other entities
+      #
+      # Note: Duplicates (like Group twice) won't break anything, but clean them up.
+      #######################################################################
       rules:
-        - allow: [User, Group, Component, System, Group, Resource, Location, Template, API]
+        - allow:
+            - User
+            - Group
+            - Component
+            - System
+            - Group
+            - Resource
+            - Location
+            - Template
+            - API
+
+      #######################################################################
+      # Entity Source Locations
+      #
+      # This section adds specific static URLs to be scanned for catalog-info.yaml
+      # files. This is commonly used to bring in services created outside the UI.
+      #
+      # If you want ouse a local file you can declare "type: file" and use relative
+      # or absolute paths to the configuration file.
+      #######################################################################
       {{- if .Values.catalogs }}
       locations:
+        - type: file
+          target: /opt/app-root/src/extra-files/argocd.yaml
       {{- range .Values.catalogs }}
         - type: url
           target: {{ . }}
       {{- end }}
       {{- end }}
+
+      #######################################################################
+      # Catalog Providers
+      #
+      # These are automated integrations that fetch users, groups, and components.
+      # You typically want at least:
+      # - KeycloakOrg: to sync users/groups from Keycloak
+      # - GitLab: to discover services from self-hosted GitLab repos
+      #######################################################################
       providers:
+
       {{- if .Values.gitlab.enabled }}
+        ###################################################################
+        # GitLab Provider (self-hosted)
+        #
+        # Scans GitLab for components that match discovery rules.
+        # Note: GitLab tokens and project visibility matter here.
+        ###################################################################
         gitlab:
           selfHosted:
             host: "gitlab.{{ .Values.host }}"
@@ -30,6 +101,15 @@ data:
               timeout:
                 seconds: 60
       {{- end }}
+
+        ###################################################################
+        # Keycloak Provider
+        #
+        # Automatically syncs users and groups from Keycloak into Backstage.
+        # These show up in the catalog under `User` and `Group` entities.
+        #
+        # Replace ${CLIENT_ID} with the realm that holds your user/group data.
+        ###################################################################
         keycloakOrg:
           default:
             baseUrl: https://keycloak-keycloak.{{ .Values.host }}/auth
@@ -38,6 +118,6 @@ data:
             username: ${KEYCLOAK_ADMIN_USERNAME}
             password: ${KEYCLOAK_ADMIN_PASSWORD}
             schedule:
-              frequency: { minutes: 30 }
+              frequency: { minutes: 7 }
               timeout: { minutes: 3 }
               initialDelay: { seconds: 15 }

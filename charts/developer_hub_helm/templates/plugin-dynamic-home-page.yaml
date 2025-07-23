@@ -1,0 +1,67 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dynamic-homepage-plugin
+data:
+  dynamic-homepage-plugin.yaml: |
+    ##################################
+    ## DYNAMIC HOME PAGE PLUGIN CONFIGURATION
+    ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+    ##################################
+    dynamicPlugins:
+      frontend:
+        red-hat-developer-hub.backstage-plugin-dynamic-home-page:
+          dynamicRoutes:
+            - path: /
+              importName: DynamicHomePage
+              config:
+                props:
+                  title: RHDH demo instance
+                  subtitle: 'Welcome {{ `{{displayName}}` }}'
+                  localClock:
+                    format: full
+          mountPoints:
+            - mountPoint: home.page/cards
+              importName: Headline
+              config:
+                layouts:
+                  xl: { h: 1 }
+                  lg: { h: 1 }
+                  md: { h: 1 }
+                  sm: { h: 1 }
+                  xs: { h: 1 }
+                  xxs: { h: 1 }
+                props:
+                  title: "Notification: System Maintenance Schedule 7/21/2025"
+            - mountPoint: home.page/cards
+              importName: SearchBar
+              config:
+                layouts:
+                  xl: { w: 10, h: 1, x: 1 }
+                  lg: { w: 10, h: 1, x: 1 }
+                  md: { w: 10, h: 1, x: 1 }
+                  sm: { w: 10, h: 1, x: 1 }
+                  xs: { w: 12, h: 1 }
+                  xxs: { w: 12, h: 1 }
+            - mountPoint: home.page/cards
+              importName: QuickAccessCard
+              config:
+                layouts:
+                  xl: { w: 7, h: 8 }
+                  lg: { w: 7, h: 8 }
+                  md: { w: 7, h: 8 }
+                  sm: { w: 12, h: 8 }
+                  xs: { w: 12, h: 8 }
+                  xxs: { w: 12, h: 8 }
+                props:
+                  groupByKind: true
+            - mountPoint: home.page/cards
+              importName: CatalogStarredEntitiesCard
+              config:
+                layouts:
+                  xl: { w: 5, h: 4, x: 7 }
+                  lg: { w: 5, h: 4, x: 7 }
+                  md: { w: 5, h: 4, x: 7 }
+                  sm: { w: 12, h: 4 }
+                  xs: { w: 12, h: 4 }
+                  xxs: { w: 12, h: 4 }

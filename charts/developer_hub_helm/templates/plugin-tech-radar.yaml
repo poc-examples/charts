@@ -4,11 +4,13 @@ metadata:
   name: tech-radar-plugin
 data:
   tech-radar-plugin.yaml: |
+    ##################################################
+    ## Tech Radar Plugin Configuration
+    ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.4/html/customizing/proc-customize-rhdh-tech-radar-page_configuring-techdocs
+    ##################################################
     dynamicPlugins:
       frontend:
-        backstage.plugin-tech-radar:
-          apiFactories:
-            - importName: TechRadarApi
+        backstage-community.plugin-tech-radar:
           appIcons:
             - name: techRadar
               importName: TechRadarIcon

@@ -15,14 +15,20 @@ data:
         theme:
           light:
             primaryColor: ${PRIMARY_LIGHT_COLOR}
-            headerColor1: '#be0000'
-            headerColor2: '#f56d6d'
-            navigationIndicatorColor: '#be0000'
+            palette:
+              navigation:
+                indicator: '#be0000'
+            pageTheme:
+              home:
+                backgroundColor: '#be0000'
           dark:
             primaryColor: ${PRIMARY_DARK_COLOR}
-            headerColor1: '#be0000'
-            headerColor2: '#f56d6d'
-            navigationIndicatorColor: '#be0000'
+            palette:
+              navigation:
+                indicator: '#be0000'
+            pageTheme:
+              home:
+                backgroundColor: '#be0000'
 
     organization:
       name: ${ORGANIZATION_NAME}
@@ -31,14 +37,14 @@ data:
       enabled: false
       auth:
         existingSecret: postgres-credentials
-    
+
     auth:
-      environment: development
+      environment: production # Set to `development` in order to gain guest access
       session:
         secret: session-secret
       providers:
         oidc:
-          development:
+          production:
             clientId: ${CLIENT_ID}
             clientSecret: ${CLIENT_SECRET}
             metadataUrl: https://keycloak-keycloak.{{ .Values.host }}/auth/realms/openshift/.well-known/openid-configuration
@@ -49,22 +55,25 @@ data:
     signInPage: oidc
 
     backend:
-      auth:
-        dangerouslyDisableDefaultAuthPolicy: true
-        keys:
-          - secret: ${DEVHUB_BACKEND_SECRET}
+      cache:
+        store: redis
+        connection: redis://:password@redis.backstage.svc.cluster.local:6379
+      # auth:
+      #   keys:
+      #     - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       listen:
         port: 7007
       csp:
         connect-src:
           - "'self'"
-
           - 'https:'
+          - 'http:'
         img-src:
           - "'self'"
           - 'data:'
           - ${JIRA_URL}
+          - 'raw.githubusercontent.com'
       cors:
         origin: "*"
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
@@ -106,7 +115,15 @@ data:
     permission:
       enabled: false
 
+    techRadar:
+      url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"
+
+    techdocs:
+      cache:
+        ttl: 3600000
+
     proxy:
+
       endpoints:
         /quay/api:
           target: https://quay.io/
@@ -115,18 +132,10 @@ data:
           changeOrigin: true
           secure: true
 
-        /data:
-          target: http://devhub-data-api
-          secure: false
-          headers:
-            Content-Type: 'application/json'
-          changeOrigin: true
-
         /developer-hub:
-          target: https://raw.githubusercontent.com/
+          target: http://dynamic-dashboard.backstage.svc.cluster.local/
           pathRewrite:
-            '^/api/proxy/developer-hub/tech-radar': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/tech-radar.json
-            '^/api/proxy/developer-hub': /poc-examples/charts/refs/heads/main/charts/developer_hub/config/homepage.json
+            '^/api/proxy/developer-hub': /dashboard
           changeOrigin: true
           secure: false
 

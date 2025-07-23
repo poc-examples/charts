@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dynamic-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dynamic-dashboard
+  template:
+    metadata:
+      labels:
+        app: dynamic-dashboard
+    spec:
+      containers:
+      - name: dynamic-dashboard
+        image: docker.io/cengleby86/dynamic-dashboard:latest
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+          - name: dashboard-volume
+            mountPath: /devhub/dashboard.yaml
+            subPath: dashboard.yaml
+          - name: radar-volume
+            mountPath: /devhub/radar.yaml
+            subPath: radar.yaml
+      volumes:
+        - name: dashboard-volume
+          configMap:
+            name: dashboard-config
+        - name: radar-volume
+          configMap:
+            name: radar-config

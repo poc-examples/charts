@@ -17,13 +17,7 @@ data:
       ## KEYCLOAK BACKEND PLUGIN
       ##############################
       - disabled: false
-        package: './dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic'
-
-      ##############################
-      ## FROM GITHUB AS WRAPPER
-      ##############################
-      - disabled: false
-        package: 'https://raw.githubusercontent.com/poc-examples/dynamic-plugin-wrapper/'
+        package: './dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-keycloak-dynamic'
 
     {{- if .Values.gitlab.enabled }}
       ##############################
@@ -39,15 +33,22 @@ data:
         package: ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
     {{- end }}
 
+      ##################################
+      ## DYNAMIC HOME PAGE PLUGIN CONFIGURATION
+      ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+      ##################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-dynamic-home-page
+
       ##############################
       ## TEKTON PLUGIN CONFIGURATION
       ##############################
       - disabled: false
-        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+        package: ./dynamic-plugins/dist/backstage-community-plugin-tekton
         pluginConfig:
           dynamicPlugins:
             frontend:
-              janus-idp.backstage-plugin-tekton:
+              backstage-community.plugin-tekton:
                 mountPoints:
                   - mountPoint: entity.page.ci/cards
                     importName: TektonCI
@@ -62,7 +63,9 @@ data:
       ## TECH RADAR PLUGIN CONFIGURATION
       ##################################
       - disabled: false
-        package: ./dynamic-plugins/dist/backstage-plugin-tech-radar
+        package: ./dynamic-plugins/dist/backstage-community-plugin-tech-radar
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-community-plugin-tech-radar-backend-dynamic
       - disabled: false
         package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
 
@@ -88,11 +91,11 @@ data:
       ## TOPOLOGY PLUGIN CONFIGURATION
       ##################################
       - disabled: false
-        package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+        package: ./dynamic-plugins/dist/backstage-community-plugin-topology
         pluginConfig:
           dynamicPlugins:
             frontend:
-              janus-idp.backstage-plugin-topology:
+              backstage-community.plugin-topology:
                 mountPoints:
                   - mountPoint: entity.page.topology/cards
                     importName: TopologyPage
