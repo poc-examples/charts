@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dashboard-config
+data:
+  dashboard.yaml: |
+    - title: Workshop
+      isExpanded: true
+      links:
+        - iconUrl: /homepage/icons/icons8/openshift.png
+          label: OpenShift
+          url: https://console-openshift-console.{{ .Values.host }}/dashboards
+        - iconUrl: https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/devspaces.png
+          label: OpenShift Dev Spaces
+          url: https://devspaces.{{ .Values.host }}/
+        - iconUrl: /homepage/icons/argo-icon-color.svg
+          label: ArgoCD
+          url: https://openshift-gitops-server-openshift-gitops.{{ .Values.host }}/
+        - iconUrl: https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/gitlab.png
+          label: GitLab
+          url: https://gitlab.{{ .Values.host }}/
+        - iconUrl: https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/jaeger.png
+          label: Jaeger UI - Grafana Tempo
+          url: https://tempo-sample-query-frontend-observability.{{ .Values.host }}/
+    - title: Infrastructure
+      isExpanded: false
+      links:
+        - iconUrl: https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/easteregg.png
+          label: Easter Egg!
+          url: https://console-openshift-console.{{ .Values.host }}/dashboards
