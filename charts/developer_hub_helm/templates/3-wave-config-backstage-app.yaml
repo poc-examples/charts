@@ -55,6 +55,9 @@ data:
     signInPage: oidc
 
     backend:
+      reading:
+        allow:
+          - host: "dynamic-dashboard.backstage.svc.cluster.local"
       cache:
         store: redis
         connection: redis://:password@redis.backstage.svc.cluster.local:6379
