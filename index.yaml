@@ -2004,6 +2004,20 @@ entries:
   developer_hub_helm:
   - apiVersion: v2
     appVersion: 1.6.3
+    created: "2025-07-29T05:10:34.840489105Z"
+    dependencies:
+    - name: redhat-developer-hub
+      repository: https://charts.openshift.io/
+      version: 1.6.3
+    description: A chart for deploying backstage
+    digest: e3922d2f49a56da38f86e0120b8f77a49908c18d2e0ae205ec02db8439a9f678
+    name: developer_hub_helm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developer_hub_helm-0.0.36/developer_hub_helm-0.0.36.tgz
+    version: 0.0.36
+  - apiVersion: v2
+    appVersion: 1.6.3
     created: "2025-07-29T04:42:49.075401167Z"
     dependencies:
     - name: redhat-developer-hub
@@ -8273,6 +8287,16 @@ entries:
   orchestrator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-07-29T05:10:35.051925392Z"
+    description: A Helm chart for Kubernetes
+    digest: dfa7c2ee45ac3fbacfb33d04506f5548f1c55fd44162332199eb9b37be4c0d6d
+    name: orchestrator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/orchestrator-0.0.79/orchestrator-0.0.79.tgz
+    version: 0.0.79
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-07-29T04:51:23.598810602Z"
     description: A Helm chart for Kubernetes
     digest: 525f055b2ebccddcdf5b89dc151ed48479c6c515258ce0126a5bf2783e44240c
@@ -11471,6 +11495,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-07-29T05:10:35.20060355Z"
+    description: A Helm chart for Kubernetes
+    digest: f83f276c5778a03de6d5cbe25d601e4bc8682750b3718dd91a10336701da29a7
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.91/rollout-controller-0.6.91.tgz
+    version: 0.6.91
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-07-29T04:51:23.709347422Z"
@@ -15350,4 +15384,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-07-29T04:51:23.71171787Z"
+generated: "2025-07-29T05:10:35.203782796Z"
