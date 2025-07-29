@@ -90,7 +90,7 @@ devhub:
   enabled: false
   helm:
     enabled: false
-    chartVersion: 0.0.21
+    chartVersion: 0.0.32
 
 devspaces:
   chartVersion: 0.1.27

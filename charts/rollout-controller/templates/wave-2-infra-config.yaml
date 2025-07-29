@@ -12,7 +12,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ $prefix }}infrastructure-config
+  name: "{{ $prefix }}infrastructure-config"
   annotations:
     argocd.argoproj.io/sync-wave: "-8"
 spec:

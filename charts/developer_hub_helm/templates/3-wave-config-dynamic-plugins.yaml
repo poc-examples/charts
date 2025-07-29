@@ -40,6 +40,37 @@ data:
       - disabled: false
         package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-dynamic-home-page
 
+      # ##################################
+      # ## NOTIFICATIONS PLUGIN CONFIGURATION
+      # ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+      # ##################################
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-notifications"
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-notifications-backend-dynamic"
+
+      # ##################################
+      # ## SIGNALS PLUGIN CONFIGURATION
+      # ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+      # ##################################
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-signals"
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-signals-backend-dynamic"
+
+      # ##################################
+      # ## ORCHESTRATOR PLUGIN CONFIGURATION
+      # ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page
+      # ##################################
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-notifications"
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-signals"
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-notifications-backend-dynamic"
+      # - disabled: false
+      #   package: "./dynamic-plugins/dist/backstage-plugin-signals-backend-dynamic"
+
       ##############################
       ## TEKTON PLUGIN CONFIGURATION
       ##############################
