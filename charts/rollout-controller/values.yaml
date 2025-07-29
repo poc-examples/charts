@@ -55,7 +55,7 @@ devhub:
   enabled: false
   helm:
     enabled: false
-    chartVersion: 0.0.35
+    chartVersion: 0.0.36
 
 devspaces:
   chartVersion: 0.1.27
