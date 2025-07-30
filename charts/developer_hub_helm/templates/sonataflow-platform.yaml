@@ -14,13 +14,6 @@ spec:
         limits:
           memory: "128Mi"
           cpu: "500m"
-  # eventing:
-  #   broker:
-  #     ref:
-  #       apiVersion: eventing.knative.dev/v1
-  #       kind: Broker
-  #       name: {{ .Values.orchestrator.sonataflowPlatform.eventing.broker.name }}
-  #       namespace: {{ .Values.orchestrator.sonataflowPlatform.eventing.broker.namespace }}
   services:
     dataIndex:
       enabled: true
@@ -31,9 +24,6 @@ spec:
             userKey: POSTGRES_USER
             passwordKey: POSTGRES_PASSWORD
           jdbcUrl: jdbc:postgresql://orchestrator-postgres:5432/sonataflow?currentSchema=data-index-service
-      # podTemplate:
-      #   container:
-      #     image: {{ .Values.orchestrator.sonataflowPlatform.dataIndexImage }}
     jobService:
       enabled: true
       persistence:
@@ -43,9 +33,6 @@ spec:
             userKey: POSTGRES_USER
             passwordKey: POSTGRES_PASSWORD
           jdbcUrl: jdbc:postgresql://orchestrator-postgres:5432/sonataflow?currentSchema=jobs-service
-      # podTemplate:
-      #   container:
-      #     image: {{ .Values.orchestrator.sonataflowPlatform.jobServiceImage }}
 ---
 apiVersion: batch/v1
 kind: Job
