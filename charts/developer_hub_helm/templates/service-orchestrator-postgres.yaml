@@ -1,0 +1,11 @@
+{{ if .Values.orchestrator.postgres.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: orchestrator-postgres
+spec:
+  ports:
+  - port: 5432
+  selector:
+    app: orchestrator-postgres
+{{ end }}

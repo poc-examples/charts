@@ -300,6 +300,10 @@ backend:
   sqlite3:
     enabled: false
 
+orchestrator:
+  postgres:
+    enabled: true
+
 gitlab:
   enabled: false
 
