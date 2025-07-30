@@ -233,7 +233,7 @@ redhat-developer-hub:
             - name: SKIP_INTEGRITY_CHECK
               value: 'true'
             - name: MAX_ENTRY_SIZE
-              value: "20000000"
+              value: "30000000"
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /dynamic-plugins-root
