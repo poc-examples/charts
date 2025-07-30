@@ -6757,6 +6757,18 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/gitlab-helm-0.2.0/gitlab-helm-0.2.0.tgz
     version: 0.2.0
+  greeting:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-07-30T09:11:56.588901198Z"
+    description: A Helm chart for the greeting serverless workflow
+    digest: 38c1ad4a495aa858e735ed33fb2f3411193a8868005f7acb740d0362c1c1d828
+    icon: https://raw.githubusercontent.com/rhdhorchestrator/rhdhorchestrator.github.io/main/assets/images/WO_black.svg
+    name: greeting
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/greeting-1.6.0/greeting-1.6.0.tgz
+    version: 1.6.0
   image-updater:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -15524,4 +15536,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-07-30T08:53:24.708309043Z"
+generated: "2025-07-30T09:11:56.590927602Z"
