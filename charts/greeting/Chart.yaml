@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for the greeting serverless workflow
+icon: https://raw.githubusercontent.com/rhdhorchestrator/rhdhorchestrator.github.io/main/assets/images/WO_black.svg
+name: greeting
+type: application
+version: 1.6.0
