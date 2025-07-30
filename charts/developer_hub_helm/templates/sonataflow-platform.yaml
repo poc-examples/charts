@@ -3,8 +3,8 @@ kind: SonataFlowPlatform
 metadata:
   name: backstage-sonataflow-platform
 spec:
-  monitoring:
-    enabled: false
+  # monitoring:
+  #   enabled: false
   build:
     template:
       resources:
