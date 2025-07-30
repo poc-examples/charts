@@ -1,0 +1,44 @@
+apiVersion: rhdh.redhat.com/v1alpha3
+kind: Orchestrator
+metadata:
+  name: orchestrator
+  labels:
+    app.kubernetes.io/name: orchestrator
+spec:
+  argocd:
+    enabled: false
+  platform:
+    eventing:
+      broker: {}
+    monitoring:
+      enabled: false
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 250m
+        memory: 64Mi
+    namespace: backstage
+  postgres:
+    authSecret:
+      name: postgres-credentials
+      passwordKey: POSTGRES_PASSWORD
+      userKey: POSTGRES_USER
+    database: sonataflow
+    name: orchestrator-postgres
+    namespace: backstage
+  rhdh:
+    devMode: false
+    installOperator: false
+    plugins:
+      notificationsEmail:
+        enabled: false
+    name: "rhdh-placeholder"
+    namespace: backstage
+  serverless:
+    installOperator: false
+  serverlessLogic:
+    installOperator: false
+  tekton:
+    enabled: false
