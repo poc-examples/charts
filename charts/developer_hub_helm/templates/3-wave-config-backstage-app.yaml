@@ -119,7 +119,7 @@ data:
       enabled: true
       rbac:
         admin:
-          groups:
+          users:
             - name: group:default/cluster-admins
         pluginsWithPermission:
           - catalog
