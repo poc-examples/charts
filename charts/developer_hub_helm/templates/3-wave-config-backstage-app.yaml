@@ -120,7 +120,7 @@ data:
       rbac:
         admin:
           users:
-            - name: group:default/cluster-admins
+            - name: user:default/admin
         pluginsWithPermission:
           - catalog
           - scaffolder
