@@ -125,6 +125,9 @@ data:
           - catalog
           - scaffolder
           - permission
+          - orchestrator
+          - kubernetes
+          - argocd
 
     techRadar:
       url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"
