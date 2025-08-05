@@ -40,6 +40,13 @@ data:
       - disabled: false
         package: ./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-dynamic-home-page
 
+      ####################################
+      ## RED HAT RBAC PLUGIN CONFIGURATION
+      ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/authorization_in_red_hat_developer_hub/enabling-and-giving-access-to-rbac
+      ####################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/backstage-community-plugin-rbac
+
       # ##################################
       # ## NOTIFICATIONS PLUGIN CONFIGURATION
       # ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/customizing_red_hat_developer_hub/customizing-the-home-page

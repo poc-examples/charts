@@ -116,7 +116,15 @@ data:
       - Template
 
     permission:
-      enabled: false
+      enabled: true
+      rbac:
+        admin:
+          groups:
+            - name: group:default/cluster-admins
+        pluginsWithPermission:
+          - catalog
+          - scaffolder
+          - permission
 
     techRadar:
       url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"
