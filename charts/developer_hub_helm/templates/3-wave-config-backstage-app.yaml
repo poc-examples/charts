@@ -90,6 +90,9 @@ data:
           user: ${POSTGRES_USER}
           password: ${POSTGRES_PASSWORD}
           ssl: false
+          pool:
+            min: 2
+            max: 5
   {{- else if .Values.backend.sqlite3.enabled }}
       database:
         client: better-sqlite3
