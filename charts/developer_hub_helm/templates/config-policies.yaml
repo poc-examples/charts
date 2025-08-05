@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rbac-policies
+data:
+  rbac-policies.csv: |
+    p, role:default/cluster-admins, orchestrator.workflow.read, read, allow
+    p, role:default/cluster-admins, orchestrator.workflow.use, use, allow
+    p, role:default/cluster-admins, orchestrator.instance.read, read, allow
+    p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
+    p, role:default/cluster-admins, orchestrator.workflow.greeting, use, allow
+    g, group:default/cluster-admins, role:default/cluster-admins

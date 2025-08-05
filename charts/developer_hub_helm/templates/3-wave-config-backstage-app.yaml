@@ -127,25 +127,8 @@ data:
           - permission
           - kubernetes
           - argocd
-        roles:
-          - name: admin
-            description: >
-              The default permissions policy for the admin role for the group cluster admins.
-            members:
-              - group:default/cluster-admins
-            policies:
-              # Orchestrator plugin permissions
-              - permission: orchestrator.workflow.read
-                policy: ALLOW
-              - permission: orchestrator.workflow.use
-                policy: ALLOW
-              - permission: orchestrator.instance.read
-                policy: ALLOW
-              - permission: orchestrator.instanceAdminView
-                policy: ALLOW
-              - permission: orchestrator.workflow.greeting
-                policy: ALLOW
-
+        policies-csv-file: /opt/app-root/src/rbac/rbac-policies.csv
+        policyFileReload: true
 
     techRadar:
       url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"

@@ -163,6 +163,9 @@ redhat-developer-hub:
         # The initContainer below will install dynamic plugins in this volume mount.
         - name: dynamic-plugins-root
           mountPath: /opt/app-root/src/dynamic-plugins-root
+        # Adding Permissions File
+        - name: rbac-policies
+          mountPath: /opt/app-root/src/rbac
         # Audit Log data will be stored in this volume mount.
         - name: audit-log-data
           mountPath: /var/log/audit
@@ -173,32 +176,31 @@ redhat-developer-hub:
         - name: dynamic-plugins-root
           persistentVolumeClaim:
             claimName: dynamic-plugins-root
-
         - name: audit-log-data
           persistentVolumeClaim:
             claimName: audit-log
-
         - name: dynamic-plugins
           configMap:
             defaultMode: 420
             name: 'dynamic-plugins'
             optional: true
-
+        - name: rbac-policies
+          configMap:
+            defaultMode: 420
+            name: 'rbac-policies'
+            optional: true
         - name: dynamic-plugins-npmrc
           secret:
             defaultMode: 420
             optional: true
             secretName: '{{ printf "%s-dynamic-plugins-npmrc" .Release.Name }}'
-
         - name: dynamic-plugins-registry-auth
           secret:
             defaultMode: 416
             optional: true
             secretName: '{{ printf "%s-dynamic-plugins-registry-auth" .Release.Name }}'
-
         - name: npmcacache
           emptyDir: {}
-
         - name: temp
           emptyDir: {}
 
