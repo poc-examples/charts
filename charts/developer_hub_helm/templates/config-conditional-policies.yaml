@@ -11,8 +11,14 @@ data:
     permissionMapping:
       - read
     conditions:
-      rule: HAS_SPEC
-      resourceType: catalog-entity
-      params:
-        key: type
-        value: service
+      anyOf:
+        - rule: HAS_SPEC
+          resourceType: catalog-entity
+          params:
+            key: type
+            value: service
+        - rule: HAS_SPEC
+          resourceType: catalog-entity
+          params:
+            key: type
+            value: workshop
