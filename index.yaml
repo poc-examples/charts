@@ -2004,6 +2004,20 @@ entries:
   developer_hub_helm:
   - apiVersion: v2
     appVersion: 1.6.3
+    created: "2025-08-05T06:48:06.565044589Z"
+    dependencies:
+    - name: redhat-developer-hub
+      repository: https://charts.openshift.io/
+      version: 1.6.3
+    description: A chart for deploying backstage
+    digest: 0cfe304eaf26da357bffc4a87f166d8fd6bb347e6cd30b1e3e130cc977afc665
+    name: developer_hub_helm
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developer_hub_helm-0.0.55/developer_hub_helm-0.0.55.tgz
+    version: 0.0.55
+  - apiVersion: v2
+    appVersion: 1.6.3
     created: "2025-08-05T06:38:41.26875018Z"
     dependencies:
     - name: redhat-developer-hub
@@ -15648,4 +15662,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-08-05T06:38:41.271111383Z"
+generated: "2025-08-05T06:48:06.567818582Z"
