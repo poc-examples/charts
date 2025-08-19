@@ -3,7 +3,7 @@ domain: openshift.api
 ## Current Default Rollout-Controller
 controller:
   name: infrastructure
-  chartVersion: 0.6.91
+  chartVersion: 0.6.92
 
 # GitOps
 gitops:
@@ -38,6 +38,10 @@ keycloak:
 quay:
   chartVersion: 0.1.13
   enabled: false
+
+npm:
+  enabled: true
+  chartVersion: 4.26.1
 
 minio:
   enabled: false

@@ -28,6 +28,21 @@ spec:
               url: https://poc-examples.github.io/charts
               version: "{{ .Values.minio.chartVersion }}"
         {{- end }}
+        {{- if .Values.npm.enabled }}
+          - application: "{{ $prefix }}npm-registry-service"
+            namespace: "npm-registry"
+            wave: "-2"
+            chart: 
+              name: verdaccio
+              url: https://charts.verdaccio.org
+              version: "{{ .Values.npm.chartVersion }}"
+            values: |
+              persistence:
+                enabled: true
+                size: 20Gi
+              service:
+                type: ClusterIP
+        {{- end }}
         {{- if .Values.quay.enabled }}
           - application: "{{ $prefix }}quay-service"
             namespace: "quay-registry"
