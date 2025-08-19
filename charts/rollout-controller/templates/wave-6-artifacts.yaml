@@ -40,6 +40,10 @@ spec:
               persistence:
                 enabled: true
                 size: 20Gi
+              secrets:
+                htpasswd:
+                  - username: "kubeadmin"
+                    password: "PB0SyOz@z3HJ*#a!"
               service:
                 type: ClusterIP
               serviceAccount:
