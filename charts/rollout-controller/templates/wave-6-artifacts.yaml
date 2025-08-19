@@ -43,7 +43,7 @@ spec:
               service:
                 type: ClusterIP
               serviceAccount:
-                enabled: true
+                create: true
                 name: verdaccio
               extraManifests:
                 - apiVersion: rbac.authorization.k8s.io/v1
