@@ -29,6 +29,7 @@ data:
             pageTheme:
               home:
                 backgroundColor: '#be0000'
+      cahRestBaseUrl: "https://your-cah-api.example.com"
 
     organization:
       name: ${ORGANIZATION_NAME}
