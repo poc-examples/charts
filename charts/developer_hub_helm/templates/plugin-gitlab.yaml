@@ -28,6 +28,9 @@ data:
           apiBaseUrl: "https://gitlab.{{ .Values.host }}/api/v4"
           baseUrl: "https://gitlab.{{ .Values.host }}"
 
+      jenkinsController:
+        url: "https://jenkins.example.com"
+
     dynamicPlugins:
       frontend:
         immobiliarelabs.backstage-plugin-gitlab:
