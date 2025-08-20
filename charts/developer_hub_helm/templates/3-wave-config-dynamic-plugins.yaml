@@ -19,6 +19,9 @@ data:
       - disabled: false
         package: ./dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-keycloak-dynamic
 
+      - package: oci://docker.io/cengleby86/backstage-my-teams:v0.1.1!cah-backstage-plugin-slf-my-teams
+        disabled: false
+
     {{- if .Values.gitlab.enabled }}
       ##############################
       ## GITLAB PLUGIN CONFIGURATION

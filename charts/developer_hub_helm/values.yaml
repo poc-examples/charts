@@ -128,6 +128,8 @@ redhat-developer-hub:
         # SIMPLY FOR DEBUGGING
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: '0'
+        - name: REGISTRY_AUTH_FILE
+          value: /app/.docker/.dockerconfigjson
         - name: SKIP_INTEGRITY_CHECK
           value: "true"
         - name: LOG_LEVEL
@@ -163,6 +165,8 @@ redhat-developer-hub:
         # The initContainer below will install dynamic plugins in this volume mount.
         - name: dynamic-plugins-root
           mountPath: /opt/app-root/src/dynamic-plugins-root
+        - name: registry-credentials
+          mountPath: /app/.docker
         # Adding Permissions File
         - name: rbac-policies
           mountPath: /opt/app-root/src/rbac
@@ -202,6 +206,10 @@ redhat-developer-hub:
             defaultMode: 420
             optional: true
             secretName: '{{ printf "%s-dynamic-plugins-npmrc" .Release.Name }}'
+        - name: registry-credentials
+          secret:
+            defaultMode: 420
+            secretName: 'package-credentials'
         - name: dynamic-plugins-registry-auth
           secret:
             defaultMode: 416
