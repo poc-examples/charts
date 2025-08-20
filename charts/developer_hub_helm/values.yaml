@@ -252,6 +252,8 @@ redhat-developer-hub:
               value: 'true'
             - name: MAX_ENTRY_SIZE
               value: "30000000"
+            - name: REGISTRY_AUTH_FILE
+              value: /app/.docker/.dockerconfigjson
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /dynamic-plugins-root
@@ -264,6 +266,9 @@ redhat-developer-hub:
               name: dynamic-plugins-npmrc
               readOnly: true
               subPath: .npmrc
+            - name: registry-credentials
+              mountPath: /app/.docker
+              readOnly: true
             - mountPath: /opt/app-root/src/.config/containers
               name: dynamic-plugins-registry-auth
               readOnly: true
