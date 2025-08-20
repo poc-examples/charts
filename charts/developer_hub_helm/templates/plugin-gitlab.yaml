@@ -29,7 +29,7 @@ data:
           baseUrl: "https://gitlab.{{ .Values.host }}"
 
       jenkinsController:
-        url: "https://jenkins.example.com"
+        - url: "https://jenkins.example.com"
 
     dynamicPlugins:
       frontend:
