@@ -42,9 +42,9 @@ spec:
           - application: developer-hub-service
             namespace: backstage
             chart: 
-              name: {{ ternary "developerhub" "developer_hub_helm" .Values.devhub.helm.enabled }}
+              name: {{ ternary "developer_hub_helm" "developerhub" .Values.devhub.helm.enabled }}
               url: https://poc-examples.github.io/charts
-              version: {{ ternary .Values.devhub.chartVersion .Values.devhub.helm.chartVersion .Values.devhub.helm.enabled }}
+              version: {{ ternary .Values.devhub.helm.chartVersion .Values.devhub.chartVersion .Values.devhub.helm.enabled }}
             values: |
               redhat-developer-hub:
                 route:
