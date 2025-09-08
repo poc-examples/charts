@@ -21,7 +21,7 @@ data:
           url: https://gitlab.{{ .Values.host }}/
         - iconUrl: https://raw.githubusercontent.com/poc-examples/charts/main/charts/developer_hub/images/jaeger.png
           label: Jaeger UI - Grafana Tempo
-          url: https://tempo-sample-query-frontend-observability.{{ .Values.host }}/
+          url: https://tempo-tempo-stack-query-frontend-opentelemetry.{{ .Values.host }}/
     - title: Infrastructure
       isExpanded: false
       links:
