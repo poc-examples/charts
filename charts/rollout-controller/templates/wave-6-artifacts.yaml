@@ -226,7 +226,7 @@ spec:
         {{ `{{- end }}` }}
       {{ `{{- if (index . "ignoreDifferences") }}` }}
       ignoreDifferences: | 
-        {{ `{{- .ignoreDifferences | nindent 6 }}` }}
+        {{ `{{- .ignoreDifferences | nindent 4 }}` }}
       {{ `{{- end }}` }}
 
 {{- end }}
