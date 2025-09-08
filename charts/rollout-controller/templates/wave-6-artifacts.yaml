@@ -208,14 +208,6 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - Validate=false
-      {{- if and .Values.gitlab.enabled (not .Values.shared.enabled) }}
-      ignoreDifferences:
-        - kind: GitLab
-          name: gitlab
-          namespace: gitlab-system
-          jsonPointers:
-            - /spec/chart/version
-      {{- end }}
   templatePatch: |
     spec:
       source:
