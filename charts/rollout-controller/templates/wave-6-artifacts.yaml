@@ -88,7 +88,8 @@ spec:
               url: https://poc-examples.github.io/charts
               version: "{{ .Values.gitlab.chartVersion }}"
             ignoreDifferences: |
-              - kind: GitLab
+              - group: apps.gitlab.com
+                kind: GitLab
                 name: gitlab
                 namespace: gitlab-system
                 jsonPointers:
