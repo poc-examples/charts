@@ -1,0 +1,46 @@
+# https://www.npmjs.com/package/@backstage-community/plugin-rbac-backend
+## Example multiple conditionals
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rbac-conditional-policies
+data:
+  policies.yaml: |
+    ---
+    result: CONDITIONAL
+    roleEntityRef: role:default/cluster-admins
+    pluginId: catalog
+    resourceType: catalog-entity
+    permissionMapping:
+      - read
+    conditions:
+      anyOf:
+        - rule: HAS_SPEC
+          resourceType: catalog-entity
+          params:
+            key: type
+            value: service
+        - rule: HAS_SPEC
+          resourceType: catalog-entity
+          params:
+            key: type
+            value: workshop
+    # ---
+    # result: CONDITIONAL
+    # roleEntityRef: role:default/cluster-admins
+    # pluginId: catalog
+    # resourceType: catalog-entity
+    # permissionMapping:
+    #   - read
+    # conditions:
+    #   anyOf:
+    #     - rule: HAS_SPEC
+    #       resourceType: catalog-entity
+    #       params:
+    #         key: type
+    #         value: service
+    #     - rule: HAS_SPEC
+    #       resourceType: catalog-entity
+    #       params:
+    #         key: type
+    #         value: workshop

@@ -1,0 +1,13 @@
+# https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/authorization_in_red_hat_developer_hub/ref-rbac-permission-policies_title-authorization
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rbac-policies
+data:
+  rbac-policies.csv: |
+    p, role:default/cluster-admins, orchestrator.workflow.read, read, allow
+    p, role:default/cluster-admins, orchestrator.workflow.use, update, allow
+    p, role:default/cluster-admins, orchestrator.instance.read, read, allow
+    p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
+    p, role:default/cluster-admins, orchestrator.workflow.greeting, read, allow
+    g, group:default/cluster-admins, role:default/cluster-admins

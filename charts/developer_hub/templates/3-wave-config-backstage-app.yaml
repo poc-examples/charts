@@ -142,7 +142,20 @@ data:
       - Template
 
     permission:
-      enabled: false
+      enabled: true
+      rbac:
+        # admin:
+        #   users:
+        #     - name: user:default/admin
+        pluginsWithPermission:
+          - catalog
+          - scaffolder
+          - permission
+          - kubernetes
+          - argocd
+        policies-csv-file: /opt/app-root/src/rbac-policies.csv
+        conditionalPoliciesFile: /opt/app-root/src/policies.yaml
+        policyFileReload: true
 
     techRadar:
       url: "http://dynamic-dashboard.backstage.svc.cluster.local/radar"

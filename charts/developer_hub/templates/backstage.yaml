@@ -30,6 +30,8 @@ spec:
         - name: techdocs-plugin
         - name: catalog-config
         - name: dynamic-homepage-plugin
+        - name: rbac-conditional-policies
+        - name: rbac-policies
     extraEnvs:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
