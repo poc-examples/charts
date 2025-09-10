@@ -17,8 +17,8 @@ data:
       ## Test Something Crazy
       ####################################
       - disabled: false
-        package: https://npm-registry-npm-registry.apps.kpbmxfhk.eastus.aroapp.io/@cah/rhdh-dp-validate-kebab-case-dynamic/-/rhdh-dp-validate-kebab-case-dynamic-0.1.4.tgz
-        integrity: sha512-dgwQeGu9eUtasI5WT+CVK8qUwZyVcrsWBt46WxIRApkldU6Ptt3W5SrKN7n6PQU+4sechu1sQrSSs2ugNTODDA==
+        package: https://npm-registry-npm-registry.apps.kpbmxfhk.eastus.aroapp.io/@cah/rhdh-dp-validate-kebab-case-dynamic/-/rhdh-dp-validate-kebab-case-dynamic-0.1.5.tgz
+        integrity: sha512-tfEWIU2HS146UnCYSY329up1Kp4ppyrENO1HJKK+herigM75dIV1ANsE4O+xXEvXPyfnXvR0RRxmus/ORiQcGw==
 
       ####################################
       ## RED HAT RBAC PLUGIN CONFIGURATION
