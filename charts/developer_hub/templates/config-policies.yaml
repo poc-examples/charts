@@ -5,21 +5,24 @@ metadata:
   name: rbac-policies
 data:
   rbac-policies.csv: |
-    # p, role:default/cluster-admins, orchestrator.workflow.read, read, allow
-    # p, role:default/cluster-admins, orchestrator.workflow.use, update, allow
-    # p, role:default/cluster-admins, orchestrator.instance.read, read, allow
-    # p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
-    # p, role:default/cluster-admins, orchestrator.workflow.greeting, read, allow
+    p, role:default/cluster-admins, orchestrator.workflow.read, read, allow
+    p, role:default/cluster-admins, orchestrator.workflow.use, update, allow
+    p, role:default/cluster-admins, orchestrator.instance.read, read, allow
+    p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
+    p, role:default/cluster-admins, orchestrator.workflow.greeting, read, allow
 
-    # p, role:default/cluster-admins, catalog.entity.read, read, allow
-    # p, role:default/cluster-admins, catalog.entity.create, create, allow
-    # p, role:default/cluster-admins, catalog.entity.update, update, allow
-    # p, role:default/cluster-admins, catalog.entity.delete, delete, allow
-    # p, role:default/cluster-admins, catalog.location.read, read, allow
+    p, role:default/cluster-admins, catalog.entity.read, read, allow
+    p, role:default/cluster-admins, catalog.entity.create, create, allow
+    p, role:default/cluster-admins, catalog.entity.update, update, allow
+    p, role:default/cluster-admins, catalog.entity.delete, delete, allow
+    p, role:default/cluster-admins, catalog.entity.refresh, update, allow
+    p, role:default/cluster-admins, catalog.location.read, read, allow
+    p, role:default/cluster-admins, catalog.location.create, create, allow
+    p, role:default/cluster-admins, catalog.location.delete, delete, allow
 
-    # p, role:default/cluster-admins, policy.entity.create, create, allow
-    # p, role:default/cluster-admins, policy.entity.read, read, allow
-    # p, role:default/cluster-admins, policy.entity.delete, delete, allow
-    # p, role:default/cluster-admins, policy.entity.update, update, allow
+    p, role:default/cluster-admins, policy.entity.create, create, allow
+    p, role:default/cluster-admins, policy.entity.read, read, allow
+    p, role:default/cluster-admins, policy.entity.delete, delete, allow
+    p, role:default/cluster-admins, policy.entity.update, update, allow
 
-    # g, group:default/cluster-admins, role:default/cluster-admins
+    g, group:default/cluster-admins, role:default/cluster-admins
