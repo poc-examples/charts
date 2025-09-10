@@ -84,9 +84,9 @@ data:
       cache:
         store: redis
         connection: redis://:password@redis.backstage.svc.cluster.local:6379
-      # auth:
-      #   keys:
-      #     - secret: ${DEVHUB_BACKEND_SECRET}
+      auth:
+        keys:
+          - secret: ${DEVHUB_BACKEND_SECRET}
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       listen:
         port: 7007
