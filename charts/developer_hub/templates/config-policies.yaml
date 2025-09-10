@@ -22,6 +22,10 @@ data:
 
     p, role:default/cluster-admins, scaffolder.template.read, read, allow
     p, role:default/cluster-admins, scaffolder.template.management, use, allow
+    p, role:default/cluster-admins, scaffolder.template.parameter.read, read, allow
+    p, role:default/cluster-admins, scaffolder.template.step.read, read, allow
+    p, role:default/cluster-admins, scaffolder.task.cancel, use, allow
+
     p, role:default/cluster-admins, scaffolder.action.execute, use, allow
     p, role:default/cluster-admins, scaffolder.task.read, read, allow
     p, role:default/cluster-admins, scaffolder.task.create, create, allow
