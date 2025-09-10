@@ -10,4 +10,7 @@ data:
     p, role:default/cluster-admins, orchestrator.instance.read, read, allow
     p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
     p, role:default/cluster-admins, orchestrator.workflow.greeting, read, allow
+
+    p, role:default/cluster-admins, catalog.entity.read, read, allow
+
     g, group:default/cluster-admins, role:default/cluster-admins
