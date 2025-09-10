@@ -25,6 +25,16 @@ data:
           params:
             key: type
             value: workshop
+        - rule: IS_ENTITY_KIND
+          resourceType: catalog-entity
+          params:
+            kinds:
+              - User
+        - rule: IS_ENTITY_KIND
+          resourceType: catalog-entity
+          params:
+            kinds:
+              - Group
     # ---
     # result: CONDITIONAL
     # roleEntityRef: role:default/cluster-admins
