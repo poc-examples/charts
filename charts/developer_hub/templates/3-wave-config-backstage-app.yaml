@@ -77,7 +77,7 @@ data:
             prompt: auto
             signIn:
               resolvers:
-                - resolver: usernameMatchingUserEntityName
+                - resolver: emailMatchingUserEntityProfileEmail
     signInPage: oidc
 
     backend:
