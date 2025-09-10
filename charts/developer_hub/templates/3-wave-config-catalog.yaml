@@ -127,6 +127,6 @@ data:
             username: ${KEYCLOAK_ADMIN_USERNAME}
             password: ${KEYCLOAK_ADMIN_PASSWORD}
             schedule:
-              frequency: { minutes: 7 }
-              timeout: { minutes: 3 }
+              frequency: { minutes: 2 }
+              timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
