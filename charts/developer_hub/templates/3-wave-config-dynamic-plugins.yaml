@@ -14,6 +14,12 @@ data:
     plugins:
 
       ####################################
+      ## Test Something Crazy
+      ####################################
+      - disabled: false
+        package: https://npm-registry-npm-registry.apps.kpbmxfhk.eastus.aroapp.io/@cah/rhdh-dp-validate-kebab-case-dynamic/-/rhdh-dp-validate-kebab-case-dynamic-0.1.3.tgz
+
+      ####################################
       ## RED HAT RBAC PLUGIN CONFIGURATION
       ## https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.6/html/authorization_in_red_hat_developer_hub/enabling-and-giving-access-to-rbac
       ####################################
