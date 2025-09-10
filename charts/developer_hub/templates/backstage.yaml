@@ -31,7 +31,9 @@ spec:
         - name: catalog-config
         - name: dynamic-homepage-plugin
         - name: rbac-conditional-policies
+          mountPath: /opt/app-root/src/rbac
         - name: rbac-policies
+          mountPath: /opt/app-root/src/rbac
     extraEnvs:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
