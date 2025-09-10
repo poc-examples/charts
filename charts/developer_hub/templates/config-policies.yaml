@@ -21,8 +21,10 @@ data:
     p, role:default/cluster-admins, catalog.location.delete, delete, allow
 
     p, role:default/cluster-admins, scaffolder.template.read, read, allow
+    p, role:default/cluster-admins, scaffolder.template.management, use, allow
     p, role:default/cluster-admins, scaffolder.action.execute, use, allow
     p, role:default/cluster-admins, scaffolder.task.read, read, allow
+    p, role:default/cluster-admins, scaffolder.task.create, create, allow
     p, role:default/cluster-admins, search.query, read, allow
 
     p, role:default/cluster-admins, policy.entity.create, create, allow
