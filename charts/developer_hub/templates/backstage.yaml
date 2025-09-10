@@ -1,20 +1,20 @@
-apiVersion: rhdh.redhat.com/v1alpha3
+apiVersion: rhdh.redhat.com/v1alpha2
 kind: Backstage
 metadata:
   name: developer-hub
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  # deployment:
-  #   patch:
-  #     spec:
-  #       template:
-  #         spec:
-  #           volumes:
-  #             - $patch: replace
-  #               name: dynamic-plugins-root
-  #               persistentVolumeClaim:
-  #                 claimName: dynamic-plugins-root
+  deployment:
+    patch:
+      spec:
+        template:
+          spec:
+            volumes:
+              - $patch: replace
+                name: dynamic-plugins-root
+                persistentVolumeClaim:
+                  claimName: dynamic-plugins-root
   application:
     dynamicPluginsConfigMapName: dynamic-plugins
     appConfig:
@@ -30,10 +30,6 @@ spec:
         - name: techdocs-plugin
         - name: catalog-config
         - name: dynamic-homepage-plugin
-        - name: rbac-conditional-policies
-          mountPath: /opt/app-root/src/rbac
-        - name: rbac-policies
-          mountPath: /opt/app-root/src/rbac
     extraEnvs:
       envs:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
@@ -62,6 +58,8 @@ spec:
       mountPath: /opt/app-root/src/extra-files
       configMaps:
         - name: argocd-entities-config
+        - name: rbac-conditional-policies
+        - name: rbac-policies
     replicas: 1
     route:
       enabled: true

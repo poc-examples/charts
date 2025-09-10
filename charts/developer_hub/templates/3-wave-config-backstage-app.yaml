@@ -153,8 +153,8 @@ data:
           - permission
           - kubernetes
           - argocd
-        policies-csv-file: /opt/app-root/src/rbac/rbac-policies.csv
-        conditionalPoliciesFile: /opt/app-root/src/rbac/policies.yaml
+        policies-csv-file: /opt/app-root/src/extra-files/rbac-policies.csv
+        conditionalPoliciesFile: /opt/app-root/src/extra-files/policies.yaml
         policyFileReload: true
 
     techRadar:
