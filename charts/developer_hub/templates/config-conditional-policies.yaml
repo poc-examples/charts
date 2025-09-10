@@ -30,11 +30,12 @@ data:
           params:
             kinds:
               - User
-        - rule: IS_ENTITY_KIND
-          resourceType: catalog-entity
-          params:
-            kinds:
               - Group
+              - Component
+              - System
+              - Resource
+              - API
+              - Location
     # ---
     # result: CONDITIONAL
     # roleEntityRef: role:default/cluster-admins
