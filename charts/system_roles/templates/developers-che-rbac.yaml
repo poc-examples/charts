@@ -17,6 +17,8 @@ rules:
     - update
     - delete
     - patch
+
+# Maybe need to be shifted over
 - apiGroups:
     - image.openshift.io
   resources:
@@ -42,6 +44,7 @@ rules:
     - list
     - delete
     - update
+# Flag for changeover
 - apiGroups:
     - apps
   resources:
@@ -52,6 +55,7 @@ rules:
     - list
     - update
     - delete
+# Flag for changeover
 - apiGroups:
     - batch
   resources:
@@ -125,6 +129,7 @@ rules:
     - create
     - get
     - list
+# SEE KEVIN
     - update
     - delete
     - patch
