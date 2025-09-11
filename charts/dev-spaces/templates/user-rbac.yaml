@@ -70,3 +70,21 @@ rules:
   - patch
   - update
   - delete
+- apiGroups:
+    - serving.knative.dev
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
+    - services
+    - revisions
+    - routes
+    - apiserversources
+    - brokers
+    - triggers
+    - channels
+    - subscriptions
