@@ -83,8 +83,45 @@ rules:
     - services
     - revisions
     - routes
+- apiGroups:
+    - sources.knative.dev
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
     - apiserversources
+- apiGroups:
+    - eventing.knative.dev
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
     - brokers
     - triggers
+- apiGroups:
+    - messaging.knative.dev
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
     - channels
     - subscriptions
+- apiGroups:
+    - operators.coreos.com
+  verbs:
+    - get
+    - list
+  resources:
+    - clusterserviceversions
