@@ -38,6 +38,7 @@ rules:
     - buildconfigs
     - builds
     - buildconfigs/instantiatebinary
+    - builds/log
   verbs:
     - create
     - get
