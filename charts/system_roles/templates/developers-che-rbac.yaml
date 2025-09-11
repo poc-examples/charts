@@ -125,3 +125,26 @@ rules:
     - list
   resources:
     - clusterserviceversions
+- apiGroups:
+    - operator.knative.dev
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
+    - knativeservings
+    - knativeeventings
+- apiGroups:
+    - operator.serverless.openshift.io
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
+    - knativekafkas
