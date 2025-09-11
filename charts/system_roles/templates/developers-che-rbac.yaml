@@ -6,70 +6,64 @@ metadata:
   name: developers
 rules:
 - apiGroups:
-  - kafka.strimzi.io
+    - opentelemetry.io
   resources:
-  - kafkas
+    - opentelemetrycollectors
+    - instrumentations
   verbs:
-  - list
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
 - apiGroups:
-  - opentelemetry.io
+    - image.openshift.io
   resources:
-  - opentelemetrycollectors
-  - instrumentations
+    - imagestreams
+    - imagestreamimports
+    - imagestreamimages
+    - imagestreamtags
   verbs:
-  - create
-  - get
-  - list
-  - update
-  - delete
-  - patch
+    - create
+    - get
+    - list
+    - delete
+    - update
 - apiGroups:
-  - image.openshift.io
+    - build.openshift.io
   resources:
-  - imagestreams
-  - imagestreamimports
-  - imagestreamimages
-  - imagestreamtags
+    - buildconfigs
+    - builds
+    - buildconfigs/instantiatebinary
   verbs:
-  - create
-  - get
-  - list
-  - delete
-  - update
+    - create
+    - get
+    - list
+    - delete
+    - update
 - apiGroups:
-  - build.openshift.io
+    - apps
   resources:
-  - buildconfigs
-  - builds
-  - buildconfigs/instantiatebinary
+    - deployments
   verbs:
-  - create
-  - get
-  - list
-  - delete
-  - update
+    - create
+    - get
+    - list
+    - update
+    - delete
 - apiGroups:
-  - apps
+    - batch
   resources:
-  - deployments
+    - cronjobs
+    - jobs
   verbs:
-  - create
-  - get
-  - list
-  - update
-  - delete
-- apiGroups:
-  - batch
-  resources:
-  - cronjobs
-  - jobs
-  verbs:
-  - create
-  - get
-  - list
-  - patch
-  - update
-  - delete
+    - create
+    - get
+    - list
+    - patch
+    - update
+    - delete
 - apiGroups:
     - serving.knative.dev
   verbs:
@@ -148,3 +142,22 @@ rules:
     - patch
   resources:
     - knativekafkas
+- verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  apiGroups:
+    - kafka.strimzi.io
+  resources:
+    - kafkanodepools
+    - kafkaconnects
+    - kafkabridges
+    - kafkatopics
+    - kafkausers
+    - kafkaconnectors
+    - kafkamirrormaker2s
+    - kafkarebalances
+    - kafkas
