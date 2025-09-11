@@ -21,6 +21,14 @@ spec:
   generators:
     - list:
         elements:
+        {{- if ne .Values.controller.name "workshop" }}
+          - application: "system-roles-service"
+            namespace: system-roles
+            chart: 
+              name: system_roles
+              url: https://poc-examples.github.io/charts
+              version: "{{ .Values.system_roles.chartVersion }}"
+        {{- end }}
         {{- if .Values.gatekeeper.enabled }}
           - application: "{{ $prefix }}gatekeeper-service"
             namespace: gatekeeper

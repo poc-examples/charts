@@ -16,9 +16,15 @@ data:
       ####################################
       ## Test Something Crazy
       ####################################
-      - disabled: false
+      - disabled: true
         package: https://npm-registry-npm-registry.apps.kpbmxfhk.eastus.aroapp.io/@cah/rhdh-dp-validate-kebab-case-dynamic/-/rhdh-dp-validate-kebab-case-dynamic-0.1.5.tgz
         integrity: sha512-tfEWIU2HS146UnCYSY329up1Kp4ppyrENO1HJKK+herigM75dIV1ANsE4O+xXEvXPyfnXvR0RRxmus/ORiQcGw==
+
+      ####################################
+      ## RED HAT HTTP REQUESTS PLUGIN
+      ####################################
+      - disabled: false
+        package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
 
       ####################################
       ## RED HAT RBAC PLUGIN CONFIGURATION

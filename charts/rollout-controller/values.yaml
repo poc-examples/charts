@@ -5,6 +5,9 @@ clusters: []
 machinesets:
   chartVersion: 0.1.28
 
+system_roles:
+  chartVersion: 0.0.4
+
 registry:
   enabled: false
 
@@ -55,14 +58,14 @@ opentelemetry:
   enabled: false
 
 devhub:
-  chartVersion: 0.4.56
+  chartVersion: 0.4.87
   enabled: false
   helm:
     enabled: false
     chartVersion: 0.0.36
 
 devspaces:
-  chartVersion: 0.1.27
+  chartVersion: 0.1.29
   enabled: false
   enableCapacity: false
   count: 1

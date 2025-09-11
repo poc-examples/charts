@@ -11,6 +11,7 @@ data:
     p, role:default/cluster-admins, orchestrator.instanceAdminView, use, allow
     p, role:default/cluster-admins, orchestrator.workflow.greeting, read, allow
 
+    ## Catalog Perms Admin
     p, role:default/cluster-admins, catalog.entity.read, read, allow
     p, role:default/cluster-admins, catalog.entity.create, create, allow
     p, role:default/cluster-admins, catalog.entity.update, update, allow
@@ -20,7 +21,13 @@ data:
     p, role:default/cluster-admins, catalog.location.create, create, allow
     p, role:default/cluster-admins, catalog.location.delete, delete, allow
 
+    ## Catalog Perms Developers
+    p, role:default/developers, catalog.entity.read, read, allow
+    p, role:default/developers, catalog.entity.create, create, allow
+
+    ## Scaffolder Perms Admin
     p, role:default/cluster-admins, scaffolder.template.read, read, allow
+    p, role:default/cluster-admins, scaffolder.template.delete, delete, allow
     p, role:default/cluster-admins, scaffolder.template.management, use, allow
     p, role:default/cluster-admins, scaffolder.template.parameter.read, read, allow
     p, role:default/cluster-admins, scaffolder.template.step.read, read, allow
@@ -31,9 +38,23 @@ data:
     p, role:default/cluster-admins, scaffolder.task.create, create, allow
     p, role:default/cluster-admins, search.query, read, allow
 
+    ## Scaffolder Perms Developers
+    p, role:default/developers, scaffolder.template.read, read, allow
+    p, role:default/developers, scaffolder.template.management, use, allow
+    p, role:default/developers, scaffolder.template.parameter.read, read, allow
+    p, role:default/developers, scaffolder.template.step.read, read, allow
+
+    p, role:default/developers, scaffolder.action.execute, use, allow
+    p, role:default/developers, scaffolder.task.read, read, allow
+    p, role:default/developers, scaffolder.task.cancel, use, allow
+    p, role:default/developers, scaffolder.task.create, create, allow
+    p, role:default/developers, search.query, read, allow
+
+    ## Ability Edit RBAC Admin Only
     p, role:default/cluster-admins, policy.entity.create, create, allow
     p, role:default/cluster-admins, policy.entity.read, read, allow
     p, role:default/cluster-admins, policy.entity.delete, delete, allow
     p, role:default/cluster-admins, policy.entity.update, update, allow
 
     g, group:default/cluster-admins, role:default/cluster-admins
+    g, group:default/developers, role:default/developers
