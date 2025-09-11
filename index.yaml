@@ -15585,6 +15585,16 @@ entries:
   system_roles:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-11T15:14:56.03810308Z"
+    description: A Helm chart for Kubernetes
+    digest: b8a2387e46ab15f4636fb657993d8a3abb83ecb814e9a623212156fe49417b10
+    name: system_roles
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/system_roles-0.0.6/system_roles-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-11T14:41:01.999724831Z"
     description: A Helm chart for Kubernetes
     digest: 1b421733363e83c1a5c939848faed3bd9e4bce0bc78d8e0caa7431d2a547bb6a
@@ -16358,4 +16368,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-09-11T14:41:02.002402005Z"
+generated: "2025-09-11T15:14:56.041545664Z"
