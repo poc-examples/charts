@@ -28,7 +28,7 @@ spec:
               url: https://poc-examples.github.io/charts
               version: "{{ .Values.minio.chartVersion }}"
         {{- end }}
-        {{- if .Values.npm.enabled }}
+        {{- if (and .Values.npm.enabled (ne .Values.controller.name "workshop")) }}
           - application: "{{ $prefix }}npm-registry-service"
             namespace: "npm-registry"
             wave: "-2"
