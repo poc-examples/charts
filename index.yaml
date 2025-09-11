@@ -12331,6 +12331,16 @@ entries:
   rollout-controller:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-11T15:19:35.235479049Z"
+    description: A Helm chart for Kubernetes
+    digest: 99094594275b0f5b482eaa2bc84bee5cc90e606d5e39c071d098f7c3d6b7535c
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.105/rollout-controller-0.6.105.tgz
+    version: 0.6.105
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-11T14:05:54.71172332Z"
     description: A Helm chart for Kubernetes
     digest: c6373da728345c283bbc73376f6dfc51a94737ec46e3d157f120cffed3ea06d3
@@ -16368,4 +16378,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-09-11T15:14:56.041545664Z"
+generated: "2025-09-11T15:19:35.240439756Z"
