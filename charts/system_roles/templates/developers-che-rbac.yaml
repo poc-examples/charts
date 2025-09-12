@@ -6,6 +6,17 @@ metadata:
   name: developers
 rules:
 - apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - replicationcontrollers/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
     - opentelemetry.io
   resources:
     - opentelemetrycollectors
