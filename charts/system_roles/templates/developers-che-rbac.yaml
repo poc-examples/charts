@@ -167,3 +167,14 @@ rules:
     - kafkamirrormaker2s
     - kafkarebalances
     - kafkas
+- apiGroups:
+    - monitoring.coreos.com
+  verbs:
+    - create
+    - get
+    - list
+    - update
+    - delete
+    - patch
+  resources:
+    - servicemonitor
