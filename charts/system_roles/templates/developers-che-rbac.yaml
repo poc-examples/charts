@@ -177,4 +177,4 @@ rules:
     - delete
     - patch
   resources:
-    - servicemonitor
+    - servicemonitors
