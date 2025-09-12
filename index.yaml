@@ -1733,6 +1733,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-12T20:23:32.388402618Z"
+    description: A chart for deploying dev spaces
+    digest: 9cfcb52c253fe5f1266cf36bf5392a56ddd0df84b232e50fd5cb3a801257b5c1
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.30/dev-spaces-0.1.30.tgz
+    version: 0.1.30
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-11T14:05:54.287675863Z"
     description: A chart for deploying dev spaces
     digest: 75ccc6144d7defa3e93a6e9b512b9aece85946958e63f59b1a523839af606003
@@ -2933,6 +2943,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/developer_hub_helm-0.0.1/developer_hub_helm-0.0.1.tgz
     version: 0.0.1
   developerhub:
+  - apiVersion: v2
+    appVersion: 1.2.6
+    created: "2025-09-12T20:23:32.608330218Z"
+    description: A chart for deploying Red Hat Developer Hub.
+    digest: baa1ee045d93a3eddcfba5afc691b1527d70348ffa907ed08767870e53e2444c
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.4.89/developerhub-0.4.89.tgz
+    version: 0.4.89
   - apiVersion: v2
     appVersion: 1.2.6
     created: "2025-09-12T18:15:47.624256076Z"
@@ -15605,6 +15625,16 @@ entries:
   system_roles:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-12T20:23:32.851449494Z"
+    description: A Helm chart for Kubernetes
+    digest: 66a757e651e930b961897f61d57229ebca6ccf43c2aa0bc7020f5d0c471883c7
+    name: system_roles
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/system_roles-0.0.13/system_roles-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-12T12:10:08.456238794Z"
     description: A Helm chart for Kubernetes
     digest: 28a8f18509e794ba8d480cfce7f9b655f907ad839bb7214acac8182f4a7d53a6
@@ -16448,4 +16478,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-09-12T18:15:47.627439215Z"
+generated: "2025-09-12T20:23:32.854206564Z"
