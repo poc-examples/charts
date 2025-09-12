@@ -103,6 +103,8 @@ data:
           - 'data:'
           - ${JIRA_URL}
           - 'raw.githubusercontent.com'
+          - 'img.shields.io'
+          - 'www.eclipse.org'
       cors:
         origin: "*"
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
