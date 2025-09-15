@@ -6,7 +6,7 @@ machinesets:
   chartVersion: 0.1.28
 
 system_roles:
-  chartVersion: 0.0.4
+  chartVersion: 0.0.13
 
 registry:
   enabled: false
@@ -16,12 +16,12 @@ npm:
   chartVersion: 4.26.1
 
 acs:
-  chartVersion: 0.1.21
+  chartVersion: 0.1.22
   enabled: false
   enableCapacity: true
 
 acm:
-  chartVersion: 0.1.5
+  chartVersion: 0.1.26
   enabled: false
   enableCapacity: true
 
@@ -30,7 +30,7 @@ keycloak:
   enabled: false
 
 gatekeeper:
-  chartVersion: 0.1.16
+  chartVersion: 0.1.17
   enabled: false
 
 gitops:
@@ -58,14 +58,14 @@ opentelemetry:
   enabled: false
 
 devhub:
-  chartVersion: 0.4.87
+  chartVersion: 0.4.89
   enabled: false
   helm:
     enabled: false
-    chartVersion: 0.0.36
+    chartVersion: 0.0.70
 
 devspaces:
-  chartVersion: 0.1.29
+  chartVersion: 0.1.30
   enabled: false
   enableCapacity: false
   count: 1
@@ -136,11 +136,11 @@ quay:
 
 quay_bridge:
   enabled: false
-  chartVersion: 0.1.5
+  chartVersion: 0.1.6
 
 rhoai:
   enabled: false
-  chartVersion: 0.1.5
+  chartVersion: 0.1.7
   enableCapacity: true
 
 amq:
