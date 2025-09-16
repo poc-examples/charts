@@ -164,7 +164,7 @@ data:
 
     techdocs:
       cache:
-        ttl: 3600000
+        ttl: 60
 
     proxy:
 
