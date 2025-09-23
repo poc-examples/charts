@@ -1733,6 +1733,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-23T16:02:30.409765977Z"
+    description: A chart for deploying dev spaces
+    digest: 9c3281f068bd74ce3e9bfe74ae2ae9404c7b462d18960e4b6387407e72ab13b6
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.31/dev-spaces-0.1.31.tgz
+    version: 0.1.31
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-12T20:23:32.388402618Z"
     description: A chart for deploying dev spaces
     digest: 9cfcb52c253fe5f1266cf36bf5392a56ddd0df84b232e50fd5cb3a801257b5c1
@@ -2943,6 +2953,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/developer_hub_helm-0.0.1/developer_hub_helm-0.0.1.tgz
     version: 0.0.1
   developerhub:
+  - apiVersion: v2
+    appVersion: 1.2.6
+    created: "2025-09-23T16:02:30.636644991Z"
+    description: A chart for deploying Red Hat Developer Hub.
+    digest: c0e13aa1ecfea42d24d027165e1d26d4591cd3ec5371e774d4723854b766c39c
+    name: developerhub
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/developerhub-0.4.93/developerhub-0.4.93.tgz
+    version: 0.4.93
   - apiVersion: v2
     appVersion: 1.2.6
     created: "2025-09-16T14:15:42.194041891Z"
@@ -9121,6 +9141,16 @@ entries:
   orchestrator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-23T16:02:30.876105512Z"
+    description: A Helm chart for Kubernetes
+    digest: d53055eab5cdf5ccc6ae29806742465dada19c47a0392a5ed3b8ff3267953d2d
+    name: orchestrator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/orchestrator-0.0.87/orchestrator-0.0.87.tgz
+    version: 0.0.87
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-15T18:29:54.836801037Z"
     description: A Helm chart for Kubernetes
     digest: db8edb63b0f55b49bbaa19d6988027a8593f9707b41719af2e9f9828ddd5772c
@@ -12389,6 +12419,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-23T16:02:31.086072021Z"
+    description: A Helm chart for Kubernetes
+    digest: 874151a262193ef851da0bfba1c76ea5cc9435cfe41477a9990a771cabf51c61
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.108/rollout-controller-0.6.108.tgz
+    version: 0.6.108
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-09-15T18:29:55.070988395Z"
@@ -15665,6 +15705,16 @@ entries:
   system_roles:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-23T16:02:31.334065658Z"
+    description: A Helm chart for Kubernetes
+    digest: 0cc2bd4e0958a87c5dd6e242106054e4baabe8cc39ee6ade15b389c83d257b3d
+    name: system_roles
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/system_roles-0.0.14/system_roles-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-09-12T20:23:32.851449494Z"
     description: A Helm chart for Kubernetes
     digest: 66a757e651e930b961897f61d57229ebca6ccf43c2aa0bc7020f5d0c471883c7
@@ -16518,4 +16568,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-09-16T14:15:42.196325877Z"
+generated: "2025-09-23T16:02:31.336926029Z"
