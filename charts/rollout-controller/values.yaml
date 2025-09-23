@@ -58,7 +58,7 @@ opentelemetry:
   enabled: false
 
 devhub:
-  chartVersion: 0.4.87
+  chartVersion: 0.4.89
   enabled: false
   helm:
     enabled: false

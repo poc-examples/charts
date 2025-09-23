@@ -13,7 +13,7 @@ data:
               name: {{ .name }}
               skipTLSVerify: true
               oidcTokenProvider: oidc
-              url: https://api.{{ .domain }}:6443
+              url: https://api.{{ .domain }}:{{ .api_port }}
             {{- end }}
       customResources:
         - apiVersion: v1
