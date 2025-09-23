@@ -45,17 +45,18 @@ spec:
     defaultComponents:
       - name: dev-tools
         container:
-          image: image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/devspaces-dotnet-python:latest
-          memoryLimit: 2Gi
-          cpuLimit: "1"
+          image: image-registry.openshift-image-registry.svc:5000/openshift/udi-rhel9:3.22
+          memoryLimit: 3Gi
+          cpuLimit: "2"
           mountSources: true
     user:
       clusterRoles:
         - "developers"
     startTimeoutSeconds: 300
+    maxNumberOfRunningWorkspacesPerUser: 2
     maxNumberOfWorkspacesPerUser: 5
     secondsOfInactivityBeforeIdling: 1800
     storage:
-      pvcStrategy: common
+      pvcStrategy: per-workspace
   networking:
     domain: "{{ .Values.domain }}"

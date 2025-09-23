@@ -93,7 +93,7 @@ rhoai:
 
 # Developer Experience
 devhub:
-  chartVersion: 0.4.89
+  chartVersion: 0.4.92
   enabled: false
   helm:
     enabled: false
