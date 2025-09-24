@@ -52,7 +52,7 @@ spec:
             chart: 
               name: user-sync
               url: https://poc-examples.github.io/charts
-              version: "0.1.4"
+              version: "0.1.5"
             values: |
               domain: "{{ .Values.cluster.domain }}"
         {{- end }}
