@@ -11,6 +11,7 @@ spec:
           containers:
             - name: "user-sync-job"
               image: "docker.io/cengleby86/user-sync:latest"
+              imagePullPolicy: IfNotPresent
               envFrom:
                 - secretRef:
                     name: keycloak-credentials
