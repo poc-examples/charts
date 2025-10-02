@@ -78,7 +78,7 @@ rhtas:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.2.47
+  chartVersion: 0.2.48
   enabled: false
   runners: 
     enabled: false
