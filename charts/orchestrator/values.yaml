@@ -3,7 +3,7 @@ domain: openshift.api
 ## Current Default Rollout-Controller
 controller:
   name: infrastructure
-  chartVersion: 0.6.108
+  chartVersion: 0.6.110
 
 system_roles:
   chartVersion: 0.0.4
@@ -56,7 +56,7 @@ opentelemetry:
 
 gitlab:
   namespace: gitlab-system
-  chartVersion: 0.2.46
+  chartVersion: 0.2.47
   enabled: true
   runners: 
     enabled: false
