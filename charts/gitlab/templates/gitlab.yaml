@@ -37,4 +37,4 @@ spec:
             [[runners]]
               [runners.kubernetes]
               image = "ubuntu:22.04"
-    version: "8.4.6"
+    version: "9.4.1"
