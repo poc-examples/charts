@@ -1,41 +1,25 @@
-# apiVersion: template.openshift.io/v1
-# kind: Template
-# metadata:
-#   name: devworkspace-backup-service-account-config
-#   namespace: devspaces
-#   labels:
-#     app.kubernetes.io/part-of: che.eclipse.org
-#     app.kubernetes.io/component: workspaces-config
-# objects:
-# - apiVersion: v1
-#   kind: ServiceAccount
-#   metadata:
-#     name: devworkspace-backup-serviceaccount
-#   secrets:
-#   - name: devworkspace-container-registry-dockercfg
-#   imagePullSecrets:
-#   - name: devworkspace-container-registry-dockercfg
-# - kind: Role
-#   apiVersion: rbac.authorization.k8s.io/v1
-#   metadata:
-#     name: devworkspace-backup-use-nested-podman-scc
-#   rules:
-#     - verbs:
-#         - use
-#       apiGroups:
-#         - security.openshift.io
-#       resources:
-#         - securitycontextconstraints
-#       resourceNames:
-#         - nested-podman-scc
-# - kind: RoleBinding
-#   apiVersion: rbac.authorization.k8s.io/v1
-#   metadata:
-#     name: devworkspace-backup-use-nested-podman-scc
-#   subjects:
-#     - kind: ServiceAccount
-#       name: devworkspace-backup-serviceaccount
-#   roleRef:
-#     apiGroup: rbac.authorization.k8s.io
-#     kind: Role
-#     name: devworkspace-backup-use-nested-podman-scc
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: devspaces-template
+  namespace: openshift-operators
+  labels:
+    app.kubernetes.io/part-of: che.eclipse.org
+    app.kubernetes.io/component: workspaces-config
+objects:
+  - apiVersion: external-secrets.io/v1beta1
+    kind: ExternalSecret
+    metadata:
+      name: gitlab
+    spec:
+      refreshInterval: "2m"
+      secretStoreRef:
+        name: eso-admin-secret-store
+        kind: ClusterSecretStore
+      target:
+        name: gitlab-token
+      data:
+      - secretKey: GITLAB_TOKEN
+        remoteRef:
+          key: gitlab
+          property: group_access_token
