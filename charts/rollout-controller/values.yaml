@@ -145,7 +145,7 @@ rhoai:
 
 amq:
   enabled: false
-  chartVersion: 0.0.2
+  chartVersion: 0.0.3
   enableCapacity: false
   count: 1
   sku: Standard_D8s_v3

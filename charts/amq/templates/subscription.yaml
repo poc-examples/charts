@@ -5,11 +5,12 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
-  channel: stable
+  channel: amq-streams-2.9.x
   installPlanApproval: Automatic
   name: amq-streams
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: amqstreams.v2.9.2-1
   config:
     resources:
       limits:

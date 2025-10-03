@@ -3,7 +3,7 @@ domain: openshift.api
 ## Current Default Rollout-Controller
 controller:
   name: infrastructure
-  chartVersion: 0.6.111
+  chartVersion: 0.6.112
 
 system_roles:
   chartVersion: 0.0.4
