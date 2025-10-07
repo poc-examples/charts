@@ -1,25 +1,25 @@
-apiVersion: template.openshift.io/v1
-kind: Template
-metadata:
-  name: devspaces-template
-  namespace: openshift-operators
-  labels:
-    app.kubernetes.io/part-of: che.eclipse.org
-    app.kubernetes.io/component: workspaces-config
-objects:
-  - apiVersion: external-secrets.io/v1beta1
-    kind: ExternalSecret
-    metadata:
-      name: gitlab
-    spec:
-      refreshInterval: "2m"
-      secretStoreRef:
-        name: eso-admin-secret-store
-        kind: ClusterSecretStore
-      target:
-        name: gitlab-token
-      data:
-      - secretKey: GITLAB_TOKEN
-        remoteRef:
-          key: gitlab
-          property: group_access_token
+# apiVersion: template.openshift.io/v1
+# kind: Template
+# metadata:
+#   name: devspaces-template
+#   namespace: openshift-operators
+#   labels:
+#     app.kubernetes.io/part-of: che.eclipse.org
+#     app.kubernetes.io/component: workspaces-config
+# objects:
+#   - apiVersion: external-secrets.io/v1beta1
+#     kind: ExternalSecret
+#     metadata:
+#       name: gitlab
+#     spec:
+#       refreshInterval: "2m"
+#       secretStoreRef:
+#         name: eso-admin-secret-store
+#         kind: ClusterSecretStore
+#       target:
+#         name: gitlab-token
+#       data:
+#       - secretKey: GITLAB_TOKEN
+#         remoteRef:
+#           key: gitlab
+#           property: group_access_token
