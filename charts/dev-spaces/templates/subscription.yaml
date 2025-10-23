@@ -7,7 +7,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
 spec:
   channel: stable
-  installPlanApproval: Automatic
+  installPlanApproval: Manual
   name: devspaces
   source: redhat-operators
   sourceNamespace: openshift-marketplace
+  startingCSV: devspacesoperator.v3.21.0
