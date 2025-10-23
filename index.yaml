@@ -1743,6 +1743,16 @@ entries:
   dev-spaces:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-10-23T16:41:07.576896867Z"
+    description: A chart for deploying dev spaces
+    digest: a239d4319f1d8abe1a1acd1d31e4e7bdb6464befd4fcc91d151373ff8386bf61
+    name: dev-spaces
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/dev-spaces-0.1.35/dev-spaces-0.1.35.tgz
+    version: 0.1.35
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-10-10T05:02:40.750386271Z"
     description: A chart for deploying dev spaces
     digest: 0840e2b61b5dd9750170c9310e5d5c50701e6cb872fa83ceea3e99ba3a4a88ed
@@ -8835,6 +8845,16 @@ entries:
   minio:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-10-23T16:41:07.920965938Z"
+    description: A Helm chart that installs Minio for OpenShift
+    digest: 0dd9f974cee3580862c3a28d316981fd3ce62e018581fe4a366bec7b509bba1d
+    name: minio
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/minio-0.0.20/minio-0.0.20.tgz
+    version: 0.0.20
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-05-06T13:50:42.852700009Z"
     description: A Helm chart that installs Minio for OpenShift
     digest: 5f3fb1788aae3203c05633556f1b65b7aeffbcc640e0b4534ba12bb73b74237f
@@ -12517,6 +12537,16 @@ entries:
     - https://github.com/poc-examples/charts/releases/download/rhtas-0.1.0/rhtas-0.1.0.tgz
     version: 0.1.0
   rollout-controller:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-23T16:41:08.129207539Z"
+    description: A Helm chart for Kubernetes
+    digest: 19a55744f987639ca08634f4173180f1b6e46eb63b4162f995617aeb38f0811c
+    name: rollout-controller
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/rollout-controller-0.6.116/rollout-controller-0.6.116.tgz
+    version: 0.6.116
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-10-10T05:03:53.371569873Z"
@@ -16746,4 +16776,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-10-10T05:03:53.37490439Z"
+generated: "2025-10-23T16:41:08.131739524Z"
