@@ -140,7 +140,7 @@ quay_bridge:
 
 rhoai:
   enabled: false
-  chartVersion: 0.1.7
+  chartVersion: 0.1.8
   enableCapacity: true
 
 amq:
