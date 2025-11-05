@@ -33,7 +33,7 @@ spec:
     default: false
     enabled: false
   driver:
-    version: "575.57.08-rhcos4.17"
+    version: "575.57.08"
     repository: "nvcr.io/nvidia"
     image: "driver"
     licensingConfig:
