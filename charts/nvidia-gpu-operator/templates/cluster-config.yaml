@@ -33,7 +33,7 @@ spec:
     default: false
     enabled: false
   driver:
-    version: "575.57"
+    version: "575.57.08"
     licensingConfig:
       nlsEnabled: true
       configMapName: ''
