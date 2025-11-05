@@ -9077,6 +9077,16 @@ entries:
   nvidia-gpu-operator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-11-05T16:46:06.508992694Z"
+    description: A Helm chart that installs Nvidia GPU Operator
+    digest: 0b7f1d921ce2348c4b0f96cef045b2d3fd2241f44a21a26c2c96b60556cd614b
+    name: nvidia-gpu-operator
+    type: application
+    urls:
+    - https://github.com/poc-examples/charts/releases/download/nvidia-gpu-operator-0.1.2/nvidia-gpu-operator-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-08-14T13:49:35.398064226Z"
     description: A Helm chart that installs Nvidia GPU Operator
     digest: 04d6edfa9a493ef2b6a801175c721ff2e0bf1e66b95ec493736fdfc46d9dc75e
@@ -16806,4 +16816,4 @@ entries:
     urls:
     - https://github.com/poc-examples/charts/releases/download/web-service-0.1.7/web-service-0.1.7.tgz
     version: 0.1.7
-generated: "2025-11-03T21:01:14.543549913Z"
+generated: "2025-11-05T16:46:06.511085857Z"
