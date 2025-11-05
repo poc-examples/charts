@@ -33,7 +33,8 @@ spec:
     default: false
     enabled: false
   driver:
-    version: "575.57.08"
+    version: "575.57.08-rhcos4.17"
+    repository: "nvcr.io/nvidia/driver"
     licensingConfig:
       nlsEnabled: true
       configMapName: ''
