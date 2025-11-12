@@ -119,7 +119,7 @@ spec:
                       source: "https://galaxy.ansible.com"
                 additionalVars:
                   namespace: "gitlab-system"
-                  csv_name: "gitlab-operator-kubernetes.v1.7.2"
+                  csv_name: "gitlab-operator-kubernetes.v2.4.1"
                 scope: Role
                 rules:
                   - apiGroups:
