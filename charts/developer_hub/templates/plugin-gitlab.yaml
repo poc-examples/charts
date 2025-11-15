@@ -27,6 +27,7 @@ data:
           token: ${GITLAB_TOKEN}
           apiBaseUrl: "https://gitlab.{{ .Values.host }}/api/v4"
           baseUrl: "https://gitlab.{{ .Values.host }}"
+      jenkinsController: https://jenkins.example.com
 
     dynamicPlugins:
       frontend:

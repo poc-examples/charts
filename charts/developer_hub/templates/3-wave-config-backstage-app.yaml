@@ -33,6 +33,7 @@ data:
     # the Red Hat Developer Hub web UI.
     #######################################################################
     app:
+      cahRestBaseUrl: https://cah-placeholder.example.com
       title: Red Hat Developer Hub - Dev
       baseUrl: "https://backstage-developer-hub-backstage.{{ .Values.host }}"
       branding:
