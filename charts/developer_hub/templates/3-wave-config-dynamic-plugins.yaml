@@ -19,6 +19,13 @@ data:
       - disabled: false
         package: http://npm-registry-service-verdaccio.npm-registry.svc.cluster.local:4873/@cah/backstage-plugin-slf-my-teams-dynamic/-/backstage-plugin-slf-my-teams-dynamic-1.0.0.tgz
         integrity: sha512-u1L33UeGeuLyRAN8qENw7nGEqx6oeJh6ZTgA6gg8xcuCOhNuLKpe1GtMDW1xbvxOSrzisR9hRULwNr9kvPR9Yg==
+        pluginConfig: {}
+        dynamicRoutes:
+          - path: /my-teams
+            module: ./dist-scalprum/index.esm.js
+            importName: SlfMyTeamsPage
+            menuItem:
+              text: My Teams
 
       ####################################
       ## RED HAT HTTP REQUESTS PLUGIN
