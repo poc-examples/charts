@@ -35,3 +35,9 @@ data:
                   anyOf:
                     - hasAnnotation: backstage.io/kubernetes-id
                     - hasAnnotation: backstage.io/kubernetes-namespace
+        "@cah/backstage-plugin-slf-my-teams-dynamic":
+          dynamicRoutes:
+            - path: /my-teams
+              importName: SlfMyTeamsPage
+              menuItem:
+                text: My Teams
