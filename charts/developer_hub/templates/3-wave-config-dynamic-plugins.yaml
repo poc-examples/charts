@@ -17,8 +17,8 @@ data:
       ## Test Something Crazy
       ####################################
       - disabled: false
-        package: http://npm-registry-service-verdaccio.npm-registry.svc.cluster.local:4873/@cah/backstage-plugin-slf-my-teams-dynamic/-/backstage-plugin-slf-my-teams-dynamic-1.0.1.tgz
-        integrity: sha512-mEBw9Me3bI4bM1BwMsHQNIMMJKDMN/G8omhdhr/ai0LJ38425yvslp6RjkMJ4UIOSbik0Y1yDgPDUzJCPDfPAQ==
+        package: http://npm-registry-service-verdaccio.npm-registry.svc.cluster.local:4873/@cah/backstage-plugin-slf-my-teams-dynamic/-/backstage-plugin-slf-my-teams-dynamic-1.0.4.tgz
+        integrity: sha512-84FrbR2STQGs4qvtmDn66Obh0wKUVhidWz+eDv3ItxbX6HOIsalpMBNz1tXPc0Okie3rVtBh20SKcZK32gsNdA==
 
       ####################################
       ## RED HAT HTTP REQUESTS PLUGIN
