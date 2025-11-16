@@ -38,6 +38,5 @@ data:
         "slf-my-teams-dynamic":
           dynamicRoutes:
             - path: /my-teams
-              importName: SlfMyTeamsPage
               menuItem:
                 text: My Teams
